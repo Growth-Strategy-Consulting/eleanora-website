@@ -65,7 +65,9 @@ nav a:hover::after{width:100%;}
   animation:drift 20s ease-in-out infinite alternate;}
 @keyframes drift{0%{transform:translate(0,0) scale(1);}100%{transform:translate(-3%,2%) scale(1.08);}}
 .sirena .scrim{position:absolute;inset:0;z-index:2;
-  background:linear-gradient(180deg,rgba(20,45,48,.5) 0%,rgba(232,169,160,.14) 46%,rgba(18,40,42,.85) 100%);}
+  background:
+    radial-gradient(78% 52% at 50% 44%, rgba(12,28,30,.5), transparent 72%),
+    linear-gradient(180deg,rgba(16,36,38,.6) 0%,rgba(20,42,44,.34) 42%,rgba(16,34,36,.6) 72%,rgba(11,24,26,.9) 100%);}
 .sirena .ey{color:var(--sir-pearl);opacity:.95;font-size:13px;letter-spacing:5px;text-shadow:0 2px 16px rgba(0,0,0,.5);}
 .sirena .wordmark{font-family:'Pinyon Script',cursive;font-size:clamp(78px,16vw,210px);line-height:.9;
   text-shadow:0 8px 54px rgba(0,0,0,.45);}
@@ -162,7 +164,7 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
 
 <!-- ========== 1 · SIRENA ========== -->
 <section class="sirena">
-  <div class="bg"><img src="img/blog-croatia-island.jpg" alt="A lone island on the open sea under a wide calm sky"></div>
+  <div class="bg"><img src="img/hero-corfu-sunset.jpg" alt="Sun setting over the sea and hills off Corfu, warm light on the water"></div>
   <div class="caustic"></div>
   <div class="scrim"></div>
   <div class="s-top"><div class="ey lab">an archive of her stories</div></div>
