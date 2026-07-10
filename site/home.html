@@ -93,6 +93,9 @@ nav a:hover::after{width:100%;}
 .jungle .ey{color:var(--jg-gold);}
 .jungle .title{font-family:'Pinyon Script',cursive;font-size:clamp(56px,8vw,104px);color:var(--jg-cream);margin-top:6px;}
 .jungle .sub{margin-top:18px;font-size:14px;line-height:1.9;color:#cbd2bf;}
+.gallery-head{max-width:1120px;margin:0 auto 58px;text-align:center;}
+.gallery-banner{width:100%;height:auto;display:block;border-radius:6px;}
+.gallery-sub-m{display:none;}
 .grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-auto-rows:1fr;gap:18px;}
 .grid figure{position:relative;overflow:hidden;border-radius:6px;background:#1b271a;box-shadow:0 24px 50px -24px rgba(0,0,0,.6);}
 .grid figure img{transition:transform 1.1s cubic-bezier(.2,.8,.2,1);}
@@ -185,14 +188,9 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
 
 <!-- ========== 2 · JUNGLE GOLD (gallery teaser) ========== -->
 <section class="jungle">
-  <div class="head-wrap">
-    <span class="vine l" aria-hidden="true"><svg width="58" height="232" viewBox="0 0 60 232" fill="none"><path d="M30 226 C 22 184 38 156 30 116 C 22 78 38 46 30 8" stroke="currentColor" stroke-width="1.3" fill="none"/><g fill="currentColor"><g transform="translate(30,196) rotate(-60) scale(.8)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,196) rotate(60) scale(.8)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,150) rotate(-60) scale(.85)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,150) rotate(60) scale(.85)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,104) rotate(-60) scale(.9)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,104) rotate(60) scale(.9)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,58) rotate(-58) scale(.8)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,58) rotate(58) scale(.8)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,16) scale(.9)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g></g></svg></span>
-    <div class="head">
-      <div class="ey lab">Selected work</div>
-      <div class="title">The Gallery</div>
-      <p class="sub">Real plants, real light, the art of women and the wild. A gallery and an archive of the lives I've lived and the light I've chased.</p>
-    </div>
-    <span class="vine r" aria-hidden="true"><svg width="58" height="232" viewBox="0 0 60 232" fill="none"><path d="M30 226 C 22 184 38 156 30 116 C 22 78 38 46 30 8" stroke="currentColor" stroke-width="1.3" fill="none"/><g fill="currentColor"><g transform="translate(30,196) rotate(-60) scale(.8)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,196) rotate(60) scale(.8)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,150) rotate(-60) scale(.85)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,150) rotate(60) scale(.85)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,104) rotate(-60) scale(.9)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,104) rotate(60) scale(.9)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,58) rotate(-58) scale(.8)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,58) rotate(58) scale(.8)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g><g transform="translate(30,16) scale(.9)"><path d="M0 0 C 5 -5 5 -15 0 -22 C -5 -15 -5 -5 0 0 Z"/></g></g></svg></span>
+  <div class="gallery-head">
+    <img class="gallery-banner" src="img/gallery-banner.jpg" alt="Selected work — The Gallery. Real plants, real light, the art of women and the wild. A gallery and an archive of the lives I’ve lived and the light I’ve chased.">
+    <p class="gallery-sub-m">Real plants, real light, the art of women and the wild. A gallery and an archive of the lives I’ve lived and the light I’ve chased.</p>
   </div>
   <div class="grid">
     <figure class="g-tall">
