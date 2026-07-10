@@ -205,7 +205,8 @@ form.addEventListener("submit", async (e) => {
     card.classList.remove("err");
     if (DEST){
       sessionStorage.setItem("eleanora_pass", "1");
-      location.href = DEST;
+      // cache-bust so the freshest homepage always loads (no stale/flash during edits)
+      location.href = DEST + "?v=" + Date.now();
     } else {
       card.classList.add("sent"); // no site behind the gate yet
     }
