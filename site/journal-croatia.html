@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>if(sessionStorage.getItem("eleanora_pass")!=="1")location.replace("gate.html");</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drowning, but in Croatia · Dubrovnik — Eleanora</title>
+<link rel="icon" type="image/png" href="img/eleanora-seal.png">
+<style>
+@font-face{font-family:'Pinyon Script';src:url('../brand-hub/assets/fonts/PinyonScript-Regular.ttf');font-display:swap;}
+@font-face{font-family:'Allura';src:url('../brand-hub/assets/fonts/Allura-Regular.ttf');font-display:swap;}
+:root{
+  --forest:#2F4034; --forest-d:#233026; --sage:#93A283; --clay:#B87F51;
+  --sand:#E4D7BE; --parch:#F5EFE3; --cream:#F6F1E7; --ink:#2B2019;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--parch);color:var(--ink);font-family:'Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+.script{font-family:'Allura',cursive;}
+.lab{font-size:12px;letter-spacing:3.5px;text-transform:uppercase;}
+a{color:inherit;text-decoration:none;}
+
+/* ---------- NAV ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:22px 46px;transition:.4s ease;}
+header.scrolled{background:rgba(245,239,227,.94);backdrop-filter:blur(8px);padding:14px 46px;box-shadow:0 1px 0 rgba(47,64,52,.1);}
+.brand{display:flex;align-items:center;gap:12px;color:var(--cream);transition:color .4s;}
+header.scrolled .brand{color:var(--forest);}
+.brand .wm{font-family:'Pinyon Script',cursive;font-size:34px;line-height:1;padding-left:2px;}
+nav ul{display:flex;gap:34px;list-style:none;}
+nav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream);opacity:.9;position:relative;transition:color .4s;}
+header.scrolled nav a{color:var(--forest);}
+nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--clay);transition:.3s;}
+nav a:hover::after{width:100%;}
+
+/* ---------- TITLE BAND ---------- */
+.post-title{background:var(--forest);color:var(--cream);text-align:center;padding:190px 24px 88px;position:relative;}
+.post-title .ey{color:var(--sand);opacity:.9;}
+.post-title h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(40px,6.5vw,86px);line-height:1.02;margin-top:18px;letter-spacing:1px;}
+.post-title .accent{font-family:'Allura',cursive;font-size:clamp(30px,4vw,52px);color:var(--clay);margin-top:6px;}
+.post-title .date{margin-top:26px;font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:.7;}
+.post-title .rule{width:54px;height:1px;background:var(--clay);margin:26px auto 0;}
+
+/* ---------- ARTICLE ---------- */
+.article{max-width:1040px;margin:0 auto;padding:70px 28px 40px;}
+.article figure{margin:54px auto;background:var(--sand);overflow:hidden;max-width:900px;}
+.article figure img{display:block;width:100%;height:auto;image-orientation:from-image;
+  filter:saturate(1.04) contrast(1.02) brightness(1.01) sepia(.05);}
+.article figure.portrait{max-width:620px;}
+.article figcaption{margin-top:10px;text-align:center;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--clay);opacity:.85;}
+.prose{max-width:60ch;margin:0 auto;}
+.prose p{font-size:17px;line-height:1.95;color:#4f4a3d;margin:0 auto 26px;}
+.prose p.lede{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(20px,2.4vw,26px);line-height:1.55;color:var(--forest);}
+.prose em{font-style:italic;}
+.prose .sign{font-family:'Allura',cursive;font-size:44px;color:var(--forest);margin-top:6px;text-align:center;}
+.back{display:block;text-align:center;margin:20px auto 0;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--clay);}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--forest-d);color:var(--sand);padding:70px 40px 34px;text-align:center;margin-top:80px;}
+footer .fnav{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:26px;}
+footer .fnav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;opacity:.85;}
+footer .fnav a:hover{color:var(--clay);}
+footer .tag{font-size:12px;letter-spacing:5px;text-transform:uppercase;color:var(--cream);}
+footer .cr{margin-top:24px;font-size:11px;letter-spacing:1.5px;color:#8a9084;}
+footer .cr .script{font-size:18px;}
+
+@media(max-width:820px){
+  header{padding:16px 22px;} nav ul{display:none;}
+  .post-title{padding:150px 22px 64px;}
+  .article{padding:50px 22px 30px;}
+  .article figure{margin:40px auto;}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <a class="brand" href="index.html">
+    <img src="img/eleanora-seal.png" alt="Eleanora" width="38" height="38" style="width:38px;height:38px;display:block;flex:0 0 auto">
+    <span class="wm">Eleanora</span>
+  </a>
+  <nav><ul>
+    <li><a href="index.html#gallery">Gallery</a></li>
+    <li><a href="index.html#collections">Collections</a></li>
+    <li><a href="blog.html">Journal</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#footer">Contact</a></li>
+  </ul></nav>
+</header>
+
+<!-- TITLE -->
+<section class="post-title">
+  <div class="ey lab">Journal — Dubrovnik, Croatia</div>
+  <h1>Drowning,<br>but in Croatia</h1>
+  <div class="accent">Europe, the long way</div>
+  <div class="date">The Collection · Dubrovnik, Croatia</div>
+  <div class="rule"></div>
+</section>
+
+<!-- ARTICLE -->
+<article class="article">
+
+  <div class="prose">
+    <p class="lede">I quit my job to come here, looking for a sign. And boy, did I find one.</p>
+  </div>
+
+  <figure>
+    <img src="img/blog-croatia-godhelpus.jpg" alt="GOD HELP US scrawled in graffiti across a wall in Dubrovnik">
+  </figure>
+
+  <div class="prose">
+    <p>The first thing this country said to me, scrawled across a wall: GOD HELP US. Of course.</p>
+    <p>My mom always taught us to be afraid of strangers. But I think I was always more afraid of something else. My whole life quietly slipping past me. Reaching the end of it with no good stories to tell.</p>
+    <p>So when my best friend called, six months into backpacking the world, and said <em>heard you saw my mom at work, she says you look miserable, quit your job and come to Europe</em> — all I could think was, wait. Why wouldn't I?</p>
+    <p>So I did. I gave the café I'd worked at for four years, the one I'd poured my heart and soul into, one month to replace me, and started planning my trip. Twenty-seven years old, about to be unemployed, and not the slightest idea what came next.</p>
+  </div>
+
+  <figure>
+    <img src="img/blog-croatia-bridge.jpg" alt="The road and bridge into the old city of Dubrovnik">
+  </figure>
+
+  <div class="prose">
+    <p>I took a bus in from the airport. My friend had arrived the night before. Red roofs, blue water, a city built into the hill. This was the world I'd been warned about my whole life, and it was the most beautiful thing I had ever seen. What have I done, I thought. And then I laughed, because I already knew. Something wonderful.</p>
+    <p>But here is the thing no one tells you about running from your problems. It doesn't matter where you land. Your problems don't stay behind at the airport.</p>
+    <p>They follow you, because they were never in the place. They live in your head.</p>
+  </div>
+
+  <figure class="portrait">
+    <img src="img/blog-croatia-church.jpg" alt="The interior of a church in Dubrovnik">
+  </figure>
+
+  <div class="prose">
+    <p>The flight over had given me enough time to wonder. It made me ask something I had never slowed down to ask. What even is happiness? We chase it like it is a place you arrive at, or a thing you save up long enough to finally buy.</p>
+    <p>It took me another seven years to start to understand. Happiness isn't a tangible place. It's a state of mind. We all walk this planet breathing the same air, so why does fortune seem to favor only some of us?</p>
+  </div>
+
+  <figure>
+    <img src="img/blog-croatia-island.jpg" alt="An island in the sea off the Dubrovnik coast">
+  </figure>
+
+  <div class="prose">
+    <p>Lost in a sea of beauty, I was just a drop of water in an ocean. And somewhere in all of it, I finally started to see the lie.</p>
+    <p>That you grind now and live later. That being happy is something you earn, or buy, or go somewhere far enough to find. It was never any of that. It was always going to be me.</p>
+    <p>That could have been the whole story. A good one, finally. My first.</p>
+    <p>But the map was only just beginning. So we took a ferry to Italy.</p>
+    <p>But you know I'd never tell you everything all at once.</p>
+    <div class="sign">xo, Eleanora</div>
+  </div>
+
+  <a class="back" href="blog.html">&larr; Back to the Journal</a>
+
+</article>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="fnav">
+    <a href="index.html#gallery">Gallery</a><a href="index.html#collections">Collections</a><a href="blog.html">Journal</a><a href="index.html#about">About</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
+  </div>
+  <div class="tag">Real plants · Real light · The art of women &amp; the wild</div>
+  <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on <span class="script">x</span></div>
+</footer>
+
+<script>
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>60));
+</script>
+</body>
+</html>

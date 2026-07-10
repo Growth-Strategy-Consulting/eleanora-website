@@ -178,7 +178,7 @@ a.btn{display:block;text-align:center;text-decoration:none;}
 // switch the success handler to redirect. For now, correct word shows the
 // "You're in / rooms being hung" state instead of a 404.
 const EXPECTED = "799c7c9316f8ac229657f7251aa364a803089be5d123e91204287fe0f7e4bc44";
-const DEST = null; // e.g. "home.html" once the site is live behind the gate
+const DEST = "site/home.html"; // the site lives behind the gate in /site/
 
 async function sha256(str){
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
