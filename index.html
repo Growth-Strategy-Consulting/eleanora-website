@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eleanora</title>
+<meta name="description" content="An archive of her stories. Be one of the first through the door.">
+<link rel="icon" type="image/png" href="img/eleanora-seal.png">
+<style>
+@font-face{font-family:'Pinyon Script';src:url('assets/fonts/PinyonScript-Regular.ttf');font-display:swap;}
+@font-face{font-family:'Great Vibes';src:url('assets/fonts/GreatVibes-Regular.ttf');font-display:swap;}
+@font-face{font-family:'Allura';src:url('assets/fonts/Allura-Regular.ttf');font-display:swap;}
+:root{
+  --clay:#B87F51; --cream:#F6F1E7; --ink:#2B2019;
+  --sir-deep:#1E3A3A; --sir-teal:#234E4E; --sir-foam:#9FBFB4; --sir-pink:#E8A9A0; --sir-gold:#E7C489; --sir-pearl:#F4EDE1;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;}
+body{background:#12211f;color:var(--sir-pearl);font-family:'Helvetica Neue',Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow:hidden;position:relative;}
+a{color:inherit;text-decoration:none;}
+
+/* film grain — shared texture */
+body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.055;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* ---------- the water world ---------- */
+.gate{position:relative;height:100%;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;padding:40px 24px;}
+
+.gate .bg{position:absolute;inset:0;z-index:0;}
+.gate .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;image-orientation:from-image;
+  filter:saturate(1.0) contrast(1.06) brightness(.82) sepia(.1) hue-rotate(-4deg);
+  transform:scale(1.06);animation:slowzoom 28s ease-out forwards;}
+@keyframes slowzoom{to{transform:scale(1.15);}}
+
+/* drifting forest mist */
+.gate .caustic{position:absolute;inset:-25%;z-index:1;filter:blur(64px);opacity:.55;pointer-events:none;
+  background:
+    radial-gradient(46% 30% at 30% 60%, rgba(224,230,214,.7), transparent 62%),
+    radial-gradient(40% 26% at 72% 68%, rgba(198,210,186,.6), transparent 62%),
+    radial-gradient(52% 34% at 52% 82%, rgba(232,196,137,.35), transparent 64%);
+  animation:drift 24s ease-in-out infinite alternate;opacity:.32;}
+@keyframes drift{0%{transform:translate(0,0) scale(1);}100%{transform:translate(-3%,-2%) scale(1.08);}}
+
+/* scrim: dark text-safe band through the middle + vignette edges */
+.gate .scrim{position:absolute;inset:0;z-index:2;
+  background:
+    radial-gradient(72% 54% at 50% 44%, rgba(11,19,14,.66), transparent 72%),
+    radial-gradient(122% 92% at 50% 50%, transparent 48%, rgba(9,15,11,.62) 100%),
+    linear-gradient(180deg,
+      rgba(14,24,18,.58) 0%,
+      rgba(20,34,24,.28) 20%,
+      rgba(9,15,11,.60) 48%,
+      rgba(9,15,11,.66) 66%,
+      rgba(10,17,12,.92) 100%);}
+
+.gate .inner{position:relative;z-index:3;width:100%;max-width:560px;display:flex;flex-direction:column;align-items:center;
+  animation:rise 1.4s cubic-bezier(.2,.8,.2,1) both;}
+@keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+
+.gate .ey{color:var(--sir-pearl);opacity:.92;font-size:clamp(10px,2.6vw,12px);letter-spacing:clamp(3px,1.2vw,5px);
+  text-transform:uppercase;text-shadow:0 1px 3px rgba(0,0,0,.7),0 2px 18px rgba(0,0,0,.6);}
+.gate .wordmark{font-family:'Pinyon Script','Allura',cursive;font-weight:400;line-height:.9;
+  font-size:clamp(58px,11vw,118px);margin:12px 0 4px;
+  text-shadow:0 2px 14px rgba(0,0,0,.65),0 10px 54px rgba(0,0,0,.5);}
+
+/* invitation card — a contrast panel so small text stays legible over the photo (WCAG 4.5:1) */
+.card{margin-top:24px;width:min(400px,90vw);background:rgba(9,19,17,.85);
+  -webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);
+  border:1px solid rgba(244,237,225,.18);border-radius:16px;padding:26px 24px 22px;
+  box-shadow:0 24px 60px rgba(0,0,0,.5);}
+.promise{font-size:clamp(15px,2vw,18px);line-height:1.65;opacity:.97;text-shadow:0 1px 2px rgba(0,0,0,.5);}
+.promise em{font-style:normal;font-family:'Pinyon Script',cursive;font-size:1.45em;color:var(--sir-gold);letter-spacing:0;}
+
+/* waitlist — the ONE primary action (attention ratio ~1:1) */
+.wait{margin-top:18px;display:flex;flex-direction:column;gap:11px;}
+.wait input{width:100%;background:rgba(244,237,225,.10);border:1px solid rgba(244,237,225,.34);
+  border-radius:10px;color:var(--sir-pearl);font-family:'Helvetica Neue',Arial,sans-serif;
+  font-size:15px;letter-spacing:.4px;text-align:center;padding:14px 16px;outline:none;transition:border-color .3s,background .3s;}
+.wait input::placeholder{color:rgba(244,237,225,.6);}
+.wait input:focus{border-color:var(--sir-gold);background:rgba(244,237,225,.14);}
+.btn{width:100%;background:var(--sir-gold);color:#183230;border:0;border-radius:10px;cursor:pointer;
+  font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;padding:15px 18px;
+  transition:transform .2s,box-shadow .3s,background .3s;}
+.btn:hover{background:#eecf95;transform:translateY(-1px);box-shadow:0 10px 26px rgba(0,0,0,.35);}
+.btn[disabled]{opacity:.6;cursor:default;transform:none;box-shadow:none;}
+.trigger{margin-top:11px;font-size:11px;letter-spacing:1.2px;color:rgba(244,237,225,.74);}
+.pat{display:inline-block;margin-top:14px;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;
+  color:rgba(244,237,225,.62);border-bottom:1px solid rgba(231,196,137,.35);padding-bottom:2px;transition:color .3s,border-color .3s;}
+.pat:hover{color:var(--sir-gold);border-color:var(--sir-gold);}
+
+/* inline waitlist error */
+.wmsg{margin-top:12px;min-height:15px;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--sir-pink);opacity:0;transition:opacity .3s;}
+.card.werr .wmsg{opacity:.95;}
+.card.werr .wait input{animation:shake .4s;}
+@keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-7px);}40%{transform:translateX(6px);}60%{transform:translateX(-4px);}80%{transform:translateX(3px);}}
+
+/* success state */
+.done{display:none;}
+.card.sent .waitview{display:none;}
+.card.sent .done{display:block;}
+.done .dwm{font-family:'Pinyon Script',cursive;font-size:42px;color:var(--sir-gold);line-height:1;}
+.done p{margin-top:10px;font-size:13px;letter-spacing:.4px;opacity:.9;}
+
+.gate .seal{position:relative;z-index:3;margin-top:38px;width:50px;height:50px;opacity:.72;}
+.gate .seal img{width:100%;height:100%;object-fit:contain;filter:none;}
+
+@media(max-width:520px){
+  .gate .ey{letter-spacing:2.5px;font-size:10px;}
+  .gate .wordmark{margin-top:8px;}
+  .card{margin-top:20px;padding:22px 18px;}
+}
+</style>
+</head>
+<body>
+<div class="gate">
+  <div class="bg"><img src="img/gate-sintra.jpg" alt=""></div>
+  <div class="caustic"></div>
+  <div class="scrim"></div>
+
+  <div class="inner">
+    <!-- COPY IS PLACEHOLDER until run through the caption skill in Elena's voice. -->
+    <p class="ey">an archive of her stories</p>
+    <h1 class="wordmark">Eleanora</h1>
+
+    <div class="card" id="card">
+      <div class="waitview">
+        <p class="promise">Not open to everyone yet.<br>Be one of the first <em>through the door.</em></p>
+        <form class="wait" id="wait" autocomplete="off">
+          <input id="email" name="email" type="email" placeholder="your email" aria-label="your email" required>
+          <button class="btn" id="submitBtn" type="submit">Save my place</button>
+        </form>
+        <p class="trigger">No spam. Just the door, when it opens.</p>
+        <a class="pat" href="https://www.patreon.com/eleanora333" target="_blank" rel="noopener">[placeholder — Patreon line, run through caption]</a>
+        <p class="wmsg" id="wmsg">Something went wrong. Try again.</p>
+      </div>
+
+      <div class="done">
+        <div class="dwm">You're on the list.</div>
+        <p>Watch your inbox. The door opens soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="seal"><img src="img/eleanora-seal.png" alt="Eleanora seal"></div>
+</div>
+
+<script>
+// ---- waitlist -----------------------------------------------------------
+// Static-site capture via Web3Forms (works on GitHub Pages, no server).
+// Swap in the real access key below — until then submissions fail on purpose
+// so nothing silently pretends to save. Emails land in Elena's inbox and can
+// be piped into SmartSuite later.
+const WEB3FORMS_KEY = "REPLACE_WITH_WEB3FORMS_ACCESS_KEY";
+
+const card = document.getElementById("card");
+const wait = document.getElementById("wait");
+const email = document.getElementById("email");
+const btn = document.getElementById("submitBtn");
+const wmsg = document.getElementById("wmsg");
+
+wait.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  card.classList.remove("werr");
+  const value = email.value.trim();
+  if (!value){ return; }
+  btn.disabled = true;
+  const original = btn.textContent;
+  btn.textContent = "Saving…";
+  try {
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: "New Eleanora waitlist signup",
+        from_name: "Eleanora gate",
+        email: value
+      })
+    });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.message || "failed");
+    card.classList.add("sent");
+  } catch (err) {
+    wmsg.textContent = "Couldn't save that. Try again.";
+    card.classList.add("werr");
+    btn.disabled = false;
+    btn.textContent = original;
+  }
+});
+email.addEventListener("input", () => card.classList.remove("werr"));
+</script>
+</body>
+</html>
