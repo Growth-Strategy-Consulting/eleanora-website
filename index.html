@@ -85,20 +85,35 @@ body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opa
   transition:transform .2s,box-shadow .3s,background .3s;}
 .btn:hover{background:#eecf95;transform:translateY(-1px);box-shadow:0 10px 26px rgba(0,0,0,.35);}
 .btn[disabled]{opacity:.6;cursor:default;transform:none;box-shadow:none;}
+a.btn{display:block;text-align:center;text-decoration:none;}
 .trigger{margin-top:11px;font-size:11px;letter-spacing:1.2px;color:rgba(244,237,225,.74);}
-.pat{display:inline-block;margin-top:14px;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;
-  color:rgba(244,237,225,.62);border-bottom:1px solid rgba(231,196,137,.35);padding-bottom:2px;transition:color .3s,border-color .3s;}
-.pat:hover{color:var(--sir-gold);border-color:var(--sir-gold);}
 
-/* inline waitlist error */
-.wmsg{margin-top:12px;min-height:15px;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--sir-pink);opacity:0;transition:opacity .3s;}
-.card.werr .wmsg{opacity:.95;}
-.card.werr .wait input{animation:shake .4s;}
+/* secondary: "I have a password" reveal */
+.alt{margin-top:16px;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;
+  color:rgba(244,237,225,.6);cursor:pointer;transition:color .3s;display:inline-block;}
+.alt:hover{color:var(--sir-gold);}
+.pwview{display:none;}
+.card.show-pw .waitview{display:none;}
+.card.show-pw .pwview{display:block;}
+.pwview .field{position:relative;display:flex;align-items:center;}
+.pwview input{width:100%;background:rgba(244,237,225,.08);border:1px solid rgba(244,237,225,.30);border-radius:10px;
+  color:var(--sir-pearl);font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;letter-spacing:3px;
+  text-align:center;padding:14px 44px 14px 16px;outline:none;transition:border-color .3s;}
+.pwview input::placeholder{color:rgba(244,237,225,.5);letter-spacing:3px;text-transform:lowercase;}
+.pwview input:focus{border-color:var(--sir-gold);}
+.pwview .go{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;cursor:pointer;color:var(--sir-gold);opacity:.9;padding:8px;transition:.3s;}
+.pwview .go:hover{opacity:1;transform:translateY(-50%) translateX(2px);}
+.pwview .go svg{display:block;}
+.msg{margin-top:13px;min-height:16px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sir-pink);opacity:0;transition:opacity .3s;}
+.card.err .msg{opacity:.95;}
+.card.err .field{animation:shake .4s;}
+.back{margin-top:13px;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:rgba(244,237,225,.58);cursor:pointer;display:inline-block;}
+.back:hover{color:var(--sir-gold);}
 @keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-7px);}40%{transform:translateX(6px);}60%{transform:translateX(-4px);}80%{transform:translateX(3px);}}
 
-/* success state */
+/* success state (correct password) */
 .done{display:none;}
-.card.sent .waitview{display:none;}
+.card.sent .waitview,.card.sent .pwview{display:none;}
 .card.sent .done{display:block;}
 .done .dwm{font-family:'Pinyon Script',cursive;font-size:42px;color:var(--sir-gold);line-height:1;}
 .done p{margin-top:10px;font-size:13px;letter-spacing:.4px;opacity:.9;}
@@ -127,18 +142,24 @@ body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opa
     <div class="card" id="card">
       <div class="waitview">
         <p class="promise">Not open to everyone yet.<br>Be one of the first <em>through the door.</em></p>
-        <form class="wait" id="wait" autocomplete="off">
-          <input id="email" name="email" type="email" placeholder="your email" aria-label="your email" required>
-          <button class="btn" id="submitBtn" type="submit">Save my place</button>
-        </form>
-        <p class="trigger">No spam. Just the door, when it opens.</p>
-        <a class="pat" href="https://www.patreon.com/eleanora333" target="_blank" rel="noopener">[placeholder — Patreon line, run through caption]</a>
-        <p class="wmsg" id="wmsg">Something went wrong. Try again.</p>
+        <a class="btn" href="https://www.patreon.com/eleanora333" target="_blank" rel="noopener">Go to my Patreon</a>
+        <span class="alt" id="toPw">I have a password</span>
       </div>
 
+      <form class="pwview" id="key" autocomplete="off">
+        <div class="field">
+          <input id="pw" type="password" placeholder="say the word" aria-label="password">
+          <button class="go" type="submit" aria-label="enter">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <p class="msg" id="msg">that's not it. try again.</p>
+        <span class="back" id="toWait">&larr; back</span>
+      </form>
+
       <div class="done">
-        <div class="dwm">You're on the list.</div>
-        <p>Watch your inbox. The door opens soon.</p>
+        <div class="dwm">You're in.</div>
+        <p>The rooms are being hung. Come back soon.</p>
       </div>
     </div>
   </div>
@@ -147,49 +168,54 @@ body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opa
 </div>
 
 <script>
-// ---- waitlist -----------------------------------------------------------
-// Static-site capture via Web3Forms (works on GitHub Pages, no server).
-// Swap in the real access key below — until then submissions fail on purpose
-// so nothing silently pretends to save. Emails land in Elena's inbox and can
-// be piped into SmartSuite later.
-const WEB3FORMS_KEY = "REPLACE_WITH_WEB3FORMS_ACCESS_KEY";
+// ---- soft gate ----------------------------------------------------------
+// The password is stored as a SHA-256 hash so it isn't sitting here in plain
+// text. Keeps the casual public out; NOT bank-grade (a determined technical
+// visitor could reach a real destination page directly).
+//
+// TEMP word right now: "sirena"  — give Penny the real word to swap in.
+// DEST: once the full site is deployed behind the gate, point this at it and
+// switch the success handler to redirect. For now, correct word shows the
+// "You're in / rooms being hung" state instead of a 404.
+const EXPECTED = "799c7c9316f8ac229657f7251aa364a803089be5d123e91204287fe0f7e4bc44";
+const DEST = null; // e.g. "home.html" once the site is live behind the gate
+
+async function sha256(str){
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,"0")).join("");
+}
 
 const card = document.getElementById("card");
-const wait = document.getElementById("wait");
-const email = document.getElementById("email");
-const btn = document.getElementById("submitBtn");
-const wmsg = document.getElementById("wmsg");
+const form = document.getElementById("key");
+const pw   = document.getElementById("pw");
 
-wait.addEventListener("submit", async (e) => {
+document.getElementById("toPw").addEventListener("click", () => {
+  card.classList.remove("err");
+  card.classList.add("show-pw");
+  pw.focus();
+});
+document.getElementById("toWait").addEventListener("click", () => {
+  card.classList.remove("show-pw","err");
+});
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  card.classList.remove("werr");
-  const value = email.value.trim();
-  if (!value){ return; }
-  btn.disabled = true;
-  const original = btn.textContent;
-  btn.textContent = "Saving…";
-  try {
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify({
-        access_key: WEB3FORMS_KEY,
-        subject: "New Eleanora waitlist signup",
-        from_name: "Eleanora gate",
-        email: value
-      })
-    });
-    const data = await res.json();
-    if (!data.success) throw new Error(data.message || "failed");
-    card.classList.add("sent");
-  } catch (err) {
-    wmsg.textContent = "Couldn't save that. Try again.";
-    card.classList.add("werr");
-    btn.disabled = false;
-    btn.textContent = original;
+  const hash = await sha256(pw.value.trim().toLowerCase());
+  if (hash === EXPECTED){
+    card.classList.remove("err");
+    if (DEST){
+      sessionStorage.setItem("eleanora_pass", "1");
+      location.href = DEST;
+    } else {
+      card.classList.add("sent"); // no site behind the gate yet
+    }
+  } else {
+    card.classList.add("err");
+    pw.value = "";
+    pw.focus();
   }
 });
-email.addEventListener("input", () => card.classList.remove("werr"));
+pw.addEventListener("input", () => card.classList.remove("err"));
 </script>
 </body>
 </html>
