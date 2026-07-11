@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "eleanora-site",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "python3 -m http.server ${PORT:-8834} --directory site"],
+      "port": 8834,
+      "autoPort": true
+    }
+  ]
+}
