@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <script>if(sessionStorage.getItem("eleanora_pass")!=="1")location.replace("/");</script>
+<script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('veil-on');}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Drowning, but in Croatia · Dubrovnik — Eleanora</title>
@@ -12,73 +13,140 @@
 @font-face{font-family:'Pinyon Script';src:url('../brand-hub/assets/fonts/PinyonScript-Regular.ttf');font-display:swap;}
 @font-face{font-family:'Allura';src:url('../brand-hub/assets/fonts/Allura-Regular.ttf');font-display:swap;}
 :root{
-  --forest:#2F4034; --forest-d:#233026; --sage:#93A283; --clay:#B87F51;
-  --sand:#E4D7BE; --parch:#F5EFE3; --cream:#F6F1E7; --ink:#2B2019;
+  --forest:#2F4034; --forest-d:#1C271F; --forest-dd:#141C16; --sage:#93A283;
+  --clay:#B87F51; --clay-l:#CE9A6B; --gold:#E7C489; --sand:#E4D7BE;
+  --parch:#EFE6D3; --cream:#F6F1E7; --ink:#2B2019; --body:#d3dacb; --read:#e6e1d2;
+  --z-nav:50; --z-grain:80; --ease:cubic-bezier(.16,1,.3,1);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--parch);color:var(--ink);font-family:'Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body{background:var(--forest-d);color:var(--cream);font-family:'Helvetica Neue',Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{display:block;width:100%;height:100%;object-fit:cover;image-orientation:from-image;
+    filter:saturate(1.05) contrast(1.03) brightness(1.0) sepia(.055);}
+.serif{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;}
 .script{font-family:'Allura',cursive;}
 .lab{font-size:12px;letter-spacing:3.5px;text-transform:uppercase;}
 a{color:inherit;text-decoration:none;}
+em{font-style:italic;}
+::selection{background:rgba(231,196,137,.28);color:var(--cream);}
+
+/* ---------- GRAIN + VEIL ---------- */
+.grain{position:fixed;inset:0;z-index:var(--z-grain);pointer-events:none;opacity:.5;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+#veil{position:fixed;inset:0;z-index:79;pointer-events:none;opacity:0;visibility:hidden;
+  background:radial-gradient(130% 112% at 50% 42%,#24322a 0%,var(--forest-d) 70%,var(--forest-dd) 100%);
+  transition:opacity .55s var(--ease),visibility 0s linear .55s;}
+html.veil-on #veil{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .5s var(--ease);}
 
 /* ---------- NAV ---------- */
-header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
-  padding:22px 46px;transition:.4s ease;}
-header.scrolled{background:rgba(245,239,227,.94);backdrop-filter:blur(8px);padding:14px 46px;box-shadow:0 1px 0 rgba(47,64,52,.1);}
-.brand{display:flex;align-items:center;gap:12px;color:var(--cream);transition:color .4s;}
-header.scrolled .brand{color:var(--forest);}
+header{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);display:flex;align-items:center;justify-content:space-between;
+  padding:24px 46px;transition:padding .4s var(--ease),background .4s ease,box-shadow .4s ease;}
+header.solid{background:rgba(20,28,22,.86);backdrop-filter:blur(9px);padding:14px 46px;box-shadow:0 1px 0 rgba(0,0,0,.3);}
+.brand{display:flex;align-items:center;gap:12px;color:var(--cream);}
 .brand .wm{font-family:'Pinyon Script',cursive;font-size:34px;line-height:1;padding-left:2px;}
 nav ul{display:flex;gap:34px;list-style:none;}
-nav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream);opacity:.9;position:relative;transition:color .4s;}
-header.scrolled nav a{color:var(--forest);}
-nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--clay);transition:.3s;}
-nav a:hover::after{width:100%;}
+nav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream);opacity:.88;position:relative;transition:.4s;}
+nav a.on{color:var(--gold);opacity:1;}
+nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:.3s var(--ease);}
+nav a:hover::after,nav a.on::after{width:100%;}
 
-/* ---------- TITLE BAND ---------- */
-.post-title{background:var(--forest);color:var(--cream);text-align:center;padding:190px 24px 88px;position:relative;}
-.post-title .ey{color:var(--sand);opacity:.9;}
-.post-title h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(40px,6.5vw,86px);line-height:1.02;margin-top:18px;letter-spacing:1px;}
-.post-title .accent{font-family:'Allura',cursive;font-size:clamp(30px,4vw,52px);color:var(--clay);margin-top:6px;}
-.post-title .date{margin-top:26px;font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:.7;}
-.post-title .rule{width:54px;height:1px;background:var(--clay);margin:26px auto 0;}
+/* ---------- TITLE (full-bleed cinematic) ---------- */
+.post-hero{position:relative;height:100vh;min-height:620px;overflow:hidden;}
+.post-hero .bg{position:absolute;inset:0;}
+.post-hero .bg img{transform:scale(1.06);animation:kb 22s var(--ease) forwards;}
+@keyframes kb{to{transform:scale(1.14);}}
+.post-hero::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 120% at 50% 44%,transparent 30%,rgba(20,28,22,.5) 100%),
+             linear-gradient(180deg,rgba(20,28,22,.55) 0%,rgba(20,28,22,.1) 34%,rgba(20,28,22,.2) 60%,rgba(20,28,22,.92) 100%);}
+.post-hero .inner{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;color:var(--cream);padding:0 24px;}
+.post-hero .ey{color:var(--gold);margin-bottom:20px;}
+.post-hero h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(42px,6.6vw,92px);line-height:1.03;letter-spacing:-.01em;
+  max-width:16ch;text-shadow:0 8px 48px rgba(0,0,0,.5);text-wrap:balance;}
+.post-hero .accent{font-family:'Allura',cursive;font-size:clamp(32px,4.4vw,56px);color:var(--gold);margin-top:12px;
+  text-shadow:0 2px 26px rgba(231,196,137,.3);}
+.post-hero .meta{margin-top:24px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sand);opacity:.85;}
+.post-hero .cue{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;color:var(--cream);
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:.85;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.post-hero .cue span{width:1px;height:34px;background:var(--gold);opacity:.6;animation:pulse 2.4s ease-in-out infinite;transform-origin:top;}
+@keyframes pulse{0%,100%{opacity:.15;transform:scaleY(.55);}50%{opacity:.7;transform:scaleY(1);}}
+.post-hero .ey,.post-hero h1,.post-hero .accent,.post-hero .meta{opacity:0;transform:translateY(24px);animation:rise 1s var(--ease) forwards;}
+.post-hero .ey{animation-delay:.25s;} .post-hero h1{animation-delay:.42s;}
+.post-hero .accent{animation-delay:.64s;} .post-hero .meta{animation-delay:.82s;}
+@keyframes rise{to{opacity:1;transform:none;}}
 
-/* ---------- ARTICLE ---------- */
-.article{max-width:1040px;margin:0 auto;padding:70px 28px 40px;}
-.article figure{margin:54px auto;background:var(--sand);overflow:hidden;max-width:900px;}
-.article figure img{display:block;width:100%;height:auto;image-orientation:from-image;
-  filter:saturate(1.04) contrast(1.02) brightness(1.01) sepia(.05);}
-.article figure.portrait{max-width:620px;}
-.article figcaption{margin-top:10px;text-align:center;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--clay);opacity:.85;}
-.prose{max-width:60ch;margin:0 auto;}
-.prose p{font-size:17px;line-height:1.95;color:#4f4a3d;margin:0 auto 26px;}
-.prose p.lede{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(20px,2.4vw,26px);line-height:1.55;color:var(--forest);}
-.prose em{font-style:italic;}
-.prose .sign{font-family:'Allura',cursive;font-size:44px;color:var(--forest);margin-top:6px;text-align:center;}
-.back{display:block;text-align:center;margin:20px auto 0;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--clay);}
+/* ---------- READING ---------- */
+.read{position:relative;padding:clamp(74px,11vh,120px) 24px clamp(40px,6vh,60px);
+  background:radial-gradient(900px 520px at 18% 4%,rgba(147,162,131,.10),transparent 70%),
+            radial-gradient(820px 560px at 92% 96%,rgba(184,127,81,.11),transparent 72%),var(--forest-d);}
+.prose{max-width:62ch;margin:0 auto;}
+.prose p{font-size:17.5px;line-height:2.02;color:var(--read);margin:0 auto 28px;}
+.prose p.lede{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(21px,2.4vw,28px);line-height:1.55;
+  color:var(--cream);letter-spacing:-.005em;}
+.prose em{font-style:italic;color:var(--sand);}
+.prose .pull{font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-size:clamp(22px,2.6vw,30px);
+  color:var(--gold);line-height:1.4;text-align:center;max-width:24ch;margin:clamp(40px,6vh,60px) auto;}
+.prose .pull::before{content:"";display:block;width:50px;height:1px;background:var(--clay-l);opacity:.7;margin:0 auto 24px;}
+.prose .sign{font-family:'Allura',cursive;font-size:clamp(40px,5vw,58px);color:var(--sand);margin-top:20px;text-align:center;line-height:1;}
+
+/* figures — inset + full-bleed cinematic */
+.fig{position:relative;margin:clamp(56px,8vh,96px) auto;max-width:860px;overflow:hidden;
+  box-shadow:0 26px 64px rgba(0,0,0,.42);}
+.fig::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.2);pointer-events:none;}
+.fig img{width:100%;height:auto;}
+.fig.portrait{max-width:600px;}
+.fig-cap{margin-top:12px;text-align:center;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);opacity:.8;}
+.bleed{position:relative;width:100vw;margin-left:calc(50% - 50vw);height:min(88vh,780px);overflow:hidden;
+  margin-top:clamp(70px,10vh,110px);margin-bottom:clamp(70px,10vh,110px);}
+.bleed .bg{position:absolute;inset:0;z-index:0;will-change:transform;}
+.bleed .bg img{height:100%;transform:scale(1.12);}
+.bleed::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 120px 20px rgba(20,28,22,.5);
+  background:linear-gradient(0deg,rgba(20,28,22,.45),transparent 40%);}
+
+.back{display:block;text-align:center;margin:clamp(30px,5vh,50px) auto 0;font-size:12px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold);}
+.back:hover{color:var(--cream);}
 
 /* ---------- FOOTER ---------- */
-footer{background:var(--forest-d);color:var(--sand);padding:70px 40px 34px;text-align:center;margin-top:80px;}
-footer .fnav{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:26px;}
-footer .fnav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;opacity:.85;}
-footer .fnav a:hover{color:var(--clay);}
-footer .tag{font-size:12px;letter-spacing:5px;text-transform:uppercase;color:var(--cream);}
-footer .cr{margin-top:24px;font-size:11px;letter-spacing:1.5px;color:#8a9084;}
-footer .cr .script{font-size:18px;}
+footer{background:var(--forest-dd);color:var(--sand);padding:72px 40px 36px;text-align:center;position:relative;margin-top:40px;}
+footer::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(90%,420px);height:1px;
+  background:linear-gradient(90deg,transparent,rgba(231,196,137,.4),transparent);}
+footer .seal{width:58px;height:58px;margin:0 auto 26px;opacity:.9;}
+footer .seal img{filter:none;}
+footer .fnav{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:24px;}
+footer .fnav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;opacity:.85;transition:.3s;}
+footer .fnav a:hover{color:var(--gold);opacity:1;}
+footer .tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--cream);opacity:.9;}
+footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
+footer .cr .script{font-size:18px;color:var(--gold);}
 
-@media(max-width:820px){
-  header{padding:16px 22px;} nav ul{display:none;}
-  .post-title{padding:150px 22px 64px;}
-  .article{padding:50px 22px 30px;}
-  .article figure{margin:40px auto;}
+/* ---------- REVEAL ---------- */
+body.anim .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease);}
+body.anim .reveal.in{opacity:1;transform:none;}
+
+@media(max-width:900px){
+  header{padding:16px 22px;} header.solid{padding:12px 22px;} nav ul{display:none;}
+  .bleed{height:64vh;min-height:360px;}
+}
+@media(max-width:520px){ .post-hero h1{font-size:clamp(34px,9vw,52px);} .prose p{font-size:17px;} }
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
+  .post-hero .bg img{animation:none;transform:scale(1.06);}
+  .post-hero .ey,.post-hero h1,.post-hero .accent,.post-hero .meta{opacity:1;transform:none;}
+  #veil{display:none;}
 }
 </style>
 </head>
 <body>
 
+<div class="grain"></div>
+<div id="veil" aria-hidden="true"></div>
+
 <header id="hdr">
   <a class="brand" href="index.html">
-    <img src="img/eleanora-seal.png" alt="Eleanora" width="38" height="38" style="width:38px;height:38px;display:block;flex:0 0 auto">
+    <img src="img/eleanora-seal.png" alt="Eleanora" width="38" height="38" style="width:38px;height:38px;display:block;flex:0 0 auto;filter:none">
     <span class="wm">Eleanora</span>
   </a>
   <nav><ul>
@@ -89,71 +157,65 @@ footer .cr .script{font-size:18px;}
   </ul></nav>
 </header>
 
-<!-- TITLE -->
-<section class="post-title">
-  <div class="ey lab">Journal — Dubrovnik, Croatia</div>
-  <h1>Drowning,<br>but in Croatia</h1>
-  <div class="accent">Europe, the long way</div>
-  <div class="date">The Collection · Dubrovnik, Croatia</div>
-  <div class="rule"></div>
+<!-- ================= TITLE ================= -->
+<section class="post-hero">
+  <div class="bg"><img src="img/blog-croatia-bridge.jpg" alt="The road and bridge into the old city of Dubrovnik, red roofs above blue water"></div>
+  <div class="inner">
+    <div class="ey lab">Journal · Dubrovnik, Croatia</div>
+    <h1 class="serif">Drowning, but in Croatia</h1>
+    <div class="accent">looking for a sign</div>
+    <div class="meta">Travel &amp; light · Dubrovnik, Croatia</div>
+  </div>
+  <a class="cue" href="#read"><span></span>Read</a>
 </section>
 
-<!-- ARTICLE -->
-<article class="article">
-
+<!-- ================= READING ================= -->
+<article class="read" id="read">
   <div class="prose">
-    <p class="lede">I quit my job to come here, looking for a sign. And boy, did I find one.</p>
+    <p class="lede reveal">I quit my job to come here, looking for a sign. And boy, did I find one.</p>
   </div>
 
-  <figure>
-    <img src="img/blog-croatia-godhelpus.jpg" alt="GOD HELP US scrawled in graffiti across a wall in Dubrovnik">
+  <div class="bleed reveal">
+    <div class="bg"><img src="img/blog-croatia-godhelpus.jpg" alt="GOD HELP US scrawled in graffiti across a wall in Dubrovnik"></div>
+  </div>
+
+  <div class="prose">
+    <p class="reveal">The first thing this country said to me, scrawled across a wall: GOD HELP US. Of course.</p>
+    <p class="reveal">My mom always taught us to be afraid of strangers. But I think I was always more afraid of something else. My whole life quietly slipping past me. Reaching the end of it with no good stories to tell.</p>
+    <p class="reveal">So when my best friend called, six months into backpacking the world, and said <em>heard you saw my mom at work, she says you look miserable, quit your job and come to Europe</em> — all I could think was, wait. Why wouldn't I?</p>
+    <p class="reveal">So I did. I gave the café I'd worked at for four years, the one I'd poured my heart and soul into, one month to replace me, and started planning my trip. Twenty-seven years old, about to be unemployed, and not the slightest idea what came next.</p>
+    <p class="reveal">I took a bus in from the airport. My friend had arrived the night before. Red roofs, blue water, a city built into the hill. This was the world I'd been warned about my whole life, and it was the most beautiful thing I had ever seen. What have I done, I thought. And then I laughed, because I already knew. Something wonderful.</p>
+    <p class="pull reveal">Your problems don't stay behind at the airport. They live in your head.</p>
+    <p class="reveal">But here is the thing no one tells you about running from your problems. It doesn't matter where you land. They follow you, because they were never in the place.</p>
+  </div>
+
+  <figure class="fig portrait reveal">
+    <img src="img/blog-croatia-church.jpg" alt="The quiet interior of a church in Dubrovnik">
   </figure>
 
   <div class="prose">
-    <p>The first thing this country said to me, scrawled across a wall: GOD HELP US. Of course.</p>
-    <p>My mom always taught us to be afraid of strangers. But I think I was always more afraid of something else. My whole life quietly slipping past me. Reaching the end of it with no good stories to tell.</p>
-    <p>So when my best friend called, six months into backpacking the world, and said <em>heard you saw my mom at work, she says you look miserable, quit your job and come to Europe</em> — all I could think was, wait. Why wouldn't I?</p>
-    <p>So I did. I gave the café I'd worked at for four years, the one I'd poured my heart and soul into, one month to replace me, and started planning my trip. Twenty-seven years old, about to be unemployed, and not the slightest idea what came next.</p>
+    <p class="reveal">The flight over had given me enough time to wonder. It made me ask something I had never slowed down to ask. What even is happiness? We chase it like it is a place you arrive at, or a thing you save up long enough to finally buy.</p>
+    <p class="reveal">It took me another seven years to start to understand. Happiness isn't a tangible place. It's a state of mind. We all walk this planet breathing the same air, so why does fortune seem to favor only some of us?</p>
   </div>
 
-  <figure>
-    <img src="img/blog-croatia-bridge.jpg" alt="The road and bridge into the old city of Dubrovnik">
-  </figure>
-
-  <div class="prose">
-    <p>I took a bus in from the airport. My friend had arrived the night before. Red roofs, blue water, a city built into the hill. This was the world I'd been warned about my whole life, and it was the most beautiful thing I had ever seen. What have I done, I thought. And then I laughed, because I already knew. Something wonderful.</p>
-    <p>But here is the thing no one tells you about running from your problems. It doesn't matter where you land. Your problems don't stay behind at the airport.</p>
-    <p>They follow you, because they were never in the place. They live in your head.</p>
+  <div class="bleed reveal">
+    <div class="bg"><img src="img/blog-croatia-island.jpg" alt="A small island in the sea off the Dubrovnik coast"></div>
   </div>
 
-  <figure class="portrait">
-    <img src="img/blog-croatia-church.jpg" alt="The interior of a church in Dubrovnik">
-  </figure>
-
   <div class="prose">
-    <p>The flight over had given me enough time to wonder. It made me ask something I had never slowed down to ask. What even is happiness? We chase it like it is a place you arrive at, or a thing you save up long enough to finally buy.</p>
-    <p>It took me another seven years to start to understand. Happiness isn't a tangible place. It's a state of mind. We all walk this planet breathing the same air, so why does fortune seem to favor only some of us?</p>
-  </div>
-
-  <figure>
-    <img src="img/blog-croatia-island.jpg" alt="An island in the sea off the Dubrovnik coast">
-  </figure>
-
-  <div class="prose">
-    <p>Lost in a sea of beauty, I was just a drop of water in an ocean. And somewhere in all of it, I finally started to see the lie.</p>
-    <p>That you grind now and live later. That being happy is something you earn, or buy, or go somewhere far enough to find. It was never any of that. It was always going to be me.</p>
-    <p>That could have been the whole story. A good one, finally. My first.</p>
-    <p>But the map was only just beginning. So we took a ferry to Italy.</p>
-    <p>But you know I'd never tell you everything all at once.</p>
-    <div class="sign">xo, Eleanora</div>
+    <p class="reveal">Lost in a sea of beauty, I was just a drop of water in an ocean. And somewhere in all of it, I finally started to see the lie.</p>
+    <p class="reveal">That you grind now and live later. That being happy is something you earn, or buy, or go somewhere far enough to find. It was never any of that. It was always going to be me.</p>
+    <p class="reveal">That could have been the whole story. A good one, finally. My first.</p>
+    <p class="reveal">But the map was only just beginning. So we took a ferry to Italy. But you know I'd never tell you everything all at once.</p>
+    <div class="sign reveal">xo, Eleanora</div>
   </div>
 
   <a class="back" href="journal.html">&larr; Back to the Journal</a>
-
 </article>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 <footer id="footer">
+  <div class="seal"><img src="img/eleanora-seal.png" alt="Eleanora seal"></div>
   <div class="fnav">
     <a href="gallery.html">Gallery</a><a href="index.html#collections">Collections</a><a href="journal.html">Journal</a><a href="about.html">About</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
   </div>
@@ -163,7 +225,40 @@ footer .cr .script{font-size:18px;}
 
 <script>
 const hdr=document.getElementById('hdr');
-addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>60));
+const onScroll=()=>hdr.classList.toggle('solid',scrollY>60);
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce){
+  document.body.classList.add('anim');
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},
+    {threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const bgs=[...document.querySelectorAll('.bleed .bg')];
+  let ticking=false;
+  const parallax=()=>{bgs.forEach(bg=>{const r=bg.parentElement.getBoundingClientRect();
+    if(r.bottom<0||r.top>innerHeight)return;const p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+    bg.style.transform='translateY('+(p*-42).toFixed(1)+'px)';});ticking=false;};
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(parallax);}},{passive:true});parallax();
+
+  const root=document.documentElement, veil=document.getElementById('veil');
+  const lift=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.remove('veil-on')));
+  if(document.readyState==='complete')lift(); else addEventListener('load',lift);
+  setTimeout(()=>root.classList.remove('veil-on'),1600);
+  addEventListener('click',(e)=>{
+    if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+    const a=e.target.closest('a'); if(!a)return;
+    const href=a.getAttribute('href');
+    if(!href||href.startsWith('#')||a.target==='_blank'||a.hasAttribute('download'))return;
+    let url; try{url=new URL(href,location.href);}catch(_){return;}
+    if(url.origin!==location.origin)return;
+    if(url.pathname===location.pathname && (url.hash||href.startsWith('?')))return;
+    e.preventDefault(); root.classList.add('veil-on');
+    let gone=false; const go=()=>{if(!gone){gone=true;location.href=url.href;}};
+    veil.addEventListener('transitionend',go,{once:true}); setTimeout(go,620);
+  });
+}
 </script>
 </body>
 </html>
