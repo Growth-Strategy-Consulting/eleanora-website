@@ -77,35 +77,32 @@ nav a:hover::after,nav a.on::after{width:100%;}
 @keyframes rise{to{opacity:1;transform:none;}}
 
 /* ---------- INTRO (brief dark lede) ---------- */
-.intro-read{position:relative;z-index:2;padding:clamp(78px,12vh,124px) 24px clamp(46px,8vh,80px);text-align:center;
+.intro-read{position:relative;z-index:2;padding:clamp(78px,12vh,124px) 24px clamp(50px,8vh,80px);text-align:center;
   background:radial-gradient(900px 520px at 50% 0%,rgba(147,162,131,.10),transparent 70%),var(--forest-d);}
 .intro-read .lede{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(23px,2.8vw,32px);line-height:1.5;
   color:var(--cream);max-width:20ch;margin:0 auto;letter-spacing:-.005em;}
 
-/* ---------- CINEMA SCENE (pinned photo, text scrolls up over it) ---------- */
-.scene{position:relative;background:var(--forest-d);}
-.scene .photo{position:sticky;top:0;height:100vh;min-height:560px;overflow:hidden;display:block;z-index:1;pointer-events:auto;cursor:pointer;}
-.scene .photo img{width:100%;height:100%;object-fit:cover;transform:scale(1.14);}
-.scene .photo::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
-  background:linear-gradient(180deg,rgba(16,23,18,.5) 0%,rgba(16,23,18,.1) 24%,rgba(16,23,18,.18) 58%,rgba(16,23,18,.74) 100%);}
-.scene .photo .hint{position:absolute;left:0;right:0;bottom:26px;text-align:center;z-index:3;pointer-events:none;
-  font-size:10.5px;letter-spacing:2.6px;text-transform:uppercase;color:var(--sand);opacity:0;transition:opacity .45s var(--ease);
+/* ---------- SCENE (photo behind · solid text card over · compact) ---------- */
+.scene{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
+  padding:clamp(74px,13vh,150px) 24px;}
+.scene .bg{position:absolute;inset:-9% 0;z-index:0;display:block;will-change:transform;cursor:pointer;}
+.scene .bg img{width:100%;height:100%;object-fit:cover;}
+.scene .bg::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(16,23,18,.6) 0%,rgba(16,23,18,.4) 42%,rgba(16,23,18,.66) 100%);}
+.scene .bg .see{position:absolute;left:0;right:0;bottom:22px;text-align:center;z-index:2;pointer-events:none;
+  font-size:10.5px;letter-spacing:2.6px;text-transform:uppercase;color:var(--sand);opacity:0;transition:opacity .4s var(--ease);
   text-shadow:0 1px 12px rgba(0,0,0,.7);}
-.scene .photo:hover .hint{opacity:.92;}
-.scene .photo .hint::after{content:"→";margin-left:8px;color:var(--gold);}
-.scene .copy{position:relative;z-index:2;margin-top:-100vh;padding:64vh 24px 30vh;pointer-events:none;}
-.scene .copy .block{max-width:60ch;margin:0 auto clamp(38vh,46vh,54vh);pointer-events:auto;
-  background:rgba(16,23,18,.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
-  border:1px solid rgba(231,196,137,.12);border-radius:2px;padding:clamp(28px,3.4vw,42px);
-  box-shadow:0 26px 64px rgba(0,0,0,.42);}
-.scene .copy .block:last-child{margin-bottom:14vh;}
-.scene .copy p{font-size:17.5px;line-height:2;color:var(--read);margin:0 0 22px;}
-.scene .copy p:last-child{margin-bottom:0;}
-.scene .copy em{font-style:italic;color:var(--sand);}
-.scene .copy .block.q{text-align:center;background:rgba(16,23,18,.5);border-color:rgba(231,196,137,.2);}
-.scene .copy .q p{font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-size:clamp(22px,2.6vw,30px);
-  color:var(--gold);line-height:1.42;}
-.scene .copy .sign{font-family:'Allura',cursive;font-size:clamp(38px,5vw,56px);color:var(--sand);text-align:center;line-height:1;margin-top:10px;}
+.scene .bg:hover .see{opacity:.9;}
+.scene .bg .see b{color:var(--gold);font-weight:400;}
+.scene .card{position:relative;z-index:2;max-width:60ch;width:100%;background:var(--forest-dd);
+  border:1px solid rgba(231,196,137,.16);padding:clamp(32px,4vw,50px);box-shadow:0 34px 80px rgba(0,0,0,.55);}
+.scene .card p{font-size:17.5px;line-height:2;color:var(--read);margin:0 0 22px;}
+.scene .card p:last-child{margin-bottom:0;}
+.scene .card em{font-style:italic;color:var(--sand);}
+.scene .card .q{font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-size:clamp(20px,2.3vw,27px);
+  color:var(--gold);line-height:1.42;text-align:center;margin:26px 0;}
+.scene .card .q::before{content:"";display:block;width:44px;height:1px;background:var(--clay-l);opacity:.7;margin:0 auto 20px;}
+.scene .card .sign{font-family:'Allura',cursive;font-size:clamp(38px,5vw,54px);color:var(--sand);text-align:center;line-height:1;margin-top:18px;}
 
 .back{display:block;text-align:center;padding:clamp(40px,7vh,72px) 0;background:var(--forest-d);position:relative;z-index:2;
   font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
@@ -124,25 +121,22 @@ footer .tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var
 footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
 footer .cr .script{font-size:18px;color:var(--gold);}
 
-/* ---------- REVEAL + KEN-BURNS ---------- */
-body.anim .block{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease);}
-body.anim .block.in{opacity:1;transform:none;}
-body.anim .intro-read .lede{opacity:0;transform:translateY(24px);animation:rise 1.1s var(--ease) .2s forwards;}
-body.anim .scene .photo img{animation:kbdrift 40s ease-in-out infinite alternate;}
-@keyframes kbdrift{from{transform:scale(1.14) translate(0,0);}to{transform:scale(1.2) translate(-1.6%,-1.4%);}}
+/* ---------- REVEAL (gentle) ---------- */
+body.anim .card{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+body.anim .card.in{opacity:1;transform:none;}
+body.anim .intro-read .lede{opacity:0;transform:translateY(20px);animation:rise 1.1s var(--ease) .2s forwards;}
 
 @media(max-width:900px){
   header{padding:16px 22px;} header.solid{padding:12px 22px;} nav ul{display:none;}
-  .scene .copy{padding:58vh 18px 28vh;}
-  .scene .copy .block{margin-bottom:40vh;}
+  .scene{padding:64px 18px;}
 }
-@media(max-width:520px){ .post-hero h1{font-size:clamp(34px,9vw,52px);} .scene .copy p{font-size:16.5px;} }
+@media(max-width:520px){ .post-hero h1{font-size:clamp(34px,9vw,52px);} .scene .card p{font-size:16.5px;} }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
   .post-hero .bg img{animation:none;transform:scale(1.06);}
   .post-hero .ey,.post-hero h1,.post-hero .accent,.post-hero .meta{opacity:1;transform:none;}
-  .scene .photo img{animation:none;transform:scale(1.08);}
+  .scene .bg{transform:none!important;}
   #veil{display:none;}
 }
 </style>
@@ -184,53 +178,44 @@ body.anim .scene .photo img{animation:kbdrift 40s ease-in-out infinite alternate
 
 <!-- ================= SCENE 1 · GOD HELP US ================= -->
 <section class="scene">
-  <a class="photo" href="index.html#collections" aria-label="See this photograph in the Dubrovnik collection">
+  <a class="bg" href="index.html#collections" aria-label="See this photograph in the Dubrovnik collection">
     <img src="img/blog-croatia-godhelpus.jpg" alt="GOD HELP US scrawled in graffiti across a wall in Dubrovnik">
-    <span class="hint">See it in the collection</span>
+    <span class="see">See it in the collection <b>&rarr;</b></span>
   </a>
-  <div class="copy">
-    <div class="block"><p>The first thing this country said to me, scrawled across a wall: GOD HELP US. Of course.</p></div>
-    <div class="block">
-      <p>My mom always taught us to be afraid of strangers. But I think I was always more afraid of something else. My whole life quietly slipping past me. Reaching the end of it with no good stories to tell.</p>
-      <p>So when my best friend called, six months into backpacking the world, and said <em>heard you saw my mom at work, she says you look miserable, quit your job and come to Europe</em> — all I could think was, wait. Why wouldn't I?</p>
-    </div>
-    <div class="block">
-      <p>So I did. I gave the café I'd worked at for four years, the one I'd poured my heart and soul into, one month to replace me, and started planning my trip. Twenty-seven years old, about to be unemployed, and not the slightest idea what came next.</p>
-      <p>I took a bus in from the airport. My friend had arrived the night before. Red roofs, blue water, a city built into the hill. This was the world I'd been warned about my whole life, and it was the most beautiful thing I had ever seen. What have I done, I thought. And then I laughed, because I already knew. Something wonderful.</p>
-    </div>
-    <div class="block q"><p>Your problems don't stay behind at the airport. They live in your head.</p></div>
-    <div class="block"><p>But here is the thing no one tells you about running from your problems. It doesn't matter where you land. They follow you, because they were never in the place.</p></div>
+  <div class="card">
+    <p>The first thing this country said to me, scrawled across a wall: GOD HELP US. Of course.</p>
+    <p>My mom always taught us to be afraid of strangers. But I think I was always more afraid of something else. My whole life quietly slipping past me. Reaching the end of it with no good stories to tell.</p>
+    <p>So when my best friend called, six months into backpacking the world, and said <em>heard you saw my mom at work, she says you look miserable, quit your job and come to Europe</em> — all I could think was, wait. Why wouldn't I?</p>
+    <p>So I did. I gave the café I'd worked at for four years, the one I'd poured my heart and soul into, one month to replace me, and started planning my trip. Twenty-seven years old, about to be unemployed, and not the slightest idea what came next.</p>
+    <p>I took a bus in from the airport. Red roofs, blue water, a city built into the hill. This was the world I'd been warned about my whole life, and it was the most beautiful thing I had ever seen. What have I done, I thought. And then I laughed, because I already knew. Something wonderful.</p>
+    <p class="q">Your problems don't stay behind at the airport. They live in your head.</p>
+    <p>But here is the thing no one tells you about running from your problems. It doesn't matter where you land. They follow you, because they were never in the place.</p>
   </div>
 </section>
 
 <!-- ================= SCENE 2 · THE QUIET ================= -->
 <section class="scene">
-  <a class="photo" href="index.html#collections" aria-label="See this photograph in the Dubrovnik collection">
+  <a class="bg" href="index.html#collections" aria-label="See this photograph in the Dubrovnik collection">
     <img src="img/blog-croatia-church.jpg" alt="The quiet interior of a church in Dubrovnik">
-    <span class="hint">See it in the collection</span>
+    <span class="see">See it in the collection <b>&rarr;</b></span>
   </a>
-  <div class="copy">
-    <div class="block"><p>The flight over had given me enough time to wonder. It made me ask something I had never slowed down to ask. What even is happiness? We chase it like it is a place you arrive at, or a thing you save up long enough to finally buy.</p></div>
-    <div class="block"><p>It took me another seven years to start to understand. Happiness isn't a tangible place. It's a state of mind. We all walk this planet breathing the same air, so why does fortune seem to favor only some of us?</p></div>
+  <div class="card">
+    <p>The flight over had given me enough time to wonder. It made me ask something I had never slowed down to ask. What even is happiness? We chase it like it is a place you arrive at, or a thing you save up long enough to finally buy.</p>
+    <p>It took me another seven years to start to understand. Happiness isn't a tangible place. It's a state of mind. We all walk this planet breathing the same air, so why does fortune seem to favor only some of us?</p>
   </div>
 </section>
 
 <!-- ================= SCENE 3 · THE SEA ================= -->
 <section class="scene">
-  <a class="photo" href="index.html#collections" aria-label="See this photograph in the Dubrovnik collection">
+  <a class="bg" href="index.html#collections" aria-label="See this photograph in the Dubrovnik collection">
     <img src="img/blog-croatia-island.jpg" alt="A small island in the sea off the Dubrovnik coast">
-    <span class="hint">See it in the collection</span>
+    <span class="see">See it in the collection <b>&rarr;</b></span>
   </a>
-  <div class="copy">
-    <div class="block"><p>Lost in a sea of beauty, I was just a drop of water in an ocean. And somewhere in all of it, I finally started to see the lie.</p></div>
-    <div class="block">
-      <p>That you grind now and live later. That being happy is something you earn, or buy, or go somewhere far enough to find. It was never any of that. It was always going to be me.</p>
-      <p>That could have been the whole story. A good one, finally. My first.</p>
-    </div>
-    <div class="block">
-      <p>But the map was only just beginning. So we took a ferry to Italy. But you know I'd never tell you everything all at once.</p>
-      <div class="sign">xo, Eleanora</div>
-    </div>
+  <div class="card">
+    <p>Lost in a sea of beauty, I was just a drop of water in an ocean. And somewhere in all of it, I finally started to see the lie.</p>
+    <p>That you grind now and live later. That being happy is something you earn, or buy, or go somewhere far enough to find. It was never any of that. It was always going to be me.</p>
+    <p>That could have been the whole story. A good one, finally. My first. But the map was only just beginning. So we took a ferry to Italy. But you know I'd never tell you everything all at once.</p>
+    <div class="sign">xo, Eleanora</div>
   </div>
 </section>
 
@@ -255,8 +240,16 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!reduce){
   document.body.classList.add('anim');
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},
-    {threshold:.2,rootMargin:'0px 0px -12% 0px'});
-  document.querySelectorAll('.block').forEach(el=>io.observe(el));
+    {threshold:.2,rootMargin:'0px 0px -10% 0px'});
+  document.querySelectorAll('.card').forEach(el=>io.observe(el));
+
+  // gentle parallax — photo drifts a touch slower than the page (subtle depth)
+  const bgs=[...document.querySelectorAll('.scene .bg')];
+  let ticking=false;
+  const parallax=()=>{bgs.forEach(bg=>{const s=bg.parentElement;const r=s.getBoundingClientRect();
+    if(r.bottom<0||r.top>innerHeight)return;const p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+    bg.style.transform='translateY('+(p*-5).toFixed(1)+'%)';});ticking=false;};
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(parallax);}},{passive:true});parallax();
 
   const root=document.documentElement, veil=document.getElementById('veil');
   const lift=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.remove('veil-on')));
