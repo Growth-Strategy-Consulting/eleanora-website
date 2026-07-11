@@ -125,6 +125,15 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 body.anim .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease);}
 body.anim .reveal.in{opacity:1;transform:none;}
 
+/* cinematic image motion — reveal wipe + slow ken-burns drift */
+body.anim .fig.reveal,body.anim .bleed.reveal{opacity:0;transform:none;clip-path:inset(8% 6% 8% 6%);
+  transition:opacity 1.3s var(--ease),clip-path 1.4s var(--ease);}
+body.anim .fig.reveal.in,body.anim .bleed.reveal.in{opacity:1;clip-path:inset(0 0 0 0);}
+body.anim .fig.reveal .fig img,body.anim .fig.reveal img{transform:scale(1.08);transition:transform 1.6s var(--ease);}
+body.anim .fig.reveal.in img{transform:scale(1);}
+body.anim .bleed.reveal.in .bg img{animation:kbslow 20s var(--ease) forwards;}
+@keyframes kbslow{from{transform:scale(1.12);}to{transform:scale(1.24);}}
+
 @media(max-width:900px){
   header{padding:16px 22px;} header.solid{padding:12px 22px;} nav ul{display:none;}
   .bleed{height:64vh;min-height:360px;}
