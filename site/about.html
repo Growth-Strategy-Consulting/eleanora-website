@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <script>if(sessionStorage.getItem("eleanora_pass")!=="1")location.replace("/");</script>
+<script>/* cover first paint so the veil can lift cinematically (skipped for reduced-motion / no-JS) */
+try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('veil-on');}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About · Eleanora</title>
@@ -33,6 +35,12 @@ em{font-style:italic;}
 /* ---------- FILM GRAIN ---------- */
 .grain{position:fixed;inset:0;z-index:var(--z-grain);pointer-events:none;opacity:.5;mix-blend-mode:soft-light;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* ---------- PAGE VEIL (cinematic transition) ---------- */
+#veil{position:fixed;inset:0;z-index:79;pointer-events:none;opacity:0;visibility:hidden;
+  background:radial-gradient(130% 112% at 50% 42%,#24322a 0%,var(--forest-d) 70%,var(--forest-dd) 100%);
+  transition:opacity .55s var(--ease),visibility 0s linear .55s;}
+html.veil-on #veil{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .5s var(--ease);}
 
 /* ---------- NAV ---------- */
 header{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);display:flex;align-items:center;justify-content:space-between;
@@ -178,12 +186,14 @@ body.anim .reveal.in{opacity:1;transform:none;}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
   .hero .bg img{animation:none;transform:scale(1.06);}
   .hero .ey,.hero h1,.hero .lede,.hero .accent{opacity:1;transform:none;}
+  #veil{display:none;}
 }
 </style>
 </head>
 <body>
 
 <div class="grain"></div>
+<div id="veil" aria-hidden="true"></div>
 
 <header id="hdr">
   <a class="brand" href="index.html">
@@ -336,6 +346,31 @@ if(!reduce){
   };
   addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(parallax);}},{passive:true});
   parallax();
+
+  // ---- CINEMATIC PAGE VEIL ----
+  const root=document.documentElement, veil=document.getElementById('veil');
+  // enter: lift the veil once layout is ready
+  const lift=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.remove('veil-on')));
+  if(document.readyState==='complete')lift(); else addEventListener('load',lift);
+  // safety: never leave the veil stuck
+  setTimeout(()=>root.classList.remove('veil-on'),1600);
+
+  // exit: drop the veil, then navigate — only for real, same-tab, same-origin links
+  addEventListener('click',(e)=>{
+    if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+    const a=e.target.closest('a');
+    if(!a)return;
+    const href=a.getAttribute('href');
+    if(!href||href.startsWith('#')||a.target==='_blank'||a.hasAttribute('download'))return;
+    let url; try{url=new URL(href,location.href);}catch(_){return;}
+    if(url.origin!==location.origin)return;                 // external → let it go
+    if(url.pathname===location.pathname && (url.hash||href.startsWith('?')))return; // same page
+    e.preventDefault();
+    root.classList.add('veil-on');
+    let gone=false; const go=()=>{if(!gone){gone=true;location.href=url.href;}};
+    veil.addEventListener('transitionend',go,{once:true});
+    setTimeout(go,620);                                     // fallback if transitionend misses
+  });
 }
 </script>
 </body>
