@@ -4,21 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The 1% Manifesto — Eleanora</title>
-<meta name="description" content="The door to the life you keep almost living. An archive of her stories, by Eleanora.">
-<link rel="canonical" href="https://corraoelena.com/manifesto/">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="Eleanora">
-<meta property="og:url" content="https://corraoelena.com/manifesto/">
-<meta property="og:title" content="The 1% Manifesto — Eleanora">
-<meta property="og:description" content="The door to the life you keep almost living. An archive of her stories.">
-<meta property="og:image" content="https://corraoelena.com/manifesto/og-manifesto.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The 1% Manifesto by Eleanora">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The 1% Manifesto — Eleanora">
-<meta name="twitter:description" content="The door to the life you keep almost living.">
-<meta name="twitter:image" content="https://corraoelena.com/manifesto/og-manifesto.jpg">
 <link rel="icon" href="brand/assets/eleanora-seal.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -183,31 +168,73 @@
   }
   .wheel-panel .eyebrow{ margin:0 0 4px; }
   .wheel-panel .three-roads{ margin:0 0 2px; }
-  .stage{ position:relative; width:min(72vh,680px); max-width:94vw; aspect-ratio:1; margin:0 auto; }
-  .stage svg{ width:100%; height:100%; overflow:visible }
-  .med-img{ filter:saturate(1.05) contrast(1.03) sepia(.05) }
-  .ring{ fill:none; stroke:var(--gold) }
-  .spoke{ stroke:var(--gold); opacity:.16; stroke-width:1 }
-  .medring{ fill:none; stroke:var(--gold); stroke-width:2; opacity:.9; transition:stroke-width .5s var(--ease), opacity .5s var(--ease) }
-  .glyph-w{ fill:var(--gold); font-size:30px; text-anchor:middle; dominant-baseline:central }
-  .name-w{ fill:var(--cream); font-family:var(--sans); font-size:11px; font-weight:500; letter-spacing:2.5px; text-anchor:middle; dominant-baseline:central; opacity:.92 }
-  .spot{ cursor:pointer; }
-  .spot .med-img{ transition:filter .5s var(--ease) }
-  .spot:hover .medring, .spot:focus-visible .medring{ stroke-width:4; opacity:1 }
-  .spot:hover .med-img{ filter:saturate(1.16) contrast(1.06) brightness(1.06) }
-  .spot:focus-visible{ outline:none }
-  .coreglyph{ fill:var(--pine-deep); font-size:24px; text-anchor:middle; dominant-baseline:central }
+
+  /* the wheel spins: drag / flick / arrow keys, snapping a sign under the top marker */
+  .wheel-wrap{ position:relative; width:min(56vh,460px); max-width:88vw; aspect-ratio:1; margin:14px auto 0; }
+  #wheel{ display:block; width:100%; height:100%; overflow:visible;
+    touch-action:none; cursor:grab; user-select:none; -webkit-user-select:none; outline:none; }
+  #wheel.dragging{ cursor:grabbing; }
+  #wheel:focus-visible ~ .focus-ring{ opacity:1; }
+  .focus-ring{ position:absolute; inset:-4px; border-radius:50%; border:2px solid var(--gold-soft);
+    opacity:0; pointer-events:none; transition:opacity .2s; box-shadow:0 0 0 4px rgba(217,164,65,.14); }
+
+  .w-ring-outer{ fill:none; stroke:rgba(231,196,137,.34); stroke-width:1.4; }
+  .w-ring-inner{ fill:none; stroke:rgba(231,196,137,.16); stroke-width:1; }
+  .w-spoke{ stroke:rgba(217,164,65,.16); stroke-width:1.2; }
+  .med-ring{ fill:none; stroke:rgba(217,164,65,.62); stroke-width:2; }
+  .med-scrim{ pointer-events:none; }
+  .med-glyph{ font-family:var(--serif); font-size:44px; fill:var(--gold-soft); text-anchor:middle; dominant-baseline:central;
+    paint-order:stroke; stroke:rgba(10,14,10,.55); stroke-width:3px; }
+  .med-inner{ transition:transform .4s var(--ease); transform-box:fill-box; transform-origin:center; }
+  .med.is-top .med-ring{ stroke:var(--gold); stroke-width:3; }
+  .med.is-top .med-glyph{ fill:var(--cream); }
+  .med.is-top .med-inner{ transform:scale(1.12); }
+  .w-center-sun{ fill:url(#w-sun); }
+  .w-center-moon{ fill:#F1E7CE; }
+  .w-center-rays{ stroke:var(--gold); stroke-width:2.2; stroke-linecap:round; opacity:.8; }
+  .w-marker{ fill:var(--gold); }
+  .w-marker-halo{ fill:none; stroke:var(--gold); stroke-width:1.4; opacity:.45; }
+
+  .wheel-active{ margin:16px auto 0; }
+  .wheel-active .sign{ display:block; font-family:var(--sans); font-weight:500; letter-spacing:.26em;
+    text-transform:uppercase; font-size:.72rem; color:var(--terracotta); margin:0 0 4px; }
+  .wheel-active .ritual{ display:block; font-family:var(--title-script); font-weight:400;
+    font-size:clamp(1.7rem,4.4vw,2.4rem); color:var(--cream); line-height:1; }
+  .wheel-active .desc{ display:block; font-family:var(--sans); text-transform:lowercase; letter-spacing:.14em;
+    font-size:.78rem; color:var(--cream-dim); margin:7px 0 0; }
+
+  .controls{ display:flex; align-items:center; justify-content:center; gap:16px; margin:18px auto 0; }
+  .enter{ display:inline-flex; align-items:center; gap:.55em; padding:13px 28px;
+    font-family:var(--sans); font-weight:600; letter-spacing:.09em; text-transform:uppercase; font-size:.78rem;
+    color:#fffdf7; text-decoration:none; white-space:nowrap; border:none; cursor:pointer;
+    background:linear-gradient(180deg,#9e6410,#78480a); border-radius:3px;
+    box-shadow:0 9px 24px rgba(120,74,14,.36), inset 0 1px 0 rgba(255,244,214,.3);
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease), filter .35s var(--ease); }
+  .enter:hover{ transform:translateY(-2px); box-shadow:0 15px 32px rgba(120,74,14,.46), inset 0 1px 0 rgba(255,244,214,.3); filter:brightness(1.06); }
+  .enter:active{ transform:translateY(0); box-shadow:0 5px 14px rgba(120,74,14,.4), inset 0 1px 0 rgba(255,244,214,.3); }
+  .enter:focus-visible{ outline:2px solid var(--gold-soft); outline-offset:3px; }
+  .enter svg{ width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  .step{ width:42px; height:42px; border-radius:50%; cursor:pointer; display:grid; place-items:center;
+    background:rgba(231,196,137,.06); border:1px solid rgba(231,196,137,.32); color:var(--gold-soft);
+    transition:background .25s, border-color .25s, color .25s, transform .25s var(--ease); }
+  .step:hover{ background:rgba(231,196,137,.14); border-color:var(--gold); color:var(--cream); }
+  .step:active{ transform:scale(.94); }
+  .step:focus-visible{ outline:2px solid var(--gold-soft); outline-offset:3px; }
+  .step svg{ width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
   .wheel-hint{
-    font-family:var(--sans); font-size:.72rem; letter-spacing:.28em; text-transform:uppercase;
-    color:var(--gold-soft); opacity:.85; margin:6px 0 0;
+    font-family:var(--sans); font-size:.72rem; letter-spacing:.2em;
+    color:var(--gold-soft); opacity:.8; margin:14px 0 0;
   }
-  /* wheel assembles when it enters view */
-  .med, .lab{ opacity:0; transform-box:fill-box; transform-origin:center }
-  .med{ transform:scale(.72) }
-  .stage.go .med{ animation:pop 1s var(--ease) forwards }
-  .stage.go .lab{ animation:fin 1s var(--ease) forwards }
-  @keyframes pop{to{opacity:1; transform:scale(1)}}
-  @keyframes fin{to{opacity:1}}
+  .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+  @media (max-width:440px){
+    .controls{ flex-wrap:wrap; }
+    .enter{ order:1; width:100%; max-width:320px; justify-content:center; white-space:normal; text-align:center; }
+    #w-prev{ order:2; } #w-next{ order:3; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .med-inner, .enter, .step{ transition:none; }
+  }
 
   /* ---------- the twelve laws ---------- */
   /* header + square photo stack on the left, the words to the right,
@@ -234,6 +261,12 @@
   .law-head .law-title{
     font-family:var(--title-script); font-weight:400; font-size:clamp(2.6rem,5.4vw,3.9rem);
     color:var(--cream); margin:0; line-height:1.08; white-space:nowrap; padding-bottom:.08em;
+  }
+  /* the old descriptive title, demoted to a quiet subtitle beneath the ritual name */
+  .law-head .law-sub{
+    font-family:var(--sans); font-weight:400; text-transform:lowercase;
+    letter-spacing:.16em; font-size:.8rem; color:var(--terracotta);
+    margin:9px 0 0; opacity:.9;
   }
 
   .law-img{
@@ -301,6 +334,66 @@
   .seal{ width:84px; height:auto; margin:34px auto 0; display:block; opacity:.9 }
   footer{ text-align:center; padding:30px 28px 54px; color:var(--cream-dim); font-size:.76rem; letter-spacing:.14em }
 
+  /* ---------- the invitation (tiered CTA into the program) ----------
+     no card: the page is borderless + cinematic, so this lives as type
+     on the travelling sky. three doors read as a hairline menu, not a
+     card grid; the program is the one that carries the solid gold button. */
+  .begin{ max-width:60ch; margin:46px auto 0; }
+  .begin .sprig{ margin:0 auto 28px; width:120px; height:24px; opacity:.9 }
+  .begin h3{
+    font-family:var(--serif); font-style:italic; font-weight:400; line-height:1.22;
+    font-size:clamp(1.5rem,3.9vw,2.1rem); letter-spacing:-.01em; color:var(--cream);
+    margin:0 0 20px; max-width:none; text-wrap:balance;
+  }
+  .begin p:not([class]){ font-size:1.06rem; line-height:1.72; color:var(--cream); margin:0 auto 16px; max-width:48ch; text-wrap:pretty; }
+  .ways-lead{ font-family:var(--serif); font-style:italic; font-size:1.06rem; color:var(--cream-dim); margin:30px 0 2px; }
+  .ways{ margin:8px auto 0; text-align:left; }
+  .way{
+    display:grid; grid-template-columns:1fr auto; column-gap:30px; row-gap:8px; align-items:center;
+    padding:24px 2px; border-top:1px solid rgba(133,86,16,.26);
+    text-decoration:none; color:inherit;
+  }
+  .way:last-child{ border-bottom:1px solid rgba(133,86,16,.26); }
+  .way-t{ grid-column:1; font-family:var(--serif); font-style:italic; font-size:1.28rem; color:var(--cream); transition:color .3s; }
+  .way-d{ grid-column:1; font-family:var(--sans); font-size:.97rem; line-height:1.6; color:var(--cream-dim); max-width:46ch; }
+  .way-go{
+    grid-column:2; grid-row:1 / span 2; justify-self:end; align-self:center; white-space:nowrap;
+    font-family:var(--sans); font-size:.8rem; letter-spacing:.09em; text-transform:uppercase; color:var(--gold);
+    border-bottom:1px solid transparent; padding-bottom:2px;
+    transition:color .3s, border-color .3s, transform .35s var(--ease);
+  }
+  a.way:hover .way-go{ color:#7a4a0c; border-color:currentColor; transform:translateX(4px); }
+  a.way:hover .way-t{ color:#7a4a0c; }
+  a.way:focus-visible{ outline:2px solid #7a4a0c; outline-offset:4px; border-radius:2px; }
+  .way--feature .btn{ grid-column:2; grid-row:1 / span 2; justify-self:end; align-self:center; margin:0; }
+  /* the solid, tactile program button — the one thing you act on */
+  .begin .btn{
+    display:inline-block; padding:15px 30px;
+    font-family:var(--sans); font-weight:600; letter-spacing:.09em; text-transform:uppercase; font-size:.82rem;
+    color:#fffdf7; text-decoration:none; white-space:nowrap;
+    background:linear-gradient(180deg,#9e6410,#78480a);
+    border-radius:3px;
+    box-shadow:0 9px 24px rgba(120,74,14,.34), inset 0 1px 0 rgba(255,244,214,.28);
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease), filter .35s var(--ease);
+  }
+  .begin .btn:hover{ transform:translateY(-2px); box-shadow:0 15px 32px rgba(120,74,14,.44), inset 0 1px 0 rgba(255,244,214,.28); filter:brightness(1.07); }
+  .begin .btn:active{ transform:translateY(0); box-shadow:0 5px 14px rgba(120,74,14,.36), inset 0 1px 0 rgba(255,244,214,.28); }
+  .begin .btn:focus-visible{ outline:2px solid #7a4a0c; outline-offset:3px; }
+  .begin .whisper{
+    font-family:var(--serif); font-style:italic; font-size:1rem; line-height:1.6; color:var(--cream-dim);
+    max-width:42ch; margin:30px auto 0;
+  }
+  @media (max-width:560px){
+    .way{ grid-template-columns:1fr; row-gap:6px; }
+    .way-go, .way--feature .btn{ grid-column:1; grid-row:auto; justify-self:start; margin-top:12px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .begin .btn{ transition:none } .begin .btn:hover{ transform:none }
+    a.way:hover .way-go{ transform:none }
+  }
+  /* paid members receive the guide without the sell (?member=1) */
+  html.is-member .begin{ display:none }
+
   /* ---------- progress rail (desktop) ---------- */
   .rail{
     position:fixed; right:20px; top:50%; transform:translateY(-50%); z-index:var(--z-rail);
@@ -338,11 +431,12 @@
     html{ scroll-behavior:auto; scroll-snap-type:none }
     .reveal{ opacity:1 !important; transform:none !important; transition:none }
     .law-img.reveal{ transform:none !important }
-    .med,.lab{ animation:none !important; opacity:1 !important; transform:none !important }
     .hero .kicker,.hero h1,.hero .sub,.hero .meta{ animation:none !important; opacity:1 !important; transform:none !important; filter:none !important }
     .scrollcue{ animation:none !important; opacity:.6 !important }
   }
 </style>
+<script>/* members who already paid get the guide without the closing sell */
+if(new URLSearchParams(location.search).has('member')){document.documentElement.classList.add('is-member');}</script>
 </head>
 <body>
 <div id="sky"></div>
@@ -400,30 +494,62 @@
 <section class="panel panel--full wheel-panel" id="wheel">
   <div class="inner reveal">
     <svg class="sprig" viewBox="0 0 120 24" aria-hidden="true"><line x1="10" y1="12" x2="110" y2="12"/><circle cx="60" cy="12" r="2.4"/><path d="M60 12 q -9 -9 -20 -7 M60 12 q 9 -9 20 -7 M60 12 q -9 9 -20 7 M60 12 q 9 9 20 7"/></svg>
-    <p class="eyebrow">The Wheel</p>
-    <h2>A year, one turn</h2>
+    <p class="eyebrow">The Passage</p>
+    <h2>Twelve doors, one turning.</h2>
     <p class="three-roads">logic &middot; the stars &middot; the soul</p>
-    <div class="stage" id="stage">
-      <svg viewBox="0 0 1000 1000" aria-label="The zodiac wheel of twelve. Select a sign to read its law.">
+
+    <div class="wheel-wrap">
+      <svg id="wheel" viewBox="0 0 1000 1000"
+           role="slider" tabindex="0"
+           aria-label="The Passage. Turn the wheel to a sign, then press Enter to open its law."
+           aria-valuemin="1" aria-valuemax="12" aria-valuenow="1" aria-valuetext="Aries, The Initiation">
         <defs>
-          <radialGradient id="sun" cx="50%" cy="44%" r="62%">
+          <radialGradient id="w-sun" cx="50%" cy="44%" r="62%">
             <stop offset="0%" stop-color="#F6E4B0"/><stop offset="48%" stop-color="#E7C489"/><stop offset="100%" stop-color="#D9A441"/>
           </radialGradient>
-          <mask id="cres">
-            <circle cx="486" cy="500" r="25" fill="#fff"/>
-            <circle cx="503" cy="497" r="23" fill="#000"/>
+          <radialGradient id="w-scrim" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(10,14,10,.62)"/>
+            <stop offset="62%" stop-color="rgba(10,14,10,.28)"/>
+            <stop offset="100%" stop-color="rgba(10,14,10,0)"/>
+          </radialGradient>
+          <mask id="w-cres">
+            <circle cx="486" cy="500" r="22" fill="#fff"/>
+            <circle cx="501" cy="497" r="20" fill="#000"/>
           </mask>
-          <g id="clips"></g>
+          <clipPath id="w-medclip"><circle cx="0" cy="0" r="82"/></clipPath>
         </defs>
-        <circle class="ring" cx="500" cy="500" r="486" style="opacity:.6;stroke-width:1.4"/>
-        <circle class="ring" cx="500" cy="500" r="318" style="opacity:.28;stroke-width:1"/>
-        <g id="spokes"></g>
-        <g id="meds"></g>
-        <g id="labels"></g>
-        <g id="center"></g>
+        <circle class="w-ring-outer" cx="500" cy="500" r="470"/>
+        <g id="w-arm"></g>
+        <circle class="w-ring-inner" cx="500" cy="500" r="190"/>
+        <g id="w-meds"></g>
+        <g id="w-center"></g>
+        <g>
+          <circle class="w-marker-halo" cx="500" cy="500" r="470"/>
+          <path class="w-marker" d="M500 96 l16 26 h-32 z"/>
+        </g>
       </svg>
+      <div class="focus-ring" aria-hidden="true"></div>
     </div>
-    <p class="wheel-hint">Tap any sign to enter its law</p>
+
+    <div class="wheel-active" id="readout">
+      <span class="sign" id="w-sign">Aries</span>
+      <span class="ritual" id="w-ritual">The Initiation</span>
+      <span class="desc" id="w-desc">understanding agency</span>
+    </div>
+
+    <div class="controls">
+      <button class="step" id="w-prev" type="button" aria-label="Previous sign">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <a class="enter" id="w-enter" href="#aries">Enter The Initiation
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <button class="step" id="w-next" type="button" aria-label="Next sign">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <p class="wheel-hint">Drag to turn &middot; or use the arrow keys</p>
+    <p class="sr-only" id="w-live" aria-live="polite" aria-atomic="true"></p>
   </div>
 </section>
 
@@ -439,6 +565,32 @@
     <p class="ninetynine">Ninety-nine percent of people will read this and do nothing. They will tell themselves that reading it was the improvement, that something has already changed. <strong>Nothing has.</strong> That is exactly why you are still living the same old life you have always lived. Reading is not the door. Walking through it is.</p>
     <p class="door">The door is open. It has been open this whole time. I am just the first one standing here holding it.</p>
     <p class="comehome">Come become the 1%. The real one.</p>
+
+    <div class="begin">
+      <svg class="sprig" viewBox="0 0 120 24" aria-hidden="true"><line x1="10" y1="12" x2="110" y2="12"/><circle cx="60" cy="12" r="2.4"/><path d="M60 12 q -9 -9 -20 -7 M60 12 q 9 -9 20 -7 M60 12 q -9 9 -20 7 M60 12 q 9 9 20 7"/></svg>
+      <h3>So. You came all the way down here.</h3>
+      <p>Almost no one does. That alone tells me something true about you. You actually want this, and you are already doing better than most. Here is the part that stings. Every time you pick up your phone and scroll, you are watching other people live their best life while yours passes you by. So take my hand. If you are ready to finally live yours, I am here for it, and I will go as deep with you as you want to go.</p>
+      <p class="ways-lead">Three ways in. You pick how close.</p>
+      <div class="ways">
+        <a class="way" href="#" data-cta="instagram">
+          <span class="way-t">Free, forever</span>
+          <span class="way-d">Everything I know, said out loud, on Instagram. Start there and lose nothing.</span>
+          <span class="way-go">on Instagram &rarr;</span>
+        </a>
+        <div class="way way--feature">
+          <span class="way-t">The program</span>
+          <span class="way-d">The whole thing, built for you, one month at a time, with me in your ear the whole way. It begins with Aries, the initiation. Not ready for all of it yet? There is a lighter intro waiting on Patreon.</span>
+          <a class="btn" href="#" data-cta="aries-initiation">Begin with Aries &middot; $25/mo</a>
+        </div>
+        <a class="way" href="#" data-cta="one-on-one">
+          <span class="way-t">Work with me, one on one</span>
+          <span class="way-d">A check-in every week, a call every month, and me holding you to it. For real, not the way you hold yourself.</span>
+          <span class="way-go">work with me &rarr;</span>
+        </a>
+      </div>
+      <p class="whisper">I did it this way. I am happy now, on purpose, just because I decided to be.</p>
+    </div>
+
     <p class="sig">xo, Eleanora</p>
     <img class="seal" src="brand/assets/eleanora-seal.png" alt="The Eleanora seal">
   </div>
@@ -451,7 +603,7 @@
  *  THE TWELVE — single source of truth for both the wheel + the laws  *
  * ------------------------------------------------------------------ */
 const LAWS = [
-  { g:"♈", name:"Aries", num:"One", title:"Understanding Agency", theme:"the first move",
+  { g:"♈", name:"Aries", num:"One", ritual:"The Initiation", title:"Understanding Agency", theme:"the first move",
     img:"_intake/IMG_5434.jpg",
     law:"Act as if you do not need permission, because you do not.",
     body:[
@@ -459,7 +611,7 @@ const LAWS = [
       `Here is the part that sounds like magic and is not. The moment you start moving, the coincidences start too. You take the scary step and the right person appears, or a door opens that you never saw. This is real manifesting, and it is the opposite of a vision board. You do not get the life by wanting it. You become the person who already has it, and you move like them, before any of it is true.`,
       `This is why agency comes first. Every other law in here needs someone willing to move before they feel ready. The ones who wait to feel ready stay exactly where they are. The ones who move watch the world start to arrange itself around them.`
     ] },
-  { g:"♉", name:"Taurus", num:"Two", title:"The Hardware", theme:"the body",
+  { g:"♉", name:"Taurus", num:"Two", ritual:"The Grounding", title:"The Hardware", theme:"the body",
     img:"content/North%20America/saint-pete/lady-palm-fronds.jpg",
     law:"The body is the hardware; no software runs well on a fried machine.",
     body:[
@@ -467,7 +619,7 @@ const LAWS = [
       `You cannot hold a new identity while running on empty. The "high vibe" everyone chases is not a crystal or a chant. It is your own chemistry, and you make it with rest and morning light, for free. Step off the treadmill of cheap stimulation and onto the slower, stronger ground of a body that actually works.`,
       `This is the law nobody wants to be the answer, because it is plain and it is free. But every other law runs on this hardware. A tired mind cannot see straight, choose well, or feel worthy of anything. Tend the body and the rest of the wheel gets easier to turn. Sleep is not lazy, it is maintenance. Give the machine what it actually runs on, and it will carry you further than any amount of pushing through on empty ever could.`
     ] },
-  { g:"♊", name:"Gemini", num:"Three", title:"The Four Mother Skills", theme:"the toolbox",
+  { g:"♊", name:"Gemini", num:"Three", ritual:"The Apprenticeship", title:"The Four Mother Skills", theme:"the toolbox",
     img:"_intake/IMG_1655.jpg",
     law:"Learn, write, sell, multiply; everything else is a branch of these four roots.",
     body:[
@@ -475,7 +627,7 @@ const LAWS = [
       `Your energy flows wherever your skill sends it, and it comes back to whoever gives first. Say your want out loud and put it in writing, because naming a thing plainly is the first act of making it real. This is how you script a life on purpose instead of by accident.`,
       `Master these four and any new field becomes a matter of months, not years. They multiply each other, and they multiply everything else you will ever try to build. This is the toolbox the whole rest of your life gets made with.`
     ] },
-  { g:"♋", name:"Cancer", num:"Four", title:"Define Your Enough", theme:"the finish line",
+  { g:"♋", name:"Cancer", num:"Four", ritual:"The Homecoming", title:"Define Your Enough", theme:"the finish line",
     img:"_intake/IMG_5782.jpg",
     law:"Win the game without letting the game win you.",
     body:[
@@ -483,7 +635,7 @@ const LAWS = [
       `When you have never named your enough, you take it from the people around you without meaning to. You control, you grab, you compete for scraps you do not even want. You cannot build a full life out of a feeling of lack. Name your enough and the quiet grabbing stops.`,
       `This is what keeps you off the worst list there is: the people who are top 1% in money and top 1% in misery at the same time. Enough is not settling. It is the one thing that lets the win actually feel like winning when you get there. Write the number down. Write the life down. Then, when you reach it, you have permission to actually feel it instead of sprinting straight past it toward the next one. A finish line you never drew is a race you can never win.`
     ] },
-  { g:"♌", name:"Leo", num:"Five", title:"The Inner Game", theme:"the throne",
+  { g:"♌", name:"Leo", num:"Five", ritual:"The Mirror", title:"The Inner Game", theme:"the throne",
     img:"_intake/IMG_6723.jpg",
     law:"Control what is yours, release what is not, and keep the ego in the back seat.",
     body:[
@@ -491,7 +643,7 @@ const LAWS = [
       `The real throne is not the loud ego. It is the calm underneath it. You do not manifest from wanting, you manifest from feeling worthy of the thing. If some quiet part of you does not believe you deserve it, you will push it away without ever noticing you did.`,
       `This is the hinge the whole manual turns on. The outside is always chasing the inside. Steady the inside, keep the ego out of the driver's seat, and every other law finally has solid ground to stand on. You cannot pour from an empty cup, and you cannot build a steady life on a shaky inside. Tend the inside first, quietly, on the days no one is clapping, and watch how much less the outside can shake you.`
     ] },
-  { g:"♍", name:"Virgo", num:"Six", title:"Attention", theme:"the only capital",
+  { g:"♍", name:"Virgo", num:"Six", ritual:"The Tempering", title:"Attention", theme:"the only capital",
     img:"_intake/IMG_3479.jpg",
     law:"Your attention is your only true capital; everything else is a derivative.",
     body:[
@@ -499,7 +651,7 @@ const LAWS = [
       `But attention is not only about what is in front of you now. It is also the old story you are still secretly watching on a loop. You cannot aim at a new life while replaying the old one. Notice the pattern you keep running, name it, and only then choose what to look at instead.`,
       `Everything you have read so far runs through this one law. What you attend to becomes who you are, so this is the quiet switch that decides whether any of the others take. Guard it like it is the whole game, because it is. Where your attention goes, your life follows, every single time. So spend it on purpose, or the loudest thing in the room will spend it for you and hand you the bill later.`
     ] },
-  { g:"♎", name:"Libra", num:"Seven", title:"People", theme:"the room",
+  { g:"♎", name:"Libra", num:"Seven", ritual:"The Covenant", title:"People", theme:"the room",
     img:"_intake/IMG_2875.jpg",
     law:"Be the person people want to play the long game with.",
     body:[
@@ -507,7 +659,7 @@ const LAWS = [
       `The two biggest choices of your life are who you build with and who you love. Give them more thought than most people give to buying a car. And let your gut, not old habit or old guilt, decide who you let close and who you let go.`,
       `Nobody you admire did it alone. Check any biography and you will find partners, mentors, friends who lent money, strangers who opened doors. Your circle is not a nice-to-have. It is the current you float on or fight against your whole life. So pick your few people like your life depends on it, because in the quietest way it does. You slowly become some average of the rooms you keep walking back into, so choose the rooms with care.`
     ] },
-  { g:"♏", name:"Scorpio", num:"Eight", title:"Seeing Reality", theme:"the clear eye",
+  { g:"♏", name:"Scorpio", num:"Eight", ritual:"The Descent", title:"Seeing Reality", theme:"the clear eye",
     img:"_intake/IMG_0385.jpg",
     law:"Reality is non-negotiable; your only choice is to see it early or pay for it late.",
     body:[
@@ -515,7 +667,7 @@ const LAWS = [
       `Seeing straight is also how you see people. Look all the way through someone, past the mask, to who they really are, and then lift what you see. Truth without the drama. Depth without the drain.`,
       `Ask one question of every belief you hold: what would change my mind? If the answer is nothing, that is not a belief, it is a costume. The ones who can face the hard truth early pay a small price now. Everyone else pays a much larger one later. Reality does not care whether you are ready for it. It waits, and it charges interest. The thing you keep avoiding is almost always the exact thing you most need to look at, so look. It is never as heavy once it is out in the light, and it only grows in the dark.`
     ] },
-  { g:"♐", name:"Sagittarius", num:"Nine", title:"Choosing the Game", theme:"the aim",
+  { g:"♐", name:"Sagittarius", num:"Nine", ritual:"The Calling", title:"Choosing the Game", theme:"the aim",
     img:"_intake/IMG_9984.jpg",
     law:"Do not play the wrong game better; choose the game before improving the play.",
     body:[
@@ -523,7 +675,7 @@ const LAWS = [
       `Aim your game at where the world is going, not where it has already been. The rare, useful person is not the top one in the world at a single thing, which is mostly luck. It is the one who is very good at two or three things that multiply each other. That intersection is a decision, not a lottery.`,
       `You can win the wrong game with perfect skill and still lose your life to it. This is the law that decides whether all your effort points somewhere worth arriving. Choose first. Then the work counts. A ladder leaned against the wrong wall just gets you to the wrong place faster. Spend one honest afternoon choosing the wall, and you save yourself a decade of climbing toward something you never actually wanted.`
     ] },
-  { g:"♑", name:"Capricorn", num:"Ten", title:"Compound Interest", theme:"the long clock",
+  { g:"♑", name:"Capricorn", num:"Ten", ritual:"The Ascent", title:"Compound Interest", theme:"the long clock",
     img:"content/Europa/portugal/sintra-moorish-castle-hilltop.jpg",
     law:"Plant daily and harvest late. That is the entire secret that never existed.",
     body:[
@@ -531,7 +683,7 @@ const LAWS = [
       `This is manifesting's real clock. You hold a clear picture of who you are becoming, you feed it one small action a day, and you let time do the multiplying. Be impatient with the action and patient with the result. Most people do it backwards and quit right before it works.`,
       `Boring consistency beats heroic intensity over any stretch longer than a month. The one who does a little every day buries the one who did a lot once. This is where the whole wheel quietly pays out. The magic was never in any single day. It is in the days stacking up while nobody is watching, including you. Stay boring, stay steady, and let time do the loud part.`
     ] },
-  { g:"♒", name:"Aquarius", num:"Eleven", title:"Bets and Luck", theme:"the wide net",
+  { g:"♒", name:"Aquarius", num:"Eleven", ritual:"The Leap", title:"Bets and Luck", theme:"the wide net",
     img:"_intake/IMG_5429.jpg",
     law:"Cap the loss, uncap the gain, and repeat until luck finds you.",
     body:[
@@ -539,7 +691,7 @@ const LAWS = [
       `Luck is real and it is enormous, but you can widen the surface where it lands. Hold a clear intention, say it out loud, and share it, because an intention gets stronger when more than one person holds it. Add gratitude, and expect good things to come.`,
       `You cannot control luck, but you can control how often you are standing where it strikes. Make things and show them in the open. Keep your bets small and many. Stay in the game long enough for the good hand to arrive, because it will. You only have to be right a few times in a whole life, as long as being wrong never knocks you out of the game. Keep the bets small, the losses survivable, and your seat at the table warm.`
     ] },
-  { g:"♓", name:"Pisces", num:"Twelve", title:"Usage Protocol", theme:"becoming it",
+  { g:"♓", name:"Pisces", num:"Twelve", ritual:"The Transformation", title:"Usage Protocol", theme:"becoming it",
     img:"_intake/IMG_4399.jpg",
     law:"The manual does not work; the one who executes it does.",
     body:[
@@ -563,7 +715,8 @@ const slug = s => s.toLowerCase();
       <div class="inner law-grid">
         <div class="law-head reveal">
           <span class="idx">${L.num}<span class="g" aria-hidden="true">${L.g}︎</span>${L.name}</span>
-          <h2 class="law-title">${L.title}</h2>
+          <h2 class="law-title">${L.ritual}</h2>
+          <p class="law-sub">${L.title}</p>
         </div>
         <div class="law-img reveal d1" style="--img:url('${L.img}')" role="img" aria-label="${L.name} — ${L.theme}">
           <span class="tag" aria-hidden="true">${L.g}︎</span>
@@ -586,70 +739,140 @@ const slug = s => s.toLowerCase();
     const a = document.createElement('a');
     a.className = 'dot'; a.href = '#'+slug(L.name);
     a.dataset.name = L.name; a.dataset.for = slug(L.name);
-    a.setAttribute('aria-label', L.num+' '+L.name+' — '+L.title);
+    a.setAttribute('aria-label', L.num+' '+L.name+', '+L.ritual);
     rail.appendChild(a);
   });
 })();
 
 /* ------------------------------------------------------------------ *
- *  THE WHEEL — medallion pinwheel, each medallion links to its law    *
+ *  THE WHEEL — spin to a sign, snap under the top marker, enter its law *
  * ------------------------------------------------------------------ */
 (function(){
-  const NS="http://www.w3.org/2000/svg", cx=500, cy=500;
-  const Rmed=318, rMed=80, Rglyph=428, Rname=214, Rspoke0=70, Rspoke1=214;
-  const clips=document.getElementById('clips'), meds=document.getElementById('meds'),
-        spokes=document.getElementById('spokes'), labels=document.getElementById('labels');
-  const P=(ang,r)=>[cx+r*Math.cos(ang*Math.PI/180), cy+r*Math.sin(ang*Math.PI/180)];
+  const NS="http://www.w3.org/2000/svg", CX=500, CY=500, RMED=300, STEP=30, DEG=Math.PI/180;
+  const N=LAWS.length;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wheel=document.getElementById('wheel');
+  const meds=document.getElementById('w-meds'), arm=document.getElementById('w-arm'), centerG=document.getElementById('w-center');
+  const enterEl=document.getElementById('w-enter');
+  const roSign=document.getElementById('w-sign'), roRit=document.getElementById('w-ritual'), roDesc=document.getElementById('w-desc');
+  const liveEl=document.getElementById('w-live');
+  if(!wheel) return;
 
-  LAWS.forEach((L,i)=>{
-    const mid=-90+i*30;
-    const [sx1,sy1]=P(mid,Rspoke0),[sx2,sy2]=P(mid,Rspoke1);
-    const sp=document.createElementNS(NS,'line'); sp.setAttribute('class','spoke');
-    sp.setAttribute('x1',sx1);sp.setAttribute('y1',sy1);sp.setAttribute('x2',sx2);sp.setAttribute('y2',sy2); spokes.appendChild(sp);
-
-    const [mx,my]=P(mid,Rmed);
-    const cp=document.createElementNS(NS,'clipPath'); cp.id='m'+i;
-    const cc=document.createElementNS(NS,'circle'); cc.setAttribute('cx',mx);cc.setAttribute('cy',my);cc.setAttribute('r',rMed); cp.appendChild(cc); clips.appendChild(cp);
-
-    // anchor wraps the medallion → clicking jumps to that sign's panel
-    const link=document.createElementNS(NS,'a');
-    link.setAttribute('href','#'+slug(L.name));
-    link.setAttribute('class','spot');
-    link.setAttribute('aria-label', 'Enter '+L.name+' — '+L.title);
-
-    const g=document.createElementNS(NS,'g'); g.setAttribute('class','med'); g.style.animationDelay=(0.2+i*0.08)+'s';
-    const box=rMed*2.1;
-    const im=document.createElementNS(NS,'image'); im.setAttribute('class','med-img');
-    im.setAttribute('href',L.img);
-    im.setAttribute('x',mx-box/2);im.setAttribute('y',my-box/2);im.setAttribute('width',box);im.setAttribute('height',box);
-    im.setAttribute('preserveAspectRatio','xMidYMid slice'); im.setAttribute('clip-path','url(#m'+i+')');
-    g.appendChild(im);
-    const rr=document.createElementNS(NS,'circle'); rr.setAttribute('class','medring'); rr.setAttribute('cx',mx);rr.setAttribute('cy',my);rr.setAttribute('r',rMed); g.appendChild(rr);
-    link.appendChild(g); meds.appendChild(link);
-
-    const lg=document.createElementNS(NS,'g'); lg.setAttribute('class','lab'); lg.style.animationDelay=(0.9+i*0.08)+'s';
-    const [gx,gy]=P(mid,Rglyph);
-    const gl=document.createElementNS(NS,'text'); gl.setAttribute('class','glyph-w'); gl.setAttribute('x',gx);gl.setAttribute('y',gy); gl.textContent=L.g+'︎'; lg.appendChild(gl);
-    const [nx,ny]=P(mid,Rname);
-    const nm=document.createElementNS(NS,'text'); nm.setAttribute('class','name-w'); nm.setAttribute('x',nx);nm.setAttribute('y',ny); nm.textContent=L.name.toUpperCase(); lg.appendChild(nm);
-    labels.appendChild(lg);
-  });
-
-  // center emblem: radiant sun cradled by a crescent moon
-  const g=document.getElementById('center');
-  for(let k=0;k<12;k++){ const a=k*30, [x1,y1]=P(a,40),[x2,y2]=P(a,53);
-    const r=document.createElementNS(NS,'line');
-    r.setAttribute('x1',x1);r.setAttribute('y1',y1);r.setAttribute('x2',x2);r.setAttribute('y2',y2);
-    r.setAttribute('stroke','#D9A441');r.setAttribute('stroke-width','2.4');r.setAttribute('stroke-linecap','round');r.setAttribute('opacity','.85');
-    g.appendChild(r);
+  /* decorative rotating armature (spokes) */
+  for(let i=0;i<N;i++){ const a=(-90+i*STEP)*DEG;
+    const ln=document.createElementNS(NS,'line'); ln.setAttribute('class','w-spoke');
+    ln.setAttribute('x1',CX+70*Math.cos(a));ln.setAttribute('y1',CY+70*Math.sin(a));
+    ln.setAttribute('x2',CX+190*Math.cos(a));ln.setAttribute('y2',CY+190*Math.sin(a)); arm.appendChild(ln);
   }
-  const sun=document.createElementNS(NS,'circle');
-  sun.setAttribute('cx',508);sun.setAttribute('cy',500);sun.setAttribute('r',27);sun.setAttribute('fill','url(#sun)');
-  g.appendChild(sun);
-  const moon=document.createElementNS(NS,'circle');
-  moon.setAttribute('cx',486);moon.setAttribute('cy',500);moon.setAttribute('r',25);
-  moon.setAttribute('fill','#F1E7CE');moon.setAttribute('mask','url(#cres)');
-  g.appendChild(moon);
+
+  /* medallions — photo + centered glyph, kept upright and positioned each frame */
+  LAWS.forEach((L,i)=>{
+    const g=document.createElementNS(NS,'g'); g.setAttribute('class','med'); g.dataset.i=i;
+    g.innerHTML =
+      `<g class="med-inner">
+         <image href="${L.img}" x="-82" y="-82" width="164" height="164" preserveAspectRatio="xMidYMid slice" clip-path="url(#w-medclip)"></image>
+         <circle class="med-scrim" r="60" fill="url(#w-scrim)"></circle>
+         <circle class="med-ring" r="82"></circle>
+         <text class="med-glyph">${L.g}︎</text>
+       </g>`;
+    meds.appendChild(g);
+  });
+  const medEls=[...meds.querySelectorAll('.med')];
+
+  /* center emblem: sun cradled by a crescent moon */
+  for(let k=0;k<12;k++){ const a=k*30*DEG;
+    const r=document.createElementNS(NS,'line'); r.setAttribute('class','w-center-rays');
+    r.setAttribute('x1',CX+34*Math.cos(a));r.setAttribute('y1',CY+34*Math.sin(a));
+    r.setAttribute('x2',CX+46*Math.cos(a));r.setAttribute('y2',CY+46*Math.sin(a)); centerG.appendChild(r);
+  }
+  const sun=document.createElementNS(NS,'circle'); sun.setAttribute('class','w-center-sun');
+  sun.setAttribute('cx',508);sun.setAttribute('cy',500);sun.setAttribute('r',22); centerG.appendChild(sun);
+  const moon=document.createElementNS(NS,'circle'); moon.setAttribute('class','w-center-moon');
+  moon.setAttribute('cx',486);moon.setAttribute('cy',500);moon.setAttribute('r',22);moon.setAttribute('mask','url(#w-cres)'); centerG.appendChild(moon);
+
+  /* -------- rotation state -------- */
+  let theta=0, vel=0, dragging=false, target=null, raf=null, activeI=-1;
+  const norm=i=>((i%N)+N)%N;
+  const activeIndex=()=>norm(Math.round(-theta/STEP));
+
+  function render(){
+    for(let i=0;i<N;i++){ const a=(-90+i*STEP+theta)*DEG;
+      medEls[i].setAttribute('transform',`translate(${(CX+RMED*Math.cos(a)).toFixed(2)} ${(CY+RMED*Math.sin(a)).toFixed(2)})`);
+    }
+    arm.setAttribute('transform',`rotate(${theta.toFixed(2)} ${CX} ${CY})`);
+    const ai=activeIndex();
+    if(ai!==activeI){
+      if(activeI>=0) medEls[activeI].classList.remove('is-top');
+      medEls[ai].classList.add('is-top'); activeI=ai; updateReadout(ai,false);
+    }
+  }
+  function updateReadout(i,announce){
+    const L=LAWS[i];
+    roSign.textContent=L.name; roRit.textContent=L.ritual; roDesc.textContent=L.title;
+    enterEl.setAttribute('href','#'+slug(L.name));
+    enterEl.firstChild.textContent='Enter '+L.ritual+' ';
+    wheel.setAttribute('aria-valuenow',i+1);
+    wheel.setAttribute('aria-valuetext',L.name+', '+L.ritual);
+    if(announce) liveEl.textContent=L.name+', '+L.ritual;
+  }
+
+  function startAnim(){ if(raf==null) raf=requestAnimationFrame(frame); }
+  function frame(){
+    raf=null;
+    if(dragging){ render(); return; }
+    if(target!=null){
+      if(reduce){ theta=target; target=null; render(); settle(); return; }
+      theta+=(target-theta)*0.22;
+      if(Math.abs(target-theta)<0.06){ theta=target; target=null; render(); settle(); return; }
+      render(); startAnim(); return;
+    }
+    if(Math.abs(vel)>0.03){ theta+=vel; vel*=0.94; render(); startAnim(); return; }
+    const t=Math.round(theta/STEP)*STEP;
+    if(reduce){ theta=t; render(); settle(); return; }
+    theta+=(t-theta)*0.18;
+    if(Math.abs(t-theta)<0.04){ theta=t; render(); settle(); return; }
+    render(); startAnim();
+  }
+  function settle(){ theta=Math.round(theta/STEP)*STEP; render(); updateReadout(activeIndex(),true); }
+
+  /* -------- pointer drag -------- */
+  let lastAngle=0, lastT=0;
+  const pointerAngle=e=>{ const r=wheel.getBoundingClientRect();
+    return Math.atan2(e.clientY-(r.top+r.height/2), e.clientX-(r.left+r.width/2))/DEG; };
+  function down(e){ dragging=true; wheel.classList.add('dragging');
+    try{ wheel.setPointerCapture(e.pointerId); }catch(_){}
+    lastAngle=pointerAngle(e); lastT=performance.now(); vel=0; target=null; startAnim(); }
+  function move(e){ if(!dragging) return; const a=pointerAngle(e);
+    let d=a-lastAngle; if(d>180)d-=360; else if(d<-180)d+=360; theta+=d;
+    const now=performance.now(), dt=Math.max(now-lastT,1); vel=Math.max(-14,Math.min(14,d*(16/dt)));
+    lastAngle=a; lastT=now; render(); }
+  function up(e){ if(!dragging) return; dragging=false; wheel.classList.remove('dragging');
+    try{ wheel.releasePointerCapture(e.pointerId); }catch(_){}
+    if(performance.now()-lastT>90) vel=0; startAnim(); }
+  wheel.addEventListener('pointerdown',down);
+  wheel.addEventListener('pointermove',move);
+  wheel.addEventListener('pointerup',up);
+  wheel.addEventListener('pointercancel',up);
+
+  /* -------- keyboard -------- */
+  function glide(dir){ const base=(target!=null)?target:Math.round(theta/STEP)*STEP; target=base-dir*STEP; vel=0; startAnim(); }
+  wheel.addEventListener('keydown',e=>{
+    switch(e.key){
+      case 'ArrowRight': case 'ArrowDown': e.preventDefault(); glide(+1); break;
+      case 'ArrowLeft':  case 'ArrowUp':   e.preventDefault(); glide(-1); break;
+      case 'Home': e.preventDefault(); target=0; vel=0; startAnim(); break;
+      case 'Enter': case ' ': e.preventDefault(); enterEl.click(); break;
+    }
+  });
+  document.getElementById('w-next').addEventListener('click',()=>{ glide(+1); wheel.focus(); });
+  document.getElementById('w-prev').addEventListener('click',()=>{ glide(-1); wheel.focus(); });
+
+  /* tap a medallion to bring it to the top */
+  meds.addEventListener('click',e=>{ const g=e.target.closest('.med'); if(!g) return;
+    let t=-(+g.dataset.i)*STEP; const base=Math.round(theta/STEP)*STEP;
+    while(t-base>180)t-=360; while(t-base<-180)t+=360; target=t; vel=0; startAnim(); });
+
+  render(); medEls[0].classList.add('is-top'); activeI=0;
 })();
 
 /* ------------------------------------------------------------------ *
@@ -685,20 +908,13 @@ const slug = s => s.toLowerCase();
   const reveals=Array.from(document.querySelectorAll('.reveal'));
   if(reduce || !('IntersectionObserver' in window)){
     reveals.forEach(e=>e.classList.add('in'));
-    document.getElementById('stage').classList.add('go');
   } else {
     const io=new IntersectionObserver((ents)=>{
       for(const en of ents){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} }
     },{rootMargin:'0px 0px -8% 0px',threshold:0.12});
     reveals.forEach(e=>io.observe(e));
-    // wheel assembles on arrival
-    const stage=document.getElementById('stage');
-    const wio=new IntersectionObserver((ents)=>{
-      for(const en of ents){ if(en.isIntersecting){ stage.classList.add('go'); wio.disconnect(); } }
-    },{threshold:0.35});
-    wio.observe(stage);
     // safety net: never leave anything hidden
-    addEventListener('load',()=>setTimeout(()=>{ reveals.forEach(e=>e.classList.add('in')); stage.classList.add('go'); },1800));
+    addEventListener('load',()=>setTimeout(()=>{ reveals.forEach(e=>e.classList.add('in')); },1800));
   }
 
   // rail active state tracks the sign in view
