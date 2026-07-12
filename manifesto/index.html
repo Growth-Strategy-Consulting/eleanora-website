@@ -40,7 +40,7 @@
     font-weight:300;
     line-height:1.8;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    overflow-x:clip;   /* clip, not hidden: hidden makes body a scroll-container that swallows #anchor jumps */
   }
   /* the travelling sky — JS lerps this gradient to scroll position (night -> dusk -> day) */
   #sky{
@@ -400,27 +400,34 @@
 
   /* ---------- progress rail (desktop) ---------- */
   .rail{
-    position:fixed; right:20px; top:50%; transform:translateY(-50%); z-index:var(--z-rail);
-    display:flex; flex-direction:column; align-items:center; gap:11px;
+    position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:var(--z-rail);
+    display:flex; flex-direction:column; align-items:center; gap:9px;
   }
   .rail .home{
     color:var(--gold-soft); font-size:14px; text-decoration:none; opacity:.7;
-    margin-bottom:4px; transition:opacity .3s, transform .3s;
+    margin-bottom:6px; transition:opacity .3s, transform .3s;
   }
   .rail .home:hover{ opacity:1; transform:scale(1.18) }
+  /* each sign is a phase of the moon; the cycle waxes to full mid-journey, then wanes */
   .rail a.dot{
-    width:9px; height:9px; border-radius:50%; background:transparent;
-    border:1px solid rgba(231,196,137,.5); position:relative; transition:all .35s var(--ease);
+    width:15px; height:15px; display:block; position:relative;
+    transition:transform .35s var(--ease), filter .35s var(--ease);
   }
+  .rail a.dot .moon{ display:block; width:100%; height:100%; overflow:visible; }
+  .rail a.dot .moon-disc{ fill:rgba(16,22,16,.85); stroke:rgba(231,196,137,.42); stroke-width:1; }
+  .rail a.dot .moon-lit{ fill:var(--gold-soft); opacity:.82; transition:fill .35s, opacity .35s; }
   .rail a.dot::after{ /* tooltip */
-    content:attr(data-name); position:absolute; right:20px; top:50%; transform:translateY(-50%) translateX(6px);
+    content:attr(data-name); position:absolute; right:22px; top:50%; transform:translateY(-50%) translateX(6px);
     font-family:var(--sans); font-size:.62rem; letter-spacing:.18em; text-transform:uppercase;
     color:var(--gold-soft); white-space:nowrap; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s;
   }
-  .rail a.dot:hover{ border-color:var(--gold); background:rgba(231,196,137,.4) }
+  .rail a.dot:hover{ transform:scale(1.2) }
+  .rail a.dot:hover .moon-lit{ opacity:1 }
+  .rail a.dot:hover .moon-disc{ stroke:var(--gold) }
   .rail a.dot:hover::after{ opacity:.95; transform:translateY(-50%) translateX(0) }
-  .rail a.dot.active{ background:var(--gold); border-color:var(--gold); transform:scale(1.35);
-    box-shadow:0 0 0 3px rgba(217,164,65,.18) }
+  .rail a.dot.active{ transform:scale(1.42); filter:drop-shadow(0 0 5px rgba(217,164,65,.5)) }
+  .rail a.dot.active .moon-lit{ fill:var(--gold); opacity:1 }
+  .rail a.dot.active .moon-disc{ stroke:var(--gold) }
   @media (max-width:900px){ .rail{ display:none } }
 
   /* ---------- reveal motion ---------- */
@@ -739,11 +746,20 @@ const slug = s => s.toLowerCase();
 /* ---------- build the progress rail ---------- */
 (function(){
   const rail = document.getElementById('rail');
-  LAWS.forEach(L=>{
+  const N = LAWS.length;
+  // lit lune for a phase: p=0 new, .25 first quarter, .5 full, .75 last quarter
+  const moon = i=>{
+    const r=7, p=i/N, mag=Math.cos(p*2*Math.PI), rx=(Math.abs(mag)*r).toFixed(2);
+    const limb = p<0.5 ? 1 : 0;                       // waxing lights the right limb
+    const term = (mag>0) === (p<0.5) ? 0 : 1;         // crescent vs gibbous terminator
+    return `M0,${-r} A${r},${r} 0 0 ${limb} 0,${r} A${rx},${r} 0 0 ${term} 0,${-r} Z`;
+  };
+  LAWS.forEach((L,i)=>{
     const a = document.createElement('a');
     a.className = 'dot'; a.href = '#'+slug(L.name);
     a.dataset.name = L.name; a.dataset.for = slug(L.name);
     a.setAttribute('aria-label', L.num+' '+L.name+', '+L.ritual);
+    a.innerHTML = `<svg class="moon" viewBox="-9 -9 18 18" aria-hidden="true"><circle class="moon-disc" r="7"/><path class="moon-lit" d="${moon(i)}"/></svg>`;
     rail.appendChild(a);
   });
 })();
@@ -870,6 +886,12 @@ const slug = s => s.toLowerCase();
   });
   document.getElementById('w-next').addEventListener('click',()=>{ glide(+1); wheel.focus(); });
   document.getElementById('w-prev').addEventListener('click',()=>{ glide(-1); wheel.focus(); });
+
+  /* enter = jump to the active sign's law panel (explicit scroll, guaranteed) */
+  enterEl.addEventListener('click',e=>{
+    const t=document.getElementById(slug(LAWS[activeIndex()].name));
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); history.replaceState(null,'','#'+t.id); }
+  });
 
   /* tap a medallion to bring it to the top */
   meds.addEventListener('click',e=>{ const g=e.target.closest('.med'); if(!g) return;
