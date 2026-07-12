@@ -100,10 +100,17 @@ nav a:hover::after,nav a.on::after{width:100%;}
 .tile figcaption .t{font-family:'Didot',Georgia,serif;font-size:clamp(19px,1.6vw,23px);color:var(--cream);letter-spacing:.4px;}
 .tile figcaption .s{font-size:10.5px;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold);margin-top:4px;}
 .tile figcaption .buy{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--sand);opacity:.75;margin-top:8px;}
+/* ---- STUDIO + FEMININE: two-column masonry (equal width, mixed heights) ---- */
+#wall[data-view="editorial"],#wall[data-view="women"]{display:block;column-count:2;column-gap:clamp(14px,1.6vw,22px);}
+#wall[data-view="editorial"] .tile,#wall[data-view="women"] .tile{width:100%;margin:0 0 clamp(14px,1.6vw,22px);
+  break-inside:avoid;-webkit-column-break-inside:avoid;}
 /* filtering */
 .tile.hide{display:none;}
 body.anim .tile{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
 body.anim .tile.in{opacity:1;transform:none;}
+/* The Studio: even two-column masonry — same width, natural heights, B&W mixed in */
+.wall[data-view="editorial"]{display:block;column-count:2;column-gap:clamp(14px,1.6vw,22px);grid-auto-flow:unset;}
+.wall[data-view="editorial"] .tile{width:100%;margin:0 0 clamp(14px,1.6vw,22px);break-inside:avoid;-webkit-column-break-inside:avoid;}
 
 /* ---------- FOOTER ---------- */
 footer{background:var(--forest-dd);color:var(--sand);padding:72px 40px 36px;text-align:center;position:relative;}
@@ -176,13 +183,41 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 
 <!-- ================= WALL ================= -->
 <section class="wall" id="wall">
-  <a class="tile lg" href="index.html#collections" data-cat="editorial">
+  <a class="tile med" href="index.html#collections" data-cat="editorial">
     <img src="img/bw-smoke-editorial.jpg" alt="Black and white editorial portrait, feather and smoke">
     <figcaption><div class="t">After Dark</div><div class="s">The Studio</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
   <a class="tile" href="index.html#collections" data-cat="women">
+    <img src="img/her-brazil-palm-bw.jpg" alt="Black-and-white figure at an outdoor shower among palms, Brazil">
+    <figcaption><div class="t">Unhurried</div><div class="s">Brazil</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="women">
+    <img src="img/her-athens-records.jpg" alt="Eleanora in a black dress against a wall of records, Athens">
+    <figcaption><div class="t">The Record Wall</div><div class="s">Athens</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="women">
+    <img src="img/her-italy-chair.jpg" alt="Eleanora seated in a whimsical chair, Italy">
+    <figcaption><div class="t">A Whole Little World</div><div class="s">Italy</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="women">
+    <img src="img/her-nyc-window.jpg" alt="Eleanora at a loft window in golden light with cigarette smoke, New York">
+    <figcaption><div class="t">The Loft</div><div class="s">New York</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="women">
+    <img src="img/her-fur-hood.jpg" alt="Eleanora lying on a blue floor in a fur-hooded Aztec coat">
+    <figcaption><div class="t">Wolfskin</div><div class="s">Editorial</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="women">
     <img src="img/her-brazil-standing.jpg" alt="Eleanora standing on the beach at midday, Brazil">
     <figcaption><div class="t">Salt on Skin</div><div class="s">Brazil</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="women">
+    <img src="img/her-bamboo-bw.jpg" alt="Black-and-white close-up of Eleanora's face framed by bamboo">
+    <figcaption><div class="t">Unguarded</div><div class="s">Portrait</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="women">
+    <img src="img/her-providence-leather.jpg" alt="Eleanora in black leather on a railroad bridge, Providence">
+    <figcaption><div class="t">Rust &amp; Leather</div><div class="s">Providence</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
   <a class="tile sq" href="index.html#collections" data-cat="travel">
     <img src="img/world-lisbon-azulejo.jpg" alt="A blue-and-white azulejo tile panel in Lisbon">
@@ -192,10 +227,6 @@ footer .cr .script{font-size:18px;color:var(--gold);}
     <img src="img/wild-corfu-sea.jpg" alt="The sun setting over the sea at Corfu">
     <figcaption><div class="t">The Crossing</div><div class="s">Corfu</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
-  <a class="tile med" href="index.html#collections" data-cat="women">
-    <img src="img/her-athens-records.jpg" alt="Eleanora in a black dress against a wall of records, Athens">
-    <figcaption><div class="t">The Record Wall</div><div class="s">Athens</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
   <a class="tile" href="index.html#collections" data-cat="travel">
     <img src="img/world-lisbon-fado-mural.jpg" alt="A fado street mural in Lisbon">
     <figcaption><div class="t">Fado on the Wall</div><div class="s">Lisbon</div><div class="buy">See the print &rarr;</div></figcaption>
@@ -203,10 +234,6 @@ footer .cr .script{font-size:18px;color:var(--gold);}
   <a class="tile med" href="index.html#collections" data-cat="wild">
     <img src="img/wild-meteora.jpg" alt="The rock monoliths of Meteora">
     <figcaption><div class="t">Meteora</div><div class="s">Greece</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
-  <a class="tile" href="index.html#collections" data-cat="women">
-    <img src="img/yellow-onepiece-sunhat.jpg" alt="Eleanora in a yellow one-piece and sun hat on the beach">
-    <figcaption><div class="t">Golden Hour</div><div class="s">Treasure Island</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
   <a class="tile" href="index.html#collections" data-cat="travel">
     <img src="img/world-sintra-well.jpg" alt="The spiralling initiation well at Quinta da Regaleira, Sintra">
@@ -216,17 +243,9 @@ footer .cr .script{font-size:18px;color:var(--gold);}
     <img src="img/wild-polignano-cove.jpg" alt="The turquoise cove below Polignano a Mare">
     <figcaption><div class="t">The Cove</div><div class="s">Polignano, Italy</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
-  <a class="tile" href="index.html#collections" data-cat="women">
-    <img src="img/her-brazil-shower.jpg" alt="Eleanora at an outdoor shower among palms, Brazil">
-    <figcaption><div class="t">The Greenhouse</div><div class="s">Brazil</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
   <a class="tile" href="index.html#collections" data-cat="travel">
     <img src="img/world-italy-yellow-door.jpg" alt="A yellow doorway framed by climbing flowers in Bari">
     <figcaption><div class="t">Piano, Piano</div><div class="s">Bari, Italy</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
-  <a class="tile" href="index.html#collections" data-cat="women">
-    <img src="img/her-brazil-palm-bw.jpg" alt="Black and white figure against a palm trunk, Brazil">
-    <figcaption><div class="t">Unhurried</div><div class="s">Brazil</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
   <a class="tile med" href="index.html#collections" data-cat="wild">
     <img src="img/wild-sintra-forest.jpg" alt="The green forested hills of Sintra">
@@ -236,10 +255,6 @@ footer .cr .script{font-size:18px;color:var(--gold);}
     <img src="img/world-lisbon-street.jpg" alt="A cobbled Lisbon street at dusk">
     <figcaption><div class="t">The Cobbled Mile</div><div class="s">Lisbon</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
-  <a class="tile" href="index.html#collections" data-cat="women">
-    <img src="img/mint-mesh-sunset.jpg" alt="Golden-hour portrait, wind in her hair">
-    <figcaption><div class="t">Dusk Walk</div><div class="s">Golden Hour</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
   <a class="tile" href="index.html#collections" data-cat="travel">
     <img src="img/world-lisbon-owl-mural.jpg" alt="A large owl street mural in Lisbon">
     <figcaption><div class="t">No Enemies</div><div class="s">Lisbon</div><div class="buy">See the print &rarr;</div></figcaption>
@@ -247,10 +262,6 @@ footer .cr .script{font-size:18px;color:var(--gold);}
   <a class="tile med" href="index.html#collections" data-cat="wild">
     <img src="img/wild-corfu-fortress.jpg" alt="An island fortress seen from the sea, Corfu">
     <figcaption><div class="t">The Old Fortress</div><div class="s">Corfu</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
-  <a class="tile" href="index.html#collections" data-cat="women">
-    <img src="img/her-italy-chair.jpg" alt="Eleanora seated in a whimsical chair, Italy">
-    <figcaption><div class="t">A Whole Little World</div><div class="s">Italy</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
   <a class="tile" href="index.html#collections" data-cat="travel">
     <img src="img/world-athens-marble.jpg" alt="A draped marble torso against a rose wall, Athens">
@@ -276,14 +287,6 @@ footer .cr .script{font-size:18px;color:var(--gold);}
     <img src="img/ocean-silhouette.jpg" alt="A sunset ocean silhouette">
     <figcaption><div class="t">The Tide</div><div class="s">The Wild</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
-  <a class="tile med" href="index.html#collections" data-cat="wild">
-    <img src="img/hero-sunset-silhouette.jpg" alt="A lone silhouette on the shoreline at sunset">
-    <figcaption><div class="t">Last Light</div><div class="s">The Wild</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
-  <a class="tile lg" href="index.html#collections" data-cat="editorial">
-    <img src="img/studio-fur-silver.jpg" alt="Black-and-white studio figure in an open fur coat">
-    <figcaption><div class="t">Fur &amp; Silver</div><div class="s">The Studio</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
   <a class="tile" href="index.html#collections" data-cat="editorial">
     <img src="img/studio-nightshade.jpg" alt="Studio portrait in a dark lace crown and lace">
     <figcaption><div class="t">Nightshade</div><div class="s">The Studio</div><div class="buy">See the print &rarr;</div></figcaption>
@@ -303,6 +306,10 @@ footer .cr .script{font-size:18px;color:var(--gold);}
   <a class="tile" href="index.html#collections" data-cat="editorial">
     <img src="img/studio-coronation.jpg" alt="Studio portrait laughing in a violet flower crown">
     <figcaption><div class="t">The Coronation</div><div class="s">The Studio</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="editorial">
+    <img src="img/studio-fur-silver.jpg" alt="Black-and-white studio figure in an open fur coat">
+    <figcaption><div class="t">Fur &amp; Silver</div><div class="s">The Studio</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
   <a class="tile med" href="index.html#collections" data-cat="editorial">
     <img src="img/studio-low-light.jpg" alt="Low-lit studio portrait on a velvet chair">
@@ -335,6 +342,7 @@ document.getElementById('filters').addEventListener('click',(e)=>{
   const b=e.target.closest('button'); if(!b)return;
   document.querySelectorAll('.filterbar button').forEach(x=>x.classList.toggle('on',x===b));
   const f=b.dataset.f;
+  document.getElementById('wall').dataset.view=f;
   tiles.forEach(t=>{
     const show = f==='all' || (t.dataset.cat||'').split(' ').includes(f);
     t.classList.toggle('hide',!show);
