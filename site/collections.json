@@ -88,6 +88,26 @@
         { "src": "img/wild-meteora.jpg", "title": "[working title]", "alt": "The towering rock formations of Meteora", "story": "", "talisman": null },
         { "src": "img/world-meteora-monastery.jpg", "title": "[working title]", "alt": "A monastery perched on a cliff at Meteora", "story": "", "talisman": null }
       ]
+    },
+    {
+      "slug": "cape-cod",
+      "place": "Cape Cod",
+      "region": "North America",
+      "eyebrow": "Massachusetts · the Cape",
+      "cover": "img/cape-harbor-sunset.jpg",
+      "blurb": "Harbor light, rose-covered fences, and the long marsh sunset.",
+      "photos": [
+        { "src": "img/cape-bay-sunset.jpg", "title": "[working title]", "alt": "Silhouettes reflected on the bay at sunset", "story": "", "talisman": null },
+        { "src": "img/cape-rose-cottage.jpg", "title": "[working title]", "alt": "A cottage fence covered in climbing roses", "story": "", "talisman": null },
+        { "src": "img/cape-lantern-shop.jpg", "title": "[working title]", "alt": "A lantern shop glowing at dusk", "story": "", "talisman": null },
+        { "src": "img/cape-marsh-sunset.jpg", "title": "[working title]", "alt": "A dramatic orange sunset over the salt marsh", "story": "", "talisman": null },
+        { "src": "img/cape-lobster-shack.jpg", "title": "[working title]", "alt": "A weathered lobster shack hung with buoys", "story": "", "talisman": null },
+        { "src": "img/cape-sill-cafe.jpg", "title": "[working title]", "alt": "A sunlit corner cafe on the Cape", "story": "", "talisman": null },
+        { "src": "img/cape-storefront.jpg", "title": "[working title]", "alt": "The Twenty-Eight Atlantic storefront in the evening light", "story": "", "talisman": null },
+        { "src": "img/cape-fox.jpg", "title": "[working title]", "alt": "A fox standing among the pines", "story": "", "talisman": null },
+        { "src": "img/cape-harbor-sunset.jpg", "title": "[working title]", "alt": "Sailboats and hydrangeas at the harbor as the sun goes down", "story": "", "talisman": null },
+        { "src": "img/cape-peach-roses.jpg", "title": "[working title]", "alt": "Peach roses in warm golden light", "story": "", "talisman": null }
+      ]
     }
   ]
 }
