@@ -1,0 +1,93 @@
+{
+  "_readme": {
+    "what": "Single source of truth for Eleanora Collections. collections.html (the index) and collection.html (each place-story) render from this file. Add/remove a photo by editing one line here — never touch the HTML.",
+    "how-to-add-a-collection": "Append an object to `collections` with slug (url-safe), place, region, eyebrow, cover (img path), blurb (short, factual), and a photos[] array.",
+    "how-to-make-a-photo-a-talisman": "Set its `talisman` from null to { \"article\": \"journal-xxx.html\", \"buyUrl\": null }. article = the free story it links back to (real page). buyUrl stays null until GoDaddy Payments is live, then paste the GoDaddy Pay Link and it becomes a live buy button automatically. No redesign needed.",
+    "titles": "Titles in [brackets] are Penny working titles awaiting Elena's rename pass. story fields are intentionally empty — Elena authors, then they get filled via the caption pass.",
+    "checkout": "GoDaddy Payments (pay.corraoelena.com). Buy state is mocked until then: photos with a talisman but no buyUrl show 'Prints coming soon'."
+  },
+  "collections": [
+    {
+      "slug": "brazil",
+      "place": "Brazil",
+      "region": "South America",
+      "eyebrow": "Pipa · Rio Grande do Norte",
+      "cover": "img/cover-brazil.jpg",
+      "blurb": "Red cliffs falling to the sea, and the wild between.",
+      "photos": [
+        { "src": "img/brazil-kombi.jpg", "title": "[working title]", "alt": "A vintage kombi parked on a red cliff over the sea", "story": "", "talisman": { "article": "journal.html", "buyUrl": null } },
+        { "src": "img/brazil-exotica.jpg", "title": "[working title]", "alt": "The colorful Moorish facade of the Exotica hotel", "story": "", "talisman": null },
+        { "src": "img/brazil-pink-cliff.jpg", "title": "[working title]", "alt": "A pink cliff with a wooden staircase down to the beach", "story": "", "talisman": null },
+        { "src": "img/brazil-cove-surf.jpg", "title": "[working title]", "alt": "A wild beach cove with surf breaking below the cliffs", "story": "", "talisman": null },
+        { "src": "img/brazil-shower.jpg", "title": "[working title]", "alt": "An outdoor shower framed by tropical greenery", "story": "", "talisman": null },
+        { "src": "img/brazil-bikini-standing.jpg", "title": "[working title]", "alt": "Standing on the beach in the sun", "story": "", "talisman": null },
+        { "src": "img/brazil-palm-bw.jpg", "title": "[working title]", "alt": "A black and white portrait against a palm trunk", "story": "", "talisman": null },
+        { "src": "img/brazil-beach-bar.jpg", "title": "[working title]", "alt": "A beach bar with a red umbrella under the palms", "story": "", "talisman": null },
+        { "src": "img/brazil-surf-school.jpg", "title": "[working title]", "alt": "A surf school with the Brazilian flag and a row of boards", "story": "", "talisman": null }
+      ]
+    },
+    {
+      "slug": "italy",
+      "place": "Italy",
+      "region": "Europe",
+      "eyebrow": "Puglia · Bari & Polignano",
+      "cover": "img/blog-italy-flowerdoor.jpg",
+      "blurb": "Old stone, sea light, and doorways worth stopping for.",
+      "photos": [
+        { "src": "img/blog-italy-flowerdoor.jpg", "title": "[working title]", "alt": "A yellow doorway framed by climbing flowers on a Bari street", "story": "", "talisman": null },
+        { "src": "img/world-italy-polignano.jpg", "title": "[working title]", "alt": "The cliffs and sea at Polignano a Mare", "story": "", "talisman": { "article": "journal-italy.html", "buyUrl": null } },
+        { "src": "img/world-italy-orange-corridor.jpg", "title": "[working title]", "alt": "A narrow orange corridor of old-town walls", "story": "", "talisman": null },
+        { "src": "img/blog-italy-cathedral.jpg", "title": "[working title]", "alt": "The stone cathedral rising over the old town", "story": "", "talisman": null },
+        { "src": "img/blog-italy-street.jpg", "title": "[working title]", "alt": "A quiet Puglian street in the afternoon light", "story": "", "talisman": null },
+        { "src": "img/world-italy-pink-fiat.jpg", "title": "[working title]", "alt": "A pink Fiat 500 parked against an old wall", "story": "", "talisman": null },
+        { "src": "img/blog-italy-burrata.jpg", "title": "[working title]", "alt": "Fresh burrata on the table", "story": "", "talisman": null },
+        { "src": "img/her-italy-chair.jpg", "title": "[working title]", "alt": "Seated in a doorway in the golden light", "story": "", "talisman": null }
+      ]
+    },
+    {
+      "slug": "croatia",
+      "place": "Dubrovnik",
+      "region": "Europe",
+      "eyebrow": "Croatia · the Adriatic",
+      "cover": "img/blog-croatia-island.jpg",
+      "blurb": "Stone walls, still water, and one island in the blue.",
+      "photos": [
+        { "src": "img/blog-croatia-island.jpg", "title": "[working title]", "alt": "A small island floating in the calm sea off Dubrovnik", "story": "", "talisman": { "article": "journal-dubrovnik.html", "buyUrl": null } },
+        { "src": "img/world-croatia-loggia.jpg", "title": "[working title]", "alt": "An old stone loggia framing the sea", "story": "", "talisman": null },
+        { "src": "img/blog-croatia-bridge.jpg", "title": "[working title]", "alt": "A stone bridge into the walled old town", "story": "", "talisman": null },
+        { "src": "img/blog-croatia-church.jpg", "title": "[working title]", "alt": "A church tower rising over the terracotta rooftops", "story": "", "talisman": null },
+        { "src": "img/blog-croatia-godhelpus.jpg", "title": "[working title]", "alt": "A weathered old-town wall in the afternoon sun", "story": "", "talisman": null }
+      ]
+    },
+    {
+      "slug": "portugal",
+      "place": "Lisbon",
+      "region": "Europe",
+      "eyebrow": "Portugal · the tiled city",
+      "cover": "img/world-lisbon-rooftops.jpg",
+      "blurb": "Tiled walls, painted murals, and rooftops in the haze.",
+      "photos": [
+        { "src": "img/world-lisbon-rooftops.jpg", "title": "[working title]", "alt": "Lisbon rooftops fading into the afternoon haze", "story": "", "talisman": null },
+        { "src": "img/world-lisbon-azulejo.jpg", "title": "[working title]", "alt": "A wall of blue azulejo tiles", "story": "", "talisman": null },
+        { "src": "img/world-lisbon-street.jpg", "title": "[working title]", "alt": "A steep Lisbon street in the light", "story": "", "talisman": null },
+        { "src": "img/world-lisbon-fado-mural.jpg", "title": "[working title]", "alt": "A painted fado mural on a city wall", "story": "", "talisman": null },
+        { "src": "img/world-lisbon-owl-mural.jpg", "title": "[working title]", "alt": "A large owl mural on the side of a building", "story": "", "talisman": null }
+      ]
+    },
+    {
+      "slug": "greece",
+      "place": "Greece",
+      "region": "Europe",
+      "eyebrow": "Corfu & Meteora",
+      "cover": "img/hero-corfu-sunset.jpg",
+      "blurb": "Sun low over the water, monasteries in the clouds.",
+      "photos": [
+        { "src": "img/hero-corfu-sunset.jpg", "title": "[working title]", "alt": "The sun low over the hills and water at dusk in Corfu", "story": "", "talisman": null },
+        { "src": "img/wild-corfu-sea.jpg", "title": "[working title]", "alt": "The wild coastline and open sea of Corfu", "story": "", "talisman": null },
+        { "src": "img/wild-corfu-fortress.jpg", "title": "[working title]", "alt": "An old fortress above the Corfu shoreline", "story": "", "talisman": null },
+        { "src": "img/wild-meteora.jpg", "title": "[working title]", "alt": "The towering rock formations of Meteora", "story": "", "talisman": null },
+        { "src": "img/world-meteora-monastery.jpg", "title": "[working title]", "alt": "A monastery perched on a cliff at Meteora", "story": "", "talisman": null }
+      ]
+    }
+  ]
+}
