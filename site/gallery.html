@@ -100,9 +100,9 @@ nav a:hover::after,nav a.on::after{width:100%;}
 .tile figcaption .t{font-family:'Didot',Georgia,serif;font-size:clamp(19px,1.6vw,23px);color:var(--cream);letter-spacing:.4px;}
 .tile figcaption .s{font-size:10.5px;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold);margin-top:4px;}
 .tile figcaption .buy{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--sand);opacity:.75;margin-top:8px;}
-/* ---- STUDIO + FEMININE: two-column masonry (equal width, mixed heights) ---- */
-#wall[data-view="editorial"],#wall[data-view="women"]{display:block;column-count:2;column-gap:clamp(14px,1.6vw,22px);}
-#wall[data-view="editorial"] .tile,#wall[data-view="women"] .tile{width:100%;margin:0 0 clamp(14px,1.6vw,22px);
+/* ---- STUDIO + FEMININE + EVERYTHING: two-column masonry (equal width, mixed heights) ---- */
+#wall[data-view="editorial"],#wall[data-view="women"],#wall[data-view="best"]{display:block;column-count:2;column-gap:clamp(14px,1.6vw,22px);}
+#wall[data-view="editorial"] .tile,#wall[data-view="women"] .tile,#wall[data-view="best"] .tile{width:100%;margin:0 0 clamp(14px,1.6vw,22px);
   break-inside:avoid;-webkit-column-break-inside:avoid;}
 /* filtering */
 .tile.hide{display:none;}
@@ -174,11 +174,11 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 
 <!-- ================= FILTERS ================= -->
 <div class="filterbar" id="filters">
-  <button class="on" data-f="all">Everything</button>
   <button data-f="women">The Feminine</button>
   <button data-f="wild">The Wild</button>
   <button data-f="editorial">The Studio</button>
   <button data-f="travel">The World</button>
+  <button class="on" data-f="best">Everything</button>
 </div>
 
 <!-- ================= WALL ================= -->
@@ -219,69 +219,101 @@ footer .cr .script{font-size:18px;color:var(--gold);}
     <img src="img/her-providence-leather.jpg" alt="Eleanora in black leather on a railroad bridge, Providence">
     <figcaption><div class="t">Rust &amp; Leather</div><div class="s">Providence</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
-  <a class="tile sq" href="index.html#collections" data-cat="travel">
-    <img src="img/world-lisbon-azulejo.jpg" alt="A blue-and-white azulejo tile panel in Lisbon">
-    <figcaption><div class="t">Azulejo</div><div class="s">Lisbon</div><div class="buy">See the print &rarr;</div></figcaption>
+  <a class="tile med" href="index.html#collections" data-cat="women">
+    <img src="img/her-sunset-dance.jpg" alt="Eleanora dancing in silhouette on the beach at golden sunset, Florida">
+    <figcaption><div class="t">Sundancer</div><div class="s">Saint Pete</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
-  <a class="tile wide" href="index.html#collections" data-cat="wild travel">
-    <img src="img/wild-corfu-sea.jpg" alt="The sun setting over the sea at Corfu">
-    <figcaption><div class="t">The Crossing</div><div class="s">Corfu</div><div class="buy">See the print &rarr;</div></figcaption>
+  <a class="tile" href="index.html#collections" data-cat="women">
+    <img src="img/her-floral-bikini.jpg" alt="Eleanora from behind in a floral bikini and white sun hat on the beach, Florida">
+    <figcaption><div class="t">Turned to the Sea</div><div class="s">Saint Pete</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="women">
+    <img src="img/her-green-mirror.jpg" alt="Eleanora full-length in a red dress in a green mirrored room, Florida">
+    <figcaption><div class="t">The Green Room</div><div class="s">Saint Pete</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="travel">
+    <img src="img/world-tulum-bridge.jpg" alt="A woven rope bridge over the jungle at dusk, Tulum, Mexico">
+    <figcaption><div class="t">Over the Jungle</div><div class="s">Tulum, Mexico</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="travel">
+    <img src="img/world-meteora-monastery.jpg" alt="The rock monoliths and monastery of Meteora, Greece">
+    <figcaption><div class="t">Suspended</div><div class="s">Meteora, Greece</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
   <a class="tile" href="index.html#collections" data-cat="travel">
-    <img src="img/world-lisbon-fado-mural.jpg" alt="A fado street mural in Lisbon">
-    <figcaption><div class="t">Fado on the Wall</div><div class="s">Lisbon</div><div class="buy">See the print &rarr;</div></figcaption>
+    <img src="img/world-brazil-kombi.jpg" alt="A vintage VW Kombi on the red cliff over the sea, Pipa, Brazil">
+    <figcaption><div class="t">Red Earth</div><div class="s">Pipa, Brazil</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
-  <a class="tile med" href="index.html#collections" data-cat="wild">
-    <img src="img/wild-meteora.jpg" alt="The rock monoliths of Meteora">
-    <figcaption><div class="t">Meteora</div><div class="s">Greece</div><div class="buy">See the print &rarr;</div></figcaption>
+  <a class="tile" href="index.html#collections" data-cat="travel">
+    <img src="img/world-italy-orange-corridor.jpg" alt="A glowing orange corridor opening to bright light, Italy">
+    <figcaption><div class="t">Into the Light</div><div class="s">Italy</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="travel">
+    <img src="img/world-croatia-loggia.jpg" alt="An old stone loggia house with climbing roses, Dubrovnik">
+    <figcaption><div class="t">The Loggia</div><div class="s">Dubrovnik</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="travel">
+    <img src="img/world-lisbon-rooftops.jpg" alt="Lisbon's red rooftops seen from the castle">
+    <figcaption><div class="t">Red Rooftops</div><div class="s">Lisbon</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="travel">
+    <img src="img/world-italy-polignano.jpg" alt="Cliffs and open sea with a small boat, Polignano a Mare, Italy">
+    <figcaption><div class="t">Cliff's Edge</div><div class="s">Polignano, Italy</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
   <a class="tile" href="index.html#collections" data-cat="travel">
     <img src="img/world-sintra-well.jpg" alt="The spiralling initiation well at Quinta da Regaleira, Sintra">
     <figcaption><div class="t">The Initiation Well</div><div class="s">Sintra</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
+  <a class="tile" href="index.html#collections" data-cat="travel">
+    <img src="img/world-nyc-bridge.jpg" alt="The Williamsburg Bridge at dusk over the East River, New York">
+    <figcaption><div class="t">Steel &amp; Dusk</div><div class="s">New York</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="travel">
+    <img src="img/world-athens-marble.jpg" alt="A draped marble torso against a rose wall, Athens">
+    <figcaption><div class="t">Marble &amp; Rose</div><div class="s">Athens</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="travel">
+    <img src="img/world-italy-pink-fiat.jpg" alt="A pink Fiat 500 parked on an Italian street">
+    <figcaption><div class="t">Pink Fiat</div><div class="s">Puglia, Italy</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="travel">
+    <img src="img/world-lisbon-azulejo.jpg" alt="A blue-and-white azulejo tile panel in Lisbon">
+    <figcaption><div class="t">Azulejo</div><div class="s">Lisbon</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile lg" href="index.html#collections" data-cat="travel">
+    <img src="img/world-italy-yellow-door.jpg" alt="A yellow doorway framed by climbing flowers in Bari">
+    <figcaption><div class="t">Piano, Piano</div><div class="s">Bari, Italy</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile lg" href="index.html#collections" data-cat="travel">
+    <img src="img/world-boston-gardner.jpg" alt="The Venetian courtyard garden at the Gardner Museum, Boston">
+    <figcaption><div class="t">The Courtyard</div><div class="s">Boston</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile wide" href="index.html#collections" data-cat="wild">
+    <img src="img/wild-corfu-sea.jpg" alt="The sun setting over the sea at Corfu">
+    <figcaption><div class="t">The Crossing</div><div class="s">Corfu</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="wild">
+    <img src="img/wild-meteora.jpg" alt="The rock monoliths of Meteora">
+    <figcaption><div class="t">Meteora</div><div class="s">Greece</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
   <a class="tile wide" href="index.html#collections" data-cat="wild">
     <img src="img/wild-polignano-cove.jpg" alt="The turquoise cove below Polignano a Mare">
     <figcaption><div class="t">The Cove</div><div class="s">Polignano, Italy</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
-  <a class="tile" href="index.html#collections" data-cat="travel">
-    <img src="img/world-italy-yellow-door.jpg" alt="A yellow doorway framed by climbing flowers in Bari">
-    <figcaption><div class="t">Piano, Piano</div><div class="s">Bari, Italy</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
   <a class="tile med" href="index.html#collections" data-cat="wild">
     <img src="img/wild-sintra-forest.jpg" alt="The green forested hills of Sintra">
     <figcaption><div class="t">The Green Hush</div><div class="s">Sintra</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
-  <a class="tile" href="index.html#collections" data-cat="travel">
-    <img src="img/world-lisbon-street.jpg" alt="A cobbled Lisbon street at dusk">
-    <figcaption><div class="t">The Cobbled Mile</div><div class="s">Lisbon</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
-  <a class="tile" href="index.html#collections" data-cat="travel">
-    <img src="img/world-lisbon-owl-mural.jpg" alt="A large owl street mural in Lisbon">
-    <figcaption><div class="t">No Enemies</div><div class="s">Lisbon</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
   <a class="tile med" href="index.html#collections" data-cat="wild">
     <img src="img/wild-corfu-fortress.jpg" alt="An island fortress seen from the sea, Corfu">
     <figcaption><div class="t">The Old Fortress</div><div class="s">Corfu</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
-  <a class="tile" href="index.html#collections" data-cat="travel">
-    <img src="img/world-athens-marble.jpg" alt="A draped marble torso against a rose wall, Athens">
-    <figcaption><div class="t">Marble & Rose</div><div class="s">Athens</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
   <a class="tile" href="index.html#collections" data-cat="wild">
     <img src="img/wild-brazil-palms.jpg" alt="Palms on a rocky sunlit hillside, Brazil">
     <figcaption><div class="t">Wild Palms</div><div class="s">Brazil</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
-  <a class="tile wide" href="index.html#collections" data-cat="travel">
-    <img src="img/world-lisbon-rooftops.jpg" alt="Lisbon's red rooftops seen from the castle">
-    <figcaption><div class="t">Red Rooftops</div><div class="s">Lisbon</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
   <a class="tile" href="index.html#collections" data-cat="wild">
     <img src="img/wild-brazil-cliff.jpg" alt="Wooden stairs down a pink cliff to the sea, Brazil">
     <figcaption><div class="t">The Descent</div><div class="s">Brazil</div><div class="buy">See the print &rarr;</div></figcaption>
-  </a>
-  <a class="tile med" href="index.html#collections" data-cat="travel">
-    <img src="img/world-italy-pink-fiat.jpg" alt="A pink Fiat 500 parked on an Italian street">
-    <figcaption><div class="t">Pink Fiat</div><div class="s">Puglia, Italy</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
   <a class="tile med" href="index.html#collections" data-cat="wild">
     <img src="img/ocean-silhouette.jpg" alt="A sunset ocean silhouette">
@@ -319,6 +351,64 @@ footer .cr .script{font-size:18px;color:var(--gold);}
     <img src="img/studio-the-veil.jpg" alt="Studio portrait in a sheer veiled hat">
     <figcaption><div class="t">The Veil</div><div class="s">The Studio</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
+
+  <!-- ===== EVERYTHING: curated best-of (2-column masonry) ===== -->
+  <a class="tile" href="index.html#collections" data-cat="best">
+    <img src="img/her-bamboo-bw.jpg" alt="Black-and-white close-up of Eleanora's face framed by bamboo">
+    <figcaption><div class="t">Unguarded</div><div class="s">Portrait</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="best">
+    <img src="img/world-tulum-bridge.jpg" alt="A woven rope bridge over the jungle at dusk, Tulum, Mexico">
+    <figcaption><div class="t">Over the Jungle</div><div class="s">Tulum, Mexico</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="best">
+    <img src="img/her-brazil-standing.jpg" alt="Eleanora standing on the beach at midday, Brazil">
+    <figcaption><div class="t">Salt on Skin</div><div class="s">Brazil</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="best">
+    <img src="img/world-meteora-monastery.jpg" alt="The rock monoliths and monastery of Meteora, Greece">
+    <figcaption><div class="t">Suspended</div><div class="s">Meteora, Greece</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="best">
+    <img src="img/studio-coronation.jpg" alt="Studio portrait laughing in a violet flower crown">
+    <figcaption><div class="t">The Coronation</div><div class="s">The Studio</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="best">
+    <img src="img/bw-smoke-editorial.jpg" alt="Black and white editorial portrait, feather and smoke">
+    <figcaption><div class="t">After Dark</div><div class="s">The Studio</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="best">
+    <img src="img/world-italy-orange-corridor.jpg" alt="A glowing orange corridor opening to bright light, Italy">
+    <figcaption><div class="t">Into the Light</div><div class="s">Italy</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="best">
+    <img src="img/world-brazil-kombi.jpg" alt="A vintage VW Kombi on the red cliff over the sea, Pipa, Brazil">
+    <figcaption><div class="t">Red Earth</div><div class="s">Pipa, Brazil</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="best">
+    <img src="img/wild-polignano-cove.jpg" alt="The turquoise cove below Polignano a Mare">
+    <figcaption><div class="t">The Cove</div><div class="s">Polignano, Italy</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="best">
+    <img src="img/her-brazil-palm-bw.jpg" alt="Black-and-white figure at an outdoor shower among palms, Brazil">
+    <figcaption><div class="t">Unhurried</div><div class="s">Brazil</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="best">
+    <img src="img/world-italy-pink-fiat.jpg" alt="A pink Fiat 500 parked on an Italian street">
+    <figcaption><div class="t">Pink Fiat</div><div class="s">Puglia, Italy</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="best">
+    <img src="img/her-nyc-window.jpg" alt="Eleanora at a loft window in golden light with cigarette smoke, New York">
+    <figcaption><div class="t">The Loft</div><div class="s">New York</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile med" href="index.html#collections" data-cat="best">
+    <img src="img/her-fur-hood.jpg" alt="Eleanora lying on a blue floor in a fur-hooded Aztec coat">
+    <figcaption><div class="t">Wolfskin</div><div class="s">Editorial</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
+  <a class="tile" href="index.html#collections" data-cat="best">
+    <img src="img/ocean-silhouette.jpg" alt="A sunset ocean silhouette">
+    <figcaption><div class="t">The Tide</div><div class="s">The Wild</div><div class="buy">See the print &rarr;</div></figcaption>
+  </a>
 </section>
 
 <!-- ================= FOOTER ================= -->
@@ -338,8 +428,8 @@ addEventListener('scroll',onScroll,{passive:true});onScroll();
 
 // ---- filters ----
 const tiles=[...document.querySelectorAll('.tile')];
-document.getElementById('filters').addEventListener('click',(e)=>{
-  const b=e.target.closest('button'); if(!b)return;
+function applyFilter(b){
+  if(!b)return;
   document.querySelectorAll('.filterbar button').forEach(x=>x.classList.toggle('on',x===b));
   const f=b.dataset.f;
   document.getElementById('wall').dataset.view=f;
@@ -348,7 +438,12 @@ document.getElementById('filters').addEventListener('click',(e)=>{
     t.classList.toggle('hide',!show);
     if(show){t.classList.add('in');}
   });
+}
+document.getElementById('filters').addEventListener('click',(e)=>{
+  const b=e.target.closest('button'); if(b) applyFilter(b);
 });
+// land on the curated default ("Everything") and hide the rest
+applyFilter(document.querySelector('.filterbar button.on'));
 
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!reduce){
