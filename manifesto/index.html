@@ -203,7 +203,7 @@
     grid-template-columns:minmax(250px,40%) minmax(0,1fr);
     grid-template-areas:"head head" "img body" "line line";
     column-gap:clamp(32px,4.8vw,76px);
-    row-gap:clamp(22px,3.2vh,44px);
+    row-gap:clamp(30px,4vh,54px);
     align-items:start;
   }
   .law-head{ grid-area:head; text-align:center; }
@@ -212,13 +212,13 @@
   .law-line{ grid-area:line; }
 
   .law-head .idx{
-    display:block; font-family:var(--sans); font-weight:500; letter-spacing:.28em;
-    text-transform:uppercase; font-size:.74rem; color:var(--terracotta); margin-bottom:4px;
+    display:block; font-family:var(--sans); font-weight:500; letter-spacing:.3em;
+    text-transform:uppercase; font-size:.74rem; color:var(--terracotta); margin-bottom:16px;
   }
-  .law-head .idx .g{ color:var(--gold); font-size:1.2em; margin:0 .4em; letter-spacing:0; vertical-align:-.05em; }
+  .law-head .idx .g{ color:var(--gold); font-size:1.2em; margin:0 .45em; letter-spacing:0; vertical-align:-.05em; }
   .law-head .law-title{
     font-family:var(--title-script); font-weight:400; font-size:clamp(2.6rem,5.4vw,3.9rem);
-    color:var(--cream); margin:0; line-height:1; white-space:nowrap;
+    color:var(--cream); margin:0; line-height:1.08; white-space:nowrap; padding-bottom:.08em;
   }
 
   .law-img{
@@ -450,7 +450,7 @@ const LAWS = [
     body:[
       `There is no sharp mind inside a fried body. Your judgment, your memory, your mood, all of it is made of chemistry, and that chemistry is built by sleep, sunlight, movement, and real food. None of this is secret. Almost everyone knows it and does not do it, which is exactly where your first edge is hiding.`,
       `You cannot hold a new identity while running on empty. The "high vibe" everyone chases is not a crystal or a chant. It is your own chemistry, and you make it with rest and morning light, for free. Step off the treadmill of cheap stimulation and onto the slower, stronger ground of a body that actually works.`,
-      `This is the law nobody wants to be the answer, because it is plain and it is free. But every other law runs on this hardware. A tired mind cannot see straight, choose well, or feel worthy of anything. Tend the body and the rest of the wheel gets easier to turn.`
+      `This is the law nobody wants to be the answer, because it is plain and it is free. But every other law runs on this hardware. A tired mind cannot see straight, choose well, or feel worthy of anything. Tend the body and the rest of the wheel gets easier to turn. Sleep is not lazy, it is maintenance. Give the machine what it actually runs on, and it will carry you further than any amount of pushing through on empty ever could.`
     ] },
   { g:"♊", name:"Gemini", num:"Three", title:"The Four Mother Skills", theme:"the toolbox",
     img:"content/North%20America/saint-pete/towering-cumulus-blue-sky.jpg",
@@ -466,7 +466,7 @@ const LAWS = [
     body:[
       `Your brain moves the goalposts every time you score. It is built that way, so hitting the number never feels the way you pictured it would. The only fix is to decide what "enough" is, in writing, before you start. Otherwise you chase forever and call it ambition.`,
       `When you have never named your enough, you take it from the people around you without meaning to. You control, you grab, you compete for scraps you do not even want. You cannot build a full life out of a feeling of lack. Name your enough and the quiet grabbing stops.`,
-      `This is what keeps you off the worst list there is: the people who are top 1% in money and top 1% in misery at the same time. Enough is not settling. It is the one thing that lets the win actually feel like winning when you get there.`
+      `This is what keeps you off the worst list there is: the people who are top 1% in money and top 1% in misery at the same time. Enough is not settling. It is the one thing that lets the win actually feel like winning when you get there. Write the number down. Write the life down. Then, when you reach it, you have permission to actually feel it instead of sprinting straight past it toward the next one. A finish line you never drew is a race you can never win.`
     ] },
   { g:"♌", name:"Leo", num:"Five", title:"The Inner Game", theme:"the throne",
     img:"content/North%20America/saint-pete/flower-marigold-red-yellow.jpg",
@@ -474,7 +474,7 @@ const LAWS = [
     body:[
       `Split the world with a razor. On one side, what you control: your actions, your attention, your word. On the other, what you do not: outcomes, other people's opinions, the past. Nearly all your stress lives in the second pile, dressed up as responsible worry. And remember, nothing is ever as good or as bad as it feels in the first day.`,
       `The real throne is not the loud ego. It is the calm underneath it. You do not manifest from wanting, you manifest from feeling worthy of the thing. If some quiet part of you does not believe you deserve it, you will push it away without ever noticing you did.`,
-      `This is the hinge the whole manual turns on. The outside is always chasing the inside. Steady the inside, keep the ego out of the driver's seat, and every other law finally has solid ground to stand on.`
+      `This is the hinge the whole manual turns on. The outside is always chasing the inside. Steady the inside, keep the ego out of the driver's seat, and every other law finally has solid ground to stand on. You cannot pour from an empty cup, and you cannot build a steady life on a shaky inside. Tend the inside first, quietly, on the days no one is clapping, and watch how much less the outside can shake you.`
     ] },
   { g:"♍", name:"Virgo", num:"Six", title:"Attention", theme:"the only capital",
     img:"_intake/IMG_9291.jpg",
@@ -482,7 +482,7 @@ const LAWS = [
     body:[
       `You become whatever you pay attention to. Your life, in the end, is the sum of what you let in, nothing more. There is a whole industry built to chop your focus into pieces and sell them to the highest bidder, which is why one hour of real focus has quietly become a superpower.`,
       `But attention is not only about what is in front of you now. It is also the old story you are still secretly watching on a loop. You cannot aim at a new life while replaying the old one. Notice the pattern you keep running, name it, and only then choose what to look at instead.`,
-      `Everything you have read so far runs through this one law. What you attend to becomes who you are, so this is the quiet switch that decides whether any of the others take. Guard it like it is the whole game, because it is.`
+      `Everything you have read so far runs through this one law. What you attend to becomes who you are, so this is the quiet switch that decides whether any of the others take. Guard it like it is the whole game, because it is. Where your attention goes, your life follows, every single time. So spend it on purpose, or the loudest thing in the room will spend it for you and hand you the bill later.`
     ] },
   { g:"♎", name:"Libra", num:"Seven", title:"People", theme:"the room",
     img:"content/North%20America/saint-pete/cumulus-sunrays-teal.jpg",
@@ -490,7 +490,7 @@ const LAWS = [
     body:[
       `You become the average of your room. Not the people you follow on a screen, the ones you actually stand next to. Your reputation is the slowest thing to build and the fastest thing to lose, so you build it by being useful and keeping your word for years, without keeping score.`,
       `The two biggest choices of your life are who you build with and who you love. Give them more thought than most people give to buying a car. And let your gut, not old habit or old guilt, decide who you let close and who you let go.`,
-      `Nobody you admire did it alone. Check any biography and you will find partners, mentors, friends who lent money, strangers who opened doors. Your circle is not a nice-to-have. It is the current you float on or fight against your whole life.`
+      `Nobody you admire did it alone. Check any biography and you will find partners, mentors, friends who lent money, strangers who opened doors. Your circle is not a nice-to-have. It is the current you float on or fight against your whole life. So pick your few people like your life depends on it, because in the quietest way it does. You slowly become some average of the rooms you keep walking back into, so choose the rooms with care.`
     ] },
   { g:"♏", name:"Scorpio", num:"Eight", title:"Seeing Reality", theme:"the clear eye",
     img:"content/2019-croatia/island-at-sea.jpg",
@@ -498,7 +498,7 @@ const LAWS = [
     body:[
       `Your brain did not come built to see the truth. It came built to keep you safe and keep you liked. So you see what you already believe, and you defend your mistakes like they are your children. Your idea of the world is a map, and every map is wrong somewhere.`,
       `Seeing straight is also how you see people. Look all the way through someone, past the mask, to who they really are, and then lift what you see. Truth without the drama. Depth without the drain.`,
-      `Ask one question of every belief you hold: what would change my mind? If the answer is nothing, that is not a belief, it is a costume. The ones who can face the hard truth early pay a small price now. Everyone else pays a much larger one later.`
+      `Ask one question of every belief you hold: what would change my mind? If the answer is nothing, that is not a belief, it is a costume. The ones who can face the hard truth early pay a small price now. Everyone else pays a much larger one later. Reality does not care whether you are ready for it. It waits, and it charges interest. The thing you keep avoiding is almost always the exact thing you most need to look at, so look. It is never as heavy once it is out in the light, and it only grows in the dark.`
     ] },
   { g:"♐", name:"Sagittarius", num:"Nine", title:"Choosing the Game", theme:"the aim",
     img:"_intake/IMG_9984.jpg",
@@ -506,7 +506,7 @@ const LAWS = [
     body:[
       `Most people never choose their game. They inherit it from their parents, their town, their feed, and spend a whole life competing in a contest they never signed up for. Stopping to actually choose is the highest-leverage move there is. Run from games where you only win by making someone else lose, and choose ones where playing a long time is an advantage.`,
       `Aim your game at where the world is going, not where it has already been. The rare, useful person is not the top one in the world at a single thing, which is mostly luck. It is the one who is very good at two or three things that multiply each other. That intersection is a decision, not a lottery.`,
-      `You can win the wrong game with perfect skill and still lose your life to it. This is the law that decides whether all your effort points somewhere worth arriving. Choose first. Then the work counts.`
+      `You can win the wrong game with perfect skill and still lose your life to it. This is the law that decides whether all your effort points somewhere worth arriving. Choose first. Then the work counts. A ladder leaned against the wrong wall just gets you to the wrong place faster. Spend one honest afternoon choosing the wall, and you save yourself a decade of climbing toward something you never actually wanted.`
     ] },
   { g:"♑", name:"Capricorn", num:"Ten", title:"Compound Interest", theme:"the long clock",
     img:"content/Europa/portugal/sintra-moorish-castle-hilltop.jpg",
@@ -514,7 +514,7 @@ const LAWS = [
     body:[
       `Everything that matters compounds. Skills, trust, health, money, and the small daily reps of becoming who you are becoming. The cheapest edge on earth is a long time horizon. Almost everyone competes at ninety days. Almost nobody competes at ten years, so by mile twenty there is no one left to race.`,
       `This is manifesting's real clock. You hold a clear picture of who you are becoming, you feed it one small action a day, and you let time do the multiplying. Be impatient with the action and patient with the result. Most people do it backwards and quit right before it works.`,
-      `Boring consistency beats heroic intensity over any stretch longer than a month. The one who does a little every day buries the one who did a lot once. This is where the whole wheel quietly pays out.`
+      `Boring consistency beats heroic intensity over any stretch longer than a month. The one who does a little every day buries the one who did a lot once. This is where the whole wheel quietly pays out. The magic was never in any single day. It is in the days stacking up while nobody is watching, including you. Stay boring, stay steady, and let time do the loud part.`
     ] },
   { g:"♒", name:"Aquarius", num:"Eleven", title:"Bets and Luck", theme:"the wide net",
     img:"content/North%20America/saint-pete/beach-cumulus-dune.jpg",
@@ -522,7 +522,7 @@ const LAWS = [
     body:[
       `Stop waiting for certainty. Every real move is a bet made with the lights half on, and whoever demands to be sure first has already chosen not to move. Make many small bets where the loss is small and the win is huge. And never bet what you cannot afford to lose, because the one who survives every bad hand is still at the table when the good one comes.`,
       `Luck is real and it is enormous, but you can widen the surface where it lands. Hold a clear intention, say it out loud, and share it, because an intention gets stronger when more than one person holds it. Add gratitude, and expect good things to come.`,
-      `You cannot control luck, but you can control how often you are standing where it strikes. Make things and show them in the open. Keep your bets small and many. Stay in the game long enough for the good hand to arrive, because it will.`
+      `You cannot control luck, but you can control how often you are standing where it strikes. Make things and show them in the open. Keep your bets small and many. Stay in the game long enough for the good hand to arrive, because it will. You only have to be right a few times in a whole life, as long as being wrong never knocks you out of the game. Keep the bets small, the losses survivable, and your seat at the table warm.`
     ] },
   { g:"♓", name:"Pisces", num:"Twelve", title:"Usage Protocol", theme:"becoming it",
     img:"content/North%20America/rhode-island/jamestown-schooner-blue-ocean.jpg",
@@ -530,7 +530,7 @@ const LAWS = [
     body:[
       `Reading this changed you exactly zero. Texts do not change anyone, repetitions do. The map is not the walk. Everything in these pages is worth nothing until it becomes something you actually do, over and over, on the ordinary days.`,
       `So the manual is meant to dissolve into you. You practice past the noise, past the days you do not feel like it, until the thing is no longer effort. It is just who you are now. That is the whole point of turning the wheel.`,
-      `Reread the map every six months, because you will have changed even when the words have not. When you finally live a chapter, teach it to someone, because teaching is the one exam you cannot cheat. And question all of it. Keep what survives real life, and burn what does not.`
+      `Reread the map every six months, because you will have changed even when the words have not. When you finally live a chapter, teach it to someone, because teaching is the one exam you cannot cheat. And question all of it. Keep what survives real life, and burn what does not. You do not rise to the level of what you read, you fall to the level of what you practice. So practice. Practice on the flat days, the bored days, the days you forget why you started. The manual was never the point. You were. This is where it stops being words on a screen and starts being the way you move.`
     ] }
 ];
 const slug = s => s.toLowerCase();
