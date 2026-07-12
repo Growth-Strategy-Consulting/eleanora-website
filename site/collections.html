@@ -45,21 +45,27 @@ nav a:hover::after,nav a.here::after{width:100%;}
 .phead .rule{width:64px;height:1px;background:rgba(217,164,65,.5);margin:26px auto 0;}
 
 /* ---- collections grid ---- */
-.cwrap{max-width:1200px;margin:34px auto 96px;padding:0 24px;}
-.cgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-.ctile{position:relative;display:block;overflow:hidden;border-radius:5px;aspect-ratio:4/5;background:#161d16;box-shadow:0 26px 52px -26px rgba(0,0,0,.75);}
-.ctile.wide{grid-column:1 / -1;aspect-ratio:16/7;}
+.cwrap{max-width:1280px;margin:34px auto 96px;padding:0 24px;}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.ctile{position:relative;display:block;overflow:hidden;border-radius:5px;aspect-ratio:4/5;background:#161d16;box-shadow:0 20px 44px -24px rgba(0,0,0,.72);}
 .ctile img{transition:transform 1.1s cubic-bezier(.2,.8,.2,1);filter:saturate(1.04) contrast(1.03) brightness(.9);}
-.ctile:hover img{transform:scale(1.06);}
+.ctile:hover img{transform:scale(1.04);}
 .ctile .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,10,.15),rgba(10,14,10,.1) 40%,rgba(8,12,9,.82));}
 .ctile .edge{position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(217,164,65,.16);border-radius:5px;pointer-events:none;}
 .ctile .lbl{position:absolute;left:0;right:0;bottom:0;padding:26px 28px;z-index:2;}
 .ctile .eye{display:block;font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sir-gold);opacity:.92;margin-bottom:8px;}
-.ctile .place{font-family:'Pinyon Script',cursive;font-size:clamp(40px,4.4vw,58px);line-height:.9;color:var(--cream);text-shadow:0 4px 24px rgba(0,0,0,.5);}
-.ctile .blurb{margin-top:8px;font-size:13px;line-height:1.6;color:#d5dac9;opacity:0;transform:translateY(6px);transition:.45s;max-width:34ch;}
+.ctile .lbl{padding:20px 20px;}
+.ctile .place{font-family:'Pinyon Script',cursive;font-size:clamp(30px,2.7vw,44px);line-height:.9;color:var(--cream);text-shadow:0 4px 24px rgba(0,0,0,.5);}
+.ctile .eye{font-size:9.5px;letter-spacing:2px;margin-bottom:6px;}
+.ctile .blurb{margin-top:7px;font-size:12px;line-height:1.55;color:#d5dac9;opacity:0;transform:translateY(6px);transition:.45s;max-width:30ch;}
 .ctile:hover .blurb{opacity:.95;transform:none;}
-.ctile .count{position:absolute;top:16px;right:18px;z-index:2;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--cream);opacity:.8;background:rgba(12,18,13,.5);backdrop-filter:blur(4px);padding:5px 9px;border-radius:2px;}
-.enter{position:absolute;bottom:28px;right:28px;z-index:2;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--sir-gold);opacity:0;transform:translateX(-4px);transition:.4s;}
+.ctile .count{position:absolute;top:13px;right:14px;z-index:2;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--cream);opacity:.8;background:rgba(12,18,13,.5);backdrop-filter:blur(4px);padding:4px 8px;border-radius:2px;}
+/* hover-preview progress dots */
+.ctile .pdots{position:absolute;top:14px;left:14px;z-index:2;display:flex;gap:5px;opacity:0;transition:.35s;}
+.ctile:hover .pdots{opacity:1;}
+.ctile .pdots span{width:5px;height:5px;border-radius:50%;background:rgba(246,241,231,.4);transition:.25s;}
+.ctile .pdots span.on{background:var(--sir-gold);transform:scale(1.25);}
+.enter{position:absolute;bottom:22px;right:22px;z-index:2;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--sir-gold);opacity:0;transform:translateX(-4px);transition:.4s;}
 .ctile:hover .enter{opacity:1;transform:none;}
 
 .cnote{text-align:center;margin:56px auto 0;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#8b9384;}
@@ -74,8 +80,9 @@ footer .fnav a:hover{color:var(--sir-gold);}
 footer .tag{font-size:11.5px;letter-spacing:4px;text-transform:uppercase;color:var(--cream);opacity:.9;}
 footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
 
+@media(max-width:980px){ .cgrid{grid-template-columns:repeat(2,1fr);} }
 @media(max-width:900px){ header{padding:14px 22px;} nav ul{display:none;} }
-@media(max-width:640px){ .cgrid{grid-template-columns:1fr;} .ctile,.ctile.wide{aspect-ratio:4/5;} .ctile .blurb{opacity:.95;transform:none;} .enter{opacity:1;transform:none;} }
+@media(max-width:560px){ .cgrid{grid-template-columns:1fr;} .ctile{aspect-ratio:4/5;} .ctile .blurb{opacity:.95;transform:none;} .enter{opacity:1;transform:none;} }
 </style>
 </head>
 <body>
@@ -126,14 +133,18 @@ fetch('collections.json')
   .then(r=>r.json())
   .then(data=>{
     const grid=document.getElementById('cgrid');
-    data.collections.forEach((c,i)=>{
-      const wide = (i % 5 === 0) ? ' wide' : '';   // first of every five spans full width
+    const canHover = window.matchMedia('(hover:hover)').matches;
+    data.collections.forEach((c)=>{
+      // preview set = cover + first photos, de-duped, up to 6
+      const preview=[c.cover, ...c.photos.map(p=>p.src)].filter((v,idx,arr)=>arr.indexOf(v)===idx).slice(0,6);
+      const dots=preview.map((_,k)=>'<span class="'+(k===0?'on':'')+'"></span>').join('');
       const a=document.createElement('a');
-      a.className='ctile'+wide;
+      a.className='ctile';
       a.href='collection.html?place='+encodeURIComponent(c.slug);
       a.innerHTML=
         '<img src="'+c.cover+'" alt="'+(c.place||'')+'">'+
         '<div class="scrim"></div><div class="edge"></div>'+
+        (canHover && preview.length>1 ? '<div class="pdots">'+dots+'</div>' : '')+
         '<span class="count">'+c.photos.length+' photographs</span>'+
         '<div class="lbl">'+
           '<span class="eye">'+(c.eyebrow||c.region||'')+'</span>'+
@@ -142,6 +153,25 @@ fetch('collections.json')
         '</div>'+
         '<span class="enter">enter &rarr;</span>';
       grid.appendChild(a);
+
+      // hover preview: cycle through the album (desktop only), preloaded so it is instant
+      if(canHover && preview.length>1){
+        preview.forEach(s=>{const im=new Image();im.src=s;});
+        const imgEl=a.querySelector('img');
+        const dotEls=a.querySelectorAll('.pdots span');
+        let idx=0, timer=null;
+        a.addEventListener('mouseenter',()=>{
+          timer=setInterval(()=>{
+            idx=(idx+1)%preview.length;
+            imgEl.src=preview[idx];
+            dotEls.forEach((d,k)=>d.classList.toggle('on',k===idx));
+          },780);
+        });
+        a.addEventListener('mouseleave',()=>{
+          clearInterval(timer); idx=0; imgEl.src=c.cover;
+          dotEls.forEach((d,k)=>d.classList.toggle('on',k===0));
+        });
+      }
     });
   })
   .catch(()=>{document.getElementById('cgrid').innerHTML='<p style="opacity:.7">Collections are loading slowly — refresh in a moment.</p>';});
