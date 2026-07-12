@@ -130,9 +130,9 @@
   .scrollcue{ opacity:0; animation:cueIn .8s ease 1.25s forwards, floatcue 3.4s ease-in-out 1.25s infinite; }
 
   /* ---------- prelude ---------- */
-  .lede{
+  .prelude .lede{
     font-family:var(--sans); font-weight:700; font-size:clamp(1.9rem,5vw,3rem);
-    line-height:1.14; letter-spacing:-.015em; color:var(--cream); margin-bottom:.7em; text-wrap:balance;
+    line-height:1.14; letter-spacing:-.02em; color:var(--cream); margin-bottom:.7em; text-wrap:balance;
   }
   .prelude p{ font-size:1.12rem; max-width:60ch; margin-left:auto; margin-right:auto; }
   .prelude p strong{ font-weight:600; color:var(--cream); }
@@ -153,7 +153,11 @@
     font-family:var(--serif); font-style:italic; font-size:clamp(1.3rem,3.2vw,1.75rem);
     line-height:1.36; color:var(--cream); margin:0; text-wrap:balance;
   }
-  .lawzero .under{ margin-top:40px; font-size:.98rem; color:var(--cream-dim); max-width:50ch; margin-left:auto; margin-right:auto; }
+  .lawzero .under{
+    margin:clamp(30px,4.6vh,50px) auto 0; max-width:42ch;
+    font-family:var(--serif); font-style:italic; font-size:clamp(1.18rem,2.8vw,1.62rem);
+    line-height:1.5; letter-spacing:.01em; color:var(--gold-soft); text-wrap:balance;
+  }
 
   /* ---------- the wheel ---------- */
   .wheel-panel{ text-align:center; padding-block:clamp(18px,2.4vh,38px); }
@@ -480,7 +484,7 @@ if(new URLSearchParams(location.search).has('member')){document.documentElement.
 <!-- PRELUDE II -->
 <section class="panel prelude" id="prelude-2">
   <div class="inner narrow reveal">
-    <p>So you found it. Congratulations. The secret to happiness, right here, no fine print.</p>
+    <p class="lede">So you found it. Congratulations. The secret to happiness, right here, no fine print.</p>
     <p>Here it is. <strong>Happiness is a mindset.</strong> You find whatever you go looking for.</p>
     <p class="beat">Alright. Have fun with that.</p>
     <p>No. For real. I know you have heard "it is all mindset" a hundred times and rolled your eyes. So do not take my word for it. Buy a red car and suddenly red cars are everywhere. They were always there, your eyes just started letting them in. Decide someone is against you, and every little thing they do turns into proof. Two people walk out of the same room having lived two different days.</p>
