@@ -887,10 +887,15 @@ const slug = s => s.toLowerCase();
   document.getElementById('w-next').addEventListener('click',()=>{ glide(+1); wheel.focus(); });
   document.getElementById('w-prev').addEventListener('click',()=>{ glide(-1); wheel.focus(); });
 
-  /* enter = jump to the active sign's law panel (explicit scroll, guaranteed) */
+  /* enter = jump to the active sign's law panel. instant + a next-frame correction:
+     a long smooth scroll gets retargeted by reveal/layout shifts and lands short. */
   enterEl.addEventListener('click',e=>{
     const t=document.getElementById(slug(LAWS[activeIndex()].name));
-    if(t){ e.preventDefault(); t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); history.replaceState(null,'','#'+t.id); }
+    if(!t) return;
+    e.preventDefault();
+    history.replaceState(null,'','#'+t.id);
+    t.scrollIntoView({behavior:'auto',block:'start'});
+    requestAnimationFrame(()=>t.scrollIntoView({behavior:'auto',block:'start'}));
   });
 
   /* tap a medallion to bring it to the top */
