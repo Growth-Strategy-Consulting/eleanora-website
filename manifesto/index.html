@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 1% Manifesto — Eleanora</title>
+<link rel="icon" href="brand/assets/eleanora-seal.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Kaushan+Script&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#22331F;
+    --pine-deep:#141c16;
+    --forest:#2F4034;
+    --moss:#6E7D5B;
+    --terracotta:#B87F51;
+    --gold:#D9A441;
+    --gold-soft:#E7C489;
+    --cream:#F6F1E7;
+    --cream-dim:#DED6C4;
+    --serif:'Didot','Bodoni 72',Georgia,'Times New Roman',serif;
+    --script:'Pinyon Script',cursive;
+    --title-script:'Kaushan Script',cursive;   /* law titles + laws share one script */
+    --law-script:'Kaushan Script',cursive;     /* the law line — thick, hits harder */
+    --sans:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --measure:60ch;
+    /* semantic z-scale */
+    --z-atmos:-2; --z-stars:-1; --z-content:1; --z-rail:40; --z-grain:60;
+  }
+
+  *{box-sizing:border-box}
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:#0a0e0a;
+    color:var(--cream);
+    font-family:var(--sans);
+    font-weight:300;
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* the travelling sky — JS lerps this gradient to scroll position (night -> dusk -> day) */
+  #sky{
+    position:fixed; inset:0; z-index:var(--z-atmos); pointer-events:none;
+    background:linear-gradient(180deg,#0a0e0a,#0d120d);
+    will-change:background;
+  }
+  /* a soft horizon glow that rides above the sky, fixed low on screen */
+  #sky::after{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(120% 70% at 50% 108%, rgba(255,214,150,.12), transparent 60%);
+  }
+  #stars{position:fixed; inset:0; z-index:var(--z-stars); pointer-events:none;}
+
+  /* per-phase text theming: JS tags each panel .on-dark / .on-light.
+     .on-light re-points the brand vars to deep ink so copy stays legible in daylight. */
+  .on-light{
+    --cream:#33270f; --cream-dim:#5f4b26;
+    --gold:#855610; --gold-soft:#6f4a12; --terracotta:#8f451c;
+  }
+  .on-dark .law-body p, .on-dark .prelude p, .on-dark .lede,
+  .on-dark .door, .on-dark .ninetynine{ text-shadow:0 1px 16px rgba(0,0,0,.32); }
+  .on-light .law-body p, .on-light .ninetynine{ text-shadow:0 1px 10px rgba(255,247,228,.55); }
+  .on-light .law-line{ border-color:rgba(90,60,16,.30); }
+  .on-light .ninetynine{ border-color:rgba(90,60,16,.24); }
+  .on-light .sprig path, .on-light .sprig line{ stroke:#8f5f12; }
+  .on-light .sprig circle{ fill:#8f5f12; }
+
+  /* ---------- panel scaffold ---------- */
+  .panel{
+    position:relative; z-index:var(--z-content);
+    display:flex; flex-direction:column; justify-content:center;
+    padding:clamp(52px,7vh,100px) 0;
+    /* re-resolve the text token at panel level so .on-light re-themes inherited color too */
+    color:var(--cream);
+  }
+  /* only the opening and the wheel own a full screen; everything else sizes to its content */
+  .panel--full{ min-height:100svh; }
+  .inner{ width:min(1140px,92vw); margin:0 auto; padding:0 clamp(20px,4vw,44px); }
+  .narrow{ max-width:660px; margin:0 auto; text-align:center; }
+  p{ text-wrap:pretty; margin:0 0 1.4em; }
+  .center{ text-align:center }
+
+  .sprig{display:block; margin:0 auto 4px; width:118px; height:22px;}
+  .sprig path, .sprig line{stroke:var(--gold); stroke-width:1; fill:none; opacity:.85}
+  .sprig circle{fill:var(--gold)}
+
+  /* ---------- hero ---------- */
+  .hero{ text-align:center; }
+  .hero .kicker{
+    font-family:var(--sans); font-weight:500; font-size:.72rem; letter-spacing:.42em;
+    text-transform:uppercase; color:var(--gold-soft); margin:0 0 30px; padding-left:.42em;
+  }
+  .hero h1{
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(3rem,8.5vw,6rem); line-height:1.02; margin:0;
+    color:var(--gold); letter-spacing:.01em; text-wrap:balance;
+    text-shadow:0 2px 40px rgba(217,164,65,.26);
+  }
+  .hero .sub{
+    font-family:var(--serif); font-style:italic; font-weight:400;
+    font-size:clamp(1.15rem,3.2vw,1.6rem); color:var(--cream);
+    margin:22px 0 0; letter-spacing:.01em;
+  }
+  .hero .meta{
+    font-family:var(--sans); font-size:.8rem; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--cream-dim); margin-top:34px;
+  }
+  .scrollcue{
+    position:absolute; bottom:34px; left:50%; transform:translateX(-50%);
+    width:1px; height:52px; background:linear-gradient(var(--gold), transparent); opacity:.6;
+    animation:floatcue 3.4s ease-in-out infinite;
+  }
+  @keyframes floatcue{0%,100%{opacity:.6; transform:translateX(-50%) scaleY(1)}50%{opacity:.22; transform:translateX(-50%) scaleY(.66)}}
+
+  /* ---------- hero signature entrance (plays once on load) ---------- */
+  @keyframes heroRise{ from{opacity:0; transform:translateY(26px)} to{opacity:1; transform:none} }
+  @keyframes heroTitle{
+    0%{ opacity:0; transform:translateY(34px) scale(.966); filter:blur(7px); }
+    100%{ opacity:1; transform:none; filter:blur(0); }
+  }
+  @keyframes cueIn{ from{opacity:0} to{opacity:.6} }
+  .hero .kicker{ animation:heroRise .8s var(--ease) .18s both; }
+  .hero h1{ animation:heroTitle 1.15s var(--ease) .34s both; }
+  .hero .sub{ animation:heroRise .9s var(--ease) .72s both; }
+  .hero .meta{ animation:heroRise .9s var(--ease) .94s both; }
+  .scrollcue{ opacity:0; animation:cueIn .8s ease 1.25s forwards, floatcue 3.4s ease-in-out 1.25s infinite; }
+
+  /* ---------- prelude ---------- */
+  .lede{
+    font-family:var(--sans); font-weight:700; font-size:clamp(1.9rem,5vw,3rem);
+    line-height:1.14; letter-spacing:-.015em; color:var(--cream); margin-bottom:.7em; text-wrap:balance;
+  }
+  .prelude p{ font-size:1.12rem; max-width:60ch; margin-left:auto; margin-right:auto; }
+  .prelude p strong{ font-weight:600; color:var(--cream); }
+  .prelude .beat{ font-family:var(--serif); font-style:italic; font-size:clamp(1.3rem,3.4vw,1.7rem); color:var(--gold-soft); line-height:1.4; max-width:none; }
+  .three-roads{ font-family:var(--serif); font-style:italic; color:var(--gold-soft); opacity:.9; letter-spacing:.02em; font-size:1.05rem; }
+
+  /* ---------- Law Zero ---------- */
+  .lawzero .plate{
+    max-width:600px; margin:0 auto; text-align:center; padding:38px 30px;
+    border-top:1px solid rgba(217,164,65,.5); border-bottom:1px solid rgba(217,164,65,.5);
+    background:radial-gradient(130% 150% at 50% 0%, rgba(217,164,65,.11), transparent 72%);
+  }
+  .lawzero .no{
+    font-family:var(--sans); font-weight:600; letter-spacing:.34em; text-transform:uppercase;
+    font-size:.74rem; color:var(--gold); display:block; margin-bottom:14px;
+  }
+  .lawzero .plate p{
+    font-family:var(--serif); font-style:italic; font-size:clamp(1.3rem,3.2vw,1.75rem);
+    line-height:1.36; color:var(--cream); margin:0; text-wrap:balance;
+  }
+  .lawzero .under{ margin-top:40px; font-size:.98rem; color:var(--cream-dim); max-width:50ch; margin-left:auto; margin-right:auto; }
+
+  /* ---------- the wheel ---------- */
+  .wheel-panel{ text-align:center; padding-block:clamp(18px,2.4vh,38px); }
+  .wheel-panel .sprig{ display:none; }
+  .wheel-panel .eyebrow{
+    font-family:var(--sans); font-weight:500; letter-spacing:.4em; text-transform:uppercase;
+    font-size:.72rem; color:var(--gold-soft); margin:0 0 6px;
+  }
+  .wheel-panel h2{
+    font-family:var(--serif); font-weight:400; font-size:clamp(1.6rem,3.6vw,2.3rem);
+    color:var(--gold); margin:0 0 3px; letter-spacing:.01em;
+  }
+  .wheel-panel .eyebrow{ margin:0 0 4px; }
+  .wheel-panel .three-roads{ margin:0 0 2px; }
+  .stage{ position:relative; width:min(72vh,680px); max-width:94vw; aspect-ratio:1; margin:0 auto; }
+  .stage svg{ width:100%; height:100%; overflow:visible }
+  .med-img{ filter:saturate(1.05) contrast(1.03) sepia(.05) }
+  .ring{ fill:none; stroke:var(--gold) }
+  .spoke{ stroke:var(--gold); opacity:.16; stroke-width:1 }
+  .medring{ fill:none; stroke:var(--gold); stroke-width:2; opacity:.9; transition:stroke-width .5s var(--ease), opacity .5s var(--ease) }
+  .glyph-w{ fill:var(--gold); font-size:30px; text-anchor:middle; dominant-baseline:central }
+  .name-w{ fill:var(--cream); font-family:var(--sans); font-size:11px; font-weight:500; letter-spacing:2.5px; text-anchor:middle; dominant-baseline:central; opacity:.92 }
+  .spot{ cursor:pointer; }
+  .spot .med-img{ transition:filter .5s var(--ease) }
+  .spot:hover .medring, .spot:focus-visible .medring{ stroke-width:4; opacity:1 }
+  .spot:hover .med-img{ filter:saturate(1.16) contrast(1.06) brightness(1.06) }
+  .spot:focus-visible{ outline:none }
+  .coreglyph{ fill:var(--pine-deep); font-size:24px; text-anchor:middle; dominant-baseline:central }
+  .wheel-hint{
+    font-family:var(--sans); font-size:.72rem; letter-spacing:.28em; text-transform:uppercase;
+    color:var(--gold-soft); opacity:.85; margin:6px 0 0;
+  }
+  /* wheel assembles when it enters view */
+  .med, .lab{ opacity:0; transform-box:fill-box; transform-origin:center }
+  .med{ transform:scale(.72) }
+  .stage.go .med{ animation:pop 1s var(--ease) forwards }
+  .stage.go .lab{ animation:fin 1s var(--ease) forwards }
+  @keyframes pop{to{opacity:1; transform:scale(1)}}
+  @keyframes fin{to{opacity:1}}
+
+  /* ---------- the twelve laws ---------- */
+  /* header + square photo stack on the left, the words to the right,
+     the law spans full width across the bottom. */
+  /* header spans full width + centered; photo left, words right; law + full-width divider at the bottom */
+  .law-grid{
+    display:grid;
+    grid-template-columns:minmax(250px,40%) minmax(0,1fr);
+    grid-template-areas:"head head" "img body" "line line";
+    column-gap:clamp(32px,4.8vw,76px);
+    row-gap:clamp(22px,3.2vh,44px);
+    align-items:start;
+  }
+  .law-head{ grid-area:head; text-align:center; }
+  .law-img{ grid-area:img; }
+  .law-body{ grid-area:body; align-self:start; }
+  .law-line{ grid-area:line; }
+
+  .law-head .idx{
+    display:block; font-family:var(--sans); font-weight:500; letter-spacing:.28em;
+    text-transform:uppercase; font-size:.74rem; color:var(--terracotta); margin-bottom:4px;
+  }
+  .law-head .idx .g{ color:var(--gold); font-size:1.2em; margin:0 .4em; letter-spacing:0; vertical-align:-.05em; }
+  .law-head .law-title{
+    font-family:var(--title-script); font-weight:400; font-size:clamp(2.6rem,5.4vw,3.9rem);
+    color:var(--cream); margin:0; line-height:1; white-space:nowrap;
+  }
+
+  .law-img{
+    position:relative; width:100%; aspect-ratio:1; border-radius:6px; overflow:hidden;
+    background-image:var(--img); background-size:cover; background-position:center;
+    filter:saturate(1.04) contrast(1.02);
+    box-shadow:0 22px 54px rgba(0,0,0,.4), inset 0 0 0 1px rgba(217,164,65,.65);
+  }
+  .law-img::after{ content:''; position:absolute; inset:0; box-shadow:inset 0 -46px 90px rgba(18,24,18,.42); }
+  .law-img .tag{
+    position:absolute; top:12px; left:12px; z-index:1;
+    width:42px; height:42px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.35rem; color:var(--gold);
+    background:rgba(14,19,14,.72); border:1px solid rgba(217,164,65,.6);
+    -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px);
+  }
+
+  .law-body p{ color:var(--cream); font-size:1.02rem; line-height:1.64; max-width:58ch; margin:0 0 .9em; }
+  .law-body p:last-child{ margin-bottom:0; }
+
+  .law-line{
+    margin-top:clamp(28px,4.5vh,52px); text-align:center;
+    padding-bottom:clamp(32px,5vh,56px);
+    border-bottom:1px solid rgba(217,164,65,.4);   /* full-width line underneath the law */
+  }
+  .law-line .no{
+    display:block; font-family:var(--sans); font-weight:600; letter-spacing:.3em;
+    text-transform:uppercase; font-size:.72rem; color:var(--gold); margin-bottom:14px;
+  }
+  .law-line p{
+    font-family:var(--law-script); font-weight:400; font-size:clamp(1.5rem,3vw,2.3rem);
+    line-height:1.26; color:var(--gold-soft); margin:0 auto; text-wrap:balance; max-width:42ch;
+  }
+  .rewheel{
+    display:inline-flex; align-items:center; gap:.5em; margin-top:22px;
+    font-family:var(--sans); font-size:.7rem; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--cream-dim); text-decoration:none; opacity:.72; transition:opacity .3s, color .3s;
+  }
+  .rewheel:hover{ opacity:1; color:var(--gold-soft) }
+
+  @media (max-width:820px){
+    .law-grid{ grid-template-columns:1fr; grid-template-areas:"head" "img" "body" "line"; row-gap:24px; }
+    .law-img{ max-width:min(80vw,440px); margin:0 auto; }
+    .law-body{ text-align:center; }
+    .law-head .law-title{ white-space:normal; }
+  }
+
+  /* ---------- closer ---------- */
+  .closer{ text-align:center }
+  .closer h2{
+    font-family:var(--sans); font-weight:600; letter-spacing:.3em; text-transform:uppercase;
+    font-size:.82rem; color:var(--gold); margin:0 0 24px;
+  }
+  .closer p:not([class]){ font-size:1.08rem; max-width:60ch; margin-left:auto; margin-right:auto; }
+  .ninetynine{
+    max-width:58ch; margin:8px auto 30px; padding-top:28px;
+    border-top:1px solid rgba(217,164,65,.28);
+    font-size:clamp(1.06rem,2.4vw,1.24rem); line-height:1.7; color:var(--cream);
+  }
+  .ninetynine strong{ color:var(--gold-soft); font-weight:500 }
+  .door{ font-family:var(--serif); font-style:italic; font-size:clamp(1.3rem,3.4vw,1.7rem); color:var(--cream); max-width:none; margin-bottom:.3em; }
+  .comehome{ font-family:var(--serif); font-size:clamp(1.5rem,4vw,2rem); color:var(--gold-soft); margin-top:10px }
+  .sig{ font-family:var(--script); font-size:clamp(2.4rem,6.5vw,3.8rem); color:var(--gold); line-height:1; margin:22px 0 0; text-shadow:0 2px 30px rgba(217,164,65,.3) }
+  .seal{ width:84px; height:auto; margin:34px auto 0; display:block; opacity:.9 }
+  footer{ text-align:center; padding:30px 28px 54px; color:var(--cream-dim); font-size:.76rem; letter-spacing:.14em }
+
+  /* ---------- progress rail (desktop) ---------- */
+  .rail{
+    position:fixed; right:20px; top:50%; transform:translateY(-50%); z-index:var(--z-rail);
+    display:flex; flex-direction:column; align-items:center; gap:11px;
+  }
+  .rail .home{
+    color:var(--gold-soft); font-size:14px; text-decoration:none; opacity:.7;
+    margin-bottom:4px; transition:opacity .3s, transform .3s;
+  }
+  .rail .home:hover{ opacity:1; transform:scale(1.18) }
+  .rail a.dot{
+    width:9px; height:9px; border-radius:50%; background:transparent;
+    border:1px solid rgba(231,196,137,.5); position:relative; transition:all .35s var(--ease);
+  }
+  .rail a.dot::after{ /* tooltip */
+    content:attr(data-name); position:absolute; right:20px; top:50%; transform:translateY(-50%) translateX(6px);
+    font-family:var(--sans); font-size:.62rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--gold-soft); white-space:nowrap; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s;
+  }
+  .rail a.dot:hover{ border-color:var(--gold); background:rgba(231,196,137,.4) }
+  .rail a.dot:hover::after{ opacity:.95; transform:translateY(-50%) translateX(0) }
+  .rail a.dot.active{ background:var(--gold); border-color:var(--gold); transform:scale(1.35);
+    box-shadow:0 0 0 3px rgba(217,164,65,.18) }
+  @media (max-width:900px){ .rail{ display:none } }
+
+  /* ---------- reveal motion ---------- */
+  .reveal{ opacity:0; transform:translateY(30px); transition:opacity .95s var(--ease), transform .95s var(--ease); }
+  .reveal.in{ opacity:1; transform:none }
+  .reveal.d1{ transition-delay:.12s } .reveal.d2{ transition-delay:.24s } .reveal.d3{ transition-delay:.36s }
+  /* the square photo settles in with a subtle scale instead of a slide */
+  .law-img.reveal{ transform:scale(1.05); transition:opacity 1.1s var(--ease), transform 1.1s var(--ease); }
+  .law-img.reveal.in{ transform:scale(1); }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; scroll-snap-type:none }
+    .reveal{ opacity:1 !important; transform:none !important; transition:none }
+    .law-img.reveal{ transform:none !important }
+    .med,.lab{ animation:none !important; opacity:1 !important; transform:none !important }
+    .hero .kicker,.hero h1,.hero .sub,.hero .meta{ animation:none !important; opacity:1 !important; transform:none !important; filter:none !important }
+    .scrollcue{ animation:none !important; opacity:.6 !important }
+  }
+</style>
+</head>
+<body>
+<div id="sky"></div>
+<canvas id="stars"></canvas>
+
+<nav class="rail" id="rail" aria-label="Jump to a sign">
+  <a class="home" href="#wheel" title="The Wheel">&#10022;</a>
+</nav>
+
+<!-- HERO -->
+<header class="panel panel--full hero" id="top">
+  <div class="hero-in">
+    <p class="kicker">Read this first</p>
+    <h1>The 1% Manifesto</h1>
+    <p class="sub">the door to the life you keep almost living</p>
+    <p class="meta">by Eleanora</p>
+  </div>
+  <div class="scrollcue" aria-hidden="true"></div>
+</header>
+
+<!-- PRELUDE I -->
+<section class="panel prelude" id="prelude-1">
+  <div class="inner narrow reveal">
+    <p class="lede">You came here for the 1%. You're thinking money. I get it.</p>
+    <p>That's not the 1% I mean though. I mean the people who wake up and actually love their life. And it has nothing to do with money. Money buys you opportunities, that part is true. But you can have every opportunity on earth and still be miserable. You can have all of it and never once figure out what happy was even supposed to feel like.</p>
+    <p class="beat">That is the room almost no one gets into. I'm going to show you the door to it.</p>
+  </div>
+</section>
+
+<!-- LAW ZERO (the door, right after "I'm going to show you the door to it") -->
+<section class="panel lawzero" id="law-zero">
+  <div class="inner reveal">
+    <div class="plate">
+      <span class="no">Law Zero</span>
+      <p>The advantage is not knowing; it is executing what everyone knows and almost no one does.</p>
+    </div>
+    <p class="under">The door is open. It always has been. No lock, no line, no test to pass. And almost nobody walks through.</p>
+  </div>
+</section>
+
+<!-- PRELUDE II -->
+<section class="panel prelude" id="prelude-2">
+  <div class="inner narrow reveal">
+    <p>So you found it. Congratulations. The secret to happiness, right here, no fine print.</p>
+    <p>Here it is. <strong>Happiness is a mindset.</strong> You find whatever you go looking for.</p>
+    <p class="beat">Alright. Have fun with that.</p>
+    <p>No. For real. I know you have heard "it is all mindset" a hundred times and rolled your eyes. So do not take my word for it. Buy a red car and suddenly red cars are everywhere. They were always there, your eyes just started letting them in. Decide someone is against you, and every little thing they do turns into proof. Two people walk out of the same room having lived two different days.</p>
+    <p>That is not magic, it is just how attention works. You do not see the world as it is, you see it the way you are looking for it. Look for everything wrong and you will find it, all day. Look for one thing to be grateful for, and that shows up too. Same life, different eyes. So the life in front of you is not only happening to you. You are painting it, and you have been holding the brush the whole time. That part comes first. The work comes after, and when you do it from there, that is when things start to move.</p>
+    <p>And here is what makes it click. This comes from three places that have nothing to do with each other. Cold logic, the kind you can prove on paper. The zodiac, the oldest map we have of who a person is. And the old wisdom the mystics wrote down long before any of us got here. Three roads that never once talk to each other, and they all end at the same door. When three strangers that different tell you the exact same thing, you stop calling it a coincidence. You start calling it the truth.</p>
+    <p class="beat">Twelve signs. Twelve laws. One a month, or one for a lifetime. The dose is yours.</p>
+  </div>
+</section>
+
+<!-- THE WHEEL -->
+<section class="panel panel--full wheel-panel" id="wheel">
+  <div class="inner reveal">
+    <svg class="sprig" viewBox="0 0 120 24" aria-hidden="true"><line x1="10" y1="12" x2="110" y2="12"/><circle cx="60" cy="12" r="2.4"/><path d="M60 12 q -9 -9 -20 -7 M60 12 q 9 -9 20 -7 M60 12 q -9 9 -20 7 M60 12 q 9 9 20 7"/></svg>
+    <p class="eyebrow">The Wheel</p>
+    <h2>A year, one turn</h2>
+    <p class="three-roads">logic &middot; the stars &middot; the soul</p>
+    <div class="stage" id="stage">
+      <svg viewBox="0 0 1000 1000" aria-label="The zodiac wheel of twelve. Select a sign to read its law.">
+        <defs>
+          <radialGradient id="sun" cx="50%" cy="44%" r="62%">
+            <stop offset="0%" stop-color="#F6E4B0"/><stop offset="48%" stop-color="#E7C489"/><stop offset="100%" stop-color="#D9A441"/>
+          </radialGradient>
+          <mask id="cres">
+            <circle cx="486" cy="500" r="25" fill="#fff"/>
+            <circle cx="503" cy="497" r="23" fill="#000"/>
+          </mask>
+          <g id="clips"></g>
+        </defs>
+        <circle class="ring" cx="500" cy="500" r="486" style="opacity:.6;stroke-width:1.4"/>
+        <circle class="ring" cx="500" cy="500" r="318" style="opacity:.28;stroke-width:1"/>
+        <g id="spokes"></g>
+        <g id="meds"></g>
+        <g id="labels"></g>
+        <g id="center"></g>
+      </svg>
+    </div>
+    <p class="wheel-hint">Tap any sign to enter its law</p>
+  </div>
+</section>
+
+<!-- THE TWELVE LAWS (generated) -->
+<main id="laws"></main>
+
+<!-- CLOSER -->
+<section class="panel closer" id="closer">
+  <div class="inner narrow reveal">
+    <svg class="sprig" viewBox="0 0 120 24" aria-hidden="true"><line x1="10" y1="12" x2="110" y2="12"/><circle cx="60" cy="12" r="2.4"/><path d="M60 12 q -9 -9 -20 -7 M60 12 q 9 -9 20 -7 M60 12 q -9 9 -20 7 M60 12 q 9 9 20 7"/></svg>
+    <h2>How to use it</h2>
+    <p>You do not need all twelve. Four, run for real, will change your life past recognition. Start with the one that made you most uncomfortable to read, because that is the one you need. That is the whole shape of it: one sign, then the next, all the way around the wheel, at whatever pace is yours.</p>
+    <p class="ninetynine">Ninety-nine percent of people will read this and do nothing. They will tell themselves that reading it was the improvement, that something has already changed. <strong>Nothing has.</strong> That is exactly why you are still living the same old life you have always lived. Reading is not the door. Walking through it is.</p>
+    <p class="door">The door is open. It has been open this whole time. I am just the first one standing here holding it.</p>
+    <p class="comehome">Come become the 1%. The real one.</p>
+    <p class="sig">xo, Eleanora</p>
+    <img class="seal" src="brand/assets/eleanora-seal.png" alt="The Eleanora seal">
+  </div>
+</section>
+
+<footer>The 1% Manifesto &middot; an archive of her stories &middot; corraoelena.com</footer>
+
+<script>
+/* ------------------------------------------------------------------ *
+ *  THE TWELVE — single source of truth for both the wheel + the laws  *
+ * ------------------------------------------------------------------ */
+const LAWS = [
+  { g:"♈", name:"Aries", num:"One", title:"Understanding Agency", theme:"the first move",
+    img:"content/North%20America/saint-pete/crimson-sunset-sea-oats.jpg",
+    law:"Act as if you do not need permission, because you do not.",
+    body:[
+      `Nobody is coming. There is no committee deciding you are ready, no line, no permission to wait for. Most walls in your way are just habits wearing a costume. "It can't be done" almost always means "it isn't usually done." The only real cost of trying is a little embarrassment, and embarrassment leaves no scar. Some walls are real, like money or health. The skill is telling those apart from the made-up ones, and refusing to treat every wall as real.`,
+      `Here is the part that sounds like magic and is not. The moment you start moving, the coincidences start too. You take the scary step and the right person appears, or a door opens that you never saw. This is real manifesting, and it is the opposite of a vision board. You do not get the life by wanting it. You become the person who already has it, and you move like them, before any of it is true.`,
+      `This is why agency comes first. Every other law in here needs someone willing to move before they feel ready. The ones who wait to feel ready stay exactly where they are. The ones who move watch the world start to arrange itself around them.`
+    ] },
+  { g:"♉", name:"Taurus", num:"Two", title:"The Hardware", theme:"the body",
+    img:"content/North%20America/saint-pete/lady-palm-fronds.jpg",
+    law:"The body is the hardware; no software runs well on a fried machine.",
+    body:[
+      `There is no sharp mind inside a fried body. Your judgment, your memory, your mood, all of it is made of chemistry, and that chemistry is built by sleep, sunlight, movement, and real food. None of this is secret. Almost everyone knows it and does not do it, which is exactly where your first edge is hiding.`,
+      `You cannot hold a new identity while running on empty. The "high vibe" everyone chases is not a crystal or a chant. It is your own chemistry, and you make it with rest and morning light, for free. Step off the treadmill of cheap stimulation and onto the slower, stronger ground of a body that actually works.`,
+      `This is the law nobody wants to be the answer, because it is plain and it is free. But every other law runs on this hardware. A tired mind cannot see straight, choose well, or feel worthy of anything. Tend the body and the rest of the wheel gets easier to turn.`
+    ] },
+  { g:"♊", name:"Gemini", num:"Three", title:"The Four Mother Skills", theme:"the toolbox",
+    img:"content/North%20America/saint-pete/towering-cumulus-blue-sky.jpg",
+    law:"Learn, write, sell, multiply; everything else is a branch of these four roots.",
+    body:[
+      `There are thousands of skills and four that give birth to all the rest. Learn how to learn, because doing beats reading and teaching beats both. Write, because clear writing is just clear thinking with the cheating removed. Sell, because the best work stays invisible until someone chooses it. And use leverage, the things that keep working while you sleep.`,
+      `Your energy flows wherever your skill sends it, and it comes back to whoever gives first. Say your want out loud and put it in writing, because naming a thing plainly is the first act of making it real. This is how you script a life on purpose instead of by accident.`,
+      `Master these four and any new field becomes a matter of months, not years. They multiply each other, and they multiply everything else you will ever try to build. This is the toolbox the whole rest of your life gets made with.`
+    ] },
+  { g:"♋", name:"Cancer", num:"Four", title:"Define Your Enough", theme:"the finish line",
+    img:"content/2019-croatia/the-secluded-beach.jpg",
+    law:"Win the game without letting the game win you.",
+    body:[
+      `Your brain moves the goalposts every time you score. It is built that way, so hitting the number never feels the way you pictured it would. The only fix is to decide what "enough" is, in writing, before you start. Otherwise you chase forever and call it ambition.`,
+      `When you have never named your enough, you take it from the people around you without meaning to. You control, you grab, you compete for scraps you do not even want. You cannot build a full life out of a feeling of lack. Name your enough and the quiet grabbing stops.`,
+      `This is what keeps you off the worst list there is: the people who are top 1% in money and top 1% in misery at the same time. Enough is not settling. It is the one thing that lets the win actually feel like winning when you get there.`
+    ] },
+  { g:"♌", name:"Leo", num:"Five", title:"The Inner Game", theme:"the throne",
+    img:"content/North%20America/saint-pete/flower-marigold-red-yellow.jpg",
+    law:"Control what is yours, release what is not, and keep the ego in the back seat.",
+    body:[
+      `Split the world with a razor. On one side, what you control: your actions, your attention, your word. On the other, what you do not: outcomes, other people's opinions, the past. Nearly all your stress lives in the second pile, dressed up as responsible worry. And remember, nothing is ever as good or as bad as it feels in the first day.`,
+      `The real throne is not the loud ego. It is the calm underneath it. You do not manifest from wanting, you manifest from feeling worthy of the thing. If some quiet part of you does not believe you deserve it, you will push it away without ever noticing you did.`,
+      `This is the hinge the whole manual turns on. The outside is always chasing the inside. Steady the inside, keep the ego out of the driver's seat, and every other law finally has solid ground to stand on.`
+    ] },
+  { g:"♍", name:"Virgo", num:"Six", title:"Attention", theme:"the only capital",
+    img:"_intake/IMG_9291.jpg",
+    law:"Your attention is your only true capital; everything else is a derivative.",
+    body:[
+      `You become whatever you pay attention to. Your life, in the end, is the sum of what you let in, nothing more. There is a whole industry built to chop your focus into pieces and sell them to the highest bidder, which is why one hour of real focus has quietly become a superpower.`,
+      `But attention is not only about what is in front of you now. It is also the old story you are still secretly watching on a loop. You cannot aim at a new life while replaying the old one. Notice the pattern you keep running, name it, and only then choose what to look at instead.`,
+      `Everything you have read so far runs through this one law. What you attend to becomes who you are, so this is the quiet switch that decides whether any of the others take. Guard it like it is the whole game, because it is.`
+    ] },
+  { g:"♎", name:"Libra", num:"Seven", title:"People", theme:"the room",
+    img:"content/North%20America/saint-pete/cumulus-sunrays-teal.jpg",
+    law:"Be the person people want to play the long game with.",
+    body:[
+      `You become the average of your room. Not the people you follow on a screen, the ones you actually stand next to. Your reputation is the slowest thing to build and the fastest thing to lose, so you build it by being useful and keeping your word for years, without keeping score.`,
+      `The two biggest choices of your life are who you build with and who you love. Give them more thought than most people give to buying a car. And let your gut, not old habit or old guilt, decide who you let close and who you let go.`,
+      `Nobody you admire did it alone. Check any biography and you will find partners, mentors, friends who lent money, strangers who opened doors. Your circle is not a nice-to-have. It is the current you float on or fight against your whole life.`
+    ] },
+  { g:"♏", name:"Scorpio", num:"Eight", title:"Seeing Reality", theme:"the clear eye",
+    img:"content/2019-croatia/island-at-sea.jpg",
+    law:"Reality is non-negotiable; your only choice is to see it early or pay for it late.",
+    body:[
+      `Your brain did not come built to see the truth. It came built to keep you safe and keep you liked. So you see what you already believe, and you defend your mistakes like they are your children. Your idea of the world is a map, and every map is wrong somewhere.`,
+      `Seeing straight is also how you see people. Look all the way through someone, past the mask, to who they really are, and then lift what you see. Truth without the drama. Depth without the drain.`,
+      `Ask one question of every belief you hold: what would change my mind? If the answer is nothing, that is not a belief, it is a costume. The ones who can face the hard truth early pay a small price now. Everyone else pays a much larger one later.`
+    ] },
+  { g:"♐", name:"Sagittarius", num:"Nine", title:"Choosing the Game", theme:"the aim",
+    img:"_intake/IMG_9984.jpg",
+    law:"Do not play the wrong game better; choose the game before improving the play.",
+    body:[
+      `Most people never choose their game. They inherit it from their parents, their town, their feed, and spend a whole life competing in a contest they never signed up for. Stopping to actually choose is the highest-leverage move there is. Run from games where you only win by making someone else lose, and choose ones where playing a long time is an advantage.`,
+      `Aim your game at where the world is going, not where it has already been. The rare, useful person is not the top one in the world at a single thing, which is mostly luck. It is the one who is very good at two or three things that multiply each other. That intersection is a decision, not a lottery.`,
+      `You can win the wrong game with perfect skill and still lose your life to it. This is the law that decides whether all your effort points somewhere worth arriving. Choose first. Then the work counts.`
+    ] },
+  { g:"♑", name:"Capricorn", num:"Ten", title:"Compound Interest", theme:"the long clock",
+    img:"content/Europa/portugal/sintra-moorish-castle-hilltop.jpg",
+    law:"Plant daily and harvest late. That is the entire secret that never existed.",
+    body:[
+      `Everything that matters compounds. Skills, trust, health, money, and the small daily reps of becoming who you are becoming. The cheapest edge on earth is a long time horizon. Almost everyone competes at ninety days. Almost nobody competes at ten years, so by mile twenty there is no one left to race.`,
+      `This is manifesting's real clock. You hold a clear picture of who you are becoming, you feed it one small action a day, and you let time do the multiplying. Be impatient with the action and patient with the result. Most people do it backwards and quit right before it works.`,
+      `Boring consistency beats heroic intensity over any stretch longer than a month. The one who does a little every day buries the one who did a lot once. This is where the whole wheel quietly pays out.`
+    ] },
+  { g:"♒", name:"Aquarius", num:"Eleven", title:"Bets and Luck", theme:"the wide net",
+    img:"content/North%20America/saint-pete/beach-cumulus-dune.jpg",
+    law:"Cap the loss, uncap the gain, and repeat until luck finds you.",
+    body:[
+      `Stop waiting for certainty. Every real move is a bet made with the lights half on, and whoever demands to be sure first has already chosen not to move. Make many small bets where the loss is small and the win is huge. And never bet what you cannot afford to lose, because the one who survives every bad hand is still at the table when the good one comes.`,
+      `Luck is real and it is enormous, but you can widen the surface where it lands. Hold a clear intention, say it out loud, and share it, because an intention gets stronger when more than one person holds it. Add gratitude, and expect good things to come.`,
+      `You cannot control luck, but you can control how often you are standing where it strikes. Make things and show them in the open. Keep your bets small and many. Stay in the game long enough for the good hand to arrive, because it will.`
+    ] },
+  { g:"♓", name:"Pisces", num:"Twelve", title:"Usage Protocol", theme:"becoming it",
+    img:"content/North%20America/rhode-island/jamestown-schooner-blue-ocean.jpg",
+    law:"The manual does not work; the one who executes it does.",
+    body:[
+      `Reading this changed you exactly zero. Texts do not change anyone, repetitions do. The map is not the walk. Everything in these pages is worth nothing until it becomes something you actually do, over and over, on the ordinary days.`,
+      `So the manual is meant to dissolve into you. You practice past the noise, past the days you do not feel like it, until the thing is no longer effort. It is just who you are now. That is the whole point of turning the wheel.`,
+      `Reread the map every six months, because you will have changed even when the words have not. When you finally live a chapter, teach it to someone, because teaching is the one exam you cannot cheat. And question all of it. Keep what survives real life, and burn what does not.`
+    ] }
+];
+const slug = s => s.toLowerCase();
+
+/* ---------- build the twelve law panels ---------- */
+(function(){
+  const host = document.getElementById('laws');
+  LAWS.forEach((L,i)=>{
+    const sec = document.createElement('section');
+    sec.className = 'panel law-panel';
+    sec.id = slug(L.name);
+    sec.dataset.i = i;
+    const bodyHtml = L.body.map(t=>`<p>${t}</p>`).join('');
+    sec.innerHTML = `
+      <div class="inner law-grid">
+        <div class="law-head reveal">
+          <span class="idx">${L.num}<span class="g" aria-hidden="true">${L.g}︎</span>${L.name}</span>
+          <h2 class="law-title">${L.title}</h2>
+        </div>
+        <div class="law-img reveal d1" style="--img:url('${L.img}')" role="img" aria-label="${L.name} — ${L.theme}">
+          <span class="tag" aria-hidden="true">${L.g}︎</span>
+        </div>
+        <div class="law-body reveal d2">${bodyHtml}</div>
+        <div class="law-line reveal">
+          <span class="no">Law ${L.num}</span>
+          <p>${L.law}</p>
+          <a class="rewheel" href="#wheel">&#8593; back to the wheel</a>
+        </div>
+      </div>`;
+    host.appendChild(sec);
+  });
+})();
+
+/* ---------- build the progress rail ---------- */
+(function(){
+  const rail = document.getElementById('rail');
+  LAWS.forEach(L=>{
+    const a = document.createElement('a');
+    a.className = 'dot'; a.href = '#'+slug(L.name);
+    a.dataset.name = L.name; a.dataset.for = slug(L.name);
+    a.setAttribute('aria-label', L.num+' '+L.name+' — '+L.title);
+    rail.appendChild(a);
+  });
+})();
+
+/* ------------------------------------------------------------------ *
+ *  THE WHEEL — medallion pinwheel, each medallion links to its law    *
+ * ------------------------------------------------------------------ */
+(function(){
+  const NS="http://www.w3.org/2000/svg", cx=500, cy=500;
+  const Rmed=318, rMed=80, Rglyph=428, Rname=214, Rspoke0=70, Rspoke1=214;
+  const clips=document.getElementById('clips'), meds=document.getElementById('meds'),
+        spokes=document.getElementById('spokes'), labels=document.getElementById('labels');
+  const P=(ang,r)=>[cx+r*Math.cos(ang*Math.PI/180), cy+r*Math.sin(ang*Math.PI/180)];
+
+  LAWS.forEach((L,i)=>{
+    const mid=-90+i*30;
+    const [sx1,sy1]=P(mid,Rspoke0),[sx2,sy2]=P(mid,Rspoke1);
+    const sp=document.createElementNS(NS,'line'); sp.setAttribute('class','spoke');
+    sp.setAttribute('x1',sx1);sp.setAttribute('y1',sy1);sp.setAttribute('x2',sx2);sp.setAttribute('y2',sy2); spokes.appendChild(sp);
+
+    const [mx,my]=P(mid,Rmed);
+    const cp=document.createElementNS(NS,'clipPath'); cp.id='m'+i;
+    const cc=document.createElementNS(NS,'circle'); cc.setAttribute('cx',mx);cc.setAttribute('cy',my);cc.setAttribute('r',rMed); cp.appendChild(cc); clips.appendChild(cp);
+
+    // anchor wraps the medallion → clicking jumps to that sign's panel
+    const link=document.createElementNS(NS,'a');
+    link.setAttribute('href','#'+slug(L.name));
+    link.setAttribute('class','spot');
+    link.setAttribute('aria-label', 'Enter '+L.name+' — '+L.title);
+
+    const g=document.createElementNS(NS,'g'); g.setAttribute('class','med'); g.style.animationDelay=(0.2+i*0.08)+'s';
+    const box=rMed*2.1;
+    const im=document.createElementNS(NS,'image'); im.setAttribute('class','med-img');
+    im.setAttribute('href',L.img);
+    im.setAttribute('x',mx-box/2);im.setAttribute('y',my-box/2);im.setAttribute('width',box);im.setAttribute('height',box);
+    im.setAttribute('preserveAspectRatio','xMidYMid slice'); im.setAttribute('clip-path','url(#m'+i+')');
+    g.appendChild(im);
+    const rr=document.createElementNS(NS,'circle'); rr.setAttribute('class','medring'); rr.setAttribute('cx',mx);rr.setAttribute('cy',my);rr.setAttribute('r',rMed); g.appendChild(rr);
+    link.appendChild(g); meds.appendChild(link);
+
+    const lg=document.createElementNS(NS,'g'); lg.setAttribute('class','lab'); lg.style.animationDelay=(0.9+i*0.08)+'s';
+    const [gx,gy]=P(mid,Rglyph);
+    const gl=document.createElementNS(NS,'text'); gl.setAttribute('class','glyph-w'); gl.setAttribute('x',gx);gl.setAttribute('y',gy); gl.textContent=L.g+'︎'; lg.appendChild(gl);
+    const [nx,ny]=P(mid,Rname);
+    const nm=document.createElementNS(NS,'text'); nm.setAttribute('class','name-w'); nm.setAttribute('x',nx);nm.setAttribute('y',ny); nm.textContent=L.name.toUpperCase(); lg.appendChild(nm);
+    labels.appendChild(lg);
+  });
+
+  // center emblem: radiant sun cradled by a crescent moon
+  const g=document.getElementById('center');
+  for(let k=0;k<12;k++){ const a=k*30, [x1,y1]=P(a,40),[x2,y2]=P(a,53);
+    const r=document.createElementNS(NS,'line');
+    r.setAttribute('x1',x1);r.setAttribute('y1',y1);r.setAttribute('x2',x2);r.setAttribute('y2',y2);
+    r.setAttribute('stroke','#D9A441');r.setAttribute('stroke-width','2.4');r.setAttribute('stroke-linecap','round');r.setAttribute('opacity','.85');
+    g.appendChild(r);
+  }
+  const sun=document.createElementNS(NS,'circle');
+  sun.setAttribute('cx',508);sun.setAttribute('cy',500);sun.setAttribute('r',27);sun.setAttribute('fill','url(#sun)');
+  g.appendChild(sun);
+  const moon=document.createElementNS(NS,'circle');
+  moon.setAttribute('cx',486);moon.setAttribute('cy',500);moon.setAttribute('r',25);
+  moon.setAttribute('fill','#F1E7CE');moon.setAttribute('mask','url(#cres)');
+  g.appendChild(moon);
+})();
+
+/* ------------------------------------------------------------------ *
+ *  STARFIELD                                                          *
+ * ------------------------------------------------------------------ */
+(function(){
+  const c=document.getElementById('stars'), ctx=c.getContext('2d');
+  let w,h,stars,raf;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){
+    w=c.width=innerWidth*devicePixelRatio; h=c.height=innerHeight*devicePixelRatio;
+    const n=Math.min(150,Math.floor(innerWidth/9));
+    stars=Array.from({length:n},()=>({x:Math.random()*w,y:Math.random()*h,
+      r:(Math.random()*1.3+0.3)*devicePixelRatio,a:Math.random()*0.5+0.2,
+      tw:Math.random()*0.02+0.004,p:Math.random()*Math.PI*2,gold:Math.random()>0.6}));
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(const s of stars){ s.p+=s.tw; const a=reduce? s.a : s.a+Math.sin(s.p)*0.18;
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=s.gold?'rgba(231,196,137,'+a+')':'rgba(246,241,231,'+a+')'; ctx.fill(); }
+    if(!reduce) raf=requestAnimationFrame(draw);
+  }
+  size(); draw();
+  addEventListener('resize',()=>{ cancelAnimationFrame(raf); size(); draw(); });
+})();
+
+/* ------------------------------------------------------------------ *
+ *  REVEALS + WHEEL ASSEMBLE + RAIL ACTIVE STATE                       *
+ * ------------------------------------------------------------------ */
+(function(){
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reveals=Array.from(document.querySelectorAll('.reveal'));
+  if(reduce || !('IntersectionObserver' in window)){
+    reveals.forEach(e=>e.classList.add('in'));
+    document.getElementById('stage').classList.add('go');
+  } else {
+    const io=new IntersectionObserver((ents)=>{
+      for(const en of ents){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} }
+    },{rootMargin:'0px 0px -8% 0px',threshold:0.12});
+    reveals.forEach(e=>io.observe(e));
+    // wheel assembles on arrival
+    const stage=document.getElementById('stage');
+    const wio=new IntersectionObserver((ents)=>{
+      for(const en of ents){ if(en.isIntersecting){ stage.classList.add('go'); wio.disconnect(); } }
+    },{threshold:0.35});
+    wio.observe(stage);
+    // safety net: never leave anything hidden
+    addEventListener('load',()=>setTimeout(()=>{ reveals.forEach(e=>e.classList.add('in')); stage.classList.add('go'); },1800));
+  }
+
+  // rail active state tracks the sign in view
+  const dots=new Map(Array.from(document.querySelectorAll('.rail a.dot')).map(a=>[a.dataset.for,a]));
+  const panels=LAWS.map(L=>document.getElementById(L.name.toLowerCase()));
+  if('IntersectionObserver' in window){
+    const sio=new IntersectionObserver((ents)=>{
+      ents.forEach(en=>{
+        if(en.isIntersecting){
+          dots.forEach(d=>d.classList.remove('active'));
+          const d=dots.get(en.target.id); if(d) d.classList.add('active');
+        }
+      });
+    },{threshold:0.5});
+    panels.forEach(p=>p&&sio.observe(p));
+  }
+})();
+
+/* ------------------------------------------------------------------ *
+ *  THE TRAVELLING SKY — night -> dusk -> day, lerped to scroll         *
+ *  One phase per panel (DOM order). The sky crossfades between the     *
+ *  panel above the sample line and the one below it, so the sunrise    *
+ *  happens in the gap between panels and never behind live text.       *
+ * ------------------------------------------------------------------ */
+(function(){
+  // [ skyTop, skyBottom, starAlpha, theme ] — aligned to .panel order
+  const PH = [
+    ['#0a0e0a','#0d120d',1.00,'dark'],  // hero        — deepest night
+    ['#0c110c','#0f150e',1.00,'dark'],  // prelude I
+    ['#0a100b','#0e140e',1.00,'dark'],  // Law Zero    — the trials (the door)
+    ['#0f150e','#121810',0.95,'dark'],  // prelude II
+    ['#0e1620','#132030',0.85,'dark'],  // the Wheel   — twilight enters
+    ['#141f2e','#1b2740',0.72,'dark'],  // Aries       — dusk indigo
+    ['#1c2340','#251f42',0.62,'dark'],  // Taurus      — violet
+    ['#281d40','#331b3a',0.52,'dark'],  // Gemini      — plum
+    ['#341b38','#411a30',0.42,'dark'],  // Cancer      — mulberry
+    ['#411a2e','#4e1c28',0.34,'dark'],  // Leo         — wine
+    ['#4e1c28','#5c2422',0.26,'dark'],  // Virgo       — oxblood
+    ['#5c2422','#6b2e1c',0.19,'dark'],  // Libra       — deep rust
+    ['#6b2e1c','#7a3a18',0.12,'dark'],  // Scorpio     — rust
+    ['#7a3a18','#8c4e18',0.05,'dark'],  // Sagittarius — pre-dawn amber (deepest warm)
+    ['#b5793a','#d7a660',0.00,'light'], // Capricorn   — SUNRISE breaks
+    ['#dcb679','#eed7a2',0.00,'light'], // Aquarius    — morning
+    ['#eed7a2','#f4e7c4',0.00,'light'], // Pisces      — day
+    ['#f5ecce','#faf4e0',0.00,'light']  // closer      — full daylight
+  ];
+  const sky=document.getElementById('sky');
+  const stars=document.getElementById('stars');
+  const panels=[...document.querySelectorAll('.panel')];
+  const footer=document.querySelector('footer');
+  panels.forEach((el,i)=>{ const ph=PH[i]||PH[PH.length-1]; el.classList.add(ph[3]==='light'?'on-light':'on-dark'); });
+  if(footer) footer.classList.add('on-light');
+
+  const hex=h=>[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];
+  const T=PH.map(p=>hex(p[0])), B=PH.map(p=>hex(p[1])), S=PH.map(p=>p[2]);
+  const L=(a,b,f)=>a+(b-a)*f;
+  const rgb=(a,b,f)=>`rgb(${Math.round(L(a[0],b[0],f))},${Math.round(L(a[1],b[1],f))},${Math.round(L(a[2],b[2],f))})`;
+  let centers=[];
+  function measure(){ centers=panels.map(el=>{ const r=el.getBoundingClientRect(); return r.top+window.scrollY+r.height/2; }); }
+  let ticking=false;
+  function update(){
+    ticking=false;
+    if(!centers.length) measure();
+    const sample=window.scrollY+window.innerHeight*0.58;
+    let i=0; while(i<centers.length-1 && centers[i+1]<=sample) i++;
+    const j=Math.min(i+1,centers.length-1);
+    const c0=centers[i], c1=centers[j];
+    let f = c1>c0 ? (sample-c0)/(c1-c0) : 0; f=f<0?0:f>1?1:f;
+    sky.style.background=`linear-gradient(180deg, ${rgb(T[i],T[j],f)}, ${rgb(B[i],B[j],f)})`;
+    stars.style.opacity=L(S[i],S[j],f).toFixed(3);
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',()=>{ measure(); update(); });
+  window.addEventListener('load',()=>{ measure(); update(); });
+  measure(); update();
+})();
+</script>
+</body>
+</html>
