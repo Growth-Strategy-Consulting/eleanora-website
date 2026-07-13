@@ -358,22 +358,29 @@ body.anim .reveal.in{opacity:1;transform:none;}
   <span class="chap reveal">words &amp; light</span>
   <h3 class="serif reveal">From the Journal</h3>
   <div class="rule reveal"></div>
-  <div class="jt-grid">
-    <a class="jt-card reveal" href="journal-italy.html">
-      <div class="ph"><img src="img/blog-italy-flowerdoor.jpg" alt="A yellow doorway with climbing flowers in Bari, Italy"></div>
-      <div class="b"><div class="place">Bari, Italy</div><h4>The Thing We Keep Running From</h4></div>
-    </a>
-    <a class="jt-card reveal" href="journal-dubrovnik.html">
-      <div class="ph"><img src="img/blog-croatia-godhelpus.jpg" alt="GOD HELP US graffiti on a wall in Dubrovnik"></div>
-      <div class="b"><div class="place">Dubrovnik</div><h4>Drowning, but in Croatia</h4></div>
-    </a>
-    <a class="jt-card reveal" href="journal-quiet-one.html">
-      <div class="ph"><img src="img/hero-sunset-silhouette.jpg" alt="A lone figure walking the shoreline toward the last of the light"></div>
-      <div class="b"><div class="place">The Way I See It</div><h4>I've always been the quiet one. But I was just busy building my road map.</h4></div>
-    </a>
-  </div>
+  <div class="jt-grid" id="jt-grid"></div>
   <a class="btn reveal" href="journal.html">Read the Journal</a>
 </section>
+<script>
+/* homepage Journal teaser — renders the latest 3 from journal.json (single source of truth) */
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  fetch('journal.json').then(function(r){return r.json();}).then(function(data){
+    var grid=document.getElementById('jt-grid'); if(!grid)return;
+    (data.entries||[]).slice(0,3).forEach(function(e){
+      var t=e.talisman||{};
+      var a=document.createElement('a');
+      a.className='jt-card reveal';
+      a.href=e.slug+'.html';
+      a.innerHTML='<div class="ph"><img src="'+(t.img||'')+'" alt="'+(t.alt||'')+'"></div>'+
+        '<div class="b"><div class="place">'+(e.kicker||'')+'</div><h4>'+(e.title||'')+'</h4></div>';
+      grid.appendChild(a);
+      if(reduce){a.classList.add('in');}
+      else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.14,rootMargin:'0px 0px -8% 0px'});io.observe(a);}
+    });
+  }).catch(function(){});
+})();
+</script>
 
 <!-- ================= ABOUT (split) ================= -->
 <section class="split glow-b">

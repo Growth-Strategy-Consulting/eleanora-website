@@ -1,0 +1,70 @@
+{
+  "_readme": {
+    "what": "Single source of truth for the Eleanora Journal. journal.html (the wall), the homepage teaser, and every entry's talisman-close + read-next all render from this file. Add a story by appending one object to `entries` — never hand-edit the wall or the teaser.",
+    "buckets": "Every entry has one `bucket`: 'way-i-see-it' (the teaching series) · 'travels' (a trip, paired to a Collection) · 'people' (a memoir/tribute, soft close). The wall filter buttons are built from these.",
+    "the-talisman-rule": "The feature image IS the talisman — the print sold at the close of the entry. `talisman.img` is what shows on the wall card AND the buy block. `talisman.buyUrl` stays null until GoDaddy Payments (pay.corraoelena.com) is live; until then the buy button shows 'Prints coming soon' (same mock as collections.json). Never fake a live price/checkout.",
+    "the-exits": "`exits.collection` = a slug in collections.json (Travels entries → 'see the whole trip'). `exits.manual` true = Way-I-See-It entries end on the hook toward the paid manual. `soft` true (People) = a gentle 'a talisman to remember them by', no hard sell.",
+    "read-next": "Bottom of each entry shows 3 related, not-yet-visited entries (relatedness = shared `tags`, then same bucket). Visited slugs are tracked in the browser (localStorage).",
+    "proposed-talismans": "Talisman image/name matches are PROPOSED (from talisman-photo-article-map.md) until Elena confirms on the live site. Working names are in [brackets]. See handoff notes for reconcile items.",
+    "how-to-add-an-entry": "1) Write the story page site/journal-<slug>.html from the template (story + <div id='entry-foot'></div> + <script src='journal-entry.js'></script>, body data-slug='journal-<slug>'). 2) Append an object here with matching slug. That's it — wall, teaser, talisman-close, exits, and read-next all wire automatically."
+  },
+  "entries": [
+    {
+      "slug": "journal-quiet-one",
+      "bucket": "way-i-see-it",
+      "kicker": "The Way I See It",
+      "title": "I've always been the quiet one. But I was just busy building my road map.",
+      "accent": "stay close",
+      "excerpt": "Handed the map early — school, the job, the ring, the desk you sit at until they let you leave. I took a reckless risk, walked out, and built my own. Now I'm handing it to you, piece by piece.",
+      "tags": ["threshold", "agency", "beginning", "the-quiet-one"],
+      "talisman": {
+        "img": "img/hero-sunset-silhouette.jpg",
+        "alt": "A lone figure walking the shoreline toward the last of the light",
+        "name": "[working title — the long walk]",
+        "line": "What if this picture reminded you, every day, that you get to build your own road map? If you believed it could, would it?",
+        "price": "$20",
+        "buyUrl": null
+      },
+      "exits": { "collection": null, "manual": true },
+      "soft": false
+    },
+    {
+      "slug": "journal-dubrovnik",
+      "bucket": "travels",
+      "kicker": "Travels · Dubrovnik",
+      "title": "Drowning, but in Croatia",
+      "accent": "looking for a sign",
+      "excerpt": "I quit my job to come here, looking for a sign. And boy, did I find one — the first thing this country said to me, scrawled across a wall.",
+      "tags": ["travels", "croatia", "agency", "the-leap", "shadow"],
+      "talisman": {
+        "img": "img/croatia-island.jpg",
+        "alt": "A small green island floating in the calm blue sea off Dubrovnik",
+        "name": "Island at Sea",
+        "line": "What if this picture reminded you, every day, that the leap into open water was worth it? If you believed it could, would it?",
+        "price": "$20",
+        "buyUrl": null
+      },
+      "exits": { "collection": "croatia", "manual": false },
+      "soft": false
+    },
+    {
+      "slug": "journal-italy",
+      "bucket": "travels",
+      "kicker": "Travels · Bari, Italy",
+      "title": "The Thing We Keep Running From",
+      "accent": "piano, piano",
+      "excerpt": "The world runs on two speeds. Routine, which it calls living. Complacency, which it calls comfort. I found the third thing in Italy.",
+      "tags": ["travels", "italy", "patience", "presence", "inner-game"],
+      "talisman": {
+        "img": "img/blog-italy-flowerdoor.jpg",
+        "alt": "A yellow doorway with climbing flowers and a small red mailbox in Bari, Italy",
+        "name": "[working title — the flower door]",
+        "line": "What if this picture reminded you, every day, to let your life bloom in its own hour? If you believed it could, would it?",
+        "price": "$20",
+        "buyUrl": null
+      },
+      "exits": { "collection": "puglia", "manual": false },
+      "soft": false
+    }
+  ]
+}
