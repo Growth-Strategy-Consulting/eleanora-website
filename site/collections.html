@@ -41,10 +41,12 @@ nav a:hover::after,nav a.here::after{width:100%;}
 /* ---- page hero (matches Journal / Gallery) ---- */
 .c-hero{position:relative;height:62vh;min-height:460px;overflow:hidden;}
 .c-hero .bg{position:absolute;inset:0;}
-.c-hero .bg img{transform:scale(1.06);animation:kb 22s var(--ease) forwards;filter:saturate(1.05) contrast(1.03) sepia(.055) brightness(.92);}
+.c-hero .bg img{transform:scale(1.06);animation:kb 22s var(--ease) forwards;filter:saturate(.9) contrast(1.04) brightness(.83) sepia(.04);}
 @keyframes kb{to{transform:scale(1.14);}}
+/* consistent green-black tint (medium) — matches all heros */
 .c-hero::after{content:"";position:absolute;inset:0;
-  background:radial-gradient(120% 120% at 50% 46%,transparent 32%,rgba(14,19,16,.5) 100%),
+  background:linear-gradient(rgba(9,18,12,.42),rgba(9,18,12,.42)),
+             radial-gradient(120% 120% at 50% 46%,transparent 32%,rgba(14,19,16,.5) 100%),
              linear-gradient(180deg,rgba(14,19,16,.55) 0%,rgba(14,19,16,.12) 36%,rgba(14,19,16,.35) 64%,rgba(12,17,13,.96) 100%);}
 .c-hero .inner{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--cream);padding:0 24px;}
 .c-hero .eye{color:var(--sir-gold);margin-bottom:18px;}

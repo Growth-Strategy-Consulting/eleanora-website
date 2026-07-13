@@ -54,10 +54,12 @@ nav a:hover::after,nav a.on::after{width:100%;}
 /* ---------- HERO ---------- */
 .j-hero{position:relative;height:74vh;min-height:520px;overflow:hidden;}
 .j-hero .bg{position:absolute;inset:0;}
-.j-hero .bg img{transform:scale(1.06);animation:kb 22s var(--ease) forwards;}
+.j-hero .bg img{transform:scale(1.06);animation:kb 22s var(--ease) forwards;filter:saturate(.9) contrast(1.04) brightness(.83) sepia(.04);}
 @keyframes kb{to{transform:scale(1.14);}}
+/* consistent green-black tint (medium) — matches all heros */
 .j-hero::after{content:"";position:absolute;inset:0;
-  background:radial-gradient(120% 120% at 50% 46%,transparent 32%,rgba(20,28,22,.5) 100%),
+  background:linear-gradient(rgba(9,18,12,.42),rgba(9,18,12,.42)),
+             radial-gradient(120% 120% at 50% 46%,transparent 32%,rgba(20,28,22,.5) 100%),
              linear-gradient(180deg,rgba(20,28,22,.5) 0%,rgba(20,28,22,.1) 36%,rgba(20,28,22,.3) 64%,rgba(20,28,22,.95) 100%);}
 .j-hero .inner{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;color:var(--cream);padding:0 24px;}

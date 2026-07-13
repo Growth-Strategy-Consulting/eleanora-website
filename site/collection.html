@@ -40,8 +40,9 @@ nav a:hover::after,nav a.here::after{width:100%;}
 /* ---- collection hero ---- */
 .chero{position:relative;min-height:64vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:118px 24px 76px;color:var(--cream);}
 .chero .bg{position:absolute;inset:0;z-index:0;}
-.chero .bg img{filter:saturate(1.04) contrast(1.04) brightness(.86);}
-.chero .scrim{position:absolute;inset:0;z-index:1;background:radial-gradient(80% 60% at 50% 45%,rgba(10,14,11,.45),transparent 72%),linear-gradient(180deg,rgba(12,18,13,.55),rgba(20,28,18,.24) 45%,rgba(10,14,10,.84));}
+.chero .bg img{filter:saturate(.9) contrast(1.04) brightness(.83) sepia(.04);}
+/* consistent green-black tint (medium) — matches all heros */
+.chero .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(9,18,12,.42),rgba(9,18,12,.42)),radial-gradient(80% 60% at 50% 45%,rgba(10,14,11,.45),transparent 72%),linear-gradient(180deg,rgba(12,18,13,.55),rgba(20,28,18,.24) 45%,rgba(10,14,10,.84));}
 .chero .inner{position:relative;z-index:2;}
 .chero .back{display:inline-block;margin-bottom:22px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sir-gold);opacity:.9;}
 .chero .ey{color:var(--sir-gold);margin-bottom:10px;}
