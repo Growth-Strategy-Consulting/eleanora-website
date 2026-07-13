@@ -5,11 +5,17 @@ If a page contradicts this doc, the doc wins.*
 
 ## Top-level spine (nav on every page)
 
-**Gallery · Collections · Journal · About**
+**Gallery · Collections · Journal · Prints · About**
 
 - Password gate stays in front of the whole site (`/` → `/site/`).
 - **Contact** lives in the footer, not the nav.
-- **Retired:** the Prints room, the Blog room, and home.html's old nav. No page keeps them.
+- **Retired:** the Blog room and home.html's old nav. No page keeps them.
+- **Revived 2026-07-13:** the **Prints** room is back (Elena's call), reversing the
+  earlier "no separate shop" rule. Gallery stays a browse-only wander; **Prints** is
+  the flat, shoppable wall where a print is bought on its own, no story required.
+  `prints.html` currently clones the Gallery wall as its starting catalog — buy state
+  is mocked until GoDaddy Payments is live, same as Collections. TODO: drive Gallery +
+  Prints from one shared image list so the two walls don't drift (single source of truth).
 
 ## The four rooms
 
