@@ -34,7 +34,8 @@
       "cover": "img/puglia-polignano-cove-boats.jpg",
       "blurb": "Old stone, sea light, and doorways worth stopping for.",
       "photos": [
-        { "src": "img/puglia-polignano-cove-boats.jpg", "title": "The Cove", "alt": "Boats on the turquoise cove at Polignano a Mare", "story": "", "talisman": { "article": "journal-italy.html", "buyUrl": null } },
+        { "src": "img/puglia-polignano-cove-boats.jpg", "title": "The Cove", "alt": "Boats on the turquoise cove at Polignano a Mare", "story": "", "talisman": null },
+        { "src": "img/blog-italy-flowerdoor.jpg", "title": "The Flower Door", "alt": "A yellow doorway with climbing flowers and a small red mailbox in Bari, Italy", "story": "", "talisman": { "article": "journal-italy.html", "buyUrl": null } },
         { "src": "img/puglia-bari-cathedral.jpg", "title": "San Sabino", "alt": "The Romanesque facade and rose window of Bari cathedral", "story": "", "talisman": null },
         { "src": "img/puglia-polignano-clifftop.jpg", "title": "Town on the Cliff", "alt": "The whitewashed old town perched on the cliffs at Polignano a Mare", "story": "", "talisman": null },
         { "src": "img/puglia-brindisi-black-car.jpg", "title": "In the Shade", "alt": "A black vintage car parked by a doorway on a Brindisi street", "story": "", "talisman": null },
