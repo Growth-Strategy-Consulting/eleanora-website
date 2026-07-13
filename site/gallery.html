@@ -53,7 +53,7 @@ nav a:hover::after,nav a.on::after{width:100%;}
 /* ---------- GALLERY HERO ---------- */
 .g-hero{position:relative;height:58vh;min-height:440px;overflow:hidden;}
 .g-hero .bg{position:absolute;inset:0;}
-.g-hero .bg img{transform:scale(1.06);animation:kb 22s var(--ease) forwards;}
+.g-hero .bg img{object-position:50% 35%;transform:scale(1.06);animation:kb 22s var(--ease) forwards;}
 @keyframes kb{to{transform:scale(1.14);}}
 .g-hero::after{content:"";position:absolute;inset:0;
   background:radial-gradient(120% 120% at 50% 44%,transparent 34%,rgba(20,28,22,.5) 100%),
@@ -63,9 +63,11 @@ nav a:hover::after,nav a.on::after{width:100%;}
 .g-hero .ey{color:var(--gold);margin-bottom:16px;}
 .g-hero h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(44px,7vw,96px);line-height:1;letter-spacing:-.01em;
   text-shadow:0 8px 48px rgba(0,0,0,.5);}
+.g-hero .accent{font-family:'Allura',cursive;font-size:clamp(28px,3.6vw,46px);color:var(--gold);margin-top:10px;
+  text-shadow:0 2px 26px rgba(231,196,137,.3);}
 .g-hero p{max-width:48ch;margin:18px auto 0;font-size:14.5px;line-height:1.85;color:#e7e2d4;}
-.g-hero .ey,.g-hero h1,.g-hero p{opacity:0;transform:translateY(22px);animation:rise 1s var(--ease) forwards;}
-.g-hero .ey{animation-delay:.2s;} .g-hero h1{animation-delay:.38s;} .g-hero p{animation-delay:.58s;}
+.g-hero .ey,.g-hero h1,.g-hero .accent,.g-hero p{opacity:0;transform:translateY(22px);animation:rise 1s var(--ease) forwards;}
+.g-hero .ey{animation-delay:.2s;} .g-hero h1{animation-delay:.38s;} .g-hero .accent{animation-delay:.58s;} .g-hero p{animation-delay:.76s;}
 @keyframes rise{to{opacity:1;transform:none;}}
 
 /* ---------- FILTER BAR (sticky) ---------- */
@@ -134,6 +136,8 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 @media(max-width:560px){
   .wall{grid-template-columns:repeat(2,1fr);gap:12px;}
   .tile,.tile.lg,.tile.med,.tile.sq,.tile.wide{grid-column:span 2;aspect-ratio:4/5;}
+  /* portrait door on phones: keep the desktop crop; the vine lightly grazes the script line but text stays readable on the door */
+  .g-hero .bg img{object-position:50% 30%;transform:scale(1.06);animation:none;}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
@@ -164,10 +168,11 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 
 <!-- ================= HERO ================= -->
 <section class="g-hero">
-  <div class="bg"><img src="img/bw-smoke-editorial.jpg" alt="Black-and-white editorial portrait, a feather at her shoulder and soft smoke curling past her face"></div>
+  <div class="bg"><img src="img/croatia-blue-door.jpg" alt="A weathered blue door set in pale stone, Croatia"></div>
   <div class="inner">
     <div class="ey lab">Selected Work</div>
     <h1 class="serif">The Gallery</h1>
+    <div class="accent">salt on the skin, gold in the light</div>
     <p>Golden light, salt, and the female form as art. Nothing here comes to you bare. Every picture rides with its story.</p>
   </div>
 </section>
@@ -192,8 +197,8 @@ footer .cr .script{font-size:18px;color:var(--gold);}
     <figcaption><div class="t">Unguarded</div><div class="s">Portrait</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
   <a class="tile" href="collections.html" data-cat="women">
-    <img src="img/her-italy-chair.jpg" alt="Eleanora seated in a whimsical chair, Italy">
-    <figcaption><div class="t">A Whole Little World</div><div class="s">Italy</div><div class="buy">See the print &rarr;</div></figcaption>
+    <img src="img/her-floridarama-chair.jpg" alt="Eleanora seated in a whimsical strawberry pod chair at the Floridarama museum, Saint Pete">
+    <figcaption><div class="t">A Whole Little World</div><div class="s">Saint Pete</div><div class="buy">See the print &rarr;</div></figcaption>
   </a>
   <a class="tile" href="collections.html" data-cat="women">
     <img src="img/her-green-mirror.jpg" alt="Eleanora full-length in a red dress in a green mirrored room, Florida">

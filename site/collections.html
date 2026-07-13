@@ -10,10 +10,11 @@
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <style>
 @font-face{font-family:'Pinyon Script';src:url('../brand-hub/assets/fonts/PinyonScript-Regular.ttf');font-display:swap;}
+@font-face{font-family:'Allura';src:url('../brand-hub/assets/fonts/Allura-Regular.ttf');font-display:swap;}
 :root{
   --clay:#B87F51; --sand:#E4D7BE; --cream:#F6F1E7; --ink:#2B2019;
   --jg-pine:#22331F; --jg-forest:#2F4034; --jg-gold:#D9A441; --jg-cream:#F1E7D4;
-  --sir-gold:#E7C489;
+  --sir-gold:#E7C489; --ease:cubic-bezier(.16,1,.3,1);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -37,15 +38,26 @@ nav a{font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(-
 nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--sir-gold);transition:.3s;}
 nav a:hover::after,nav a.here::after{width:100%;}
 
-/* ---- page head ---- */
-.phead{position:relative;text-align:center;padding:150px 24px 40px;}
-.phead .eye{color:var(--sir-gold);opacity:.9;}
-.phead h1{font-family:'Pinyon Script',cursive;font-size:clamp(60px,10vw,120px);line-height:.95;margin:8px 0 16px;color:var(--cream);}
-.phead .sub{max-width:560px;margin:0 auto;font-size:15px;line-height:1.9;color:#c7cdbd;}
-.phead .rule{width:64px;height:1px;background:rgba(217,164,65,.5);margin:26px auto 0;}
+/* ---- page hero (matches Journal / Gallery) ---- */
+.c-hero{position:relative;height:62vh;min-height:460px;overflow:hidden;}
+.c-hero .bg{position:absolute;inset:0;}
+.c-hero .bg img{transform:scale(1.06);animation:kb 22s var(--ease) forwards;filter:saturate(1.05) contrast(1.03) sepia(.055) brightness(.92);}
+@keyframes kb{to{transform:scale(1.14);}}
+.c-hero::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 120% at 50% 46%,transparent 32%,rgba(14,19,16,.5) 100%),
+             linear-gradient(180deg,rgba(14,19,16,.55) 0%,rgba(14,19,16,.12) 36%,rgba(14,19,16,.35) 64%,rgba(12,17,13,.96) 100%);}
+.c-hero .inner{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--cream);padding:0 24px;}
+.c-hero .eye{color:var(--sir-gold);margin-bottom:18px;}
+.c-hero h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;font-size:clamp(44px,7vw,96px);line-height:1;letter-spacing:-.01em;text-wrap:balance;text-shadow:0 8px 48px rgba(0,0,0,.5);}
+.c-hero .accent{font-family:'Allura',cursive;font-size:clamp(28px,3.6vw,46px);color:var(--sir-gold);margin-top:10px;text-shadow:0 2px 26px rgba(231,196,137,.3);}
+.c-hero .sub{max-width:52ch;margin:22px auto 0;font-size:15.5px;line-height:1.9;color:#e7e2d4;text-shadow:0 2px 14px rgba(0,0,0,.5);}
+.c-hero .eye,.c-hero h1,.c-hero .accent,.c-hero .sub{opacity:0;transform:translateY(24px);animation:rise 1s var(--ease) forwards;}
+.c-hero .eye{animation-delay:.2s;} .c-hero h1{animation-delay:.4s;} .c-hero .accent{animation-delay:.6s;} .c-hero .sub{animation-delay:.78s;}
+@keyframes rise{to{opacity:1;transform:none;}}
+@media(prefers-reduced-motion:reduce){.c-hero .bg img{animation:none;transform:scale(1.06);} .c-hero .eye,.c-hero h1,.c-hero .sub{opacity:1;transform:none;animation:none;}}
 
 /* ---- collections grid ---- */
-.cwrap{max-width:1280px;margin:34px auto 96px;padding:0 24px;}
+.cwrap{max-width:1280px;margin:clamp(56px,8vh,84px) auto 96px;padding:0 24px;}
 .cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 .ctile{position:relative;display:block;overflow:hidden;border-radius:5px;aspect-ratio:4/5;background:#161d16;box-shadow:0 20px 44px -24px rgba(0,0,0,.72);}
 .ctile img{transition:transform 1.1s cubic-bezier(.2,.8,.2,1);filter:saturate(1.04) contrast(1.03) brightness(.9);}
@@ -55,7 +67,7 @@ nav a:hover::after,nav a.here::after{width:100%;}
 .ctile .lbl{position:absolute;left:0;right:0;bottom:0;padding:26px 28px;z-index:2;}
 .ctile .eye{display:block;font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sir-gold);opacity:.92;margin-bottom:8px;}
 .ctile .lbl{padding:20px 20px;}
-.ctile .place{font-family:'Pinyon Script',cursive;font-size:clamp(30px,2.7vw,44px);line-height:.9;color:var(--cream);text-shadow:0 4px 24px rgba(0,0,0,.5);}
+.ctile .place{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(26px,2.3vw,36px);line-height:1.05;letter-spacing:-.01em;color:var(--cream);text-shadow:0 4px 24px rgba(0,0,0,.5);}
 .ctile .eye{font-size:9.5px;letter-spacing:2px;margin-bottom:6px;}
 .ctile .blurb{margin-top:7px;font-size:12px;line-height:1.55;color:#d5dac9;opacity:0;transform:translateY(6px);transition:.45s;max-width:30ch;}
 .ctile:hover .blurb{opacity:.95;transform:none;}
@@ -100,12 +112,15 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
   </ul></nav>
 </header>
 
-<!-- ===== PAGE HEAD ===== -->
-<section class="phead">
-  <span class="eye lab">browse by place</span>
-  <h1>Collections</h1>
-  <p class="sub">Every place I've walked into and didn't want to leave. A set of photographs from one corner of the world, told slowly.</p>
-  <div class="rule"></div>
+<!-- ===== PAGE HERO ===== -->
+<section class="c-hero">
+  <div class="bg"><img src="img/cape-bay-sunset.jpg" alt="Figures scattered along a tidal flat as the whole sky turns gold at dusk"></div>
+  <div class="inner">
+    <span class="eye lab">Browse by place</span>
+    <h1>The Collections</h1>
+    <div class="accent">some places keep their secrets, i keep mine</div>
+    <p class="sub">Every place I've walked into and didn't want to leave. A set of photographs from one corner of the world, told slowly.</p>
+  </div>
 </section>
 
 <!-- ===== COLLECTIONS GRID (rendered from collections.json) ===== -->
