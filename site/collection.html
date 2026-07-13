@@ -49,11 +49,14 @@ nav a:hover::after,nav a.here::after{width:100%;}
 .chero .desc{font-size:clamp(14px,1.8vw,18px);line-height:1.6;letter-spacing:1px;opacity:.94;text-shadow:0 2px 14px rgba(0,0,0,.6);max-width:40ch;margin-inline:auto;}
 .chero .scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--cream);opacity:.7;}
 
-/* ---- photo flow: two hand-ordered columns (equal width; every photo keeps its true shape) ---- */
-.flow{max-width:1320px;margin:52px auto 20px;padding:0 clamp(18px,3vw,32px);display:flex;gap:clamp(14px,1.8vw,22px);align-items:flex-start;}
-.col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:clamp(14px,1.8vw,22px);}
-.p{position:relative;overflow:hidden;cursor:zoom-in;background:#12180f;box-shadow:0 22px 50px -26px rgba(0,0,0,.6);}
-.p img{width:100%;height:auto;object-fit:unset;transition:transform 1.2s cubic-bezier(.2,.8,.2,1);filter:saturate(1.04) contrast(1.03) brightness(.92);}
+/* ---- photo flow: gallery-style varied-size mosaic (6-col dense grid; mirrors gallery.html so collections read like the Gallery, never a uniform grid) ---- */
+.flow{max-width:1320px;margin:52px auto 20px;padding:0 clamp(18px,3vw,32px);display:grid;grid-template-columns:repeat(6,1fr);grid-auto-flow:dense;gap:clamp(14px,1.6vw,22px);}
+.p{position:relative;overflow:hidden;cursor:zoom-in;background:#12180f;box-shadow:0 22px 50px -26px rgba(0,0,0,.6);grid-column:span 2;aspect-ratio:3/4;}
+.p.lg{grid-column:span 3;aspect-ratio:4/5;}
+.p.wide{grid-column:span 4;aspect-ratio:16/10;}
+.p.med{grid-column:span 3;aspect-ratio:3/2;}
+.p.sq{grid-column:span 2;aspect-ratio:1/1;}
+.p img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1);filter:saturate(1.04) contrast(1.03) brightness(.92);}
 .p:hover img{transform:scale(1.05);}
 .p::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.16);pointer-events:none;z-index:3;transition:box-shadow .4s;}
 .p:hover::after{box-shadow:inset 0 0 0 1px rgba(231,196,137,.5);}
@@ -106,7 +109,8 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
 
 @media(max-width:900px){ header{padding:14px 22px;} nav ul{display:none;} }
 @media(max-width:720px){ .lb .box{flex-direction:column;max-height:92vh;} .lb .imgwrap img{max-height:52vh;} .lb .panel{padding:28px 24px;} }
-@media(max-width:560px){ .flow{flex-direction:column;} .p .cap{opacity:1;transform:none;} }
+@media(max-width:900px){ .flow{grid-template-columns:repeat(4,1fr);} .p,.p.lg,.p.med,.p.sq{grid-column:span 2;} .p.wide{grid-column:span 4;} }
+@media(max-width:560px){ .flow{grid-template-columns:repeat(2,1fr);gap:12px;} .p,.p.lg,.p.med,.p.sq,.p.wide{grid-column:span 2;aspect-ratio:4/5;} .p .cap{opacity:1;transform:none;} }
 </style>
 </head>
 <body>
@@ -191,7 +195,7 @@ fetch('collections.json').then(r=>r.json()).then(data=>{
   // two-column masonry: photos keep their native shape, columns balance the height
   const makeTile=(p,idx)=>{
     const fig=document.createElement('figure');
-    fig.className='p';
+    fig.className='p'+(p.size?' '+p.size:'');
     fig.innerHTML=
       '<img src="'+p.src+'" alt="'+(p.alt||'')+'" loading="lazy">'+
       (p.talisman?'<span class="tmark">&#10022; talisman</span>':'')+
@@ -201,11 +205,8 @@ fetch('collections.json').then(r=>r.json()).then(data=>{
     fig.addEventListener('click',()=>openLB(idx));
     return fig;
   };
-  // two hand-ordered columns: even index -> left, odd index -> right (order is set in collections.json)
-  const colL=document.createElement('div'); colL.className='col';
-  const colR=document.createElement('div'); colR.className='col';
-  c.photos.forEach((p,i)=>{ const col = p.col===2?colR : p.col===1?colL : (i%2===0?colL:colR); col.appendChild(makeTile(p,i)); });
-  flow.appendChild(colL); flow.appendChild(colR);
+  // one dense mosaic: each photo's size class (wide/lg/med/sq, or default tall) sets its span; order in collections.json sets the reading order
+  c.photos.forEach((p,i)=>{ flow.appendChild(makeTile(p,i)); });
   // reveal — default visible; only animate when JS is here (rule: never gate content on a class the headless renderer can't fire)
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const tiles=[...document.querySelectorAll('.p')];
