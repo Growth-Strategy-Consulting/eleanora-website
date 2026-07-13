@@ -104,19 +104,19 @@
       "place": "Athens",
       "region": "Europe",
       "eyebrow": "Greece · marble & vinyl",
-      "cover": "img/athens-caryatids.jpg",
+      "cover": "img/athens-record-wall.jpg",
       "blurb": "Old gods in marble, new gods on the wall.",
       "photos": [
         { "src": "img/athens-record-wall.jpg", "title": "Every Record Ever", "alt": "A woman in a black dress before a wall covered in vintage vinyl record sleeves", "story": "", "talisman": null },
-        { "src": "img/athens-caryatids.jpg", "title": "The Six Maidens", "alt": "The Porch of the Caryatids on the Erechtheion, Acropolis, golden marble against blue sky", "story": "", "talisman": null },
-        { "src": "img/athens-wd-mural.jpg", "title": "Woman on Fire", "alt": "A WD street-art mural of a woman with flame-colored hair", "story": "", "talisman": null },
         { "src": "img/athens-marble-magenta.jpg", "title": "Goddess in Magenta", "alt": "A headless draped marble goddess against a magenta museum wall", "story": "", "talisman": null },
-        { "src": "img/athens-doorway.jpg", "title": "The Yellow Door", "alt": "A weathered old door in an ochre plaster wall with citrus leaves overhead", "story": "", "talisman": null },
-        { "src": "img/athens-hands-mural.jpg", "title": "Open Hands", "alt": "A monumental grayscale mural of weathered cupped hands on a building", "story": "", "talisman": null },
         { "src": "img/athens-market.jpg", "title": "The Meat Market", "alt": "An Athens central-market shopfront hung with cured sausages and garlic braids", "story": "", "talisman": null },
+        { "src": "img/athens-philopappos.jpg", "title": "Philopappos Hill", "alt": "Philopappos Hill in Athens, pines and olives below the marble monument", "story": "", "talisman": null },
+        { "src": "img/athens-caryatids.jpg", "title": "The Six Maidens", "alt": "The Porch of the Caryatids on the Erechtheion, Acropolis, golden marble against blue sky", "story": "", "talisman": null },
+        { "src": "img/athens-doorway.jpg", "title": "The Yellow Door", "alt": "A weathered old door in an ochre plaster wall with citrus leaves overhead", "story": "", "talisman": null },
         { "src": "img/athens-marble-column.jpg", "title": "Leaning", "alt": "A marble woman leaning on a small column, a museum piece", "story": "", "talisman": null },
+        { "src": "img/athens-wd-mural.jpg", "title": "Woman on Fire", "alt": "A WD street-art mural of a woman with flame-colored hair", "story": "", "talisman": null },
         { "src": "img/athens-fresco.jpg", "title": "Two Saints", "alt": "A faded Byzantine fresco of two haloed bishop-saints", "story": "", "talisman": null },
-        { "src": "img/athens-philopappos.jpg", "title": "Philopappos Hill", "alt": "Philopappos Hill in Athens, pines and olives below the marble monument", "story": "", "talisman": null }
+        { "src": "img/athens-hands-mural.jpg", "title": "Open Hands", "alt": "A monumental grayscale mural of weathered cupped hands on a building", "story": "", "talisman": null }
       ]
     },
     {
