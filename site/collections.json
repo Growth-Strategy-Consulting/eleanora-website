@@ -88,16 +88,15 @@
       "cover": "img/greece-meteora-monastery.jpg",
       "blurb": "Sun low over the water, monasteries in the clouds.",
       "photos": [
-        { "src": "img/greece-meteora-monastery.jpg", "title": "Monastery in the Clouds", "alt": "A monastery perched atop a sheer rock pillar over the Kalambaka valley at Meteora", "story": "", "talisman": null },
         { "src": "img/greece-corfu-waterfront.jpg", "title": "The Old Town from the Water", "alt": "The pastel Venetian waterfront of Corfu Old Town seen from the sea", "story": "", "talisman": null },
-        { "src": "img/greece-meteora-valley.jpg", "title": "The Green Valley", "alt": "A lush green Pindus valley below Meteora under dramatic clouds", "story": "", "talisman": null },
         { "src": "img/greece-corfu-sunset.jpg", "title": "Sun on the Ionian", "alt": "The sun low over the hills and sea at Corfu", "story": "", "talisman": null },
         { "src": "img/greece-meteora-rock-dome.jpg", "title": "The Rock", "alt": "A huge cave-pocked Meteora rock dome above a valley village", "story": "", "talisman": null },
         { "src": "img/greece-meteora-wine-cellar.jpg", "title": "The Wine Cellar", "alt": "A traditional wine cellar with wicker demijohns, grape baskets and an old press", "story": "", "talisman": null },
+        { "src": "img/greece-meteora-monastery.jpg", "title": "Monastery in the Clouds", "alt": "A monastery perched atop a sheer rock pillar over the Kalambaka valley at Meteora", "story": "", "talisman": null },
+        { "src": "img/greece-meteora-valley.jpg", "title": "The Green Valley", "alt": "A lush green Pindus valley below Meteora under dramatic clouds", "story": "", "talisman": null },
         { "src": "img/greece-corfu-bay.jpg", "title": "Swimming Weather", "alt": "A turquoise Corfu bay ringed by green mountains, swimmers in the shallows", "story": "", "talisman": null },
-        { "src": "img/greece-meteora-church.jpg", "title": "Brick and Sky", "alt": "The brick-and-stone apse of a Byzantine church against a blue sky", "story": "", "talisman": null },
-        { "src": "img/greece-corfu-fortress.jpg", "title": "The Old Fortress", "alt": "The Old Fortress of Corfu rising from the sea with a lone sailboat", "story": "", "talisman": null },
-        { "src": "img/greece-meteora-folk-museum.jpg", "title": "The Old Kitchen", "alt": "A folk-museum interior with dried red corn and an old corn-sheller", "story": "", "talisman": null }
+        { "src": "img/greece-meteora-folk-museum.jpg", "title": "The Old Kitchen", "alt": "A folk-museum interior with dried red corn and an old corn-sheller", "story": "", "talisman": null },
+        { "src": "img/greece-corfu-fortress.jpg", "title": "The Old Fortress", "alt": "The Old Fortress of Corfu rising from the sea with a lone sailboat", "story": "", "talisman": null }
       ]
     },
     {
@@ -117,7 +116,6 @@
         { "src": "img/athens-market.jpg", "title": "The Meat Market", "alt": "An Athens central-market shopfront hung with cured sausages and garlic braids", "story": "", "talisman": null },
         { "src": "img/athens-marble-column.jpg", "title": "Leaning", "alt": "A marble woman leaning on a small column, a museum piece", "story": "", "talisman": null },
         { "src": "img/athens-fresco.jpg", "title": "Two Saints", "alt": "A faded Byzantine fresco of two haloed bishop-saints", "story": "", "talisman": null },
-        { "src": "img/athens-marble-torso.jpg", "title": "Torso in Red", "alt": "A headless draped marble torso against a red wall", "story": "", "talisman": null },
         { "src": "img/athens-philopappos.jpg", "title": "Philopappos Hill", "alt": "Philopappos Hill in Athens, pines and olives below the marble monument", "story": "", "talisman": null }
       ]
     },
