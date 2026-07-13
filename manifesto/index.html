@@ -334,8 +334,11 @@
   .ninetynine strong{ color:var(--gold-soft); font-weight:500 }
   .door{ font-family:var(--serif); font-style:italic; font-size:clamp(1.3rem,3.4vw,1.7rem); color:var(--cream); max-width:none; margin-bottom:.3em; }
   .comehome{ font-family:var(--serif); font-size:clamp(1.5rem,4vw,2rem); color:var(--gold-soft); margin-top:10px }
-  .sig{ font-family:var(--script); font-size:clamp(2.4rem,6.5vw,3.8rem); color:var(--gold); line-height:1; margin:22px 0 0; text-shadow:0 2px 30px rgba(217,164,65,.3) }
-  .seal{ width:84px; height:auto; margin:34px auto 0; display:block; opacity:.9 }
+  .sig{ font-family:var(--script); font-size:clamp(2.4rem,6.5vw,3.8rem); color:var(--gold); line-height:1; margin:clamp(28px,4vw,40px) 0 0; text-shadow:0 2px 30px rgba(217,164,65,.3) }
+  /* the closing signet — sized to read as a deliberate wax stamp under the signature,
+     with a soft pressed shadow so it sits on the cream rather than floating on it */
+  .seal{ width:clamp(116px,13vw,148px); height:auto; margin:clamp(30px,4vw,44px) auto 0; display:block;
+         opacity:.95; filter:drop-shadow(0 5px 16px rgba(90,60,16,.16)); }
   footer{ text-align:center; padding:30px 28px 54px; color:var(--cream-dim); font-size:.76rem; letter-spacing:.14em }
 
   /* ---------- the invitation (tiered CTA into the program) ----------
