@@ -40,8 +40,7 @@
         { "src": "img/blog-italy-cathedral.jpg", "title": "[working title]", "alt": "The stone cathedral rising over the old town", "story": "", "talisman": null },
         { "src": "img/blog-italy-street.jpg", "title": "[working title]", "alt": "A quiet Puglian street in the afternoon light", "story": "", "talisman": null },
         { "src": "img/world-italy-pink-fiat.jpg", "title": "[working title]", "alt": "A pink Fiat 500 parked against an old wall", "story": "", "talisman": null },
-        { "src": "img/blog-italy-burrata.jpg", "title": "[working title]", "alt": "Fresh burrata on the table", "story": "", "talisman": null },
-        { "src": "img/her-italy-chair.jpg", "title": "[working title]", "alt": "Seated in a doorway in the golden light", "story": "", "talisman": null }
+        { "src": "img/blog-italy-burrata.jpg", "title": "[working title]", "alt": "Fresh burrata on the table", "story": "", "talisman": null }
       ]
     },
     {
@@ -49,14 +48,18 @@
       "place": "Dubrovnik",
       "region": "Europe",
       "eyebrow": "Croatia · the Adriatic",
-      "cover": "img/blog-croatia-island.jpg",
+      "cover": "img/croatia-church-hill.jpg",
       "blurb": "Stone walls, still water, and one island in the blue.",
       "photos": [
-        { "src": "img/blog-croatia-island.jpg", "title": "[working title]", "alt": "A small island floating in the calm sea off Dubrovnik", "story": "", "talisman": { "article": "journal-dubrovnik.html", "buyUrl": null } },
-        { "src": "img/world-croatia-loggia.jpg", "title": "[working title]", "alt": "An old stone loggia framing the sea", "story": "", "talisman": null },
-        { "src": "img/blog-croatia-bridge.jpg", "title": "[working title]", "alt": "A stone bridge into the walled old town", "story": "", "talisman": null },
-        { "src": "img/blog-croatia-church.jpg", "title": "[working title]", "alt": "A church tower rising over the terracotta rooftops", "story": "", "talisman": null },
-        { "src": "img/blog-croatia-godhelpus.jpg", "title": "[working title]", "alt": "A weathered old-town wall in the afternoon sun", "story": "", "talisman": null }
+        { "src": "img/croatia-thirteen-main.jpg", "col": 1, "title": "Thirteen Main Street", "alt": "A pale stone facade with coral shutters and an iron balcony", "story": "", "talisman": null },
+        { "src": "img/croatia-sunset-dock.jpg", "col": 2, "title": "Sunset Dock", "alt": "A weathered wooden dock leading to a small boat, the city glowing at dusk", "story": "", "talisman": null },
+        { "src": "img/croatia-mermaids-cove.jpg", "col": 1, "title": "Mermaid's Cove", "alt": "Waves breaking over rocks below a green Adriatic headland", "story": "", "talisman": null },
+        { "src": "img/croatia-island.jpg", "col": 2, "title": "Island at Sea", "alt": "A small green island floating in the calm blue sea off Dubrovnik", "story": "", "talisman": { "article": "journal-dubrovnik.html", "buyUrl": null } },
+        { "src": "img/croatia-church-interior.jpg", "col": 1, "title": "Church Interior", "alt": "A baroque altar with marble columns and painted frescoes", "story": "", "talisman": null },
+        { "src": "img/croatia-blue-door.jpg", "col": 2, "title": "Blue Door", "alt": "A weathered navy plank door set in an old stone wall on Sustjepanska", "story": "", "talisman": null },
+        { "src": "img/croatia-church-hill.jpg", "col": 1, "title": "Church on the Hill", "alt": "A stone church and clock tower rising behind a high old-town wall", "story": "", "talisman": null },
+        { "src": "img/croatia-farmers-market.jpg", "col": 2, "title": "Farmers' Market", "alt": "Watermelons stacked in wooden crates at a market stall", "story": "", "talisman": null },
+        { "src": "img/croatia-loggia.jpg", "col": 2, "title": "Stone Loggia House", "alt": "An old arched stone loggia house with oleander in bloom", "story": "", "talisman": null }
       ]
     },
     {

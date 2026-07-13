@@ -43,21 +43,17 @@ nav a:hover::after,nav a.here::after{width:100%;}
 .chero .bg img{filter:saturate(1.04) contrast(1.04) brightness(.86);}
 .chero .scrim{position:absolute;inset:0;z-index:1;background:radial-gradient(80% 60% at 50% 45%,rgba(10,14,11,.45),transparent 72%),linear-gradient(180deg,rgba(12,18,13,.55),rgba(20,28,18,.24) 45%,rgba(10,14,10,.84));}
 .chero .inner{position:relative;z-index:2;}
-.chero .back{display:inline-block;margin-bottom:20px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sir-gold);opacity:.9;}
-.chero .ey{color:var(--sir-gold);}
-.chero h1{font-family:'Pinyon Script',cursive;font-size:clamp(66px,12vw,150px);line-height:.9;margin:6px 0 12px;text-shadow:0 6px 40px rgba(0,0,0,.5);}
-.chero .desc{font-size:clamp(14px,1.8vw,18px);letter-spacing:1px;opacity:.94;text-shadow:0 2px 14px rgba(0,0,0,.6);max-width:40ch;}
+.chero .back{display:inline-block;margin-bottom:22px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sir-gold);opacity:.9;}
+.chero .ey{color:var(--sir-gold);margin-bottom:10px;}
+.chero h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;font-size:clamp(46px,7.5vw,100px);line-height:1.02;letter-spacing:-.01em;margin:0 0 18px;text-wrap:balance;text-shadow:0 8px 48px rgba(0,0,0,.5);}
+.chero .desc{font-size:clamp(14px,1.8vw,18px);line-height:1.6;letter-spacing:1px;opacity:.94;text-shadow:0 2px 14px rgba(0,0,0,.6);max-width:40ch;margin-inline:auto;}
 .chero .scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--cream);opacity:.7;}
 
-/* ---- photo flow: justified editorial rows (each row shares one height -> never any holes) ---- */
-.flow{max-width:1320px;margin:52px auto 20px;padding:0 clamp(18px,3vw,32px);}
-.prow{display:flex;gap:clamp(14px,1.6vw,20px);margin-bottom:clamp(14px,1.6vw,20px);}
-.prow.trio{--rh:clamp(300px,25vw,360px);}
-.prow.feature{--rh:clamp(340px,40vw,460px);}
-.prow.duo{--rh:clamp(320px,32vw,420px);}
-.p{position:relative;flex:1 1 0;min-width:0;height:var(--rh,340px);overflow:hidden;cursor:zoom-in;background:#12180f;box-shadow:0 22px 50px -26px rgba(0,0,0,.6);}
-.prow.feature .p.hero2{flex:1.9 1 0;}
-.p img{transition:transform 1.2s cubic-bezier(.2,.8,.2,1);filter:saturate(1.04) contrast(1.03) brightness(.92);}
+/* ---- photo flow: two hand-ordered columns (equal width; every photo keeps its true shape) ---- */
+.flow{max-width:1320px;margin:52px auto 20px;padding:0 clamp(18px,3vw,32px);display:flex;gap:clamp(14px,1.8vw,22px);align-items:flex-start;}
+.col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:clamp(14px,1.8vw,22px);}
+.p{position:relative;overflow:hidden;cursor:zoom-in;background:#12180f;box-shadow:0 22px 50px -26px rgba(0,0,0,.6);}
+.p img{width:100%;height:auto;object-fit:unset;transition:transform 1.2s cubic-bezier(.2,.8,.2,1);filter:saturate(1.04) contrast(1.03) brightness(.92);}
 .p:hover img{transform:scale(1.05);}
 .p::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.16);pointer-events:none;z-index:3;transition:box-shadow .4s;}
 .p:hover::after{box-shadow:inset 0 0 0 1px rgba(231,196,137,.5);}
@@ -79,7 +75,7 @@ body.anim .p.in{opacity:1;transform:none;}
 .lb .imgwrap img{width:100%;height:100%;max-height:88vh;object-fit:contain;}
 .lb .panel{flex:1 1 38%;padding:44px 38px;display:flex;flex-direction:column;justify-content:center;overflow-y:auto;}
 .lb .panel .eye{font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sir-gold);opacity:.9;margin-bottom:10px;}
-.lb .panel h3{font-family:'Pinyon Script',cursive;font-size:44px;line-height:.95;color:var(--cream);margin-bottom:16px;}
+.lb .panel h3{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;font-size:34px;line-height:1.05;letter-spacing:-.01em;color:var(--cream);margin-bottom:16px;}
 .lb .panel .story{font-size:14.5px;line-height:1.85;color:#cdd3c3;}
 .lb .panel .story.empty{opacity:.5;font-style:italic;}
 .lb .tal{margin-top:26px;padding-top:22px;border-top:1px solid rgba(217,164,65,.2);}
@@ -108,9 +104,9 @@ footer .fnav a:hover{color:var(--sir-gold);}
 footer .tag{font-size:11.5px;letter-spacing:4px;text-transform:uppercase;color:var(--cream);opacity:.9;}
 footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
 
-@media(max-width:900px){ header{padding:14px 22px;} nav ul{display:none;} .prow.trio{--rh:clamp(220px,30vw,300px);} .prow.feature{--rh:clamp(260px,42vw,380px);} .prow.duo{--rh:clamp(240px,36vw,340px);} }
+@media(max-width:900px){ header{padding:14px 22px;} nav ul{display:none;} }
 @media(max-width:720px){ .lb .box{flex-direction:column;max-height:92vh;} .lb .imgwrap img{max-height:52vh;} .lb .panel{padding:28px 24px;} }
-@media(max-width:560px){ .prow{flex-direction:column;gap:12px;} .prow .p,.prow.feature .p.hero2{flex:none;height:clamp(300px,78vw,420px);} .p .cap{opacity:1;transform:none;} }
+@media(max-width:560px){ .flow{flex-direction:column;} .p .cap{opacity:1;transform:none;} }
 </style>
 </head>
 <body>
@@ -192,12 +188,10 @@ fetch('collections.json').then(r=>r.json()).then(data=>{
   document.getElementById('heroDesc').textContent=c.blurb||'';
 
   const flow=document.getElementById('flow');
-  // editorial rhythm: justified rows — trios for density, feature rows (one wide) for cinema
-  const rowPlan=[{n:3,cls:'trio'},{n:2,cls:'feature'},{n:3,cls:'trio'},{n:2,cls:'duo'}];
-  let pi=0, r=0;
-  const makeTile=(p,idx,hero)=>{
+  // two-column masonry: photos keep their native shape, columns balance the height
+  const makeTile=(p,idx)=>{
     const fig=document.createElement('figure');
-    fig.className='p'+(hero?' hero2':'');
+    fig.className='p';
     fig.innerHTML=
       '<img src="'+p.src+'" alt="'+(p.alt||'')+'" loading="lazy">'+
       (p.talisman?'<span class="tmark">&#10022; talisman</span>':'')+
@@ -207,27 +201,18 @@ fetch('collections.json').then(r=>r.json()).then(data=>{
     fig.addEventListener('click',()=>openLB(idx));
     return fig;
   };
-  while(pi < c.photos.length){
-    const plan=rowPlan[r % rowPlan.length];
-    const remaining=c.photos.length - pi;
-    const row=document.createElement('div');
-    row.className='prow '+(remaining===1 ? 'duo' : plan.cls);
-    const take=Math.min(plan.n, remaining);
-    for(let k=0;k<take;k++){
-      const hero = (plan.cls==='feature' && k===0 && take>1);
-      row.appendChild(makeTile(c.photos[pi], pi, hero));
-      pi++;
-    }
-    flow.appendChild(row);
-    r++;
-  }
+  // two hand-ordered columns: even index -> left, odd index -> right (order is set in collections.json)
+  const colL=document.createElement('div'); colL.className='col';
+  const colR=document.createElement('div'); colR.className='col';
+  c.photos.forEach((p,i)=>{ const col = p.col===2?colR : p.col===1?colL : (i%2===0?colL:colR); col.appendChild(makeTile(p,i)); });
+  flow.appendChild(colL); flow.appendChild(colR);
   // reveal — default visible; only animate when JS is here (rule: never gate content on a class the headless renderer can't fire)
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const tiles=[...document.querySelectorAll('.p')];
   if(!reduce && 'IntersectionObserver' in window){
     document.body.classList.add('anim');
     const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -6% 0px'});
-    tiles.forEach((el,k)=>{el.style.transitionDelay=(k%3*70)+'ms';io.observe(el);});
+    tiles.forEach((el,k)=>{el.style.transitionDelay=(k%2*80)+'ms';io.observe(el);});
     // safety net: if the observer never fires (hidden tab / headless), never leave a tile blank
     setTimeout(()=>tiles.forEach(t=>t.classList.add('in')),1400);
   }
