@@ -120,7 +120,7 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
   </a>
   <nav><ul>
     <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="collections.html" class="here">Collections</a></li>
+    <li><a href="collections.html" class="here">Postcards</a></li>
     <li><a href="journal.html">Journal</a></li>
     <li><a href="prints.html">Prints</a></li>
     <li><a href="about.html">About</a></li>
@@ -166,7 +166,7 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
   <div class="fseal"><img src="img/mark-book-arch-cream-t.png" alt="Eleanora seal"></div>
   <div class="fwm">Eleanora</div>
   <div class="fnav">
-    <a href="gallery.html">Gallery</a><a href="collections.html">Collections</a><a href="journal.html">Journal</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
+    <a href="gallery.html">Gallery</a><a href="collections.html">Postcards</a><a href="journal.html">Journal</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
   </div>
   <div class="tag">where I've been · where I'm going · the people along the way</div>
   <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on</div>
@@ -198,9 +198,9 @@ fetch('collections.json').then(r=>r.json()).then(data=>{
     fig.className='p';
     fig.innerHTML=
       '<img src="'+p.src+'" alt="'+(p.alt||'')+'" loading="lazy">'+
-      (p.talisman?'<span class="tmark">&#10022; talisman</span>':'')+
+      (p.talisman?'<span class="tmark">&#10022; token</span>':'')+
       '<figcaption class="cap"><span class="t">'+(p.title||'')+'</span>'+
-        (p.talisman?'<span class="s">a talisman &middot; tap to keep it</span>':'')+
+        (p.talisman?'<span class="s">a token &middot; tap to keep it</span>':'')+
       '</figcaption>';
     fig.addEventListener('click',()=>openLB(idx));
     return fig;
@@ -240,7 +240,7 @@ function openLB(i){
     let read = p.talisman.article
       ? '<a class="read" href="'+p.talisman.article+'">Read the story it came from &rarr;</a>'
       : '';
-    tal.innerHTML='<div class="th">&#10022; This one is a talisman</div>'+
+    tal.innerHTML='<div class="th">&#10022; This one is a token</div>'+
       '<div class="talnote">A photograph you keep as a token for the life you\'re walking toward, not decoration for a wall.</div>'+
       buy+read;
   } else {

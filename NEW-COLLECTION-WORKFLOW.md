@@ -63,7 +63,7 @@ Field notes:
 - **`title`** — the photo's name (shows on hover + in the lightbox).
 - **`alt`** — short, factual description (accessibility + SEO).
 - **`story`** — leave `""` until you author it; the lightbox shows a graceful placeholder.
-- **`talisman`** — `null` for a plain photo. To make it a talisman print:
+- **`talisman`** — `null` for a plain photo. To make it a token print:
   `{ "article": "journal-xxx.html", "buyUrl": null }` — `article` is the real story page it links back to; `buyUrl` stays `null` until checkout is live, then paste the pay link and the buy button turns on automatically.
 
 ## Phase 5 — Layout: two hand-ordered columns
@@ -91,11 +91,11 @@ sessionStorage.setItem('eleanora_pass','1');
 location.href = 'http://127.0.0.1:8850/collection.html?place=<slug>';
 ```
 
-Check: columns read in the right order, they balance (no big gap at one bottom), no broken images, captions/talisman badge show, and it collapses to one column on mobile.
+Check: columns read in the right order, they balance (no big gap at one bottom), no broken images, captions/token badge show, and it collapses to one column on mobile.
 
 ## Phase 7 — Finish the collection (per-photo, ongoing)
 
-For each photo that becomes a talisman:
+For each photo that becomes a token:
 - **Cross-article check** — is the photo used in a journal/article? Decide its `talisman.article` link.
 - **Print-size check** — a web copy is 1600px (display only). Print from the **library master**. Rough max print size at good quality: `master_pixels ÷ 300 = inches` (so a 2048px edge ≈ 6.8" at 300dpi, ~13" at 150dpi for larger wall pieces). Flag any master too small for the size you want to sell.
 
