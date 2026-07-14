@@ -418,6 +418,11 @@
     font-family:var(--serif); font-style:italic; font-size:1rem; line-height:1.6; color:var(--cream-dim);
     max-width:42ch; margin:30px auto 0;
   }
+  /* the $100 bet payoff — a whispered reveal, borderless to match the cinematic page */
+  .hundred{ max-width:52ch; margin:40px auto 2px; }
+  .hundred p{ font-family:var(--serif); font-style:italic; font-size:1.1rem; line-height:1.66; color:var(--cream); margin:0 0 14px; }
+  .hundred p:last-child{ margin-bottom:0; }
+  .hundred .win{ font-style:normal; color:var(--gold); }
   @media (max-width:560px){
     .way{ grid-template-columns:1fr; row-gap:6px; }
     .way-go, .way--feature .btn, .way-social, .way-soon{ grid-column:1; grid-row:auto; justify-self:start; margin-top:12px; }
@@ -639,6 +644,10 @@ if(new URLSearchParams(location.search).has('member')){document.documentElement.
           <span class="way-d">The closest way in, and the hardest to get. Just the two of us, walking your wheel to the version of you who does not need me anymore. Four spots a month. I do not take everyone.</span>
           <span class="way-go">work with me &rarr;</span>
         </a>
+      </div>
+      <div class="hundred">
+        <p>One more thing, since you made it. Somewhere at the top of all this, I bet you would not reach the bottom. Almost no one does. You did.</p>
+        <p>So I owe you a hundred dollars, and I pay what I owe. Not in cash, you would spend that on nothing by Friday. The one thing I charge just to sit down with me, one to one, and start building your way out, is two hundred. For you, it is <span class="win">one hundred</span>. Call it your winnings. The rest I waive if I decide I like you.</p>
       </div>
       <p class="whisper">I did it this way. I am happy now, on purpose, just because I decided to be.</p>
     </div>
