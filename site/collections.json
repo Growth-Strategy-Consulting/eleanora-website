@@ -36,14 +36,11 @@
       "photos": [
         { "src": "img/puglia-polignano-cove-boats.jpg", "title": "The Cove", "alt": "Boats on the turquoise cove at Polignano a Mare", "story": "", "talisman": null },
         { "src": "img/blog-italy-flowerdoor.jpg", "title": "The Flower Door", "alt": "A yellow doorway with climbing flowers and a small red mailbox in Bari, Italy", "story": "", "talisman": { "article": "journal-italy.html", "buyUrl": null } },
-        { "src": "img/puglia-bari-cathedral.jpg", "title": "San Sabino", "alt": "The Romanesque facade and rose window of Bari cathedral", "story": "", "talisman": null },
         { "src": "img/puglia-polignano-clifftop.jpg", "title": "Town on the Cliff", "alt": "The whitewashed old town perched on the cliffs at Polignano a Mare", "story": "", "talisman": null },
         { "src": "img/puglia-brindisi-black-car.jpg", "title": "In the Shade", "alt": "A black vintage car parked by a doorway on a Brindisi street", "story": "", "talisman": null },
         { "src": "img/puglia-brindisi-fresco.jpg", "title": "The Two Saints", "alt": "A faded medieval fresco of two haloed saints on a Brindisi church wall", "story": "", "talisman": null },
         { "src": "img/puglia-bari-coral-balconies.jpg", "title": "Coral & Iron", "alt": "A coral-red facade with wrought-iron balconies in Bari", "story": "", "talisman": null },
-        { "src": "img/puglia-polignano-mark-twain-door.jpg", "title": "Before Paradise", "alt": "The Mark Twain door in the old town of Polignano a Mare", "story": "", "talisman": null },
         { "src": "img/puglia-brindisi-alley-up.jpg", "title": "Looking Up", "alt": "Looking straight up a narrow alley to a slot of sky in Brindisi", "story": "", "talisman": null },
-        { "src": "img/puglia-bari-red-brown-doors.jpg", "title": "Two Doors", "alt": "A red door beside an arched brown door in a Bari old-town wall", "story": "", "talisman": null },
         { "src": "img/puglia-bari-ape-truck.jpg", "title": "The Blue Ape", "alt": "A blue Piaggio Ape three-wheeler parked on a Bari street", "story": "", "talisman": null }
       ]
     },
@@ -62,7 +59,6 @@
         { "src": "img/croatia-church-interior.jpg", "col": 1, "title": "Church Interior", "alt": "A baroque altar with marble columns and painted frescoes", "story": "", "talisman": null },
         { "src": "img/croatia-blue-door.jpg", "col": 2, "title": "Blue Door", "alt": "A weathered navy plank door set in an old stone wall on Sustjepanska", "story": "", "talisman": null },
         { "src": "img/croatia-church-hill.jpg", "col": 1, "title": "Church on the Hill", "alt": "A stone church and clock tower rising behind a high old-town wall", "story": "", "talisman": null },
-        { "src": "img/croatia-farmers-market.jpg", "col": 2, "title": "Farmers' Market", "alt": "Watermelons stacked in wooden crates at a market stall", "story": "", "talisman": null },
         { "src": "img/croatia-loggia.jpg", "col": 2, "title": "Stone Loggia House", "alt": "An old arched stone loggia house with oleander in bloom", "story": "", "talisman": null }
       ]
     },
@@ -91,7 +87,6 @@
       "photos": [
         { "src": "img/greece-corfu-waterfront.jpg", "title": "The Old Town from the Water", "alt": "The pastel Venetian waterfront of Corfu Old Town seen from the sea", "story": "", "talisman": null },
         { "src": "img/greece-corfu-sunset.jpg", "title": "Sun on the Ionian", "alt": "The sun low over the hills and sea at Corfu", "story": "", "talisman": null },
-        { "src": "img/greece-meteora-rock-dome.jpg", "title": "The Rock", "alt": "A huge cave-pocked Meteora rock dome above a valley village", "story": "", "talisman": null },
         { "src": "img/greece-meteora-wine-cellar.jpg", "title": "The Wine Cellar", "alt": "A traditional wine cellar with wicker demijohns, grape baskets and an old press", "story": "", "talisman": null },
         { "src": "img/greece-meteora-monastery.jpg", "title": "Monastery in the Clouds", "alt": "A monastery perched atop a sheer rock pillar over the Kalambaka valley at Meteora", "story": "", "talisman": null },
         { "src": "img/greece-meteora-valley.jpg", "title": "The Green Valley", "alt": "A lush green Pindus valley below Meteora under dramatic clouds", "story": "", "talisman": null },
@@ -110,12 +105,10 @@
       "photos": [
         { "src": "img/athens-record-wall.jpg", "title": "Every Record Ever", "alt": "A woman in a black dress before a wall covered in vintage vinyl record sleeves", "story": "", "talisman": null },
         { "src": "img/athens-marble-magenta.jpg", "title": "Goddess in Magenta", "alt": "A headless draped marble goddess against a magenta museum wall", "story": "", "talisman": null },
-        { "src": "img/athens-market.jpg", "title": "The Meat Market", "alt": "An Athens central-market shopfront hung with cured sausages and garlic braids", "story": "", "talisman": null },
         { "src": "img/athens-philopappos.jpg", "title": "Philopappos Hill", "alt": "Philopappos Hill in Athens, pines and olives below the marble monument", "story": "", "talisman": null },
         { "src": "img/athens-caryatids.jpg", "title": "The Six Maidens", "alt": "The Porch of the Caryatids on the Erechtheion, Acropolis, golden marble against blue sky", "story": "", "talisman": null },
         { "src": "img/athens-doorway.jpg", "title": "The Yellow Door", "alt": "A weathered old door in an ochre plaster wall with citrus leaves overhead", "story": "", "talisman": null },
         { "src": "img/athens-marble-column.jpg", "title": "Leaning", "alt": "A marble woman leaning on a small column, a museum piece", "story": "", "talisman": null },
-        { "src": "img/athens-wd-mural.jpg", "title": "Woman on Fire", "alt": "A WD street-art mural of a woman with flame-colored hair", "story": "", "talisman": null },
         { "src": "img/athens-fresco.jpg", "title": "Two Saints", "alt": "A faded Byzantine fresco of two haloed bishop-saints", "story": "", "talisman": null },
         { "src": "img/athens-hands-mural.jpg", "title": "Open Hands", "alt": "A monumental grayscale mural of weathered cupped hands on a building", "story": "", "talisman": null }
       ]
