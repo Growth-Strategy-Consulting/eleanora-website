@@ -478,6 +478,76 @@ if(!reduce){
   });
 }
 </script>
+<style id="gal-mobile">
+/* MOBILE: one uniform 2-up square grid for EVERY filter (kills the two clashing
+   layout systems) + tap-to-enlarge lightbox. Desktop layout untouched. */
+@media(max-width:600px){
+  #wall{display:grid !important;grid-template-columns:1fr 1fr !important;gap:6px !important;
+        column-count:auto !important;grid-auto-flow:row !important;}
+  #wall .tile{aspect-ratio:1 !important;width:auto !important;height:auto !important;min-height:0 !important;
+              margin:0 !important;grid-column:auto !important;grid-row:auto !important;
+              break-inside:auto !important;border-radius:3px;}
+  #wall .tile img{width:100% !important;height:100% !important;object-fit:cover;}
+  #wall .tile figcaption{display:none !important;}   /* clean squares; caption shows in the lightbox */
+  #wall .tile.hide{display:none !important;}
+}
+/* lightbox (opened only on mobile taps) */
+#glb{position:fixed;inset:0;z-index:1200;display:none;align-items:center;justify-content:center;
+     background:rgba(8,12,9,.97);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
+#glb.on{display:flex;}
+#glb img{max-width:94vw;max-height:80vh;width:auto;height:auto;object-fit:contain;border-radius:4px;
+         box-shadow:0 30px 80px -30px rgba(0,0,0,.8);}
+#glb .glb-cap{position:absolute;left:0;right:0;bottom:24px;text-align:center;padding:0 20px;color:var(--cream,#F6F1E7);}
+#glb .glb-cap .t{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:20px;}
+#glb .glb-cap .s{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sir-gold,#E7C489);margin-top:5px;opacity:.9;}
+#glb button{position:absolute;z-index:3;background:none;border:0;color:var(--cream,#F6F1E7);cursor:pointer;line-height:1;}
+#glb img{position:relative;z-index:1;}
+#glb .glb-x{top:16px;right:14px;font-size:32px;width:48px;height:48px;}
+#glb .glb-prev,#glb .glb-next{top:50%;transform:translateY(-50%);font-size:40px;width:52px;height:72px;opacity:.8;}
+#glb .glb-prev{left:2px;} #glb .glb-next{right:2px;}
+</style>
+<script>
+(function(){
+  var wall=document.getElementById('wall'); if(!wall)return;
+  var mq=matchMedia('(max-width:600px)');
+  var lb=document.createElement('div'); lb.id='glb'; lb.setAttribute('role','dialog'); lb.setAttribute('aria-label','Photo viewer');
+  lb.innerHTML='<button class="glb-x" aria-label="Close">&times;</button>'+
+    '<button class="glb-prev" aria-label="Previous photo">&#8249;</button>'+
+    '<button class="glb-next" aria-label="Next photo">&#8250;</button>'+
+    '<img alt=""><div class="glb-cap"><div class="t"></div><div class="s"></div></div>';
+  document.body.appendChild(lb);
+  var lbImg=lb.querySelector('img'), capT=lb.querySelector('.glb-cap .t'), capS=lb.querySelector('.glb-cap .s');
+  var idx=0, list=[];
+  function visible(){return [].slice.call(wall.querySelectorAll('.tile')).filter(function(t){return !t.classList.contains('hide');});}
+  function show(i){
+    if(!list.length)return; idx=(i+list.length)%list.length;
+    var t=list[idx], img=t.querySelector('img'), fc=t.querySelector('figcaption');
+    lbImg.src=img.getAttribute('src'); lbImg.alt=img.getAttribute('alt')||'';
+    capT.textContent=fc&&fc.querySelector('.t')?fc.querySelector('.t').textContent:'';
+    capS.textContent=fc&&fc.querySelector('.s')?fc.querySelector('.s').textContent:'';
+  }
+  function open(t){ list=visible(); if(!list.length)return; show(list.indexOf(t)); lb.classList.add('on'); document.body.style.overflow='hidden'; }
+  function close(){ lb.classList.remove('on'); document.body.style.overflow=''; lbImg.src=''; }
+  // capture phase so we beat the page-transition veil handler AND the <a> nav
+  wall.addEventListener('click',function(e){
+    if(!mq.matches)return;                       // desktop keeps its current behavior
+    var t=e.target.closest('.tile'); if(!t)return;
+    e.preventDefault(); e.stopImmediatePropagation(); open(t);
+  },true);
+  lb.querySelector('.glb-x').addEventListener('click',close);
+  lb.querySelector('.glb-prev').addEventListener('click',function(){show(idx-1);});
+  lb.querySelector('.glb-next').addEventListener('click',function(){show(idx+1);});
+  lb.addEventListener('click',function(e){ if(e.target===lb)close(); });
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('on'))return;
+    if(e.key==='Escape')close(); else if(e.key==='ArrowLeft')show(idx-1); else if(e.key==='ArrowRight')show(idx+1);
+  });
+  var x0=null;
+  lb.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  lb.addEventListener('touchend',function(e){ if(x0===null)return; var dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>40){dx<0?show(idx+1):show(idx-1);} x0=null; },{passive:true});
+})();
+</script>
 <script src="mobile-nav.js" defer></script>
 </body>
 </html>
