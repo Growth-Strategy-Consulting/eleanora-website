@@ -240,6 +240,25 @@
     .med-inner, .enter, .step{ transition:none; }
   }
 
+  /* invite line under the heading — makes it obvious the wheel is meant to be turned */
+  .spin-invite{
+    font-family:var(--sans); text-transform:lowercase; letter-spacing:.12em;
+    font-size:.8rem; color:var(--gold-soft); opacity:.85; margin:8px 0 0;
+  }
+  .wheel-stage{ position:relative; }
+
+  /* DESKTOP ONLY: bigger wheel, and the readout moves inside it (icon above, text below center).
+     mobile keeps the wheel at its current size with the readout below the wheel. */
+  @media (min-width:820px){
+    .wheel-wrap{ width:min(78vh,720px); margin-top:18px; }
+    .wheel-active{
+      position:absolute; left:0; right:0; top:54%;
+      transform:none; margin:0; pointer-events:none;
+      max-width:46%; margin-inline:auto;
+    }
+    .wheel-active .ritual{ font-size:clamp(2rem,2.6vw,2.7rem); }
+  }
+
   /* ---------- the twelve laws ---------- */
   /* header + square photo stack on the left, the words to the right,
      the law spans full width across the bottom. */
@@ -509,9 +528,11 @@ if(new URLSearchParams(location.search).has('member')){document.documentElement.
   <div class="inner reveal">
     <svg class="sprig" viewBox="0 0 120 24" aria-hidden="true"><line x1="10" y1="12" x2="110" y2="12"/><circle cx="60" cy="12" r="2.4"/><path d="M60 12 q -9 -9 -20 -7 M60 12 q 9 -9 20 -7 M60 12 q -9 9 -20 7 M60 12 q 9 9 20 7"/></svg>
     <p class="eyebrow">The Passage</p>
-    <h2>Twelve doors, one turning.</h2>
+    <h2>Twelve doors, turning one at a time.</h2>
     <p class="three-roads">logic &middot; the stars &middot; the soul</p>
+    <p class="spin-invite">Go ahead &mdash; spin the wheel for yourself.</p>
 
+    <div class="wheel-stage">
     <div class="wheel-wrap">
       <svg id="the-wheel" viewBox="0 0 1000 1000"
            role="slider" tabindex="0"
@@ -550,6 +571,7 @@ if(new URLSearchParams(location.search).has('member')){document.documentElement.
       <span class="ritual" id="w-ritual">The Initiation</span>
       <span class="desc" id="w-desc">understanding agency</span>
     </div>
+    </div><!-- /.wheel-stage -->
 
     <div class="controls">
       <button class="step" id="w-prev" type="button" aria-label="Previous sign">
@@ -596,9 +618,9 @@ if(new URLSearchParams(location.search).has('member')){document.documentElement.
           <span class="way-d">The whole journey, one month at a time, with me in your ear the whole way. Twelve signs, twelve laws, at whatever pace is yours. It begins with Aries, and the doors are opening soon.</span>
           <a class="btn" href="#" data-cta="the-passage">Explore options</a>
         </div>
-        <a class="way" href="#" data-cta="one-on-one">
+        <a class="way" href="../site/work-with-me.html" data-cta="one-on-one">
           <span class="way-t">Work with me, one on one</span>
-          <span class="way-d">The closest way in. We start with an hour, just us. Then I build content around your life and keep you honest, a check-in every week or two, for as long as you want me in your corner. You bring the goal. I make sure you actually reach it.</span>
+          <span class="way-d">The closest way in, and the hardest to get. Six months or a year, just the two of us, walking your whole wheel to the version of you who does not need me anymore. I do not take everyone.</span>
           <span class="way-go">work with me &rarr;</span>
         </a>
       </div>
@@ -780,6 +802,7 @@ const slug = s => s.toLowerCase();
   const roSign=document.getElementById('w-sign'), roRit=document.getElementById('w-ritual'), roDesc=document.getElementById('w-desc');
   const liveEl=document.getElementById('w-live');
   if(!wheel) return;
+  let userMoved=false;
 
   /* decorative rotating armature (spokes) */
   for(let i=0;i<N;i++){ const a=(-90+i*STEP)*DEG;
@@ -862,7 +885,7 @@ const slug = s => s.toLowerCase();
   let lastAngle=0, lastT=0;
   const pointerAngle=e=>{ const r=wheel.getBoundingClientRect();
     return Math.atan2(e.clientY-(r.top+r.height/2), e.clientX-(r.left+r.width/2))/DEG; };
-  function down(e){ dragging=true; wheel.classList.add('dragging');
+  function down(e){ dragging=true; userMoved=true; wheel.classList.add('dragging');
     try{ wheel.setPointerCapture(e.pointerId); }catch(_){}
     lastAngle=pointerAngle(e); lastT=performance.now(); vel=0; target=null; startAnim(); }
   function move(e){ if(!dragging) return; const a=pointerAngle(e);
@@ -878,7 +901,7 @@ const slug = s => s.toLowerCase();
   wheel.addEventListener('pointercancel',up);
 
   /* -------- keyboard -------- */
-  function glide(dir){ const base=(target!=null)?target:Math.round(theta/STEP)*STEP; target=base-dir*STEP; vel=0; startAnim(); }
+  function glide(dir){ userMoved=true; const base=(target!=null)?target:Math.round(theta/STEP)*STEP; target=base-dir*STEP; vel=0; startAnim(); }
   wheel.addEventListener('keydown',e=>{
     switch(e.key){
       case 'ArrowRight': case 'ArrowDown': e.preventDefault(); glide(+1); break;
@@ -903,10 +926,16 @@ const slug = s => s.toLowerCase();
 
   /* tap a medallion to bring it to the top */
   meds.addEventListener('click',e=>{ const g=e.target.closest('.med'); if(!g) return;
+    userMoved=true;
     let t=-(+g.dataset.i)*STEP; const base=Math.round(theta/STEP)*STEP;
     while(t-base>180)t-=360; while(t-base<-180)t+=360; target=t; vel=0; startAnim(); });
 
   render(); medEls[0].classList.add('is-top'); activeI=0;
+
+  /* one-time "it turns" cue: after the page settles, dip the wheel a few degrees and
+     let the spring pull it back to Aries. skipped if the visitor already grabbed it,
+     or if they prefer reduced motion. the dip stays under half a step so no sign flips. */
+  setTimeout(()=>{ if(reduce||userMoved) return; target=theta-11; startAnim(); }, 1500);
 })();
 
 /* ------------------------------------------------------------------ *

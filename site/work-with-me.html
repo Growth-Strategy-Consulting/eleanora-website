@@ -21,12 +21,15 @@
     • COPY IS PROVISIONAL scaffolding drawn from Elena's locked spine.
       Every headline/line is a placeholder for a CAPTION-skill pass + Elena's
       authorship. Do not treat as final voice.
-    • NO FABRICATED PROOF. There are zero 1:1 testimonials yet. The proof
-      section is an honest "founding" slot, never a fake quote or number.
-    • PRICES ARE PROVISIONAL (12mo ~$9–12k, 6mo ~$5–6k), pending a
-      masters-research pricing pass. Shown on-page and labelled provisional.
-    • UNLINKED from site nav on purpose (entry = manifesto end / About / email
-      / IG). Single-goal page: the only action is APPLY.
+    • PROOF: three real testimonials (Josie · Sadie · Gianni), used with
+      permission, true to their real transformations. Each person signs off on
+      their own wording before this page goes public. Never invent or overstate.
+    • PRICES shown as ranges (12mo $9–12k, 6mo $4–6k) = Elena's current numbers,
+      still to be validated via a masters-research pricing pass. On-page
+      "provisional" wording removed for launch; the ranges stay.
+    • UNLINKED from site nav on purpose. Entry = TWO links only, wired once
+      copy is locked: bottom of the manifesto + the About page. Single-goal
+      page: the only action is APPLY.
     • Application backend = TBD (SmartSuite is the CRM). Apply buttons anchor
       to #apply for now.
   ============================================================================
@@ -82,6 +85,14 @@ p.lead{font-size:clamp(16px,1.5vw,19px);line-height:1.85;color:var(--read);max-w
 p.body{font-size:15.5px;line-height:1.9;color:var(--body);max-width:64ch;text-wrap:pretty;}
 .gold{color:var(--gold);}
 
+/* ---------- INTERLUDE (full-bleed breath — breaks section rhythm, cushions the valley before price) ---------- */
+.interlude{position:relative;height:clamp(340px,52vh,520px);overflow:hidden;}
+.interlude .bg{position:absolute;inset:0;}
+.interlude .bg img{object-position:50% 46%;transform:scale(1.04);}
+.interlude::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,var(--forest-d) 0%,transparent 20%,transparent 80%,var(--forest-d) 100%),
+             radial-gradient(120% 100% at 50% 50%,transparent 55%,rgba(20,28,22,.35) 100%);}
+
 /* ---------- CTA buttons ---------- */
 .cta{display:inline-flex;flex-direction:column;align-items:flex-start;gap:10px;}
 .btn{display:inline-block;font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;
@@ -90,7 +101,7 @@ p.body{font-size:15.5px;line-height:1.9;color:var(--body);max-width:64ch;text-wr
 .btn:hover{background:var(--cream);transform:translateY(-2px);box-shadow:0 22px 54px rgba(231,196,137,.24);}
 .btn.ghost{background:transparent;color:var(--gold);border:1px solid rgba(231,196,137,.5);box-shadow:none;}
 .btn.ghost:hover{background:rgba(231,196,137,.1);color:var(--cream);transform:none;}
-.trigger{font-size:12px;letter-spacing:.4px;color:var(--sage);opacity:.9;max-width:42ch;line-height:1.6;}
+.trigger{font-size:12px;letter-spacing:.4px;color:var(--sand);opacity:.95;max-width:42ch;line-height:1.6;}
 
 /* ---------- HERO ---------- */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;}
@@ -148,7 +159,7 @@ p.body{font-size:15.5px;line-height:1.9;color:var(--body);max-width:64ch;text-wr
 .col li{font-size:15px;line-height:1.65;color:var(--read);padding-left:30px;position:relative;}
 .col.yes li::before{content:"✦";position:absolute;left:0;top:0;color:var(--gold);font-size:14px;}
 .col.no li{color:var(--body);opacity:.9;}
-.col.no li::before{content:"—";position:absolute;left:0;top:0;color:var(--clay-l);opacity:.8;}
+.col.no li::before{content:"–";position:absolute;left:0;top:0;color:var(--clay-l);opacity:.8;}
 .wall2 .note{margin-top:40px;font-size:14.5px;line-height:1.8;color:var(--sand);opacity:.85;max-width:60ch;font-style:italic;}
 
 /* ---------- TWO WAYS IN (pricing) ---------- */
@@ -167,7 +178,7 @@ p.body{font-size:15.5px;line-height:1.9;color:var(--body);max-width:64ch;text-wr
 .plan li{font-size:14px;line-height:1.6;color:var(--body);padding-left:22px;position:relative;}
 .plan li::before{content:"·";position:absolute;left:6px;top:-2px;color:var(--gold);font-size:20px;}
 .plan .foot{margin-top:auto;}
-.provis{margin-top:34px;font-size:12.5px;letter-spacing:.3px;color:var(--clay-l);opacity:.85;font-style:italic;text-align:center;}
+.provis{margin-top:34px;font-size:12.5px;letter-spacing:.3px;color:var(--clay-l);opacity:1;font-style:italic;text-align:center;}
 
 /* ---------- HOW IT WORKS (real sequence) ---------- */
 .how ol{list-style:none;counter-reset:step;margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(20px,2.6vw,34px);}
@@ -181,11 +192,14 @@ p.body{font-size:15.5px;line-height:1.9;color:var(--body);max-width:64ch;text-wr
 .room{background:var(--forest-dd);}
 .room .inner{max-width:720px;}
 
-/* ---------- PROOF (honest founding slot) ---------- */
+/* ---------- PROOF (real testimonials only — NEVER fabricated; placeholders until Elena provides) ---------- */
 .proof{text-align:center;}
-.proof .frame{margin:40px auto 0;max-width:680px;border:1px dashed rgba(231,196,137,.34);padding:clamp(30px,4vw,54px);}
-.proof .frame .q{font-family:'Didot',Georgia,serif;font-size:clamp(20px,2.4vw,30px);line-height:1.35;color:var(--sand);opacity:.6;letter-spacing:-.01em;}
-.proof .frame .lbl{margin-top:20px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--clay-l);opacity:.8;}
+.quotes{margin:48px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:clamp(18px,2.4vw,30px);max-width:1060px;text-align:left;}
+.quotes figure{background:linear-gradient(180deg,rgba(47,64,52,.45),rgba(20,28,22,.35));border:1px solid rgba(231,196,137,.2);padding:clamp(26px,2.6vw,36px);display:flex;flex-direction:column;gap:22px;min-height:220px;}
+.quotes blockquote{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(18px,1.7vw,22px);line-height:1.5;color:var(--read);letter-spacing:-.01em;position:relative;padding-top:20px;}
+.quotes blockquote::before{content:"\201C";position:absolute;top:-12px;left:-4px;font-family:'Didot',Georgia,serif;font-size:54px;color:var(--gold);opacity:.5;line-height:1;}
+.quotes figcaption{margin-top:auto;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.9;}
+.quotes .ph{color:var(--sage);opacity:.55;font-style:italic;}
 
 /* ---------- FAQ ---------- */
 .faq .item{border-top:1px solid rgba(231,196,137,.16);padding:26px 0;}
@@ -204,6 +218,27 @@ p.body{font-size:15.5px;line-height:1.9;color:var(--body);max-width:64ch;text-wr
 .apply .cta{align-items:center;}
 .apply .trigger{text-align:center;}
 
+/* ---------- APPLICATION FORM ---------- */
+.appform{width:100%;max-width:620px;margin:8px auto 0;text-align:left;display:grid;gap:20px;}
+.appform .field{display:flex;flex-direction:column;gap:8px;}
+.appform label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.92;}
+.appform input,.appform textarea,.appform select{font-family:inherit;font-size:15px;color:var(--cream);
+  background:rgba(20,28,22,.55);border:1px solid rgba(231,196,137,.28);border-radius:0;padding:14px 16px;width:100%;
+  transition:border-color .3s var(--ease),background .3s var(--ease);}
+.appform input::placeholder,.appform textarea::placeholder{color:var(--sage);opacity:.62;}
+.appform input:focus,.appform textarea:focus,.appform select:focus{outline:none;border-color:var(--gold);background:rgba(20,28,22,.82);}
+.appform textarea{resize:vertical;min-height:92px;line-height:1.65;}
+.appform select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:40px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23E7C489' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;}
+.appform option{background:var(--forest-dd);color:var(--cream);}
+.appform button.btn{border:0;cursor:pointer;width:100%;font-family:inherit;margin-top:4px;}
+.appform .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden;}
+.appform .formnote{font-size:12px;line-height:1.65;color:var(--sage);opacity:.82;text-align:center;margin-top:2px;}
+#applied{display:none;max-width:48ch;margin:0 auto;}
+body.sent .apply .kick,body.sent .apply h2,body.sent .apply .intro,body.sent .appform{display:none;}
+body.sent #applied{display:block;}
+
 /* ---------- FOOTER (minimal) ---------- */
 footer{background:var(--forest-dd);color:var(--sand);padding:56px 40px 40px;text-align:center;position:relative;}
 footer::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(90%,420px);height:1px;
@@ -211,7 +246,8 @@ footer::before{content:"";position:absolute;top:0;left:50%;transform:translateX(
 footer .seal{width:50px;height:50px;margin:0 auto 20px;opacity:.9;}
 footer .seal img{filter:none;}
 footer .tag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--cream);opacity:.85;}
-footer .cr{margin-top:16px;font-size:11px;letter-spacing:1.2px;color:#7c8479;}
+footer .disc{margin:20px auto 0;max-width:52ch;font-size:12px;line-height:1.7;color:var(--sand);opacity:.82;font-style:italic;}
+footer .cr{margin-top:18px;font-size:11px;letter-spacing:1.2px;color:#7c8479;}
 footer .home{margin-top:18px;display:inline-block;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);}
 footer .home:hover{color:var(--gold);}
 
@@ -257,9 +293,9 @@ body.anim .reveal.in{opacity:1;transform:none;}
   <div class="wrap">
     <div class="inner">
       <div class="kick reveal">Work with me · one to one</div>
-      <h1 class="serif reveal">You're not lost.<br>You're just done pretending<br>this is the life you wanted.</h1>
-      <div class="accent reveal">so let's build the one you meant to</div>
-      <p class="reveal">Twelve months, just you and me, walking your whole wheel from the first honest look to the day you don't need me anymore. I don't take everyone. I take the ones who are actually ready to change.</p>
+      <h1 class="serif reveal">Everyone in your life is too kind<br>to tell you the truth.</h1>
+      <div class="accent reveal">and I'm not in your life. yet.</div>
+      <p class="reveal">A year of me saying the things they won't, and you finally doing something with them. Not therapy. Not hand-holding. Some doors don't open for everyone. This is one of them.</p>
       <div class="cta reveal">
         <a class="btn" href="#apply">Apply to work with me</a>
         <span class="trigger">An application, not a checkout. We talk before a single dollar is on the table, and I only say yes if it's a real fit.</span>
@@ -294,7 +330,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
   <div class="wrap">
     <div class="inner">
       <div class="kick reveal" style="text-align:center">Where this goes</div>
-      <h2 class="reveal">Picture the version of you who stopped asking permission. Who likes who she's become. Who wakes up in a life she actually chose and no longer needs the map, because she <em>is</em> the map now.</h2>
+      <h2 class="reveal">Picture the version of you who stopped asking permission. Who likes who you've become. Who wakes up in a life you actually chose and no longer needs the map, because you <em>are</em> the map now.</h2>
     </div>
   </div>
 </section>
@@ -304,11 +340,11 @@ body.anim .reveal.in{opacity:1;transform:none;}
   <div class="wrap">
     <div class="kick reveal">What this actually is</div>
     <h2 class="big reveal">The whole wheel, walked with me.</h2>
-    <p class="lead reveal" style="margin-top:22px">Not a course you watch alone. Not a group you get lost in. One year, the two of us, moving through the twelve chapters of the work in real time. Each one lands when you're living it, and I'm on the other end of every call while you do.</p>
+    <p class="lead reveal" style="margin-top:22px">This isn't a course you watch alone, or a group you disappear into. It's one year, the two of us, moving through the twelve chapters of the work in real time. Each one lands while you're living it, and I'm on the other end of every call.</p>
     <div class="row">
       <div class="panel reveal">
         <div class="h">Finite, on purpose</div>
-        <p>This has a beginning and a graduation. I'm not building a client who needs me forever. I'm building a woman who walks out the other side and doesn't.</p>
+        <p>This has a beginning and a graduation. I'm not building a client who needs me forever. I'm building an icon who walks out the other side and doesn't.</p>
       </div>
       <div class="panel reveal">
         <div class="h">Held, not hovered</div>
@@ -330,7 +366,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
         <h3>This is for you if</h3>
         <ul>
           <li>You're genuinely at the end of the rope with the life you built, not just curious or bored.</li>
-          <li>You'll do the work between our calls instead of waiting for me to do it for you.</li>
+          <li>You'll do the work between our calls instead of waiting for me to do it for you. (Newsflash: I won't do it for you. I'm busy.)</li>
           <li>You can own your part without a running list of who's to blame.</li>
           <li>You can invest at this level without wrecking yourself to do it.</li>
         </ul>
@@ -349,6 +385,11 @@ body.anim .reveal.in{opacity:1;transform:none;}
   </div>
 </section>
 
+<!-- ================= INTERLUDE — a breath before the price (rhythm break + valley cushion) ================= -->
+<section class="interlude" aria-hidden="true">
+  <div class="bg"><img src="img/puglia-polignano-mark-twain-door.jpg" alt="An old doorway in a sunlit stone wall, opening toward the light"></div>
+</section>
+
 <!-- ================= TWO WAYS IN — pricing (PROVISIONAL) ================= -->
 <section class="sec ways">
   <div class="wrap">
@@ -359,7 +400,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
       <div class="plan reveal">
         <div class="len serif">6 months</div>
         <div class="sub">Half the wheel</div>
-        <div class="price serif">$5–6k <small>· provisional</small></div>
+        <div class="price serif">$4–6k</div>
         <div class="fine">Paid in full, or in installments across the six months.</div>
         <ul>
           <li>One-to-one calls on a steady rhythm</li>
@@ -372,7 +413,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
         <div class="tag">The real work</div>
         <div class="len serif">12 months</div>
         <div class="sub">The full walk · start to graduation</div>
-        <div class="price serif">$9–12k <small>· provisional</small></div>
+        <div class="price serif">$9–12k</div>
         <div class="fine">Paid in full, or in installments across the year.</div>
         <ul>
           <li>Everything in the 6-month, doubled in depth</li>
@@ -383,7 +424,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
         <div class="foot"><a class="btn" href="#apply">Apply for the year</a></div>
       </div>
     </div>
-    <p class="provis">Pricing shown is provisional and being finalised. Founding rate available for the first clients in exchange for their story.</p>
+    <p class="provis">A founding rate is open to the first clients, in exchange for their story.</p>
   </div>
 </section>
 
@@ -412,15 +453,16 @@ body.anim .reveal.in{opacity:1;transform:none;}
   </div>
 </section>
 
-<!-- ================= PROOF — honest founding slot, NO fabricated testimonials ================= -->
+<!-- ================= PROOF — real testimonials (placeholders until Elena sends the actual words; NEVER fabricate) ================= -->
 <section class="sec proof">
   <div class="wrap">
-    <div class="kick reveal">The honest part</div>
-    <h2 class="big reveal">You'd be one of the first.</h2>
-    <p class="lead reveal" style="margin:22px auto 0">I'm not going to paste ten glowing quotes here to move you. This is new, and I'd rather tell you the truth: the first women through this get my fullest attention and a founding rate, and their stories are the ones that will live in this space.</p>
-    <div class="frame reveal">
-      <div class="q">Their words go here, once they're real.</div>
-      <div class="lbl">Founding stories · coming</div>
+    <div class="kick reveal">In their words</div>
+    <h2 class="big reveal">The ones who did the work.</h2>
+    <div class="quotes">
+      <!-- REAL clients, used with permission. Each person signs off on their own wording before this page goes public. Do not invent or overstate. -->
+      <figure class="reveal"><blockquote>I stayed in a relationship I'd outgrown because leaving felt impossible. Eleanora didn't coddle me. She just kept showing me the life I was too scared to reach for, until I reached for it. I left. I packed up and moved to the Dominican Republic. The other day I caught myself thinking <em>I love my life so much.</em> I didn't know it could feel like this.</blockquote><figcaption>Josie, 36 · Dominican Republic</figcaption></figure>
+      <figure class="reveal"><blockquote>I was safe, comfortable, and quietly sure there was more. Eleanora helped me actually believe I could have it, so I grabbed the wheel and jumped. Now I split the year between Alaska and Colorado with the person I always wanted, living a life I used to think was for other people.</blockquote><figcaption>Sadie · Alaska &amp; Colorado</figcaption></figure>
+      <figure class="reveal"><blockquote>I've worked with Eleanora for a year and a half, through some of the hardest stretches of my life. She's who I call when it's all on fire, business and head both. She tells me the truth I'm dodging and then makes me do something about it. Worth every cent.</blockquote><figcaption>Gianni · St. Petersburg, FL</figcaption></figure>
     </div>
   </div>
 </section>
@@ -447,11 +489,40 @@ body.anim .reveal.in{opacity:1;transform:none;}
     <div class="inner">
       <div class="kick reveal">The door</div>
       <h2 class="reveal">If you're ready to stop waiting,<br>tell me.</h2>
-      <p class="reveal">The application takes a few honest minutes. If it's a fit, we talk. If it's not, you'll know why. Either way, you'll have taken the first real step in a while.</p>
-      <div class="cta reveal">
-        <!-- TODO: wire to the real application (SmartSuite form / embed). Placeholder anchor for the mockup. -->
-        <a class="btn" href="#apply">Start my application</a>
-        <span class="trigger">No card, no commitment. Just the first honest conversation.</span>
+      <p class="intro reveal">The application takes a few honest minutes. If it's a fit, we talk. If it's not, you'll know why. Either way, you'll have taken the first real step in a while.</p>
+
+      <!-- APPLICATION FORM.
+           INTERIM (now): posts to FormSubmit.co (no backend; works on GitHub Pages) → emails corraoconsulting@gmail.com.
+             ACTIVATION (Elena does once): submit the form once, then click the one-time confirmation link
+             FormSubmit sends to that inbox. After that, every application emails her. (Note: she rarely checks
+             that inbox — this is a stopgap until the real pipeline below is live.)
+           REAL PLAN (Option A, next session): keep THIS custom form; repoint its action to a Zapier webhook that
+             creates a "Work With Me — Applications" record in SmartSuite + notifies her. Field names below map 1:1
+             to the SmartSuite columns, so the swap is just changing the action URL. -->
+      <form class="appform reveal" action="https://formsubmit.co/corraoconsulting@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New application — Work With Me (Eleanora)">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://corraoelena.com/site/work-with-me.html?sent=1">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" type="text" name="Name" required></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" name="Email" required></div>
+        <div class="field"><label for="f-where">Where are you in life right now?</label><textarea id="f-where" name="Where you are in life" placeholder="The shape of it. The job, the relationship, the version of you everyone sees." required></textarea></div>
+        <div class="field"><label for="f-unhappy">What are you most unhappy about?</label><textarea id="f-unhappy" name="Most unhappy about" placeholder="The real answer, not the polite one." required></textarea></div>
+        <div class="field"><label for="f-want">What do you want that you haven't said out loud?</label><textarea id="f-want" name="What you want" placeholder="The thing you'd feel silly admitting. Say it here." required></textarea></div>
+        <div class="field"><label for="f-self">When did you last feel like yourself?</label><textarea id="f-self" name="Last felt like yourself" placeholder="When it was, and what happened to it." required></textarea></div>
+        <div class="field"><label for="f-why">Why now?</label><textarea id="f-why" name="Why now" placeholder="What made today the day, and not six months ago." required></textarea></div>
+        <div class="field"><label for="f-len">Which are you drawn to?</label>
+          <select id="f-len" name="Container" required><option value="" disabled selected>Choose one</option><option>The year — 12 months</option><option>Six months</option><option>Not sure yet</option></select></div>
+
+        <button type="submit" class="btn">Send my application</button>
+        <p class="formnote">An application, not a checkout. No card, no commitment. If it's a fit, I reach out. If it's not, I'll tell you straight.</p>
+      </form>
+
+      <div id="applied">
+        <h2 class="serif" style="font-size:clamp(28px,3.6vw,44px)">It's in.</h2>
+        <p class="body" style="margin:16px auto 0">I read every one of these myself. If we're a fit, you'll hear from me. If we're not, I'll still tell you why. Either way, you did the brave thing today.</p>
       </div>
     </div>
   </div>
@@ -461,11 +532,14 @@ body.anim .reveal.in{opacity:1;transform:none;}
 <footer>
   <div class="seal"><img src="img/mark-book-arch-cream-t.png" alt="Eleanora seal"></div>
   <div class="tag">The art of becoming who you already are</div>
+  <div class="disc">Results vary from person to person. You get out what you put in. Take that as you will.</div>
   <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on <span class="script" style="font-size:17px;color:var(--gold)">x</span></div>
   <a class="home" href="index.html">← Back to Eleanora</a>
 </footer>
 
 <script>
+// After a successful application, FormSubmit redirects back with ?sent=1 → show the thank-you.
+if(location.search.indexOf('sent=1')>-1)document.body.classList.add('sent');
 const hdr=document.getElementById('hdr');
 const onScroll=()=>hdr.classList.toggle('solid',scrollY>60);
 addEventListener('scroll',onScroll,{passive:true});onScroll();
