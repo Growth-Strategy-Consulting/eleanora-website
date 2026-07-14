@@ -257,5 +257,6 @@ document.getElementById('lbNext').addEventListener('click',()=>step(1));
 lb.addEventListener('click',e=>{if(e.target===lb)closeLB();});
 addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);});
 </script>
+<script src="mobile-nav.js" defer></script>
 </body>
 </html>
