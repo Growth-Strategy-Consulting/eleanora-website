@@ -167,6 +167,7 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
     <div class="panel">
       <div class="eye" id="lbEye">The Collection</div>
       <h3 id="lbTitle"></h3>
+      <button class="lbadd" id="lbAdd">Add to cart</button>
       <div class="story" id="lbStory"></div>
       <div class="tal" id="lbTal" style="display:none"></div>
     </div>
@@ -227,6 +228,7 @@ function openLB(i){
   document.getElementById('lbImg').alt=p.alt||'';
   document.getElementById('lbEye').textContent=PLACE;
   document.getElementById('lbTitle').textContent=p.title||'';
+  const add=document.getElementById('lbAdd'); add.textContent='Add to cart'; add.classList.remove('added');
   const story=document.getElementById('lbStory');
   if(p.story && p.story.trim()){ story.textContent=p.story; story.style.display=''; story.classList.remove('empty'); }
   else { story.textContent=''; story.style.display='none'; }   // no false "story coming soon" — only real token photos carry a story (via the token link below)
@@ -256,7 +258,13 @@ document.getElementById('lbPrev').addEventListener('click',()=>step(-1));
 document.getElementById('lbNext').addEventListener('click',()=>step(1));
 lb.addEventListener('click',e=>{if(e.target===lb)closeLB();});
 addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);});
+document.getElementById('lbAdd').addEventListener('click',function(){
+  if(window.EleanoraCart) window.EleanoraCart.add(PHOTOS[current]);
+  const b=document.getElementById('lbAdd'); b.textContent='Added ✓'; b.classList.add('added');
+  setTimeout(()=>{ b.textContent='Add to cart'; b.classList.remove('added'); },1300);
+});
 </script>
+<script src="cart.js" defer></script>
 <script src="mobile-nav.js" defer></script>
 </body>
 </html>
