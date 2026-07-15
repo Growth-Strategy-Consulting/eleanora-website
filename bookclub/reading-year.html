@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eleanora · A Reading Year</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Golden Hour room (Eleanora light world) */
+  --parchment:#F5EFE3; --cream:#F6F1E7; --sand:#E4D7BE; --sand-soft:#efe6d3;
+  --ink:#2B2019; --muted:#6d5f4e; --faint:#9a8b74;
+  --terra:#B07047;        /* accent — reading / links (darkened from #B87F51 for contrast) */
+  --gold:#C69327;         /* up next / the sun (darkened from #D9A441 for contrast) */
+  --gold-soft:#D9A441;
+  --sage:#7E9070;         /* read (darkened from #93A283 for contrast) */
+  --forest:#2F4034; --pine:#22331F;
+  --blush:#D99C86;        /* want-to-read heart */
+  --line:#e0d4bb;
+  --planned:#b3a487;
+  --didot:"Didot","Bodoni 72","Bodoni Moda",Georgia,serif;
+  --body:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  --script:"Alex Brush",cursive;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:
+    radial-gradient(120% 80% at 50% -8%, #fbf6ea 0%, var(--parchment) 55%, #f0e8d7 100%);
+  color:var(--ink); font-family:var(--body); font-weight:400;
+  line-height:1.6; min-height:100vh; padding:clamp(28px,5vw,64px) 20px 80px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:940px;margin:0 auto}
+
+/* ── header ── */
+header{text-align:center;margin-bottom:clamp(30px,5vw,52px)}
+.mark{font-size:26px;color:var(--terra);line-height:1;margin-bottom:6px}
+.word{font-family:var(--script);font-size:clamp(52px,11vw,88px);color:var(--forest);line-height:.9;letter-spacing:.01em}
+.kicker{font-family:var(--didot);font-style:italic;font-size:clamp(19px,3.4vw,26px);color:var(--ink);margin-top:8px;letter-spacing:.01em}
+.sub{color:var(--muted);font-size:14.5px;font-style:italic;max-width:44ch;margin:12px auto 0;text-wrap:pretty}
+
+/* ── the sun (progress) ── */
+.sun{display:flex;flex-direction:column;align-items:center;gap:18px;margin:clamp(24px,4vw,40px) auto clamp(30px,5vw,46px)}
+.dial{position:relative;width:186px;height:186px}
+.dial svg{transform:rotate(-90deg);display:block}
+.dial .track{fill:none;stroke:var(--sand);stroke-width:11}
+.dial .arc{fill:none;stroke:var(--gold);stroke-width:11;stroke-linecap:round;
+  transition:stroke-dashoffset 1.1s var(--ease)}
+.dial .core{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.dial .count{font-family:var(--didot);font-size:46px;line-height:.95;color:var(--ink)}
+.dial .of{color:var(--faint);font-size:14px;margin-top:2px}
+.dial .lbl{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-top:9px}
+.tallies{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.tally{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;background:var(--cream)}
+.tally b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.tally i{width:9px;height:9px;border-radius:50%;flex:none}
+
+/* ── now & next ── */
+.nownext{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:clamp(32px,5vw,48px)}
+.hl{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.hl .cap{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin-bottom:9px}
+.hl.next .cap{color:var(--gold)}
+.hl .t{font-family:var(--didot);font-size:20px;line-height:1.2;color:var(--ink);text-wrap:balance}
+.hl .a{color:var(--muted);font-size:13px;margin-top:5px}
+.hl .when{color:var(--gold);font-size:12px;margin-top:9px;font-style:italic}
+
+/* ── section titles ── */
+.sect{font-family:var(--didot);font-size:clamp(23px,4vw,30px);color:var(--forest);
+  text-align:center;margin:clamp(30px,5vw,48px) 0 6px}
+.sect + .note{text-align:center;color:var(--muted);font-size:13px;font-style:italic;margin-bottom:22px}
+
+/* ── the year: signs ── */
+.year{display:flex;flex-direction:column;gap:12px}
+.sign{background:var(--cream);border:1px solid var(--line);border-radius:14px;
+  padding:14px clamp(14px,2.4vw,20px);
+  display:grid;grid-template-columns:96px 1fr;gap:10px 16px;align-items:center}
+.sign .head{display:flex;flex-direction:column;gap:1px}
+.sign .glyph{font-family:var(--didot);font-size:26px;color:var(--terra);line-height:1}
+.sign .nm{font-family:var(--didot);font-size:16px;color:var(--ink);line-height:1.05}
+.sign .law{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.books{display:flex;flex-direction:column;gap:8px}
+
+/* ── book row ── */
+.book{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:10px;
+  background:var(--parchment);border:1px solid transparent;cursor:pointer;
+  transition:background .18s var(--ease),border-color .18s}
+.book:hover{background:var(--sand-soft);border-color:var(--line)}
+.book:focus-visible{outline:2px solid var(--terra);outline-offset:2px}
+.book .dot{width:11px;height:11px;border-radius:50%;flex:none;background:var(--planned);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--planned) 22%,transparent);
+  transition:background .2s,box-shadow .2s}
+.book .kind{font-size:14px;flex:none;opacity:.9;width:18px;text-align:center}
+.book .meta{flex:1;min-width:0}
+.book .bt{font-family:var(--didot);font-size:15.5px;color:var(--ink);line-height:1.15;
+  display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.book .ba{font-size:11.5px;color:var(--muted);line-height:1.2}
+.book .st{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);
+  flex:none;font-variant-numeric:tabular-nums;min-width:64px;text-align:right}
+.book .heart{flex:none;width:26px;height:26px;border-radius:50%;border:none;background:transparent;
+  cursor:pointer;font-size:14px;line-height:1;color:var(--faint);opacity:.5;
+  display:grid;place-items:center;transition:opacity .18s,transform .18s,color .18s}
+.book .heart:hover{opacity:1;transform:scale(1.15)}
+.book .heart[aria-pressed="true"]{opacity:1;color:var(--blush)}
+.book .notebtn{flex:none;width:26px;height:26px;border-radius:50%;border:none;background:transparent;cursor:pointer;
+  font-size:13px;line-height:1;color:var(--faint);opacity:.5;display:grid;place-items:center;transition:opacity .18s,color .18s}
+.book .notebtn:hover{opacity:1;color:var(--terra)}
+.book .notebtn.has{opacity:1;color:var(--terra)}
+.noteed{overflow:hidden;max-height:0;transition:max-height .3s var(--ease)}
+.noteed.open{max-height:220px}
+.noteed .ph{font-family:var(--didot);font-style:italic;font-size:12px;color:var(--faint);margin:2px 4px 3px}
+.noteed textarea{width:100%;margin:0 0 8px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;
+  background:var(--cream);color:var(--ink);font-family:var(--body);font-size:13.5px;line-height:1.55;resize:vertical;min-height:64px;outline:none}
+.noteed textarea:focus{border-color:var(--terra)}
+
+/* status coloring via data-status */
+.book[data-status="next"]{background:color-mix(in srgb,var(--gold-soft) 10%,var(--parchment))}
+.book[data-status="reading"]{background:color-mix(in srgb,var(--terra) 11%,var(--parchment));border-color:color-mix(in srgb,var(--terra) 30%,transparent)}
+.book[data-status="read"]{background:color-mix(in srgb,var(--sage) 13%,var(--parchment))}
+.book[data-status="read"] .bt{color:var(--muted)}
+.book[data-status="next"] .dot{background:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 24%,transparent)}
+.book[data-status="reading"] .dot{background:var(--terra);box-shadow:0 0 0 3px color-mix(in srgb,var(--terra) 26%,transparent)}
+.book[data-status="read"] .dot{background:var(--sage);box-shadow:0 0 0 3px color-mix(in srgb,var(--sage) 26%,transparent)}
+.book[data-status="next"] .st{color:var(--gold)}
+.book[data-status="reading"] .st{color:var(--terra)}
+.book[data-status="read"] .st{color:var(--sage)}
+
+/* ── celestine banner ── */
+.thread{margin:clamp(26px,4vw,40px) 0;background:linear-gradient(100deg,var(--sand-soft),var(--cream));
+  border:1px solid var(--line);border-radius:14px;padding:16px 20px;
+  display:flex;align-items:center;gap:14px;cursor:pointer}
+.thread:hover{border-color:color-mix(in srgb,var(--terra) 40%,var(--line))}
+.thread .dot{width:12px;height:12px;border-radius:50%;flex:none;background:var(--sage);box-shadow:0 0 0 3px color-mix(in srgb,var(--sage) 26%,transparent)}
+.thread .m{flex:1}
+.thread .lab{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra)}
+.thread .tt{font-family:var(--didot);font-size:19px;color:var(--ink);margin-top:2px}
+.thread .tx{color:var(--muted);font-size:12.5px;font-style:italic;margin-top:2px}
+.thread .st{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--sage)}
+
+/* ── someday shelf ── */
+.shelf{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.shelf h3{font-family:var(--didot);font-size:17px;color:var(--forest);margin-bottom:10px;font-style:italic}
+.shelf .col{display:flex;flex-direction:column;gap:7px}
+
+.hint{text-align:center;color:var(--faint);font-size:12px;margin-top:34px;font-style:italic;line-height:1.7}
+.hint b{color:var(--muted);font-weight:500;font-style:normal}
+
+/* motion */
+@media(min-width:1px){
+  .reveal{animation:rise .7s var(--ease) both}
+}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .reveal{animation:none}
+  .dial .arc{transition:none}
+  *{scroll-behavior:auto}
+}
+
+@media(max-width:640px){
+  .nownext,.shelf{grid-template-columns:1fr}
+  .sign{grid-template-columns:1fr;gap:6px}
+  .sign .head{flex-direction:row;align-items:baseline;gap:9px}
+  .book .st{display:none}
+  .book .bt{white-space:normal}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="reveal">
+    <div class="mark">❦</div>
+    <div class="word">Eleanora</div>
+    <div class="kicker">A Reading Year</div>
+    <p class="sub">Not a spreadsheet. A slow year of pages, spread across the wheel. Tap a book to move it along.</p>
+  </header>
+
+  <section class="sun reveal" style="animation-delay:.06s">
+    <div class="dial" id="dial">
+      <svg width="186" height="186" viewBox="0 0 186 186" aria-hidden="true">
+        <circle class="track" cx="93" cy="93" r="82"></circle>
+        <circle class="arc" id="arc" cx="93" cy="93" r="82"></circle>
+      </svg>
+      <div class="core">
+        <span class="count" id="readCount">0</span>
+        <span class="of" id="goalOf">of 24</span>
+        <span class="lbl">read this year</span>
+      </div>
+    </div>
+    <div class="tallies" id="tallies"></div>
+  </section>
+
+  <section class="nownext reveal" style="animation-delay:.1s" id="nownext"></section>
+
+  <h2 class="sect reveal">The Year</h2>
+  <p class="note reveal">Two books a month, more or less. The master read and the journey read, walking the wheel.</p>
+  <div class="year" id="year"></div>
+
+  <div class="thread reveal" id="thread"></div>
+
+  <h2 class="sect reveal">The Someday Shelf</h2>
+  <p class="note reveal">Not scheduled. The mind-benders and the tender ones — heart the ones you want.</p>
+  <div class="shelf" id="shelf"></div>
+
+  <p class="hint">
+    <b>Read</b> · <b>Reading</b> · <b>Up next</b> · <b>Planned</b> — tap any book to cycle · tap the heart to want it.<br>
+    Your progress saves on this device. Change the goal in the code (<b>GOAL</b>). One day this lives hidden on the site, behind a little book. xo
+  </p>
+</div>
+
+<script>
+/* ─────────────── the goal (change me) ─────────────── */
+const GOAL = 24; // the two shelves: 12 master + 12 journey
+
+/* ─────────────── the books ─────────────── */
+const SIGNS = [
+  ["aries","♈","Aries","Agency"],["taurus","♉","Taurus","The Hardware"],
+  ["gemini","♊","Gemini","Four Mother Skills"],["cancer","♋","Cancer","Define Your Enough"],
+  ["leo","♌","Leo","The Inner Game"],["virgo","♍","Virgo","Attention"],
+  ["libra","♎","Libra","People"],["scorpio","♏","Scorpio","Seeing Reality"],
+  ["sagittarius","♐","Sagittarius","Choosing the Game"],["capricorn","♑","Capricorn","Compound Interest"],
+  ["aquarius","♒","Aquarius","Bets & Luck"],["pisces","♓","Pisces","Usage Protocol"]
+];
+// [title, author] per sign
+const MASTER = {
+  aries:["The War of Art","Steven Pressfield"], taurus:["The Psychology of Money","Morgan Housel"],
+  gemini:["How to Win Friends and Influence People","Dale Carnegie"], cancer:["The Gifts of Imperfection","Brené Brown"],
+  leo:["The Inner Game of Tennis","W. Timothy Gallwey"], virgo:["Deep Work","Cal Newport"],
+  libra:["Attached","Levine & Heller"], scorpio:["The Untethered Soul","Michael A. Singer"],
+  sagittarius:["Man's Search for Meaning","Viktor Frankl"], capricorn:["Atomic Habits","James Clear"],
+  aquarius:["Thinking in Bets","Annie Duke"], pisces:["Man and His Symbols","Carl Jung"]
+};
+const JOURNEY = {
+  aries:["The Alchemist","Paulo Coelho"], taurus:["Siddhartha","Hermann Hesse"],
+  gemini:["Ishmael","Daniel Quinn"], cancer:["Tuesdays with Morrie","Mitch Albom"],
+  leo:["Untamed","Glennon Doyle"], virgo:["The Miracle of Mindfulness","Thich Nhat Hanh"],
+  libra:["A Man Called Ove","Fredrik Backman"], scorpio:["Many Lives, Many Masters","Dr. Brian Weiss"],
+  sagittarius:["The Subtle Art of Not Giving a F*ck","Mark Manson"], capricorn:["Shoe Dog","Phil Knight"],
+  aquarius:["Jonathan Livingston Seagull","Richard Bach"], pisces:["A Field Guide to Lucid Dreaming","Tuccillo, Zeizel & Peisel"]
+};
+const THOUGHT = [
+  ["The Story of B","Daniel Quinn"],["Sophie's World","Jostein Gaarder"],["Flatland","Edwin A. Abbott"],
+  ["The Book: On the Taboo Against Knowing Who You Are","Alan Watts"],["The Midnight Library","Matt Haig"],
+  ["Zen and the Art of Motorcycle Maintenance","Robert Pirsig"],["Tao Te Ching","Lao Tzu"],
+  ["Sapiens","Yuval Noah Harari"],["Thinking in Systems","Donella Meadows"],["Stumbling on Happiness","Daniel Gilbert"]
+];
+const SOUL = [
+  ["Eat Pray Love","Elizabeth Gilbert"],["Big Magic","Elizabeth Gilbert"],
+  ["The Five People You Meet in Heaven","Mitch Albom"],["The Prophet","Kahlil Gibran"],
+  ["Illusions","Richard Bach"],["Meditations","Marcus Aurelius"],
+  ["Journey of Souls","Michael Newton"],["Dying to Be Me","Anita Moorjani"]
+];
+
+/* initial statuses (everything else = planned) */
+const SEED = {
+  "The Alchemist":"read",
+  "The Celestine Prophecy":"read",
+  "The Subtle Art of Not Giving a F*ck":"reading",
+  "The War of Art":"next"
+};
+
+const STATUS = ["planned","next","reading","read"];
+const SLABEL = {planned:"Planned", next:"Up next", reading:"Reading", read:"Read ✓"};
+
+/* ─────────────── persistence ─────────────── */
+const KEY="eleanora-reading-year-v1";
+let store={status:{},want:{},notes:{}};
+try{ store = Object.assign({status:{},want:{},notes:{}}, JSON.parse(localStorage.getItem(KEY))||{}); }catch(e){}
+store.notes=store.notes||{};
+function save(){ localStorage.setItem(KEY, JSON.stringify(store)); }
+function statusOf(t){ return store.status[t] || SEED[t] || "planned"; }
+function wantOf(t){ return !!store.want[t]; }
+function noteOf(t){ return store.notes[t]||""; }
+
+/* ─────────────── render helpers ─────────────── */
+function bookEl(title, author, kind){
+  const bw=document.createElement('div'); bw.className='bw';
+  const el=document.createElement('div');
+  el.className='book'; el.dataset.title=title; el.dataset.status=statusOf(title);
+  el.setAttribute('role','button'); el.tabIndex=0;
+  el.setAttribute('aria-label', title+' by '+author+' · '+SLABEL[statusOf(title)]+'. Activate to change status.');
+  el.innerHTML =
+    '<span class="dot"></span>'+
+    (kind?'<span class="kind">'+kind+'</span>':'')+
+    '<span class="meta"><span class="bt">'+title+'</span><span class="ba">'+author+'</span></span>'+
+    '<span class="st">'+SLABEL[statusOf(title)]+'</span>'+
+    '<button class="notebtn'+(noteOf(title).trim()?' has':'')+'" type="button" aria-label="My notes" title="My notes">&#9998;</button>'+
+    '<button class="heart" type="button" aria-pressed="'+wantOf(title)+'" aria-label="Want to read" title="Want to read">'+(wantOf(title)?'♥':'♡')+'</button>';
+  const cycle=()=>{
+    const cur=statusOf(title), nxt=STATUS[(STATUS.indexOf(cur)+1)%STATUS.length];
+    store.status[title]=nxt; save();
+    el.dataset.status=nxt; el.querySelector('.st').textContent=SLABEL[nxt];
+    el.setAttribute('aria-label', title+' by '+author+' · '+SLABEL[nxt]+'. Activate to change status.');
+    paint();
+  };
+  el.addEventListener('click', e=>{ if(e.target.closest('.heart')||e.target.closest('.notebtn'))return; cycle(); });
+  el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();cycle();} });
+  const heart=el.querySelector('.heart');
+  heart.addEventListener('click', e=>{ e.stopPropagation();
+    store.want[title]=!wantOf(title); save();
+    heart.setAttribute('aria-pressed', wantOf(title)); heart.textContent=wantOf(title)?'♥':'♡';
+  });
+  const noteed=document.createElement('div'); noteed.className='noteed';
+  noteed.innerHTML='<div class="ph">my notes</div><textarea placeholder="what it did to me..."></textarea>';
+  const ta=noteed.querySelector('textarea'); ta.value=noteOf(title);
+  const nb=el.querySelector('.notebtn');
+  ta.addEventListener('input', ()=>{ store.notes[title]=ta.value; save(); nb.classList.toggle('has', !!ta.value.trim()); });
+  nb.addEventListener('click', e=>{ e.stopPropagation(); const open=noteed.classList.toggle('open'); if(open) setTimeout(()=>ta.focus(),50); });
+  bw.appendChild(el); bw.appendChild(noteed);
+  return bw;
+}
+
+/* the year */
+const year=document.getElementById('year');
+SIGNS.forEach(([key,glyph,name,law])=>{
+  const s=document.createElement('div'); s.className='sign reveal';
+  const head=document.createElement('div'); head.className='head';
+  head.innerHTML='<span class="glyph">'+glyph+'︎</span><span class="nm">'+name+'</span><span class="law">'+law+'</span>';
+  const books=document.createElement('div'); books.className='books';
+  books.appendChild(bookEl(MASTER[key][0],MASTER[key][1],'📖'));
+  books.appendChild(bookEl(JOURNEY[key][0],JOURNEY[key][1],'📗'));
+  s.appendChild(head); s.appendChild(books); year.appendChild(s);
+});
+
+/* celestine banner */
+const thread=document.getElementById('thread');
+(function(){
+  const t="The Celestine Prophecy";
+  function fill(){
+    thread.dataset.status=statusOf(t);
+    thread.innerHTML='<span class="dot" style="background:var(--'+({planned:'planned',next:'gold',reading:'terra',read:'sage'})[statusOf(t)]+')"></span>'+
+      '<span class="m"><span class="lab">The thread through it all</span>'+
+      '<span class="tt">The Celestine Prophecy &amp; the series</span>'+
+      '<span class="tx">read whole, then an insight a month · James Redfield</span></span>'+
+      '<span class="st">'+SLABEL[statusOf(t)]+'</span>';
+  }
+  fill();
+  thread.style.cursor='pointer'; thread.setAttribute('role','button'); thread.tabIndex=0;
+  const cyc=()=>{ const cur=statusOf(t); store.status[t]=STATUS[(STATUS.indexOf(cur)+1)%STATUS.length]; save(); fill(); paint(); };
+  thread.addEventListener('click',cyc);
+  thread.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();cyc();} });
+})();
+
+/* someday shelf */
+const shelf=document.getElementById('shelf');
+function shelfCol(title, list){
+  const c=document.createElement('div');
+  const h=document.createElement('h3'); h.textContent=title;
+  const col=document.createElement('div'); col.className='col';
+  list.forEach(([t,a])=>col.appendChild(bookEl(t,a,'')));
+  c.appendChild(h); c.appendChild(col); return c;
+}
+shelf.appendChild(shelfCol('Thought-provoking', THOUGHT));
+shelf.appendChild(shelfCol('Soul', SOUL));
+
+/* now & next */
+const nownext=document.getElementById('nownext');
+function renderNowNext(){
+  const all=[...year.querySelectorAll('.book'),...shelf.querySelectorAll('.book')];
+  const reading=all.find(b=>b.dataset.status==='reading');
+  const next=all.find(b=>b.dataset.status==='next');
+  const cell=(cls,cap,book,when)=>{
+    if(!book) return '<div class="hl '+cls+'"><div class="cap">'+cap+'</div><div class="t" style="color:var(--faint);font-style:italic">nothing yet</div></div>';
+    const t=book.querySelector('.bt').textContent, a=book.querySelector('.ba').textContent;
+    return '<div class="hl '+cls+'"><div class="cap">'+cap+'</div><div class="t">'+t+'</div><div class="a">'+a+'</div>'+(when?'<div class="when">'+when+'</div>':'')+'</div>';
+  };
+  nownext.innerHTML = cell('now','Reading now',reading,'') + cell('next','Up next',next,'in the next two weeks');
+}
+
+/* ─────────────── the sun + tallies ─────────────── */
+const arc=document.getElementById('arc');
+const R=82, C=2*Math.PI*R; arc.style.strokeDasharray=C;
+function paint(){
+  const all=[...year.querySelectorAll('.book'),...shelf.querySelectorAll('.book')];
+  const celestine=statusOf("The Celestine Prophecy");
+  const counts={planned:0,next:0,reading:0,read:0};
+  all.forEach(b=>counts[b.dataset.status]++);
+  counts[celestine]++; // celestine counts too
+  const read=counts.read;
+  document.getElementById('readCount').textContent=read;
+  document.getElementById('goalOf').textContent='of '+GOAL;
+  const pct=Math.min(1, read/GOAL);
+  arc.style.strokeDashoffset=C*(1-pct);
+  const t=document.getElementById('tallies');
+  t.innerHTML=
+    tally('var(--sage)','Read',counts.read)+
+    tally('var(--terra)','Reading',counts.reading)+
+    tally('var(--gold)','Up next',counts.next)+
+    tally('var(--planned)','Planned',counts.planned);
+  renderNowNext();
+}
+function tally(c,label,n){ return '<span class="tally"><i style="background:'+c+'"></i>'+label+' <b>'+n+'</b></span>'; }
+
+/* stagger reveals a touch */
+document.querySelectorAll('.year .sign.reveal').forEach((el,i)=>{ el.style.animationDelay=(0.03*i+0.02)+'s'; });
+
+paint();
+</script>
+</body>
+</html>
