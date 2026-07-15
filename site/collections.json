@@ -85,18 +85,18 @@
       "cover": "img/athens-record-wall.jpg",
       "blurb": "Old gods in marble, monasteries in the clouds, and the sea between.",
       "photos": [
-        { "src": "img/greece-meteora-valley.jpg", "title": "The Green Valley", "alt": "A lush green Pindus valley below Meteora under dramatic clouds", "story": "", "talisman": null },
-        { "src": "img/greece-corfu-sunset.jpg", "title": "Sun on the Ionian", "alt": "The sun low over the hills and sea at Corfu", "story": "", "talisman": null },
-        { "src": "img/athens-record-wall.jpg", "title": "Every Record Ever", "alt": "A woman in a black dress before a wall covered in vintage vinyl record sleeves", "story": "", "talisman": null },
-        { "src": "img/athens-marble-column.jpg", "title": "Leaning", "alt": "A marble woman leaning on a small column, a museum piece", "story": "", "talisman": null },
-        { "src": "img/greece-meteora-folk-museum.jpg", "title": "The Old Kitchen", "alt": "A folk-museum interior with dried red corn and an old corn-sheller", "story": "", "talisman": null },
-        { "src": "img/athens-marble-magenta.jpg", "title": "Goddess in Magenta", "alt": "A headless draped marble goddess against a magenta museum wall", "story": "", "talisman": null },
-        { "src": "img/athens-doorway.jpg", "title": "The Yellow Door", "alt": "A weathered old door in an ochre plaster wall with citrus leaves overhead", "story": "", "talisman": null },
-        { "src": "img/greece-corfu-bay.jpg", "title": "Swimming Weather", "alt": "A turquoise Corfu bay ringed by green mountains, swimmers in the shallows", "story": "", "talisman": null },
-        { "src": "img/greece-corfu-waterfront.jpg", "title": "The Old Town from the Water", "alt": "The pastel Venetian waterfront of Corfu Old Town seen from the sea", "story": "", "talisman": null },
-        { "src": "img/athens-fresco.jpg", "title": "Two Saints", "alt": "A faded Byzantine fresco of two haloed bishop-saints", "story": "", "talisman": null },
-        { "src": "img/athens-philopappos.jpg", "title": "Philopappos Hill", "alt": "Philopappos Hill in Athens, pines and olives below the marble monument", "story": "", "talisman": null },
-        { "src": "img/athens-caryatids.jpg", "title": "The Six Maidens", "alt": "The Porch of the Caryatids on the Erechtheion, Acropolis, golden marble against blue sky", "story": "", "talisman": null }
+        { "src": "img/greece-meteora-valley.jpg", "title": "The Green Valley", "alt": "A lush green Pindus valley below Meteora under dramatic clouds", "whisper": "Down there, the world forgets to ask anything of you.", "story": "", "talisman": null },
+        { "src": "img/greece-corfu-sunset.jpg", "title": "Sun on the Ionian", "alt": "The sun low over the hills and sea at Corfu", "whisper": "The hour the sea turns gold, and nobody's in a hurry.", "story": "", "talisman": null },
+        { "src": "img/athens-record-wall.jpg", "title": "Every Record Ever", "alt": "A woman in a black dress before a wall covered in vintage vinyl record sleeves", "whisper": "Every record on that wall was somebody's whole summer once.", "story": "", "talisman": null },
+        { "src": "img/athens-marble-column.jpg", "title": "Leaning", "alt": "A marble woman leaning on a small column, a museum piece", "whisper": "Two thousand years standing, and still she leans like she's tired.", "story": "", "talisman": null },
+        { "src": "img/greece-meteora-folk-museum.jpg", "title": "The Old Kitchen", "alt": "A folk-museum interior with dried red corn and an old corn-sheller", "whisper": "A kitchen that fed everyone who came through, and remembered them all.", "story": "", "talisman": null },
+        { "src": "img/athens-marble-magenta.jpg", "title": "Goddess in Magenta", "alt": "A headless draped marble goddess against a magenta museum wall", "whisper": "No head, no name, and she still owns the whole room.", "story": "", "talisman": null },
+        { "src": "img/athens-doorway.jpg", "title": "The Yellow Door", "alt": "A weathered old door in an ochre plaster wall with citrus leaves overhead", "whisper": "The door stayed shut, and something green grew anyway.", "story": "", "talisman": null },
+        { "src": "img/greece-corfu-bay.jpg", "title": "Swimming Weather", "alt": "A turquoise Corfu bay ringed by green mountains, swimmers in the shallows", "whisper": "The kind of blue that talks you into staying another week.", "story": "", "talisman": null },
+        { "src": "img/greece-corfu-waterfront.jpg", "title": "The Old Town from the Water", "alt": "The pastel Venetian waterfront of Corfu Old Town seen from the sea", "whisper": "Those walls have watched every boat, and every goodbye.", "story": "", "talisman": null },
+        { "src": "img/athens-fresco.jpg", "title": "Two Saints", "alt": "A faded Byzantine fresco of two haloed bishop-saints", "whisper": "Cracked and faded, and still keeping their watch.", "story": "", "talisman": null },
+        { "src": "img/athens-philopappos.jpg", "title": "Philopappos Hill", "alt": "Philopappos Hill in Athens, pines and olives below the marble monument", "whisper": "Climb high enough and even Athens learns to be quiet.", "story": "", "talisman": null },
+        { "src": "img/athens-caryatids.jpg", "title": "The Six Maidens", "alt": "The Porch of the Caryatids on the Erechtheion, Acropolis, golden marble against blue sky", "whisper": "Six of them holding up a temple, and still making it look easy.", "story": "", "talisman": null }
       ]
     },
     {

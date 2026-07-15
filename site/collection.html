@@ -80,7 +80,8 @@ body.anim .p.in{opacity:1;transform:none;}
 .lb .imgwrap img{width:100%;height:100%;max-height:88vh;object-fit:contain;}
 .lb .panel{flex:1 1 38%;padding:44px 38px;display:flex;flex-direction:column;justify-content:center;overflow-y:auto;}
 .lb .panel .eye{font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sir-gold);opacity:.9;margin-bottom:10px;}
-.lb .panel h3{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;font-size:34px;line-height:1.05;letter-spacing:-.01em;color:var(--cream);margin-bottom:16px;}
+.lb .panel h3{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;font-size:34px;line-height:1.05;letter-spacing:-.01em;color:var(--cream);margin-bottom:10px;}
+.lb .panel .lbwhisper{font-family:Georgia,'Didot',serif;font-style:italic;font-size:15px;line-height:1.55;color:var(--cream);opacity:.82;margin:0 0 18px;}
 .lb .panel .story{font-size:14.5px;line-height:1.85;color:#cdd3c3;}
 .lb .panel .story.empty{opacity:.5;font-style:italic;}
 .lb .tal{margin-top:26px;padding-top:22px;border-top:1px solid rgba(217,164,65,.2);}
@@ -167,6 +168,7 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
     <div class="panel">
       <div class="eye" id="lbEye">The Collection</div>
       <h3 id="lbTitle"></h3>
+      <p class="lbwhisper" id="lbWhisper"></p>
       <button class="lbadd" id="lbAdd">Add to cart</button>
       <div class="story" id="lbStory"></div>
       <div class="tal" id="lbTal" style="display:none"></div>
@@ -229,6 +231,7 @@ function openLB(i){
   document.getElementById('lbEye').textContent=PLACE;
   document.getElementById('lbTitle').textContent=p.title||'';
   const add=document.getElementById('lbAdd'); add.textContent='Add to cart'; add.classList.remove('added');
+  const wh=document.getElementById('lbWhisper'); wh.textContent=p.whisper||''; wh.style.display=p.whisper?'':'none';
   const story=document.getElementById('lbStory');
   if(p.story && p.story.trim()){ story.textContent=p.story; story.style.display=''; story.classList.remove('empty'); }
   else { story.textContent=''; story.style.display='none'; }   // no false "story coming soon" — only real token photos carry a story (via the token link below)
