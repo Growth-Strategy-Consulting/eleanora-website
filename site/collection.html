@@ -66,6 +66,7 @@ nav a:hover::after,nav a.here::after{width:100%;}
 .p .shot::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.14);pointer-events:none;transition:box-shadow .4s;}
 .p:hover .shot::after{box-shadow:inset 0 0 0 1px rgba(231,196,137,.55);}
 .p .tmark{position:absolute;top:7px;left:7px;z-index:4;display:inline-flex;align-items:center;gap:4px;font-size:7.5px;letter-spacing:1.5px;text-transform:uppercase;color:#20160c;background:var(--sir-gold);padding:3px 6px;border-radius:2px;box-shadow:0 4px 14px rgba(0,0,0,.35);}
+.p .cap{display:block;padding:7px 2px 0;font-family:'Didot','Bodoni 72',Georgia,serif;font-size:13px;line-height:1.2;color:var(--cream);letter-spacing:.2px;text-align:left;}
 /* reveal — only when JS marks the body (default is visible, so headless/no-JS still shows) */
 body.anim .p{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);}
 body.anim .p.in{opacity:1;transform:none;}
@@ -110,7 +111,7 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
 
 @media(max-width:900px){ header{padding:14px 22px;} nav ul{display:none;} }
 @media(max-width:720px){ .lb .box{flex-direction:column;max-height:92vh;} .lb .imgwrap img{max-height:52vh;} .lb .panel{padding:28px 24px;} }
-@media(max-width:560px){ .flow{gap:5px;padding:0 10px;}
+@media(max-width:560px){ .flow{gap:5px;padding:0 10px;} .p .cap{font-size:10.5px;padding:5px 1px 0;}
   .bundlebar{gap:4px 12px;padding:12px 12px;} .bundlebar .bb-lead{font-size:16px;} .bundlebar .bb-deal{font-size:10.5px;letter-spacing:1px;} .bundlebar .bb-note{margin-left:0;flex-basis:100%;} }
 </style>
 </head>
@@ -209,7 +210,8 @@ fetch('collections.json').then(r=>r.json()).then(data=>{
     fig.innerHTML=
       '<div class="shot"><img src="'+p.src+'" alt="'+(p.alt||'')+'" loading="lazy">'+
         (p.talisman?'<span class="tmark">&#10022; token</span>':'')+
-      '</div>';
+      '</div>'+
+      '<figcaption class="cap">'+(p.title||'')+'</figcaption>';
     fig.addEventListener('click',()=>openLB(idx));
     return fig;
   };

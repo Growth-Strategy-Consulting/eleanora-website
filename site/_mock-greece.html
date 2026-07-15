@@ -10,18 +10,17 @@ body{background:#0c110d;color:var(--cream);font-family:'Helvetica Neue',Arial,sa
 .eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--sir-gold);margin-bottom:10px;}
 h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;font-size:52px;letter-spacing:.5px;margin-bottom:8px;}
 .note{font-size:12px;letter-spacing:1px;color:#9aa08f;margin-bottom:6px;}
-/* bundle bar (copied from live) */
 .bundlebar{max-width:860px;margin:26px auto 0;padding:16px 24px;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;border-top:1px solid rgba(231,196,137,.16);border-bottom:1px solid rgba(231,196,137,.16);text-align:left;}
 .bundlebar .bb-lead{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:21px;color:var(--cream);letter-spacing:.5px;}
 .bundlebar .bb-deal{font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--sir-gold);}
 .bundlebar .bb-note{font-size:12px;letter-spacing:.5px;color:#9aa08f;margin-left:auto;}
-/* shop wall (copied from live) */
 .flow{max-width:860px;margin:26px auto 44px;padding:0 clamp(14px,3vw,28px);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(6px,1vw,11px);}
-.p{position:relative;cursor:zoom-in;margin:0;}
+.p{position:relative;margin:0;}
 .p .shot{position:relative;aspect-ratio:1;overflow:hidden;background:#12180f;box-shadow:0 10px 26px -16px rgba(0,0,0,.55);}
 .p .shot img{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(1.04) contrast(1.03) brightness(.92);}
 .p .shot::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.14);pointer-events:none;}
-@media(max-width:560px){ .flow{gap:5px;padding:0 10px;} .bundlebar{gap:4px 12px;padding:12px 12px;} .bundlebar .bb-note{margin-left:0;flex-basis:100%;} }
+.p .cap{display:block;padding:7px 2px 0;font-family:'Didot','Bodoni 72',Georgia,serif;font-size:13px;line-height:1.2;color:var(--cream);letter-spacing:.2px;text-align:left;}
+@media(max-width:560px){ .flow{gap:5px;padding:0 10px;} .p .cap{font-size:10.5px;padding:5px 1px 0;} .bundlebar{gap:4px 12px;padding:12px 12px;} .bundlebar .bb-note{margin-left:0;flex-basis:100%;} }
 </style></head>
 <body>
 <div class="wrap">
@@ -37,17 +36,17 @@ h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;font-size:52px;
 </div>
 
 <div class="flow">
-  <figure class="p"><div class="shot"><img src="img/athens-record-wall.jpg" alt="Every Record Ever"></div></figure>
-  <figure class="p"><div class="shot"><img src="img/greece-corfu-waterfront.jpg" alt="The Old Town from the Water"></div></figure>
-  <figure class="p"><div class="shot"><img src="img/athens-marble-magenta.jpg" alt="Goddess in Magenta"></div></figure>
-  <figure class="p"><div class="shot"><img src="img/greece-meteora-valley.jpg" alt="The Green Valley"></div></figure>
-  <figure class="p"><div class="shot"><img src="img/greece-corfu-sunset.jpg" alt="Sun on the Ionian"></div></figure>
-  <figure class="p"><div class="shot"><img src="img/athens-marble-column.jpg" alt="Leaning"></div></figure>
-  <figure class="p"><div class="shot"><img src="img/athens-doorway.jpg" alt="The Yellow Door"></div></figure>
-  <figure class="p"><div class="shot"><img src="img/greece-meteora-folk-museum.jpg" alt="The Old Kitchen"></div></figure>
-  <figure class="p"><div class="shot"><img src="img/athens-caryatids.jpg" alt="The Six Maidens"></div></figure>
-  <figure class="p"><div class="shot"><img src="img/athens-fresco.jpg" alt="Two Saints"></div></figure>
-  <figure class="p"><div class="shot"><img src="img/greece-corfu-bay.jpg" alt="Swimming Weather"></div></figure>
-  <figure class="p"><div class="shot"><img src="img/athens-philopappos.jpg" alt="Philopappos Hill"></div></figure>
+  <figure class="p"><div class="shot"><img src="img/athens-record-wall.jpg" alt="Every Record Ever"></div><figcaption class="cap">Every Record Ever</figcaption></figure>
+  <figure class="p"><div class="shot"><img src="img/greece-corfu-waterfront.jpg" alt="The Old Town from the Water"></div><figcaption class="cap">The Old Town from the Water</figcaption></figure>
+  <figure class="p"><div class="shot"><img src="img/athens-marble-magenta.jpg" alt="Goddess in Magenta"></div><figcaption class="cap">Goddess in Magenta</figcaption></figure>
+  <figure class="p"><div class="shot"><img src="img/greece-meteora-valley.jpg" alt="The Green Valley"></div><figcaption class="cap">The Green Valley</figcaption></figure>
+  <figure class="p"><div class="shot"><img src="img/greece-corfu-sunset.jpg" alt="Sun on the Ionian"></div><figcaption class="cap">Sun on the Ionian</figcaption></figure>
+  <figure class="p"><div class="shot"><img src="img/athens-marble-column.jpg" alt="Leaning"></div><figcaption class="cap">Leaning</figcaption></figure>
+  <figure class="p"><div class="shot"><img src="img/athens-doorway.jpg" alt="The Yellow Door"></div><figcaption class="cap">The Yellow Door</figcaption></figure>
+  <figure class="p"><div class="shot"><img src="img/greece-meteora-folk-museum.jpg" alt="The Old Kitchen"></div><figcaption class="cap">The Old Kitchen</figcaption></figure>
+  <figure class="p"><div class="shot"><img src="img/athens-caryatids.jpg" alt="The Six Maidens"></div><figcaption class="cap">The Six Maidens</figcaption></figure>
+  <figure class="p"><div class="shot"><img src="img/athens-fresco.jpg" alt="Two Saints"></div><figcaption class="cap">Two Saints</figcaption></figure>
+  <figure class="p"><div class="shot"><img src="img/greece-corfu-bay.jpg" alt="Swimming Weather"></div><figcaption class="cap">Swimming Weather</figcaption></figure>
+  <figure class="p"><div class="shot"><img src="img/athens-philopappos.jpg" alt="Philopappos Hill"></div><figcaption class="cap">Philopappos Hill</figcaption></figure>
 </div>
 </body></html>
