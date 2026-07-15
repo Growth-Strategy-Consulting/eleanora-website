@@ -228,8 +228,8 @@ function openLB(i){
   document.getElementById('lbEye').textContent=PLACE;
   document.getElementById('lbTitle').textContent=p.title||'';
   const story=document.getElementById('lbStory');
-  if(p.story && p.story.trim()){ story.textContent=p.story; story.classList.remove('empty'); }
-  else { story.textContent='A story lives here — coming soon.'; story.classList.add('empty'); }
+  if(p.story && p.story.trim()){ story.textContent=p.story; story.style.display=''; story.classList.remove('empty'); }
+  else { story.textContent=''; story.style.display='none'; }   // no false "story coming soon" — only real token photos carry a story (via the token link below)
 
   const tal=document.getElementById('lbTal');
   if(p.talisman){
