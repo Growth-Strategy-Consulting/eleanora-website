@@ -48,6 +48,7 @@ a{color:inherit}
 .cta:hover{background:var(--pine);transform:translateY(-2px)}
 .cta .n{color:var(--gold-soft);font-family:var(--didot);font-style:italic}
 .hero .seats{display:block;color:var(--faint);font-size:12.5px;font-style:italic;margin-top:14px}
+.hero .firstdate{display:block;color:var(--gold);font-family:var(--didot);font-style:italic;font-size:15px;margin-top:12px}
 
 /* section */
 section{padding:clamp(38px,7vw,72px) 0;border-top:1px solid var(--line)}
@@ -76,6 +77,13 @@ section{padding:clamp(38px,7vw,72px) 0;border-top:1px solid var(--line)}
 .now .bt{font-family:var(--didot);font-size:clamp(22px,4vw,30px);color:var(--ink);margin-top:10px;line-height:1.15}
 .now .ba{color:var(--muted);font-size:14px;margin-top:6px}
 .now .note{color:var(--faint);font-size:13px;font-style:italic;margin-top:14px}
+.nightstand{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:clamp(26px,4vw,40px) auto 0}
+.nightstand .now{margin-top:0;max-width:none}
+.now.club{border-color:color-mix(in srgb,var(--gold) 42%,var(--line));
+  background:linear-gradient(180deg,color-mix(in srgb,var(--gold-soft) 8%,var(--cream)),var(--cream))}
+.now.club .cap{color:var(--forest)}
+.now.club .tag{display:inline-block;font-family:var(--didot);font-style:italic;font-size:12px;color:var(--gold);margin-bottom:4px}
+.now .when{color:var(--gold);font-family:var(--didot);font-style:italic;font-size:13.5px;margin-top:12px}
 
 /* reading year band */
 .year-band{text-align:center}
@@ -110,10 +118,11 @@ footer .back:hover{color:var(--muted)}
     <div class="desc">an archive of her stories</div>
     <div class="word">Eleanora's</div>
     <div class="club">Book Club</div>
-    <h1>A small circle. Ten seats.</h1>
+    <h1>A small circle. Fifteen seats.</h1>
     <p class="sub">One soul-landing book a month, read together on Zoom. The kind that quietly rearrange you.</p>
-    <a class="cta" href="#join">Request a seat <span class="n">01</span></a>
-    <span class="seats">ten at a time, first come, first served</span>
+    <a class="cta" href="#join">Your spot is waiting <span class="n">01</span></a>
+    <span class="firstdate">First circle · Friday, August 28</span>
+    <span class="seats">Fifteen spots, and they won't be here for long. What are you waiting for?</span>
   </header>
 
   <section class="reveal">
@@ -122,8 +131,8 @@ footer .back:hover{color:var(--muted)}
     <p class="lead">Somewhere along the way we started reading alone, fast, for the finish. This is the opposite of that. A slow year of books that ask the big questions, read beside people who are also asking.</p>
     <div class="trio">
       <div class="b"><div class="num">1</div><div class="lb">book a month</div><div class="tx">chosen for the turn you're in, not the bestseller list</div></div>
-      <div class="b"><div class="num">10</div><div class="lb">seats</div><div class="tx">a round table on Zoom, small enough to actually be in it</div></div>
-      <div class="b"><div class="num">12</div><div class="lb">books a year</div><div class="tx">a new room each month, first come, first served</div></div>
+      <div class="b"><div class="num">15</div><div class="lb">seats</div><div class="tx">a round table on Zoom, small enough to actually be in it</div></div>
+      <div class="b"><div class="num">12</div><div class="lb">books a year</div><div class="tx">a new room each month, come back as often as you like</div></div>
     </div>
   </section>
 
@@ -133,18 +142,29 @@ footer .back:hover{color:var(--muted)}
     <div class="rhythm">
       <div class="step"><span class="k">i</span><div class="m"><div class="h">We pick up the book.</div><div class="p">Some months an easy read you'll finish in a weekend. Some months a deeper one worth the whole month. A few, we go all the way through together.</div></div></div>
       <div class="step"><span class="k">ii</span><div class="m"><div class="h">We read it on our own time.</div><div class="p">No quizzes, no pressure. Underline the lines that catch you. Bring the ones that stayed.</div></div></div>
-      <div class="step"><span class="k">iii</span><div class="m"><div class="h">Then we gather.</div><div class="p">Once a month we meet on Zoom, a real round table, and talk about what the book did to us. Ten of us, everyone in it, no audience. Better than reading alone.</div></div></div>
+      <div class="step"><span class="k">iii</span><div class="m"><div class="h">Then we gather.</div><div class="p">Once a month we meet on Zoom, a real round table, and dig into what it meant to you, and the questions it left behind. Fifteen of us, everyone in it, no audience. Better than reading alone.</div></div></div>
     </div>
   </section>
 
   <section class="reveal">
     <div class="ey">right now</div>
     <h2 class="st">On the nightstand</h2>
-    <div class="now">
-      <div class="cap">We're reading</div>
-      <div class="bt">The Subtle Art of Not Giving a F*ck</div>
-      <div class="ba">Mark Manson</div>
-      <div class="note">Next up, we begin the year at the beginning: The Celestine Prophecy.</div>
+    <p class="lead">Two going at once. What I'm reading on my own, and the book we're all in together.</p>
+    <div class="nightstand">
+      <div class="now">
+        <div class="cap">What I'm reading</div>
+        <div class="bt">The Subtle Art of Not Giving a F*ck</div>
+        <div class="ba">Mark Manson</div>
+        <div class="note">Off my own shelf, outside the club. There's always one going.</div>
+      </div>
+      <div class="now club">
+        <span class="tag">the one we read together</span>
+        <div class="cap">The book club book</div>
+        <div class="bt">The Alchemist</div>
+        <div class="ba">Paulo Coelho</div>
+        <div class="note">Our first book on the wheel. The Celestine Prophecy runs underneath the whole year. A soft place to start asking the bigger questions.</div>
+        <div class="when">We gather Friday, August 28</div>
+      </div>
     </div>
   </section>
 
@@ -157,9 +177,9 @@ footer .back:hover{color:var(--muted)}
 
   <section id="join" class="reveal invite">
     <div class="ey">the door</div>
-    <div class="big">Ten seats. First come, first served.</div>
-    <p>Each month opens fresh, so last month doesn't hold your place. Get on the list and I'll send the room the moment the next month opens. First ten in, that's it.</p>
-    <a class="cta" href="mailto:hello@corraoelena.com?subject=A%20seat%20in%20the%20Book%20Club" style="margin-top:26px">Request a seat</a>
+    <div class="big">Take a step toward the person you're becoming.</div>
+    <p>The first book is The Alchemist. Get a copy, get on the list, and I'll send you the room when the August circle opens.</p>
+    <a class="cta" href="mailto:hello@corraoelena.com?subject=A%20seat%20in%20the%20Book%20Club" style="margin-top:26px">Join now</a>
   </section>
 
   <footer>
