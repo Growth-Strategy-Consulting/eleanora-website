@@ -34,14 +34,14 @@
       "cover": "img/puglia-polignano-cove-boats.jpg",
       "blurb": "Old stone, sea light, and doorways worth stopping for.",
       "photos": [
-        { "src": "img/puglia-polignano-cove-boats.jpg", "title": "The Cove", "alt": "Boats on the turquoise cove at Polignano a Mare", "story": "", "talisman": null },
-        { "src": "img/blog-italy-flowerdoor.jpg", "title": "The Flower Door", "alt": "A yellow doorway with climbing flowers and a small red mailbox in Bari, Italy", "story": "", "talisman": { "article": "journal-italy.html", "buyUrl": null } },
-        { "src": "img/puglia-brindisi-fresco.jpg", "title": "The Two Saints", "alt": "A faded medieval fresco of two haloed saints on a Brindisi church wall", "story": "", "talisman": null },
-        { "src": "img/puglia-bari-ape-truck.jpg", "title": "The Blue Ape", "alt": "A blue Piaggio Ape three-wheeler parked on a Bari street", "story": "", "talisman": null },
-        { "src": "img/puglia-bari-coral-balconies.jpg", "title": "Coral & Iron", "alt": "A coral-red facade with wrought-iron balconies in Bari", "story": "", "talisman": null },
-        { "src": "img/puglia-polignano-clifftop.jpg", "title": "Town on the Cliff", "alt": "The whitewashed old town perched on the cliffs at Polignano a Mare", "story": "", "talisman": null },
-        { "src": "img/puglia-brindisi-black-car.jpg", "title": "In the Shade", "alt": "A black vintage car parked by a doorway on a Brindisi street", "story": "", "talisman": null },
-        { "src": "img/puglia-brindisi-alley-up.jpg", "title": "Looking Up", "alt": "Looking straight up a narrow alley to a slot of sky in Brindisi", "story": "", "talisman": null }
+        { "src": "img/puglia-polignano-cove-boats.jpg", "title": "The Cove", "alt": "Boats on the turquoise cove at Polignano a Mare", "whisper": "Turquoise enough to make you forget you had somewhere to be.", "story": "", "talisman": null },
+        { "src": "img/blog-italy-flowerdoor.jpg", "title": "The Flower Door", "alt": "A yellow doorway with climbing flowers and a small red mailbox in Bari, Italy", "whisper": "Every door this pretty is hiding a yes behind it.", "story": "", "talisman": { "article": "journal-italy.html", "buyUrl": null } },
+        { "src": "img/puglia-brindisi-fresco.jpg", "title": "The Two Saints", "alt": "A faded medieval fresco of two haloed saints on a Brindisi church wall", "whisper": "Eight hundred years on a wall, and they still haven't looked away.", "story": "", "talisman": null },
+        { "src": "img/puglia-bari-ape-truck.jpg", "title": "The Blue Ape", "alt": "A blue Piaggio Ape three-wheeler parked on a Bari street", "whisper": "Small, blue, and in no particular hurry to be anywhere.", "story": "", "talisman": null },
+        { "src": "img/puglia-bari-coral-balconies.jpg", "title": "Coral & Iron", "alt": "A coral-red facade with wrought-iron balconies in Bari", "whisper": "Coral walls, iron balconies, and a whole life behind the shutters.", "story": "", "talisman": null },
+        { "src": "img/puglia-polignano-clifftop.jpg", "title": "Town on the Cliff", "alt": "The whitewashed old town perched on the cliffs at Polignano a Mare", "whisper": "A whole town that looked at the edge of the cliff and said, close enough.", "story": "", "talisman": null },
+        { "src": "img/puglia-brindisi-black-car.jpg", "title": "In the Shade", "alt": "A black vintage car parked by a doorway on a Brindisi street", "whisper": "A black car in the shade, and the good kind of nowhere to be.", "story": "", "talisman": null },
+        { "src": "img/puglia-brindisi-alley-up.jpg", "title": "Looking Up", "alt": "Looking straight up a narrow alley to a slot of sky in Brindisi", "whisper": "In the old alleys, the sky comes to you in slivers.", "story": "", "talisman": null }
       ]
     },
     {
@@ -52,14 +52,14 @@
       "cover": "img/croatia-church-hill.jpg",
       "blurb": "Stone walls, still water, and one island in the blue.",
       "photos": [
-        { "src": "img/croatia-thirteen-main.jpg", "col": 1, "title": "Thirteen Main Street", "alt": "A pale stone facade with coral shutters and an iron balcony", "story": "", "talisman": null },
-        { "src": "img/croatia-mermaids-cove.jpg", "col": 1, "title": "Mermaid's Cove", "alt": "Waves breaking over rocks below a green Adriatic headland", "story": "", "talisman": null },
-        { "src": "img/croatia-church-interior.jpg", "col": 1, "title": "Church Interior", "alt": "A baroque altar with marble columns and painted frescoes", "story": "", "talisman": null },
-        { "src": "img/croatia-island.jpg", "col": 2, "title": "Island at Sea", "alt": "A small green island floating in the calm blue sea off Dubrovnik", "story": "", "talisman": { "article": "journal-dubrovnik.html", "buyUrl": null } },
-        { "src": "img/croatia-blue-door.jpg", "col": 2, "title": "Blue Door", "alt": "A weathered navy plank door set in an old stone wall on Sustjepanska", "story": "", "talisman": null },
-        { "src": "img/croatia-loggia.jpg", "col": 2, "title": "Stone Loggia House", "alt": "An old arched stone loggia house with oleander in bloom", "story": "", "talisman": null },
-        { "src": "img/croatia-sunset-dock.jpg", "col": 2, "title": "Sunset Dock", "alt": "A weathered wooden dock leading to a small boat, the city glowing at dusk", "story": "", "talisman": null },
-        { "src": "img/croatia-church-hill.jpg", "col": 1, "title": "Church on the Hill", "alt": "A stone church and clock tower rising behind a high old-town wall", "story": "", "talisman": null }
+        { "src": "img/croatia-thirteen-main.jpg", "col": 1, "title": "Thirteen Main Street", "alt": "A pale stone facade with coral shutters and an iron balcony", "whisper": "Behind those coral shutters, somebody's been happy for years.", "story": "", "talisman": null },
+        { "src": "img/croatia-mermaids-cove.jpg", "col": 1, "title": "Mermaid's Cove", "alt": "Waves breaking over rocks below a green Adriatic headland", "whisper": "The sea keeps throwing itself at the rocks like it forgot how this ends.", "story": "", "talisman": null },
+        { "src": "img/croatia-church-interior.jpg", "col": 1, "title": "Church Interior", "alt": "A baroque altar with marble columns and painted frescoes", "whisper": "Marble and gold, and a hush that was here long before you.", "story": "", "talisman": null },
+        { "src": "img/croatia-island.jpg", "col": 2, "title": "Island at Sea", "alt": "A small green island floating in the calm blue sea off Dubrovnik", "whisper": "One green island, and all that open water daring you toward it.", "story": "", "talisman": { "article": "journal-dubrovnik.html", "buyUrl": null } },
+        { "src": "img/croatia-blue-door.jpg", "col": 2, "title": "Blue Door", "alt": "A weathered navy plank door set in an old stone wall on Sustjepanska", "whisper": "A blue door in a stone wall, and no way to know who's still behind it.", "story": "", "talisman": null },
+        { "src": "img/croatia-loggia.jpg", "col": 2, "title": "Stone Loggia House", "alt": "An old arched stone loggia house with oleander in bloom", "whisper": "Old stone arches and oleander in bloom, taking their sweet time.", "story": "", "talisman": null },
+        { "src": "img/croatia-sunset-dock.jpg", "col": 2, "title": "Sunset Dock", "alt": "A weathered wooden dock leading to a small boat, the city glowing at dusk", "whisper": "A wooden dock, a small boat, and the city going gold behind it.", "story": "", "talisman": null },
+        { "src": "img/croatia-church-hill.jpg", "col": 1, "title": "Church on the Hill", "alt": "A stone church and clock tower rising behind a high old-town wall", "whisper": "A clock tower that's kept the town's time longer than anyone alive.", "story": "", "talisman": null }
       ]
     },
     {
