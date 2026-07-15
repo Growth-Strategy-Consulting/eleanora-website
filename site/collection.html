@@ -52,17 +52,23 @@ nav a:hover::after,nav a.here::after{width:100%;}
 .chero .desc{font-size:clamp(14px,1.8vw,18px);line-height:1.6;letter-spacing:1px;opacity:.94;text-shadow:0 2px 14px rgba(0,0,0,.6);max-width:40ch;margin-inline:auto;}
 .chero .scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--cream);opacity:.7;}
 
-/* ---- photo flow: Studio-style two-column masonry (column-count:2; photos keep natural heights, no crops, tight-packed with no gaps) — matches gallery.html's Studio view ---- */
-.flow{max-width:1320px;margin:52px auto 20px;padding:0 clamp(18px,3vw,32px);column-count:2;column-gap:clamp(14px,1.6vw,22px);}
-.p{position:relative;overflow:hidden;cursor:zoom-in;background:#12180f;box-shadow:0 22px 50px -26px rgba(0,0,0,.6);width:100%;margin:0 0 clamp(14px,1.6vw,22px);break-inside:avoid;-webkit-column-break-inside:avoid;}
-.p img{width:100%;height:auto;object-fit:unset;transition:transform 1.2s cubic-bezier(.2,.8,.2,1);filter:saturate(1.04) contrast(1.03) brightness(.92);}
-.p:hover img{transform:scale(1.05);}
-.p::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.16);pointer-events:none;z-index:3;transition:box-shadow .4s;}
-.p:hover::after{box-shadow:inset 0 0 0 1px rgba(231,196,137,.5);}
-.p .cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:22px 18px 16px;background:linear-gradient(180deg,transparent,rgba(8,12,9,.8));opacity:0;transform:translateY(8px);transition:opacity .45s cubic-bezier(.2,.8,.2,1),transform .45s cubic-bezier(.2,.8,.2,1);}
-.p:hover .cap{opacity:1;transform:none;}
-.p .cap .t{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(18px,1.5vw,22px);line-height:1.1;color:var(--cream);letter-spacing:.3px;}
-.p .cap .s{display:block;font-size:9.5px;letter-spacing:2.2px;text-transform:uppercase;color:var(--sir-gold);margin-top:6px;}
+/* ---- bundle bar: the deal, stated plainly up top ---- */
+.bundlebar{max-width:1320px;margin:6px auto 0;padding:16px clamp(18px,3vw,32px);display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;border-top:1px solid rgba(231,196,137,.16);border-bottom:1px solid rgba(231,196,137,.16);}
+.bundlebar .bb-lead{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:21px;color:var(--cream);letter-spacing:.5px;}
+.bundlebar .bb-deal{font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--sir-gold);}
+.bundlebar .bb-note{font-size:12px;letter-spacing:.5px;color:#9aa08f;margin-left:auto;}
+/* ---- photo flow: product cards in a two-column masonry (image, then title + price underneath) ---- */
+.flow{max-width:1320px;margin:30px auto 20px;padding:0 clamp(18px,3vw,32px);column-count:2;column-gap:clamp(16px,1.8vw,26px);}
+.p{position:relative;cursor:zoom-in;width:100%;margin:0 0 clamp(22px,2.4vw,34px);break-inside:avoid;-webkit-column-break-inside:avoid;}
+.p .shot{position:relative;overflow:hidden;background:#12180f;box-shadow:0 22px 50px -26px rgba(0,0,0,.6);}
+.p .shot img{width:100%;height:auto;display:block;object-fit:unset;transition:transform 1.2s cubic-bezier(.2,.8,.2,1);filter:saturate(1.04) contrast(1.03) brightness(.92);}
+.p:hover .shot img{transform:scale(1.05);}
+.p .shot::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.16);pointer-events:none;transition:box-shadow .4s;}
+.p:hover .shot::after{box-shadow:inset 0 0 0 1px rgba(231,196,137,.5);}
+.p .cap{display:block;padding:12px 2px 0;text-align:left;}
+.p .cap .t{display:block;font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(16px,1.35vw,20px);line-height:1.15;color:var(--cream);letter-spacing:.3px;}
+.p .cap .price{display:block;margin-top:5px;font-size:13px;letter-spacing:.3px;color:var(--sir-gold);}
+.p .cap .price em{font-style:normal;text-transform:none;letter-spacing:.3px;color:#9aa08f;font-size:11.5px;}
 .p .tmark{position:absolute;top:12px;left:12px;z-index:4;display:inline-flex;align-items:center;gap:6px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#20160c;background:var(--sir-gold);padding:5px 9px;border-radius:2px;box-shadow:0 4px 14px rgba(0,0,0,.35);}
 /* reveal — only when JS marks the body (default is visible, so headless/no-JS still shows) */
 body.anim .p{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);}
@@ -108,7 +114,8 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
 
 @media(max-width:900px){ header{padding:14px 22px;} nav ul{display:none;} }
 @media(max-width:720px){ .lb .box{flex-direction:column;max-height:92vh;} .lb .imgwrap img{max-height:52vh;} .lb .panel{padding:28px 24px;} }
-@media(max-width:560px){ .flow{column-count:1;} .p .cap{opacity:1;transform:none;} }
+@media(max-width:560px){ .flow{column-count:2;column-gap:9px;padding:0 10px;} .p{margin-bottom:16px;} .p .cap{padding:8px 1px 0;} .p .cap .t{font-size:13px;} .p .cap .price{font-size:10.5px;letter-spacing:1px;} .p .cap .price em{font-size:10px;}
+  .bundlebar{gap:4px 12px;padding:12px 12px;} .bundlebar .bb-lead{font-size:16px;} .bundlebar .bb-deal{font-size:10.5px;letter-spacing:1px;} .bundlebar .bb-note{margin-left:0;flex-basis:100%;} }
 </style>
 </head>
 <body>
@@ -140,6 +147,13 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
   </div>
   <span class="scroll">scroll</span>
 </section>
+
+<!-- ===== BUNDLE BAR ===== -->
+<div class="bundlebar">
+  <span class="bb-lead">The postcards</span>
+  <span class="bb-deal">Any 3 for $18 &middot; Any 5 for $28 &middot; Any 10 for $50</span>
+  <span class="bb-note">mix any images &middot; $7 each on their own</span>
+</div>
 
 <!-- ===== PHOTO FLOW ===== -->
 <div class="flow" id="flow"></div>
@@ -197,10 +211,11 @@ fetch('collections.json').then(r=>r.json()).then(data=>{
     const fig=document.createElement('figure');
     fig.className='p';
     fig.innerHTML=
-      '<img src="'+p.src+'" alt="'+(p.alt||'')+'" loading="lazy">'+
-      (p.talisman?'<span class="tmark">&#10022; token</span>':'')+
+      '<div class="shot"><img src="'+p.src+'" alt="'+(p.alt||'')+'" loading="lazy">'+
+        (p.talisman?'<span class="tmark">&#10022; token</span>':'')+
+      '</div>'+
       '<figcaption class="cap"><span class="t">'+(p.title||'')+'</span>'+
-        (p.talisman?'<span class="s">a token &middot; tap to keep it</span>':'')+
+        '<span class="price">$7 <em>&middot; less in a set</em></span>'+
       '</figcaption>';
     fig.addEventListener('click',()=>openLB(idx));
     return fig;
