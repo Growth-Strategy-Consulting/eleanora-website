@@ -57,19 +57,15 @@ nav a:hover::after,nav a.here::after{width:100%;}
 .bundlebar .bb-lead{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:21px;color:var(--cream);letter-spacing:.5px;}
 .bundlebar .bb-deal{font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--sir-gold);}
 .bundlebar .bb-note{font-size:12px;letter-spacing:.5px;color:#9aa08f;margin-left:auto;}
-/* ---- photo flow: product cards in a two-column masonry (image, then title + price underneath) ---- */
-.flow{max-width:1320px;margin:30px auto 20px;padding:0 clamp(18px,3vw,32px);column-count:2;column-gap:clamp(16px,1.8vw,26px);}
-.p{position:relative;cursor:zoom-in;width:100%;margin:0 0 clamp(22px,2.4vw,34px);break-inside:avoid;-webkit-column-break-inside:avoid;}
-.p .shot{position:relative;overflow:hidden;background:#12180f;box-shadow:0 22px 50px -26px rgba(0,0,0,.6);}
-.p .shot img{width:100%;height:auto;display:block;object-fit:unset;transition:transform 1.2s cubic-bezier(.2,.8,.2,1);filter:saturate(1.04) contrast(1.03) brightness(.92);}
-.p:hover .shot img{transform:scale(1.05);}
-.p .shot::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.16);pointer-events:none;transition:box-shadow .4s;}
-.p:hover .shot::after{box-shadow:inset 0 0 0 1px rgba(231,196,137,.5);}
-.p .cap{display:block;padding:12px 2px 0;text-align:left;}
-.p .cap .t{display:block;font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(16px,1.35vw,20px);line-height:1.15;color:var(--cream);letter-spacing:.3px;}
-.p .cap .price{display:block;margin-top:5px;font-size:13px;letter-spacing:.3px;color:var(--sir-gold);}
-.p .cap .price em{font-style:normal;text-transform:none;letter-spacing:.3px;color:#9aa08f;font-size:11.5px;}
-.p .tmark{position:absolute;top:12px;left:12px;z-index:4;display:inline-flex;align-items:center;gap:6px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#20160c;background:var(--sir-gold);padding:5px 9px;border-radius:2px;box-shadow:0 4px 14px rgba(0,0,0,.35);}
+/* ---- shop wall: a tight 4-up grid of small square thumbnails — all of them visible at once, tap to enlarge ---- */
+.flow{max-width:860px;margin:26px auto 44px;padding:0 clamp(14px,3vw,28px);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(6px,1vw,11px);}
+.p{position:relative;cursor:zoom-in;margin:0;}
+.p .shot{position:relative;aspect-ratio:1;overflow:hidden;background:#12180f;box-shadow:0 10px 26px -16px rgba(0,0,0,.55);}
+.p .shot img{width:100%;height:100%;display:block;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1);filter:saturate(1.04) contrast(1.03) brightness(.92);}
+.p:hover .shot img{transform:scale(1.06);}
+.p .shot::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.14);pointer-events:none;transition:box-shadow .4s;}
+.p:hover .shot::after{box-shadow:inset 0 0 0 1px rgba(231,196,137,.55);}
+.p .tmark{position:absolute;top:7px;left:7px;z-index:4;display:inline-flex;align-items:center;gap:4px;font-size:7.5px;letter-spacing:1.5px;text-transform:uppercase;color:#20160c;background:var(--sir-gold);padding:3px 6px;border-radius:2px;box-shadow:0 4px 14px rgba(0,0,0,.35);}
 /* reveal — only when JS marks the body (default is visible, so headless/no-JS still shows) */
 body.anim .p{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);}
 body.anim .p.in{opacity:1;transform:none;}
@@ -114,7 +110,7 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
 
 @media(max-width:900px){ header{padding:14px 22px;} nav ul{display:none;} }
 @media(max-width:720px){ .lb .box{flex-direction:column;max-height:92vh;} .lb .imgwrap img{max-height:52vh;} .lb .panel{padding:28px 24px;} }
-@media(max-width:560px){ .flow{column-count:2;column-gap:9px;padding:0 10px;} .p{margin-bottom:16px;} .p .cap{padding:8px 1px 0;} .p .cap .t{font-size:13px;} .p .cap .price{font-size:10.5px;letter-spacing:1px;} .p .cap .price em{font-size:10px;}
+@media(max-width:560px){ .flow{gap:5px;padding:0 10px;}
   .bundlebar{gap:4px 12px;padding:12px 12px;} .bundlebar .bb-lead{font-size:16px;} .bundlebar .bb-deal{font-size:10.5px;letter-spacing:1px;} .bundlebar .bb-note{margin-left:0;flex-basis:100%;} }
 </style>
 </head>
@@ -152,7 +148,7 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
 <div class="bundlebar">
   <span class="bb-lead">The postcards</span>
   <span class="bb-deal">Any 3 for $18 &middot; Any 5 for $28 &middot; Any 10 for $50</span>
-  <span class="bb-note">mix any images &middot; $7 each on their own</span>
+  <span class="bb-note">mix any images &middot; $7 each</span>
 </div>
 
 <!-- ===== PHOTO FLOW ===== -->
@@ -213,25 +209,12 @@ fetch('collections.json').then(r=>r.json()).then(data=>{
     fig.innerHTML=
       '<div class="shot"><img src="'+p.src+'" alt="'+(p.alt||'')+'" loading="lazy">'+
         (p.talisman?'<span class="tmark">&#10022; token</span>':'')+
-      '</div>'+
-      '<figcaption class="cap"><span class="t">'+(p.title||'')+'</span>'+
-        '<span class="price">$7 <em>&middot; less in a set</em></span>'+
-      '</figcaption>';
+      '</div>';
     fig.addEventListener('click',()=>openLB(idx));
     return fig;
   };
-  // one dense mosaic: each photo's size class (wide/lg/med/sq, or default tall) sets its span; order in collections.json sets the reading order
+  // shop wall: render the whole set at once, all visible — no scroll-reveal (you weigh them together)
   c.photos.forEach((p,i)=>{ flow.appendChild(makeTile(p,i)); });
-  // reveal — default visible; only animate when JS is here (rule: never gate content on a class the headless renderer can't fire)
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const tiles=[...document.querySelectorAll('.p')];
-  if(!reduce && 'IntersectionObserver' in window){
-    document.body.classList.add('anim');
-    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -6% 0px'});
-    tiles.forEach((el,k)=>{el.style.transitionDelay=(k%2*80)+'ms';io.observe(el);});
-    // safety net: if the observer never fires (hidden tab / headless), never leave a tile blank
-    setTimeout(()=>tiles.forEach(t=>t.classList.add('in')),1400);
-  }
 });
 
 // ---- lightbox ----
