@@ -2,7 +2,7 @@
   "_readme": {
     "naming-note": "Brand term for this object is 'token' (the postcard/print sold with the story; user-facing copy says 'token'). The JSON field is still named `talisman` in code — left unchanged on purpose.",
     "what": "Single source of truth for the Eleanora Journal. journal.html (the wall), the homepage teaser, and every entry's token-close + read-next all render from this file. Add a story by appending one object to `entries` — never hand-edit the wall or the teaser.",
-    "buckets": "Every entry has one `bucket`: 'way-i-see-it' (the teaching series) · 'travels' (a trip, paired to a Collection) · 'people' (a memoir/tribute, soft close) · 'curio' (The Curio Cabinet — the odd, personal, off-the-wheel wonderings). The wall filter buttons are built from these; a filter auto-hides until its bucket has at least one entry, so 'curio' stays hidden on the live wall until the first curio entry ships.",
+    "buckets": "Every entry has one `bucket`, mapped straight off the Content Wheel tracker's `purpose` field: 'the-long-way' (lessons — the hard-won takeaways) · 'the-archive' (stories — personal narrative + travel memoir; a trip still pairs to a Collection via exits) · 'a-place-to-park' (thought-provokers — food for thought, 'park that thought') · 'curio' (The Curio Cabinet — the odd, personal, off-the-wheel wonderings). Umbrella / soul line for the whole Journal is 'the way I see it'. The wall filter buttons are built from these; a filter auto-hides until its bucket has at least one entry, so an empty bucket never shows an empty wall.",
     "the-token-rule": "The feature image IS the token — the print sold at the close of the entry. The code field is `talisman` (unchanged): `talisman.img` is what shows on the wall card AND the buy block. `talisman.buyUrl` stays null until GoDaddy Payments (pay.corraoelena.com) is live; until then the buy button shows 'Prints coming soon' (same mock as collections.json). Never fake a live price/checkout.",
     "the-exits": "`exits.collection` = a slug in collections.json (Travels entries → 'see the whole trip'). `exits.manual` true = Way-I-See-It entries end on the hook toward the paid manual. `soft` true (People) = a gentle 'a token to remember them by', no hard sell.",
     "read-next": "Bottom of each entry shows 3 related, not-yet-visited entries (relatedness = shared `tags`, then same bucket). Visited slugs are tracked in the browser (localStorage).",
@@ -12,27 +12,27 @@
   "entries": [
     {
       "slug": "journal-quiet-one",
-      "bucket": "way-i-see-it",
-      "kicker": "The Way I See It",
-      "title": "I've always been the quiet one. But I was just busy building my road map.",
-      "accent": "stay close",
-      "excerpt": "Handed the map early — school, the job, the ring, the desk you sit at until they let you leave. I took a reckless risk, walked out, and built my own. Now I'm handing it to you, piece by piece.",
-      "tags": ["threshold", "agency", "beginning", "the-quiet-one"],
+      "bucket": "the-archive",
+      "kicker": "The Archive",
+      "title": "The Good Girl (who was already gone)",
+      "accent": "jumped ship",
+      "excerpt": "I made my Confirmation the year I decided to leave. The story of the good girl who was already gone, and the map she built out of her own life.",
+      "tags": ["agency", "the-body", "becoming", "the-good-girl"],
       "talisman": {
-        "img": "img/hero-sunset-silhouette.jpg",
-        "alt": "A lone figure walking the shoreline toward the last of the light",
-        "name": "[working title — the long walk]",
-        "line": "What if this picture reminded you, every day, that you get to build your own road map? If you believed it could, would it?",
+        "img": "img/studio-fur-silver.jpg",
+        "alt": "Eleanora in an open fur coat and lace shorts, black and white",
+        "name": "The Canvas",
+        "line": "Make my dreams come true. Put a little of my art on your wall.",
         "price": "$20",
         "buyUrl": null
       },
-      "exits": { "collection": null, "manual": true },
+      "exits": { "collection": null, "manual": false },
       "soft": false
     },
     {
       "slug": "journal-dubrovnik",
-      "bucket": "travels",
-      "kicker": "Travels · Dubrovnik",
+      "bucket": "the-archive",
+      "kicker": "The Archive · Dubrovnik",
       "title": "Drowning, but in Croatia",
       "accent": "looking for a sign",
       "excerpt": "I quit my job to come here, looking for a sign. And boy, did I find one — the first thing this country said to me, scrawled across a wall.",
@@ -50,8 +50,8 @@
     },
     {
       "slug": "journal-italy",
-      "bucket": "travels",
-      "kicker": "Travels · Bari, Italy",
+      "bucket": "the-archive",
+      "kicker": "The Archive · Bari, Italy",
       "title": "The Thing We Keep Running From",
       "accent": "piano, piano",
       "excerpt": "The world runs on two speeds. Routine, which it calls living. Complacency, which it calls comfort. I found the third thing in Italy.",
@@ -85,25 +85,6 @@
       },
       "exits": { "collection": null, "manual": false },
       "soft": false
-    },
-    {
-      "slug": "journal-people-placeholder",
-      "bucket": "people",
-      "kicker": "The People",
-      "title": "[Placeholder — a People story]",
-      "accent": "coming soon",
-      "excerpt": "A placeholder while the People stories are still being written. This is where the memoirs and tributes will live — the people who opened doors and aren't here anymore.",
-      "tags": ["people", "placeholder"],
-      "talisman": {
-        "img": "img/athens-record-wall.jpg",
-        "alt": "A wall lined with rows of vinyl records",
-        "name": "[placeholder]",
-        "line": "A token to remember them by.",
-        "price": "$20",
-        "buyUrl": null
-      },
-      "exits": { "collection": null, "manual": false },
-      "soft": true
     }
   ]
 }

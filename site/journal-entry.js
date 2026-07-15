@@ -76,7 +76,7 @@
     // ---------- 1. TALISMAN CLOSE ----------
     var t = me.talisman || {};
     html += '<section class="tal-close reveal">';
-    html += '<div class="eye">' + (me.soft ? 'A token to remember' : 'The token') + '</div>';
+    html += '<div class="eye">' + (me.soft ? 'Something to remember them by' : 'Take it home') + '</div>';
     html += '<figure class="tal-fig"><img src="' + t.img + '" alt="' + (t.alt || '') + '"></figure>';
     if (t.name) { html += '<div class="tal-name serif">' + t.name + '</div>'; }
     if (t.line) { html += '<p class="tal-line">' + t.line + '</p>'; }
@@ -86,7 +86,7 @@
         html += '<a class="tal-soon" href="' + t.buyUrl + '">Keep it close &rarr;</a>';
       }
     } else if (t.buyUrl) {
-      html += '<a class="tal-buy" href="' + t.buyUrl + '">Take the token home &rarr;</a>';
+      html += '<a class="tal-buy" href="' + t.buyUrl + '">Make it yours &rarr;</a>';
       if (t.price) { html += '<div class="tal-price">the print · ' + t.price + '</div>'; }
     } else {
       html += '<span class="tal-soon">Prints coming soon</span>';
