@@ -6,7 +6,7 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": [
         "-c",
-        "import os,http.server,socketserver; os.chdir('/Users/corraoelena/Documents/Claude.Code/4-Websites/eleanora-website'); socketserver.TCPServer(('',8834), http.server.SimpleHTTPRequestHandler).serve_forever()"
+        "import os,http.server,socketserver; os.chdir('/Users/corraoelena/Documents/Claude.Code/4-Websites/eleanora-website/site'); socketserver.TCPServer(('',8834), http.server.SimpleHTTPRequestHandler).serve_forever()"
       ],
       "port": 8834,
       "autoPort": true
