@@ -196,7 +196,7 @@ const params=new URLSearchParams(location.search);
 const slug=params.get('place');
 let PHOTOS=[], PLACE='', current=0;
 
-fetch('collections.json').then(r=>r.json()).then(data=>{
+fetch('collections.json?v='+Date.now()).then(r=>r.json()).then(data=>{
   const c=data.collections.find(x=>x.slug===slug) || data.collections[0];
   if(!c){document.getElementById('flow').innerHTML='<p style="opacity:.7;padding:40px">That collection is not here yet.</p>';return;}
   PLACE=c.place; PHOTOS=c.photos;
