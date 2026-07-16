@@ -4,6 +4,8 @@
     "how-to-add-a-collection": "Append an object to `collections` with slug (url-safe), place, region, eyebrow, cover (img path), blurb (short, factual), and a photos[] array.",
     "how-to-make-a-photo-a-talisman": "Set its `talisman` from null to { \"article\": \"journal-xxx.html\", \"buyUrl\": null }. article = the free story it links back to (real page). buyUrl stays null until GoDaddy Payments is live, then paste the GoDaddy Pay Link and it becomes a live buy button automatically. No redesign needed.",
     "titles": "Titles in [brackets] are Penny working titles awaiting Elena's rename pass. story fields are intentionally empty — Elena authors, then they get filled via the caption pass.",
+    "price": "Optional per-photo `price` (number). Absent = standard $7 postcard, bundle/stacking eligible (Any 3 $18 · 5 $28 · 10 $50). >7 (e.g. 20) = a 'signature piece' held at that flat price, EXCLUDED from the mix & match; it renders with a gold frame + a 'not included / not eligible for discount' hover note, and a per-card price + exclusion note in its detail. The frame decides, not the collection (see prints-and-token-ladder.md).",
+    "accent": "Optional per-collection `accent` (the script line under the title). Absent = the default travel line 'where i went, and what i kept back'; set a string to override, or \"\" to hide it (e.g. The Self-Portraits, which isn't a place).",
     "checkout": "GoDaddy Payments (pay.corraoelena.com). Buy state is mocked until then: photos with a talisman but no buyUrl show 'Prints coming soon'."
   },
   "collections": [
@@ -124,6 +126,29 @@
         { "src": "img/cape-fox.jpg", "title": "[working title]", "alt": "A fox standing among the pines", "story": "", "talisman": null },
         { "src": "img/cape-harbor-sunset.jpg", "title": "[working title]", "alt": "Sailboats and hydrangeas at the harbor as the sun goes down", "story": "", "talisman": null },
         { "src": "img/cape-peach-roses.jpg", "title": "[working title]", "alt": "Peach roses in warm golden light", "story": "", "talisman": null }
+      ]
+    },
+    {
+      "slug": "self-portraits",
+      "place": "The Self-Portraits",
+      "region": "",
+      "eyebrow": "The Archive",
+      "accent": "",
+      "cover": "img/about-lace-hat.jpg",
+      "blurb": "",
+      "photos": [
+        { "src": "img/her-brazil-beach-black-bikini.jpg", "title": "Low Tide", "alt": "Eleanora kneeling on a Brazilian beach in a black bikini under a bright blue sky", "story": "", "price": 20, "talisman": null },
+        { "src": "img/about-lace-hat.jpg", "title": "Sunday Best", "alt": "Eleanora in a wide-brim lace hat", "story": "", "talisman": null },
+        { "src": "img/her-shower-black-bikini.jpg", "title": "Wild Water", "alt": "Eleanora in a black bikini among tropical greenery at an outdoor shower", "story": "", "price": 20, "talisman": null },
+        { "src": "img/her-blue-buddha-wall.jpg", "title": "Among the Gods", "alt": "Eleanora before a wall of blue Buddha tiles", "story": "", "talisman": null },
+        { "src": "img/studio-fur-silver.jpg", "title": "The Canvas", "alt": "Eleanora in an open fur coat and lace shorts, black and white", "story": "", "price": 20, "talisman": { "article": "journal-quiet-one.html", "buyUrl": null } },
+        { "src": "img/her-beach-sandbar-sun-hat.jpg", "title": "Sandbar", "alt": "Eleanora walking a pale sandbar in a sun hat", "story": "", "talisman": null },
+        { "src": "img/bw-smoke-editorial.jpg", "title": "Slow Burn", "alt": "Eleanora in a black-and-white editorial portrait with smoke", "story": "", "talisman": null },
+        { "src": "img/her-flower-crown-nude.jpg", "title": "The Coronation", "alt": "Eleanora in a flower crown, nude side profile", "story": "", "price": 20, "talisman": null },
+        { "src": "img/salt-flat-bikini-headscarf.jpg", "title": "Salt", "alt": "Eleanora in a bikini and headscarf on a salt flat", "story": "", "talisman": null },
+        { "src": "img/floridarama-mirror-candle-arms-open.jpg", "title": "Wide Open", "alt": "Eleanora with arms open in a candlelit mirrored room", "story": "", "price": 20, "talisman": null },
+        { "src": "img/beach-floral-bikini-sun-hat.jpg", "title": "Facing the Sea", "alt": "Eleanora in a floral bikini and sun hat on the beach", "story": "", "price": 20, "talisman": null },
+        { "src": "img/sunset-silhouette-mammatus.jpg", "title": "Last Light", "alt": "A silhouette against a sunset sky with mammatus clouds", "story": "", "talisman": null }
       ]
     }
   ]

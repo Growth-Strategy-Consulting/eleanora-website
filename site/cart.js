@@ -29,6 +29,10 @@
   function save(c){ localStorage.setItem(KEY, JSON.stringify(c)); }
   var cart = load();
   function totalQty(){ var n=0; for (var k in cart) n += cart[k].qty; return n; }
+  // legacy carts (saved before per-card pricing) may lack price/bundle — treat as standard $7 stackers
+  function itPrice(it){ return it.price != null ? it.price : 7; }
+  function isBundle(it){ return it.bundle !== undefined ? it.bundle : (itPrice(it) <= 7); }
+  function bundleQty(){ var n=0; for (var k in cart) if (isBundle(cart[k])) n += cart[k].qty; return n; }
 
   // ---- styles ----
   var css = document.createElement('style');
@@ -63,6 +67,7 @@
     '#cart-items .row{display:flex;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06);}',
     '#cart-items .row img{width:52px;height:52px;object-fit:cover;flex:0 0 auto;background:#12180f;}',
     '#cart-items .row .nm{flex:1 1 auto;min-width:0;font-family:"Didot","Bodoni 72",Georgia,serif;font-size:15.5px;line-height:1.2;}',
+    '#cart-items .row .nm .pr{display:block;font-family:Georgia,serif;font-size:11.5px;letter-spacing:.3px;color:#8f9784;margin-top:4px;}',
     '#cart-items .row .stp{display:flex;align-items:center;gap:9px;flex:0 0 auto;}',
     '#cart-items .row .stp button{width:24px;height:24px;border:1px solid rgba(231,196,137,.4);background:none;color:var(--cream,#F6F1E7);',
       'border-radius:50%;font-size:15px;line-height:1;cursor:pointer;transition:.25s;}',
@@ -138,12 +143,17 @@
       elCo.setAttribute('disabled',''); elSoon.textContent = '';
       return;
     }
+    var bq = bundleQty();          // only the standard $7 cards count toward the mix & match tiers
+    var bpc = perCard(bq);         // per-card price the stack currently holds
+    var grand = 0;
     var html = '';
     keys.forEach(function(k){
       var it = cart[k];
+      var each = isBundle(it) ? bpc : itPrice(it);
+      grand += each * it.qty;
       html += '<div class="row" data-src="'+k+'">' +
         '<img src="'+it.src+'" alt="">' +
-        '<span class="nm">'+it.title+'</span>' +
+        '<span class="nm">'+it.title+'<span class="pr">'+money(each)+' each</span></span>' +
         '<span class="stp"><button class="minus" aria-label="One fewer">&minus;</button>' +
           '<span class="q">'+it.qty+'</span>' +
           '<button class="plus" aria-label="One more">+</button></span>' +
@@ -152,11 +162,12 @@
     });
     elItems.innerHTML = html;
 
-    var pc = perCard(q);
-    elPer.textContent = q + (q===1?' postcard · ':' postcards · ') + money(pc) + ' each';
-    elTot.textContent = money(q*pc);
-    var nt = nextTier(q);
-    elNudge.textContent = nt ? ('Add ' + nt.need + ' more to drop to ' + money(nt.price) + ' each') : 'Best price unlocked ✨';
+    elPer.textContent = bq>0 ? (bq + (bq===1?' in the stack · ':' in the stack · ') + money(bpc) + ' each') : '';
+    elTot.textContent = money(grand);
+    var nt = bq>0 ? nextTier(bq) : null;
+    elNudge.textContent = bq>0
+      ? (nt ? ('Add ' + nt.need + ' more to the stack to drop to ' + money(nt.price) + ' each') : 'Best stack price unlocked ✨')
+      : '';
     elCo.removeAttribute('disabled');
     elSoon.textContent = '';
   }
@@ -166,7 +177,11 @@
     if (!photo || !photo.src) return;
     var k = photo.src;
     if (cart[k]) cart[k].qty += 1;
-    else cart[k] = { src: photo.src, title: photo.title || 'Postcard', qty: 1 };
+    else {
+      var pr = (photo.price != null ? photo.price : 7);
+      // standard $7 cards stack (mix & match); premium art frames hold their price, excluded from the tiers
+      cart[k] = { src: photo.src, title: photo.title || 'Postcard', qty: 1, price: pr, bundle: pr <= 7 };
+    }
     save(cart); render();
     btn.classList.remove('bump'); void btn.offsetWidth; btn.classList.add('bump');
   }

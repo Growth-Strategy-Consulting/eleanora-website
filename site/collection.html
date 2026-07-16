@@ -5,8 +5,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Collection — Eleanora</title>
-<link rel="icon" type="image/png" sizes="32x32" href="img/mark-book-arch-green-t.png">
-<link rel="icon" type="image/png" sizes="512x512" href="img/mark-book-arch-green-t.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/mark-book-arch-green-t.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="img/mark-book-arch-cream-t.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="512x512" href="img/mark-book-arch-green-t.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="512x512" href="img/mark-book-arch-cream-t.png" media="(prefers-color-scheme: dark)">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <style>
 @font-face{font-family:'Pinyon Script';src:url('../brand-hub/assets/fonts/PinyonScript-Regular.ttf');font-display:swap;}
@@ -52,11 +54,12 @@ nav a:hover::after,nav a.here::after{width:100%;}
 .chero .desc{font-size:clamp(14px,1.8vw,18px);line-height:1.6;letter-spacing:1px;opacity:.94;text-shadow:0 2px 14px rgba(0,0,0,.6);max-width:40ch;margin-inline:auto;}
 .chero .scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--cream);opacity:.7;}
 
-/* ---- bundle bar: the deal, stated plainly up top ---- */
-.bundlebar{max-width:1320px;margin:6px auto 0;padding:16px clamp(18px,3vw,32px);display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;border-top:1px solid rgba(231,196,137,.16);border-bottom:1px solid rgba(231,196,137,.16);}
-.bundlebar .bb-lead{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:21px;color:var(--cream);letter-spacing:.5px;}
-.bundlebar .bb-deal{font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--sir-gold);}
-.bundlebar .bb-note{font-size:12px;letter-spacing:.5px;color:#9aa08f;margin-left:auto;}
+/* ---- lightbox price + deal note (per-card, in the detail panel) ---- */
+.lb .panel .lbprice{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:26px;color:var(--cream);margin:0 0 14px;letter-spacing:.5px;}
+.lb .panel .lbdeal{font-size:12px;line-height:1.65;margin-top:12px;}
+.lb .panel .lbdeal .dh{display:block;letter-spacing:2.5px;text-transform:uppercase;font-size:10.5px;color:var(--sir-gold);margin-bottom:5px;}
+.lb .panel .lbdeal.eligible{color:#9aa08f;}
+.lb .panel .lbdeal.excluded{color:#9aa08f;border-left:2px solid rgba(231,196,137,.3);padding-left:12px;font-style:italic;}
 /* ---- shop wall: a tight 4-up grid of small square thumbnails — all of them visible at once, tap to enlarge ---- */
 .flow{max-width:860px;margin:26px auto 44px;padding:0 clamp(14px,3vw,28px);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(6px,1vw,11px);}
 .p{position:relative;cursor:zoom-in;margin:0;}
@@ -65,7 +68,11 @@ nav a:hover::after,nav a.here::after{width:100%;}
 .p:hover .shot img{transform:scale(1.06);}
 .p .shot::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.14);pointer-events:none;transition:box-shadow .4s;}
 .p:hover .shot::after{box-shadow:inset 0 0 0 1px rgba(231,196,137,.55);}
-.p .tmark{position:absolute;top:7px;left:7px;z-index:4;display:inline-flex;align-items:center;gap:4px;font-size:7.5px;letter-spacing:1.5px;text-transform:uppercase;color:#20160c;background:var(--sir-gold);padding:3px 6px;border-radius:2px;box-shadow:0 4px 14px rgba(0,0,0,.35);}
+/* excluded-from-the-sale signifier: a $20 card gets a GOLD FRAME (so you see it's different) + a small "not included" note on hover */
+.p.premium .shot::after{box-shadow:inset 0 0 0 2px rgba(231,196,137,.9);}
+.p.premium:hover .shot::after{box-shadow:inset 0 0 0 2px var(--sir-gold);}
+.p .xlabel{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:7px 8px;font-size:8.5px;letter-spacing:1.2px;text-transform:uppercase;text-align:center;line-height:1.35;color:var(--cream);background:linear-gradient(0deg,rgba(16,23,18,.92),transparent);opacity:0;transition:opacity .3s;pointer-events:none;}
+.p.premium:hover .xlabel{opacity:1;}
 .p .cap{display:block;padding:7px 2px 0;font-family:'Didot','Bodoni 72',Georgia,serif;font-size:13px;line-height:1.2;color:var(--cream);letter-spacing:.2px;text-align:left;}
 /* reveal — only when JS marks the body (default is visible, so headless/no-JS still shows) */
 body.anim .p{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);}
@@ -140,18 +147,11 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
     <a class="back" href="collections.html">&larr; all collections</a>
     <div class="ey lab" id="heroEye">The Collection</div>
     <h1 id="heroTitle">&nbsp;</h1>
-    <div class="accent">where i went, and what i kept back</div>
+    <div class="accent" id="heroAccent">where i went, and what i kept back</div>
     <p class="desc" id="heroDesc"></p>
   </div>
   <span class="scroll">scroll</span>
 </section>
-
-<!-- ===== BUNDLE BAR ===== -->
-<div class="bundlebar">
-  <span class="bb-lead">The postcards</span>
-  <span class="bb-deal">Any 3 for $18 &middot; Any 5 for $28 &middot; Any 10 for $50</span>
-  <span class="bb-note">mix any images &middot; $7 each</span>
-</div>
 
 <!-- ===== PHOTO FLOW ===== -->
 <div class="flow" id="flow"></div>
@@ -169,7 +169,9 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
       <div class="eye" id="lbEye">The Collection</div>
       <h3 id="lbTitle"></h3>
       <p class="lbwhisper" id="lbWhisper"></p>
+      <div class="lbprice" id="lbPrice"></div>
       <button class="lbadd" id="lbAdd">Add to cart</button>
+      <div class="lbdeal" id="lbDeal"></div>
       <div class="story" id="lbStory"></div>
       <div class="tal" id="lbTal" style="display:none"></div>
     </div>
@@ -203,6 +205,10 @@ fetch('collections.json').then(r=>r.json()).then(data=>{
   document.getElementById('heroImg').alt=c.place;
   document.getElementById('heroEye').textContent=c.eyebrow||'The Collection';
   document.getElementById('heroTitle').textContent=c.place;
+  // accent line: per-collection override; place collections keep the travel line, portraits set their own (or blank)
+  const acc=document.getElementById('heroAccent');
+  const accTxt = (c.accent!=null) ? c.accent : 'where i went, and what i kept back';
+  acc.textContent=accTxt; acc.style.display=accTxt?'':'none';
   document.getElementById('heroDesc').textContent=c.blurb||'';
 
   const flow=document.getElementById('flow');
@@ -210,9 +216,11 @@ fetch('collections.json').then(r=>r.json()).then(data=>{
   const makeTile=(p,idx)=>{
     const fig=document.createElement('figure');
     fig.className='p';
+    const premium = (p.price!=null && p.price>7);   // $20 cards: gold frame + "not included" hover note
+    if(premium) fig.classList.add('premium');
     fig.innerHTML=
       '<div class="shot"><img src="'+p.src+'" alt="'+(p.alt||'')+'" loading="lazy">'+
-        (p.talisman?'<span class="tmark">&#10022; token</span>':'')+
+        (premium?'<span class="xlabel">Not included &middot; Not eligible for discount</span>':'')+
       '</div>'+
       '<figcaption class="cap">'+(p.title||'')+'</figcaption>';
     fig.addEventListener('click',()=>openLB(idx));
@@ -232,6 +240,19 @@ function openLB(i){
   document.getElementById('lbTitle').textContent=p.title||'';
   const add=document.getElementById('lbAdd'); add.textContent='Add to cart'; add.classList.remove('added');
   const wh=document.getElementById('lbWhisper'); wh.textContent=p.whisper||''; wh.style.display=p.whisper?'':'none';
+
+  // ---- price + deal note (per card; the frame decides — ledger: prints-and-token-ladder.md) ----
+  const price = (p.price!=null ? p.price : 7);
+  const eligible = price <= 7;                       // standard $7 cards stack; premium art frames hold their price
+  document.getElementById('lbPrice').textContent = '$' + (Number.isInteger(price) ? price : price.toFixed(2));
+  const deal = document.getElementById('lbDeal');
+  if(eligible){
+    deal.className = 'lbdeal eligible';
+    deal.innerHTML = '<span class="dh">Mix &amp; match</span>Any 3 for $18 &middot; Any 5 for $28 &middot; Any 10 for $50';
+  } else {
+    deal.className = 'lbdeal excluded';
+    deal.innerHTML = 'A signature piece. It holds its price and sits outside the mix &amp; match.';
+  }
   const story=document.getElementById('lbStory');
   if(p.story && p.story.trim()){ story.textContent=p.story; story.style.display=''; story.classList.remove('empty'); }
   else { story.textContent=''; story.style.display='none'; }   // no false "story coming soon" — only real token photos carry a story (via the token link below)
