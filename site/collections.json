@@ -114,18 +114,20 @@
       "region": "North America",
       "eyebrow": "Massachusetts · the Cape",
       "cover": "img/cape-harbor-sunset.jpg",
-      "blurb": "Harbor light, rose-covered fences, and the long marsh sunset.",
+      "blurb": "Harbor light, a fox in the pines, and the fog that keeps the rest.",
       "photos": [
-        { "src": "img/cape-bay-sunset.jpg", "title": "[working title]", "alt": "Silhouettes reflected on the bay at sunset", "story": "", "talisman": null },
-        { "src": "img/cape-rose-cottage.jpg", "title": "[working title]", "alt": "A cottage fence covered in climbing roses", "story": "", "talisman": null },
-        { "src": "img/cape-lantern-shop.jpg", "title": "[working title]", "alt": "A lantern shop glowing at dusk", "story": "", "talisman": null },
-        { "src": "img/cape-marsh-sunset.jpg", "title": "[working title]", "alt": "A dramatic orange sunset over the salt marsh", "story": "", "talisman": null },
-        { "src": "img/cape-lobster-shack.jpg", "title": "[working title]", "alt": "A weathered lobster shack hung with buoys", "story": "", "talisman": null },
-        { "src": "img/cape-sill-cafe.jpg", "title": "[working title]", "alt": "A sunlit corner cafe on the Cape", "story": "", "talisman": null },
-        { "src": "img/cape-storefront.jpg", "title": "[working title]", "alt": "The Twenty-Eight Atlantic storefront in the evening light", "story": "", "talisman": null },
-        { "src": "img/cape-fox.jpg", "title": "[working title]", "alt": "A fox standing among the pines", "story": "", "talisman": null },
-        { "src": "img/cape-harbor-sunset.jpg", "title": "[working title]", "alt": "Sailboats and hydrangeas at the harbor as the sun goes down", "story": "", "talisman": null },
-        { "src": "img/cape-peach-roses.jpg", "title": "[working title]", "alt": "Peach roses in warm golden light", "story": "", "talisman": null }
+        { "src": "img/cape-fox.jpg", "title": "The Local", "alt": "A fox standing among the pines", "story": "", "talisman": null },
+        { "src": "img/cape-harbor-sunset.jpg", "title": "Slack Tide", "alt": "Sailboats and hydrangeas at the harbor as the sun goes down", "story": "", "talisman": null },
+        { "src": "img/cape-sill-cafe.jpg", "title": "The Slow Morning", "alt": "A sunlit corner cafe on the Cape", "story": "", "talisman": null },
+        { "src": "img/cape-fanlight.jpg", "title": "Two Hundred", "alt": "An arched fanlight window over the black door of a white brick storefront", "story": "", "talisman": null },
+        { "src": "img/cape-beach-sweater.jpg", "title": "Off Season", "alt": "A woman walking the empty beach in a sweater, soft light", "story": "", "talisman": null },
+        { "src": "img/cape-dahlia.jpg", "title": "Show-Off", "alt": "A magenta dahlia in bloom", "story": "", "talisman": null },
+        { "src": "img/cape-lantern-shop.jpg", "title": "Lamplight", "alt": "A lantern shop glowing at dusk", "story": "", "talisman": null },
+        { "src": "img/cape-bay-sunset.jpg", "title": "Fire on the Bay", "alt": "Silhouettes reflected on the bay at sunset", "story": "", "talisman": null },
+        { "src": "img/cape-lobster-shack.jpg", "title": "Fifty Buoys", "alt": "A weathered lobster shack hung with buoys", "story": "", "talisman": null },
+        { "src": "img/cape-fog-dune.jpg", "title": "White Morning", "alt": "Fog over a Cape dune, the sun a pale disc", "story": "", "talisman": null },
+        { "src": "img/cape-peonies.jpg", "title": "Heavy Heads", "alt": "Pink peonies against dark leaves", "story": "", "talisman": null },
+        { "src": "img/cape-storefront.jpg", "title": "Sunday House", "alt": "The Twenty-Eight Atlantic storefront in the evening light", "story": "", "talisman": null }
       ]
     },
     {
