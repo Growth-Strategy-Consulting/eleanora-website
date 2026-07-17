@@ -1,0 +1,33 @@
+name: Publish scheduled stories
+
+# Rebuilds site/feed.xml each day so a story whose publishAt date has arrived
+# enters the RSS feed. MailerLite watches that feed and auto-sends the new-story
+# email. The site wall/read-next reveal dated stories on their own (client-side),
+# so this job's only job is the feed = the email trigger.
+
+on:
+  schedule:
+    - cron: "0 13 * * *"      # ~09:00 US Eastern daily (GitHub cron is UTC and may lag ~15 min)
+  workflow_dispatch: {}        # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  build-feed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild the feed
+        run: python3 site/build-feed.py
+      - name: Commit if the feed changed
+        run: |
+          if git diff --quiet -- site/feed.xml; then
+            echo "No newly-published stories today. Nothing to do."
+          else
+            git config user.name "eleanora-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add site/feed.xml
+            git commit -m "Publish scheduled story: refresh feed [skip ci]"
+            git push
+          fi

@@ -1,109 +1,159 @@
 {
-  "_readme": {
-    "naming-note": "Brand term for this object is 'token' (the postcard/print sold with the story; user-facing copy says 'token'). The JSON field is still named `talisman` in code — left unchanged on purpose.",
-    "what": "Single source of truth for the Eleanora Journal. journal.html (the wall), the homepage teaser, and every entry's token-close + read-next all render from this file. Add a story by appending one object to `entries` — never hand-edit the wall or the teaser.",
-    "buckets": "Every entry has one `bucket`, mapped straight off the Content Wheel tracker's `purpose` field: 'the-long-way' (lessons — the hard-won takeaways) · 'the-archive' (stories — personal narrative + travel memoir; a trip still pairs to a Collection via exits) · 'a-place-to-park' (thought-provokers — food for thought, 'park that thought') · 'curio' (The Curio Cabinet — the odd, personal, off-the-wheel wonderings). Umbrella / soul line for the whole Journal is 'the way I see it'. The wall filter buttons are built from these; a filter auto-hides until its bucket has at least one entry, so an empty bucket never shows an empty wall.",
-    "the-token-rule": "The feature image IS the token — the print sold at the close of the entry. The code field is `talisman` (unchanged): `talisman.img` is what shows on the wall card AND the buy block. `talisman.buyUrl` stays null until GoDaddy Payments (pay.corraoelena.com) is live; until then the buy button shows 'Prints coming soon' (same mock as collections.json). Never fake a live price/checkout.",
-    "the-exits": "`exits.collection` = a slug in collections.json (Travels entries → 'see the whole trip'). `exits.manual` true = Way-I-See-It entries end on the hook toward the paid manual. `soft` true (People) = a gentle 'a token to remember them by', no hard sell.",
-    "read-next": "Bottom of each entry shows 3 related, not-yet-visited entries (relatedness = shared `tags`, then same bucket). Visited slugs are tracked in the browser (localStorage).",
-    "proposed-tokens": "Token image/name matches are PROPOSED (from token-photo-article-map.md) until Elena confirms on the live site. Working names are in [brackets]. See handoff notes for reconcile items.",
-    "how-to-add-an-entry": "1) Write the story page site/journal-<slug>.html from the template (story + <div id='entry-foot'></div> + <script src='journal-entry.js'></script>, body data-slug='journal-<slug>'). 2) Append an object here with matching slug. That's it — wall, teaser, token-close, exits, and read-next all wire automatically."
+ "_readme": {
+  "naming-note": "Brand term for this object is 'token' (the postcard/print sold with the story; user-facing copy says 'token'). The JSON field is still named `talisman` in code — left unchanged on purpose.",
+  "what": "Single source of truth for the Eleanora Journal. journal.html (the wall), the homepage teaser, and every entry's token-close + read-next all render from this file. Add a story by appending one object to `entries` — never hand-edit the wall or the teaser.",
+  "buckets": "Every entry has one `bucket`, mapped straight off the Content Wheel tracker's `purpose` field: 'the-long-way' (lessons — the hard-won takeaways) · 'the-archive' (stories — personal narrative + travel memoir; a trip still pairs to a Collection via exits) · 'a-place-to-park' (thought-provokers — food for thought, 'park that thought') · 'curio' (The Curio Cabinet — the odd, personal, off-the-wheel wonderings). Umbrella / soul line for the whole Journal is 'the way I see it'. The wall filter buttons are built from these; a filter auto-hides until its bucket has at least one entry, so an empty bucket never shows an empty wall.",
+  "the-token-rule": "The feature image IS the token — the print sold at the close of the entry. The code field is `talisman` (unchanged): `talisman.img` is what shows on the wall card AND the buy block. `talisman.buyUrl` stays null until GoDaddy Payments (pay.corraoelena.com) is live; until then the buy button shows 'Prints coming soon' (same mock as collections.json). Never fake a live price/checkout.",
+  "the-exits": "`exits.collection` = a slug in collections.json (Travels entries → 'see the whole trip'). `exits.manual` true = Way-I-See-It entries end on the hook toward the paid manual. `soft` true (People) = a gentle 'a token to remember them by', no hard sell.",
+  "read-next": "Bottom of each entry shows 3 related, not-yet-visited entries (relatedness = shared `tags`, then same bucket). Visited slugs are tracked in the browser (localStorage).",
+  "proposed-tokens": "Token image/name matches are PROPOSED (from token-photo-article-map.md) until Elena confirms on the live site. Working names are in [brackets]. See handoff notes for reconcile items.",
+  "how-to-add-an-entry": "1) Write the story page site/journal-<slug>.html from the template (story + <div id='entry-foot'></div> + <script src='journal-entry.js'></script>, body data-slug='journal-<slug>'). 2) Append an object here with matching slug. That's it — wall, teaser, token-close, exits, and read-next all wire automatically."
+ },
+ "entries": [
+  {
+   "slug": "journal-behind-the-camera",
+   "publishAt": "2026-07-04",
+   "bucket": "the-archive",
+   "kicker": "The Archive · The Beginning",
+   "title": "The Girl Behind the Camera (but also in front)",
+   "accent": "chasing the light",
+   "excerpt": "I'll start with a confession. You've seen me somewhere before. You just can't place it. The whole story, from the girl who wanted to be someone to the one still searching for home.",
+   "tags": [
+    "becoming",
+    "the-body",
+    "travels",
+    "mortality",
+    "home",
+    "the-invitation"
+   ],
+   "talisman": {
+    "img": "img/about-smoke.jpg",
+    "alt": "Eleanora in black and white, a feather at her shoulder and soft smoke curling",
+    "name": "[working title — the girl you can't place]",
+    "line": "What if this picture reminded you, every day, that you've always been someone worth becoming? If you believed it could, would it?",
+    "price": "$250",
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
   },
-  "entries": [
-    {
-      "slug": "journal-behind-the-camera",
-      "bucket": "the-archive",
-      "kicker": "The Archive · The Beginning",
-      "title": "The Girl Behind the Camera (but also in front)",
-      "accent": "chasing the light",
-      "excerpt": "I'll start with a confession. You've seen me somewhere before. You just can't place it. The whole story, from the girl who wanted to be someone to the one still searching for home.",
-      "tags": ["becoming", "the-body", "travels", "mortality", "home", "the-invitation"],
-      "talisman": {
-        "img": "img/about-smoke.jpg",
-        "alt": "Eleanora in black and white, a feather at her shoulder and soft smoke curling",
-        "name": "[working title — the girl you can't place]",
-        "line": "What if this picture reminded you, every day, that you've always been someone worth becoming? If you believed it could, would it?",
-        "price": "$250",
-        "buyUrl": null
-      },
-      "exits": { "collection": null, "manual": false },
-      "soft": false
-    },
-    {
-      "slug": "journal-quiet-one",
-      "bucket": "the-archive",
-      "kicker": "The Archive",
-      "title": "The Good Girl (who was already gone)",
-      "accent": "jumped ship",
-      "excerpt": "I made my Confirmation the year I decided to leave. The story of the good girl who was already gone, and the map she built out of her own life.",
-      "tags": ["agency", "the-body", "becoming", "the-good-girl"],
-      "talisman": {
-        "img": "img/studio-fur-silver.jpg",
-        "alt": "Eleanora in an open fur coat and lace shorts, black and white",
-        "name": "The Canvas",
-        "line": "Make my dreams come true. Put a little of my art on your wall.",
-        "price": "$380",
-        "buyUrl": null
-      },
-      "exits": { "collection": null, "manual": false },
-      "soft": false
-    },
-    {
-      "slug": "journal-dubrovnik",
-      "bucket": "the-archive",
-      "kicker": "The Archive · Dubrovnik",
-      "title": "Drowning, but in Croatia",
-      "accent": "looking for a sign",
-      "excerpt": "I quit my job to come here, looking for a sign. And boy, did I find one — the first thing this country said to me, scrawled across a wall.",
-      "tags": ["travels", "croatia", "agency", "the-leap", "shadow"],
-      "talisman": {
-        "img": "img/croatia-island.jpg",
-        "alt": "A small green island floating in the calm blue sea off Dubrovnik",
-        "name": "Island at Sea",
-        "line": "What if this picture reminded you, every day, that the leap into open water was worth it? If you believed it could, would it?",
-        "price": "$20",
-        "buyUrl": null
-      },
-      "exits": { "collection": "croatia", "manual": false },
-      "soft": false
-    },
-    {
-      "slug": "journal-italy",
-      "bucket": "the-archive",
-      "kicker": "The Archive · Bari, Italy",
-      "title": "The Thing We Keep Running From",
-      "accent": "piano, piano",
-      "excerpt": "The world runs on two speeds. Routine, which it calls living. Complacency, which it calls comfort. I found the third thing in Italy.",
-      "tags": ["travels", "italy", "patience", "presence", "inner-game"],
-      "talisman": {
-        "img": "img/blog-italy-flowerdoor.jpg",
-        "alt": "A yellow doorway with climbing flowers and a small red mailbox in Bari, Italy",
-        "name": "The Flower Door",
-        "line": "What if this picture reminded you, every day, to let your life bloom in its own hour? If you believed it could, would it?",
-        "price": "$20",
-        "buyUrl": null
-      },
-      "exits": { "collection": "puglia", "manual": false },
-      "soft": false
-    },
-    {
-      "slug": "journal-portals",
-      "bucket": "curio",
-      "kicker": "The Curio Cabinet",
-      "title": "I Think I've Been Collecting Portals",
-      "accent": "where do you go?",
-      "excerpt": "Small confession. I have a thing for doors. Old ones. The heavy wooden kind with the paint peeling off. I have hundreds of them. What if I was never photographing doors at all — but little portals, asking each one the same quiet thing.",
-      "tags": ["curio", "doorways", "portals", "wondering", "time-capsule"],
-      "talisman": {
-        "img": "img/athens-doorway.jpg",
-        "alt": "An ancient weathered doorway in a narrow old street, paint peeling from the wood",
-        "name": "[working title — the portal]",
-        "line": "What if this picture reminded you, every day, that every old door is a question worth asking? If you believed it could, would it?",
-        "price": "$20",
-        "buyUrl": null
-      },
-      "exits": { "collection": null, "manual": false },
-      "soft": false
-    }
-  ]
+  {
+   "slug": "journal-quiet-one",
+   "publishAt": "2026-07-07",
+   "bucket": "the-archive",
+   "kicker": "The Archive",
+   "title": "The Good Girl (who was already gone)",
+   "accent": "jumped ship",
+   "excerpt": "I made my Confirmation the year I decided to leave. The story of the good girl who was already gone, and the map she built out of her own life.",
+   "tags": [
+    "agency",
+    "the-body",
+    "becoming",
+    "the-good-girl"
+   ],
+   "talisman": {
+    "img": "img/studio-fur-silver.jpg",
+    "alt": "Eleanora in an open fur coat and lace shorts, black and white",
+    "name": "The Canvas",
+    "line": "Make my dreams come true. Put a little of my art on your wall.",
+    "price": "$380",
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
+  },
+  {
+   "slug": "journal-dubrovnik",
+   "publishAt": "2026-07-10",
+   "bucket": "the-archive",
+   "kicker": "The Archive · Dubrovnik",
+   "title": "Drowning, but in Croatia",
+   "accent": "looking for a sign",
+   "excerpt": "I quit my job to come here, looking for a sign. And boy, did I find one — the first thing this country said to me, scrawled across a wall.",
+   "tags": [
+    "travels",
+    "croatia",
+    "agency",
+    "the-leap",
+    "shadow"
+   ],
+   "talisman": {
+    "img": "img/croatia-island.jpg",
+    "alt": "A small green island floating in the calm blue sea off Dubrovnik",
+    "name": "Island at Sea",
+    "line": "What if this picture reminded you, every day, that the leap into open water was worth it? If you believed it could, would it?",
+    "price": "$20",
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": "croatia",
+    "manual": false
+   },
+   "soft": false
+  },
+  {
+   "slug": "journal-italy",
+   "publishAt": "2026-07-13",
+   "bucket": "the-archive",
+   "kicker": "The Archive · Bari, Italy",
+   "title": "The Thing We Keep Running From",
+   "accent": "piano, piano",
+   "excerpt": "The world runs on two speeds. Routine, which it calls living. Complacency, which it calls comfort. I found the third thing in Italy.",
+   "tags": [
+    "travels",
+    "italy",
+    "patience",
+    "presence",
+    "inner-game"
+   ],
+   "talisman": {
+    "img": "img/blog-italy-flowerdoor.jpg",
+    "alt": "A yellow doorway with climbing flowers and a small red mailbox in Bari, Italy",
+    "name": "The Flower Door",
+    "line": "What if this picture reminded you, every day, to let your life bloom in its own hour? If you believed it could, would it?",
+    "price": "$20",
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": "puglia",
+    "manual": false
+   },
+   "soft": false
+  },
+  {
+   "slug": "journal-portals",
+   "publishAt": "2026-07-16",
+   "bucket": "curio",
+   "kicker": "The Curio Cabinet",
+   "title": "I Think I've Been Collecting Portals",
+   "accent": "where do you go?",
+   "excerpt": "Small confession. I have a thing for doors. Old ones. The heavy wooden kind with the paint peeling off. I have hundreds of them. What if I was never photographing doors at all — but little portals, asking each one the same quiet thing.",
+   "tags": [
+    "curio",
+    "doorways",
+    "portals",
+    "wondering",
+    "time-capsule"
+   ],
+   "talisman": {
+    "img": "img/athens-doorway.jpg",
+    "alt": "An ancient weathered doorway in a narrow old street, paint peeling from the wood",
+    "name": "[working title — the portal]",
+    "line": "What if this picture reminded you, every day, that every old door is a question worth asking? If you believed it could, would it?",
+    "price": "$20",
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
+  }
+ ]
 }

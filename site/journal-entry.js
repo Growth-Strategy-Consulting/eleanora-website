@@ -112,7 +112,8 @@
     var vset = {};
     visited.forEach(function (s) { vset[s] = 1; });
     var myTags = me.tags || [];
-    var pool = entries.filter(function (e) { return e.slug !== SLUG; });
+    var isLive = function (e) { if (!e.publishAt) return true; var d = new Date(e.publishAt + 'T00:00:00'); return isNaN(d) ? true : d <= new Date(); };
+    var pool = entries.filter(function (e) { return e.slug !== SLUG && isLive(e); });
     // score by shared tags, then same-bucket bonus
     pool.forEach(function (e) {
       var shared = (e.tags || []).filter(function (tag) { return myTags.indexOf(tag) !== -1; }).length;
@@ -145,4 +146,153 @@
       mount.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
     }
   }).catch(function () { /* leave the page as-is if the manifest can't load */ });
+})();
+
+
+/* ============================================================
+   SUBSCRIBE POPUP — shows once, on every story page.
+   Lives here so it rides on every current + future journal
+   entry automatically (this file is only loaded on story pages,
+   each carrying <body data-slug="...">). Scoped to those pages;
+   never fires on the home/gallery/shop.
+
+   Behaviour: appears after the reader has spent ~20s on the
+   story — never on load. Shows a single time; once someone subscribes or closes
+   it, it never nags them again (remembered in localStorage,
+   same as the read-history the engine above uses).
+
+   ---- WIRING IT TO SMARTSUITE (the swap) --------------------
+   Right now it posts to FormSubmit (no backend; emails Elena),
+   matching the Work With Me form. To send signups straight into
+   SmartSuite instead:
+     1. In SmartSuite, make a table for the email list (one field:
+        Email), then add an Automation with the "Incoming Webhook"
+        trigger. Copy the unique webhook URL it gives you.
+     2. Set SUBSCRIBE_ENDPOINT below to that URL.
+     3. Set SUBSCRIBE_MODE to 'smartsuite'.
+   That's the whole change. Nothing else in here moves.
+   ============================================================ */
+(function () {
+  if (!document.body.getAttribute('data-slug')) return;      // story pages only
+
+  // ---- the one email inbox / endpoint. INTERIM = FormSubmit. --
+  var SUBSCRIBE_MODE = 'formsubmit';                          // 'formsubmit' | 'smartsuite'
+  var SUBSCRIBE_ENDPOINT = 'https://formsubmit.co/ajax/corraoconsulting@gmail.com';
+  // When you switch to SmartSuite, paste its incoming-webhook URL above and set MODE to 'smartsuite'.
+
+  var DONE_KEY = 'eleanora_sub';                             // 'done' | 'dismissed' -> never show again
+  var state;
+  try { state = localStorage.getItem(DONE_KEY); } catch (e) { state = null; }
+  if (state) return;
+
+  var reduce = false;
+  try { reduce = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+
+  // ---- styles ----
+  var css = document.createElement('style');
+  css.textContent =
+    '.sub-pop{position:fixed;z-index:9998;right:24px;bottom:24px;width:min(370px,calc(100vw - 32px));' +
+      'background:var(--forest-d,#122019);border:1px solid rgba(231,196,137,.32);' +
+      'box-shadow:0 26px 70px rgba(0,0,0,.5);padding:26px 26px 24px;' +
+      'opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease,ease),transform .55s var(--ease,ease);}' +
+    '.sub-pop.in{opacity:1;transform:none;}' +
+    '.sub-pop .x{position:absolute;top:11px;right:13px;width:26px;height:26px;line-height:24px;text-align:center;' +
+      'color:var(--sand,#cbb78f);opacity:.7;font-size:19px;cursor:pointer;background:none;border:0;transition:opacity .3s;}' +
+    '.sub-pop .x:hover{opacity:1;}' +
+    '.sub-pop .eye{font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--gold,#e7c489);opacity:.9;}' +
+    '.sub-pop h5{font-family:"Didot","Bodoni 72",Georgia,serif;font-weight:400;font-size:23px;line-height:1.2;' +
+      'color:var(--cream,#f4ecdc);margin:9px 0 8px;}' +
+    '.sub-pop p{font-size:14px;line-height:1.65;color:var(--read,#d7c9ad);margin:0 0 16px;}' +
+    '.sub-pop form{display:flex;flex-direction:column;gap:10px;}' +
+    '.sub-pop input[type=email]{width:100%;background:rgba(0,0,0,.22);border:1px solid rgba(231,196,137,.3);' +
+      'color:var(--cream,#f4ecdc);padding:12px 14px;font-size:14px;font-family:inherit;transition:border-color .3s;}' +
+    '.sub-pop input[type=email]:focus{outline:none;border-color:var(--gold,#e7c489);}' +
+    '.sub-pop input[type=email]::placeholder{color:var(--sand,#cbb78f);opacity:.6;}' +
+    '.sub-pop button.go{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--forest-dd,#0c1611);' +
+      'background:var(--gold,#e7c489);border:0;padding:14px 22px;cursor:pointer;transition:background .35s var(--ease,ease);}' +
+    '.sub-pop button.go:hover{background:var(--cream,#f4ecdc);}' +
+    '.sub-pop button.go[disabled]{opacity:.6;cursor:default;}' +
+    '.sub-pop .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}' +
+    '.sub-pop .note{font-size:12px;line-height:1.6;color:var(--sand,#cbb78f);opacity:.85;margin:2px 0 0;min-height:1px;}' +
+    '.sub-pop .thanks{font-size:15px;line-height:1.7;color:var(--cream,#f4ecdc);}' +
+    '.sub-pop .thanks .sig{color:var(--gold,#e7c489);}' +
+    '@media(max-width:520px){.sub-pop{right:12px;left:12px;bottom:12px;width:auto;padding:22px 22px 20px;}}';
+  document.head.appendChild(css);
+
+  // ---- build it (hidden until triggered) ----
+  var pop = document.createElement('aside');
+  pop.className = 'sub-pop';
+  pop.setAttribute('role', 'dialog');
+  pop.setAttribute('aria-label', 'Join the email list');
+  pop.innerHTML =
+    '<button class="x" aria-label="Close">&times;</button>' +
+    '<div class="eye">Leave the door open</div>' +
+    '<h5>There’s always another story.</h5>' +
+    '<p>This one found you. Leave your email and I’ll make sure the next one does too.</p>' +
+    '<form novalidate>' +
+      '<input type="text" class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+      '<input type="email" name="email" placeholder="your email" required autocomplete="email">' +
+      '<button type="submit" class="go">Send me the next one</button>' +
+      '<p class="note" aria-live="polite"></p>' +
+    '</form>';
+  document.body.appendChild(pop);
+
+  var form = pop.querySelector('form');
+  var emailEl = pop.querySelector('input[type=email]');
+  var honeyEl = pop.querySelector('.hp');
+  var noteEl = pop.querySelector('.note');
+  var goBtn = pop.querySelector('button.go');
+  var closeBtn = pop.querySelector('.x');
+
+  var shown = false;
+  function show() {
+    if (shown) return;
+    shown = true;
+    cleanup();
+    if (reduce) { pop.classList.add('in'); }
+    else { requestAnimationFrame(function () { requestAnimationFrame(function () { pop.classList.add('in'); }); }); }
+  }
+  function remember(v) { try { localStorage.setItem(DONE_KEY, v); } catch (e) {} }
+  function dismiss() { remember('dismissed'); pop.classList.remove('in'); setTimeout(function () { pop.remove(); }, 500); }
+
+  closeBtn.addEventListener('click', dismiss);
+
+  // ---- trigger: after ~20s on the page ----
+  function cleanup() { clearTimeout(timer); }
+  var timer = setTimeout(show, 20000);
+
+  // ---- submit ----
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = (emailEl.value || '').trim();
+    if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { noteEl.textContent = 'That email looks off. Try again?'; emailEl.focus(); return; }
+    if (honeyEl.value) { succeed(); return; }               // bot filled the honeypot -> quietly "succeed"
+
+    goBtn.setAttribute('disabled', 'disabled');
+    noteEl.textContent = 'One second…';
+
+    var payload, headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
+    if (SUBSCRIBE_MODE === 'smartsuite') {
+      payload = { email: email, source: 'story-popup', slug: document.body.getAttribute('data-slug') };
+    } else {
+      payload = { email: email, _subject: 'New subscriber — story popup (Eleanora)', _template: 'table', _captcha: 'false' };
+    }
+
+    fetch(SUBSCRIBE_ENDPOINT, { method: 'POST', headers: headers, body: JSON.stringify(payload) })
+      .then(function (r) { if (!r.ok) throw new Error('bad status'); return r.json().catch(function () { return {}; }); })
+      .then(function () { succeed(); })
+      .catch(function () {
+        goBtn.removeAttribute('disabled');
+        noteEl.textContent = 'Hmm, that didn’t go through. One more try?';
+      });
+  });
+
+  function succeed() {
+    remember('done');
+    pop.innerHTML =
+      '<button class="x" aria-label="Close">&times;</button>' +
+      '<div class="eye">You’re in</div>' +
+      '<p class="thanks">You’re on the list. The next one finds you first. <span class="sig">x</span></p>';
+    pop.querySelector('.x').addEventListener('click', function () { pop.classList.remove('in'); setTimeout(function () { pop.remove(); }, 500); });
+  }
 })();

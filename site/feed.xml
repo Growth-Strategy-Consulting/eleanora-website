@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+    <title>Eleanora — the Journal</title>
+    <link>https://corraoelena.com/site/journal.html</link>
+    <description>An archive of her stories. New ones, as they land.</description>
+    <lastBuildDate>Fri, 17 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>I Think I&#x27;ve Been Collecting Portals</title>
+      <link>https://corraoelena.com/site/journal-portals.html</link>
+      <guid isPermaLink="true">https://corraoelena.com/site/journal-portals.html</guid>
+      <pubDate>Thu, 16 Jul 2026 00:00:00 +0000</pubDate>
+      <description>Small confession. I have a thing for doors. Old ones. The heavy wooden kind with the paint peeling off. I have hundreds of them. What if I was never photographing doors at all — but little portals, asking each one the same quiet thing.</description>
+      <enclosure url="https://corraoelena.com/site/img/athens-doorway.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>The Thing We Keep Running From</title>
+      <link>https://corraoelena.com/site/journal-italy.html</link>
+      <guid isPermaLink="true">https://corraoelena.com/site/journal-italy.html</guid>
+      <pubDate>Mon, 13 Jul 2026 00:00:00 +0000</pubDate>
+      <description>The world runs on two speeds. Routine, which it calls living. Complacency, which it calls comfort. I found the third thing in Italy.</description>
+      <enclosure url="https://corraoelena.com/site/img/blog-italy-flowerdoor.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Drowning, but in Croatia</title>
+      <link>https://corraoelena.com/site/journal-dubrovnik.html</link>
+      <guid isPermaLink="true">https://corraoelena.com/site/journal-dubrovnik.html</guid>
+      <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
+      <description>I quit my job to come here, looking for a sign. And boy, did I find one — the first thing this country said to me, scrawled across a wall.</description>
+      <enclosure url="https://corraoelena.com/site/img/croatia-island.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>The Good Girl (who was already gone)</title>
+      <link>https://corraoelena.com/site/journal-quiet-one.html</link>
+      <guid isPermaLink="true">https://corraoelena.com/site/journal-quiet-one.html</guid>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0000</pubDate>
+      <description>I made my Confirmation the year I decided to leave. The story of the good girl who was already gone, and the map she built out of her own life.</description>
+      <enclosure url="https://corraoelena.com/site/img/studio-fur-silver.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>The Girl Behind the Camera (but also in front)</title>
+      <link>https://corraoelena.com/site/journal-behind-the-camera.html</link>
+      <guid isPermaLink="true">https://corraoelena.com/site/journal-behind-the-camera.html</guid>
+      <pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
+      <description>I&#x27;ll start with a confession. You&#x27;ve seen me somewhere before. You just can&#x27;t place it. The whole story, from the girl who wanted to be someone to the one still searching for home.</description>
+      <enclosure url="https://corraoelena.com/site/img/about-smoke.jpg" type="image/jpeg" />
+    </item>
+</channel></rss>

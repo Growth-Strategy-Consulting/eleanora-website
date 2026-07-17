@@ -218,8 +218,10 @@ const cardIO=reduce?null:new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isI
 
 /* ---- render the wall from journal.json (single source of truth) ---- */
 const wall=document.getElementById('wall');
+/* an entry is live only once its publishAt (YYYY-MM-DD) has arrived; missing = live */
+const isLive=e=>{if(!e.publishAt)return true;const d=new Date(e.publishAt+'T00:00:00');return isNaN(d)?true:d<=new Date();};
 fetch('journal.json').then(r=>r.json()).then(data=>{
-  const entries=data.entries||[];
+  const entries=(data.entries||[]).filter(isLive);
   entries.forEach((e,i)=>{
     const t=e.talisman||{};
     const a=document.createElement('a');
