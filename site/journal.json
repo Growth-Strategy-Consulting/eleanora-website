@@ -11,6 +11,25 @@
   },
   "entries": [
     {
+      "slug": "journal-behind-the-camera",
+      "bucket": "the-archive",
+      "kicker": "The Archive · The Beginning",
+      "title": "The Girl Behind the Camera (but also in front)",
+      "accent": "chasing the light",
+      "excerpt": "I'll start with a confession. You've seen me somewhere before. You just can't place it. The whole story, from the girl who wanted to be someone to the one still searching for home.",
+      "tags": ["becoming", "the-body", "travels", "mortality", "home", "the-invitation"],
+      "talisman": {
+        "img": "img/about-smoke.jpg",
+        "alt": "Eleanora in black and white, a feather at her shoulder and soft smoke curling",
+        "name": "[working title — the girl you can't place]",
+        "line": "What if this picture reminded you, every day, that you've always been someone worth becoming? If you believed it could, would it?",
+        "price": "$250",
+        "buyUrl": null
+      },
+      "exits": { "collection": null, "manual": false },
+      "soft": false
+    },
+    {
       "slug": "journal-quiet-one",
       "bucket": "the-archive",
       "kicker": "The Archive",

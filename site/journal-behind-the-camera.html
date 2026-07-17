@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>if(sessionStorage.getItem("eleanora_pass")!=="1")location.replace("/");</script>
+<script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('veil-on');}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Girl Behind the Camera (but also in front) · Eleanora</title>
+<link rel="icon" type="image/png" sizes="32x32" href="img/mark-book-arch-green-t.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="img/mark-book-arch-cream-t.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="512x512" href="img/mark-book-arch-green-t.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="512x512" href="img/mark-book-arch-cream-t.png" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<style>
+@font-face{font-family:'Pinyon Script';src:url('../brand-hub/assets/fonts/PinyonScript-Regular.ttf');font-display:swap;}
+@font-face{font-family:'Allura';src:url('../brand-hub/assets/fonts/Allura-Regular.ttf');font-display:swap;}
+:root{
+  --forest:#2F4034; --forest-d:#1C271F; --forest-dd:#141C16; --sage:#93A283;
+  --clay:#B87F51; --clay-l:#CE9A6B; --gold:#E7C489; --sand:#E4D7BE;
+  --parch:#EFE6D3; --cream:#F6F1E7; --ink:#2B2019; --body:#d3dacb; --read:#e6e1d2;
+  --z-nav:50; --z-grain:80; --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--forest-d);color:var(--cream);font-family:'Helvetica Neue',Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{display:block;width:100%;height:100%;object-fit:cover;image-orientation:from-image;
+    filter:saturate(1.05) contrast(1.03) brightness(1.0) sepia(.055);}
+.serif{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;}
+.script{font-family:'Allura',cursive;}
+.lab{font-size:12px;letter-spacing:3.5px;text-transform:uppercase;}
+a{color:inherit;text-decoration:none;}
+em{font-style:italic;}
+::selection{background:rgba(231,196,137,.28);color:var(--cream);}
+
+/* ---------- GRAIN + VEIL ---------- */
+.grain{position:fixed;inset:0;z-index:var(--z-grain);pointer-events:none;opacity:.5;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+#veil{position:fixed;inset:0;z-index:79;pointer-events:none;opacity:0;visibility:hidden;
+  background:radial-gradient(130% 112% at 50% 42%,#24322a 0%,var(--forest-d) 70%,var(--forest-dd) 100%);
+  transition:opacity .55s var(--ease),visibility 0s linear .55s;}
+html.veil-on #veil{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .5s var(--ease);}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.post-hero,.read,.bleed,.duo,footer{position:relative;z-index:1;}
+
+/* ---------- NAV ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);display:flex;align-items:center;justify-content:space-between;
+  padding:24px 46px;transition:padding .4s var(--ease),background .4s ease,box-shadow .4s ease;}
+header.solid{background:rgba(20,28,22,.86);backdrop-filter:blur(9px);padding:14px 46px;box-shadow:0 1px 0 rgba(0,0,0,.3);}
+.brand{display:flex;align-items:center;gap:12px;color:var(--cream);}
+.brand .wm{font-family:'Pinyon Script',cursive;font-size:34px;line-height:1;padding-left:2px;}
+nav ul{display:flex;gap:34px;list-style:none;}
+nav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream);opacity:.88;position:relative;transition:.4s;}
+nav a.on{color:var(--gold);opacity:1;}
+nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:.3s var(--ease);}
+nav a:hover::after,nav a.on::after{width:100%;}
+
+/* ---------- TITLE (full-bleed cinematic) ---------- */
+.post-hero{position:relative;height:100vh;min-height:620px;overflow:hidden;}
+.post-hero .bg{position:absolute;inset:0;}
+.post-hero .bg img{transform:scale(1.06);animation:kb 22s var(--ease) forwards;filter:saturate(.9) contrast(1.05) brightness(.58);}
+@keyframes kb{to{transform:scale(1.14);}}
+.post-hero::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(96% 74% at 50% 45%,rgba(11,17,13,.62) 0%,rgba(11,17,13,.16) 55%,transparent 80%),
+             linear-gradient(180deg,rgba(14,21,16,.6) 0%,rgba(14,21,16,.3) 32%,rgba(14,21,16,.5) 62%,rgba(14,21,16,.95) 100%);}
+.post-hero .inner{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;color:var(--cream);padding:0 24px;}
+.post-hero .ey{color:var(--gold);margin-bottom:20px;}
+.post-hero h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(42px,6.6vw,92px);line-height:1.03;letter-spacing:-.01em;
+  max-width:16ch;text-shadow:0 8px 48px rgba(0,0,0,.5);text-wrap:balance;}
+.post-hero .accent{font-family:'Allura',cursive;font-size:clamp(32px,4.4vw,56px);color:var(--gold);margin-top:12px;
+  text-shadow:0 2px 26px rgba(231,196,137,.3);}
+.post-hero .meta{margin-top:24px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sand);opacity:.85;}
+.post-hero .cue{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;color:var(--cream);
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:.85;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.post-hero .cue span{width:1px;height:34px;background:var(--gold);opacity:.6;animation:pulse 2.4s ease-in-out infinite;transform-origin:top;}
+@keyframes pulse{0%,100%{opacity:.15;transform:scaleY(.55);}50%{opacity:.7;transform:scaleY(1);}}
+.post-hero .ey,.post-hero h1,.post-hero .accent,.post-hero .meta{opacity:0;transform:translateY(24px);animation:rise 1s var(--ease) forwards;}
+.post-hero .ey{animation-delay:.25s;} .post-hero h1{animation-delay:.42s;}
+.post-hero .accent{animation-delay:.64s;} .post-hero .meta{animation-delay:.82s;}
+@keyframes rise{to{opacity:1;transform:none;}}
+
+/* ---------- READING ---------- */
+.read{position:relative;padding:clamp(74px,11vh,120px) 24px clamp(40px,6vh,60px);
+  background:radial-gradient(900px 520px at 18% 4%,rgba(147,162,131,.10),transparent 70%),
+            radial-gradient(820px 560px at 92% 96%,rgba(184,127,81,.11),transparent 72%),rgba(20,28,22,.80);}
+.prose{max-width:62ch;margin:0 auto;}
+.prose p{font-size:17.5px;line-height:2.02;color:var(--read);margin:0 auto 28px;}
+.prose p.lede{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(21px,2.4vw,28px);line-height:1.55;
+  color:var(--cream);letter-spacing:-.005em;}
+.prose em{font-style:italic;color:var(--sand);}
+.prose .pull{font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-size:clamp(22px,2.6vw,30px);
+  color:var(--gold);line-height:1.4;text-align:center;max-width:26ch;margin:clamp(40px,6vh,60px) auto;}
+.prose .pull::before{content:"";display:block;width:50px;height:1px;background:var(--clay-l);opacity:.7;margin:0 auto 24px;}
+.prose .ask{text-align:center;font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;color:var(--sand);
+  font-size:clamp(19px,2.1vw,23px);line-height:2.1;margin:clamp(38px,5vh,54px) auto;}
+.prose .sign{font-family:'Allura',cursive;font-size:clamp(40px,5vw,58px);color:var(--sand);margin-top:20px;text-align:center;line-height:1;}
+
+/* figures — inset + full-bleed cinematic */
+.fig{position:relative;margin:clamp(56px,8vh,96px) auto;max-width:860px;overflow:hidden;
+  box-shadow:0 26px 64px rgba(0,0,0,.42);}
+.fig::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.2);pointer-events:none;}
+.fig img{width:100%;height:auto;}
+.fig.portrait{max-width:600px;}
+.fig-cap{margin-top:12px;text-align:center;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);opacity:.8;}
+.bleed{position:relative;width:100vw;margin-left:calc(50% - 50vw);height:min(88vh,780px);overflow:hidden;
+  margin-top:clamp(70px,10vh,110px);margin-bottom:clamp(70px,10vh,110px);}
+.bleed .bg{position:absolute;inset:0;z-index:0;will-change:transform;}
+.bleed .bg img{height:100%;transform:scale(1.12);}
+.bleed::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 120px 20px rgba(20,28,22,.5);
+  background:linear-gradient(0deg,rgba(20,28,22,.45),transparent 40%);}
+
+/* half-page duo: sticky portrait image left, text scrolls on the right */
+.duo{max-width:1120px;margin:clamp(60px,9vh,110px) auto;padding:0 24px;
+  display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(28px,4.5vw,60px);align-items:start;}
+.duo .duo-img{position:sticky;top:14vh;max-height:50vh;overflow:hidden;box-shadow:0 26px 64px rgba(0,0,0,.42);}
+.duo .duo-img::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.2);pointer-events:none;z-index:2;}
+.duo .duo-img img{width:100%;height:100%;max-height:50vh;object-fit:cover;}
+.duo .duo-text{padding-top:1vh;}
+.duo .duo-text p{font-size:16.5px;line-height:1.95;color:var(--read);margin:0 0 20px;}
+.duo .duo-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:32px 18px 15px;
+  font-size:11px;letter-spacing:2.8px;text-transform:uppercase;color:var(--gold);
+  background:linear-gradient(0deg,rgba(9,14,10,.74),transparent);pointer-events:none;}
+.duo .duo-text .say{font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-size:clamp(19px,2vw,24px);
+  line-height:1.5;color:var(--gold);margin-top:16px;}
+.duo .duo-text .say::before{content:"";display:block;width:44px;height:1px;background:var(--clay-l);opacity:.75;margin:0 0 18px;}
+@media(max-width:820px){
+  .duo{grid-template-columns:1fr;gap:22px;}
+  .duo .duo-img{position:relative;top:0;max-height:64vh;}
+}
+
+.back{display:block;text-align:center;margin:clamp(30px,5vh,50px) auto 0;font-size:12px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold);}
+.back:hover{color:var(--cream);}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--forest-dd);color:var(--sand);padding:72px 40px 36px;text-align:center;position:relative;margin-top:40px;}
+footer::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(90%,420px);height:1px;
+  background:linear-gradient(90deg,transparent,rgba(231,196,137,.4),transparent);}
+footer .seal{width:80px;height:80px;margin:0 auto 26px;opacity:.9;}
+footer .seal img{filter:none;}
+footer .fnav{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:24px;}
+footer .fnav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;opacity:.85;transition:.3s;}
+footer .fnav a:hover{color:var(--gold);opacity:1;}
+footer .tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--cream);opacity:.9;}
+footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
+footer .cr .script{font-size:18px;color:var(--gold);}
+
+/* ---------- REVEAL ---------- */
+body.anim .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease);}
+body.anim .reveal.in{opacity:1;transform:none;}
+
+@media(max-width:900px){
+  header{padding:16px 22px;} header.solid{padding:12px 22px;} nav ul{display:none;}
+  .bleed{height:64vh;min-height:360px;}
+}
+@media(max-width:520px){ .post-hero h1{font-size:clamp(34px,9vw,52px);} .prose p{font-size:17px;} }
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
+  .post-hero .bg img{animation:none;transform:scale(1.06);}
+  .post-hero .ey,.post-hero h1,.post-hero .accent,.post-hero .meta{opacity:1;transform:none;}
+  #veil{display:none;}
+}
+</style>
+</head>
+<body data-slug="journal-behind-the-camera">
+
+<div class="grain"></div>
+<div id="veil" aria-hidden="true"></div>
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<header id="hdr">
+  <a class="brand" href="index.html">
+    <img src="img/mark-book-arch-cream-t.png" alt="Eleanora" width="60" height="60" style="width:60px;height:60px;display:block;flex:0 0 auto;filter:none">
+    <span class="wm">Eleanora</span>
+  </a>
+  <nav><ul>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="collections.html">Postcards</a></li>
+    <li><a href="journal.html" class="on">Journal</a></li>
+    <li><a href="prints.html">Prints</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul></nav>
+</header>
+
+<!-- ================= TITLE ================= -->
+<section class="post-hero">
+  <div class="bg"><img src="img/about-smoke.jpg" alt="Eleanora in black and white, a feather at her shoulder and soft smoke curling at the edge of the frame"></div>
+  <div class="inner">
+    <div class="ey lab">The Archive</div>
+    <h1 class="serif" style="font-size:clamp(36px,6vw,84px);max-width:15ch;line-height:1.05">The Girl Behind the Camera<br><span style="font-size:.5em;font-style:italic;opacity:.92">(but also in front)</span></h1>
+    <div class="meta">Words &amp; light</div>
+  </div>
+  <a class="cue" href="#read"><span></span>Read</a>
+</section>
+
+<!-- ================= READING ================= -->
+<article class="read" id="read">
+  <div class="prose">
+    <p class="lede reveal">I'll start with a confession. You've seen me somewhere before. You just can't place it.</p>
+    <p class="reveal">I was sixteen when I asked my mother to enroll me in modeling school. Neither of us had the faintest idea what I was really asking for.</p>
+    <p class="reveal">I only knew I wanted to be someone. The girl on the shirt. The face on the poster. The one whose name never reaches you, but whose face you'd swear you'd met somewhere before.</p>
+    <p class="pull reveal">A moment that lingers.</p>
+  </div>
+
+  <div class="bleed reveal">
+    <div class="bg"><img src="img/about-lace-hat.jpg" alt="Eleanora in a delicate lace bralette and a wide-brimmed vintage hat"></div>
+  </div>
+
+  <div class="prose">
+    <p class="reveal">Now for the part I don't hand to just anyone.</p>
+    <p class="reveal">I had cancer. Young. Too young to have the words for it.</p>
+    <p class="reveal">It left something in me. A permanent tilt to the way I see. Because when you brush up against the end that early, you cannot un-know it. How much beauty is everywhere, all the time. How carelessly the rest of the world lets it slip past.</p>
+    <p class="reveal">Do not mistake me for someone who always knew. It took years to learn how to look, and I got it wrong plenty. I lost the thread, wandered off, forgot the whole lesson and had to learn it twice. The seeing was never a gift. It was a practice. And I am still, happily, imperfect at it.</p>
+    <p class="reveal">They spend their lives looking the other way. Chasing the shiny, forgettable things. Numbing the parts that ache instead of feeling them for what they're worth.</p>
+    <p class="reveal">But some things you don't get to skip. Some suffering can't be outrun, only walked through. And the gift buried inside it, the one nobody warns you about, is this. Once you stop running, you finally start to see. The light. The body. The ordinary, aching beauty of being alive at all.</p>
+  </div>
+
+  <div class="fig reveal">
+    <img src="img/about-waterfall.jpg" alt="Eleanora in a bikini reclining on a mossy rock with a waterfall flowing behind her">
+  </div>
+
+  <div class="prose">
+    <p class="reveal">So that is why I go. Why I keep leaving.</p>
+    <p class="reveal">I go looking for the parts of the world I haven't met yet. I want to stand somewhere I've never been, in a language I don't speak, and feel how small it makes me. How awake. I don't travel to collect places. I let them get into me. Let them rearrange everything I thought I knew about how a life is meant to look, and what actually makes a person happy.</p>
+    <p class="reveal">The world runs on two speeds. Routine, which it calls living. Complacency, which it calls comfort. Both keep you from feeling much of anything at all.</p>
+    <p class="reveal">They keep selling us a life free of pain, like that's the whole point. But what does that actually look like? Nothing that aches. Nothing to walk through. Nothing to feel at all. A flat line, and they told you to call it calm.</p>
+    <p class="reveal">I'm after the third thing. Simpler. Slower. A single ripe fig. Sun scattered across the water on a warm afternoon. A stranger who waves you into their doorway like they've known you for years.</p>
+    <p class="pull reveal">The meaning of it, this whole strange gift of being here, hides in the small quiet places. Never the loud ones.</p>
+  </div>
+
+  <section class="duo reveal">
+    <div class="duo-img"><img src="img/about-sea.jpg" alt="Eleanora in a small blue bikini on a sunlit beach"><span class="duo-cap">Still Looking</span></div>
+    <div class="duo-text">
+      <p class="reveal">And beneath all of it, I am searching.</p>
+      <p class="reveal">For the place that feels familiar the moment I arrive. The one I've somehow lived a thousand times before. The one my body knows before my mind does, and calls home.</p>
+      <p class="reveal">I haven't found it yet.</p>
+      <p class="reveal">I think I'll know it by the way it makes my heart go quiet and glad. By the way I finally stop looking.</p>
+      <p class="say reveal">Until then, I travel.</p>
+    </div>
+  </section>
+
+  <div class="bleed reveal">
+    <div class="bg"><img src="img/about-chair.jpg" alt="Eleanora in a red dress and sweater seated sideways on a strawberry-shaped chair, glancing over her shoulder"></div>
+  </div>
+
+  <div class="prose">
+    <p class="reveal">So. Here's my invitation.</p>
+    <p class="reveal">Come with me. Behind the photographs, past the pretty light, into the rooms I don't open for everyone. Who I really am. Unfiltered. Unbothered. Unapologetic.</p>
+    <p class="reveal">I know exactly what I am. Confident. Bold. Too much for some, and perfectly at peace with that. I walk my own path, and I keep the ones who care to walk it beside me.</p>
+    <p class="reveal">And here is what drives me, the whole truth of it. Somewhere along the way, we forgot that a story is a kind of spell. So I'm gathering mine back up. The places, the moments, the beautiful strange magic of it all, and giving them somewhere to live. A whole little world, told one picture at a time.</p>
+    <p class="pull reveal">Why don't you tag along?</p>
+    <p class="reveal">If you'd rather not, that's quite alright. No one forced you through the door.</p>
+  </div>
+
+  <div class="fig portrait reveal">
+    <img src="img/about-lingerie.jpg" alt="Eleanora reclining in a soft, magazine-style editorial portrait">
+  </div>
+
+  <div class="prose">
+    <p class="reveal">But if you've stayed with me this long, I suspect we're the same kind of trouble.</p>
+    <p class="reveal">So come find me. I'll be here, chasing the light.</p>
+    <p class="ask reveal">You know you want to.</p>
+    <div class="sign reveal">xo, Eleanora</div>
+  </div>
+
+  <a class="back" href="journal.html">&larr; Back to the Journal</a>
+</article>
+
+<!-- ================= FOOTER ================= -->
+<div id="entry-foot"></div>
+
+<footer id="footer">
+  <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/mark-book-arch-cream-t.png" alt="Eleanora seal"></a></div>
+  <div class="fnav">
+    <a href="gallery.html">Gallery</a><a href="collections.html">Postcards</a><a href="journal.html">Journal</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
+  </div>
+  <div class="tag">Real plants · Real light · The art of women &amp; the wild</div>
+  <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on <span class="script">x</span></div>
+</footer>
+
+<script>
+const hdr=document.getElementById('hdr');
+const onScroll=()=>hdr.classList.toggle('solid',scrollY>60);
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce){
+  document.body.classList.add('anim');
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},
+    {threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const bgs=[...document.querySelectorAll('.bleed .bg')];
+  let ticking=false;
+  const parallax=()=>{bgs.forEach(bg=>{const r=bg.parentElement.getBoundingClientRect();
+    if(r.bottom<0||r.top>innerHeight)return;const p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+    bg.style.transform='translateY('+(p*-42).toFixed(1)+'px)';});ticking=false;};
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(parallax);}},{passive:true});parallax();
+
+  const root=document.documentElement, veil=document.getElementById('veil');
+  const lift=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.remove('veil-on')));
+  if(document.readyState==='complete')lift(); else addEventListener('load',lift);
+  setTimeout(()=>root.classList.remove('veil-on'),1600);
+  addEventListener('click',(e)=>{
+    if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+    const a=e.target.closest('a'); if(!a)return;
+    const href=a.getAttribute('href');
+    if(!href||href.startsWith('#')||a.target==='_blank'||a.hasAttribute('download'))return;
+    let url; try{url=new URL(href,location.href);}catch(_){return;}
+    if(url.origin!==location.origin)return;
+    if(url.pathname===location.pathname && (url.hash||href.startsWith('?')))return;
+    e.preventDefault(); root.classList.add('veil-on');
+    let gone=false; const go=()=>{if(!gone){gone=true;location.href=url.href;}};
+    veil.addEventListener('transitionend',go,{once:true}); setTimeout(go,620);
+  });
+}
+</script>
+<script>
+/* STARFIELD — reused from the 1% Manifesto (cream + gold twinkle) */
+(function(){
+  var c=document.getElementById('stars'); if(!c) return; var ctx=c.getContext('2d');
+  var w,h,stars,raf;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){
+    w=c.width=innerWidth*devicePixelRatio; h=c.height=innerHeight*devicePixelRatio;
+    var n=Math.min(150,Math.floor(innerWidth/9));
+    stars=Array.from({length:n},function(){return {x:Math.random()*w,y:Math.random()*h,
+      r:(Math.random()*1.3+0.3)*devicePixelRatio,a:Math.random()*0.5+0.2,
+      tw:Math.random()*0.02+0.004,p:Math.random()*Math.PI*2,gold:Math.random()>0.6};});
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(var i=0;i<stars.length;i++){ var s=stars[i]; s.p+=s.tw; var a=reduce? s.a : s.a+Math.sin(s.p)*0.18;
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=s.gold?'rgba(231,196,137,'+a+')':'rgba(246,241,231,'+a+')'; ctx.fill(); }
+    if(!reduce) raf=requestAnimationFrame(draw);
+  }
+  size(); draw();
+  addEventListener('resize',function(){ cancelAnimationFrame(raf); size(); draw(); });
+})();
+</script>
+<script src="journal-entry.js"></script>
+<script src="mobile-nav.js" defer></script>
+</body>
+</html>
