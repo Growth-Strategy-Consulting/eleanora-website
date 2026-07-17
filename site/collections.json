@@ -72,18 +72,18 @@
       "cover": "img/lisbon-praca-comercio.jpg",
       "blurb": "Tiled walls, painted murals, and rooftops in the haze.",
       "photos": [
-        { "src": "img/lisbon-her-azulejo.jpg", "title": "[Pink & Azulejo]", "alt": "Elena in a pink tank top seated against a geometric teal-and-yellow azulejo tile wall in Lisbon", "story": "", "talisman": null },
-        { "src": "img/lisbon-praca-comercio.jpg", "title": "[Praça do Comércio]", "alt": "The King José equestrian statue in Praça do Comércio at sunset", "story": "", "talisman": null },
-        { "src": "img/lisbon-green-door.jpg", "title": "[Costa do Castelo]", "alt": "A weathered green door with an 1886 transom on Costa do Castelo", "story": "", "talisman": null },
-        { "src": "img/lisbon-rooftops-castle.jpg", "title": "[Rooftops & Bridge]", "alt": "Lisbon rooftops and the 25 de Abril bridge seen from São Jorge castle", "story": "", "talisman": null },
-        { "src": "img/lisbon-owl-mural.jpg", "title": "[Have No Enemies]", "alt": "A street-art owl on patterned azulejo holding a 'Have No Enemies' banner", "story": "", "talisman": null },
-        { "src": "img/lisbon-rainbow-umbrellas.jpg", "title": "[Rainbow Umbrellas]", "alt": "A canopy of rainbow umbrellas strung over a Lisbon street", "story": "", "talisman": null },
-        { "src": "img/lisbon-fado-mural.jpg", "title": "[Fado Vadio]", "alt": "A painted Fado Vadio mural of a singer and woman in Alfama", "story": "", "talisman": null },
-        { "src": "img/lisbon-azulejo-facade.jpg", "title": "[Azulejo Wall]", "alt": "A teal azulejo-tiled facade with yellow shutters", "story": "", "talisman": null },
-        { "src": "img/lisbon-ripple-mural.jpg", "title": "[The Ripple]", "alt": "A conceptual street-art mural of a figure touching its head, set in a stone arch", "story": "", "talisman": null },
-        { "src": "img/lisbon-church-organ.jpg", "title": "[Gilded Organ]", "alt": "A gilded baroque pipe organ and carved ceiling inside a Lisbon church", "story": "", "talisman": null },
-        { "src": "img/lisbon-cobble-street.jpg", "title": "[The Cobbled Hill]", "alt": "A steep cobbled Lisbon street lined with pastel buildings", "story": "", "talisman": null },
-        { "src": "img/lisbon-ginja-mural.jpg", "title": "[Ginja do Bairro]", "alt": "A painted Ginja do Bairro mural of a red-haired woman with a cherry liqueur", "story": "", "talisman": null }
+        { "src": "img/lisbon-her-azulejo.jpg", "title": "Pink & Azulejo", "alt": "Elena in a pink tank top seated against a geometric teal-and-yellow azulejo tile wall in Lisbon", "story": "", "talisman": null },
+        { "src": "img/lisbon-praca-comercio.jpg", "title": "Praça do Comércio", "alt": "The King José equestrian statue in Praça do Comércio at sunset", "story": "", "talisman": null },
+        { "src": "img/lisbon-green-door.jpg", "title": "Costa do Castelo", "alt": "A weathered green door with an 1886 transom on Costa do Castelo", "story": "", "talisman": null },
+        { "src": "img/lisbon-rooftops-castle.jpg", "title": "Rooftops & Bridge", "alt": "Lisbon rooftops and the 25 de Abril bridge seen from São Jorge castle", "story": "", "talisman": null },
+        { "src": "img/lisbon-owl-mural.jpg", "title": "Have No Enemies", "alt": "A street-art owl on patterned azulejo holding a 'Have No Enemies' banner", "story": "", "talisman": null },
+        { "src": "img/lisbon-rainbow-umbrellas.jpg", "title": "Rainbow Umbrellas", "alt": "A canopy of rainbow umbrellas strung over a Lisbon street", "story": "", "talisman": null },
+        { "src": "img/lisbon-fado-mural.jpg", "title": "Fado Vadio", "alt": "A painted Fado Vadio mural of a singer and woman in Alfama", "story": "", "talisman": null },
+        { "src": "img/lisbon-azulejo-facade.jpg", "title": "Azulejo Wall", "alt": "A teal azulejo-tiled facade with yellow shutters", "story": "", "talisman": null },
+        { "src": "img/lisbon-ripple-mural.jpg", "title": "The Ripple", "alt": "A conceptual street-art mural of a figure touching its head, set in a stone arch", "story": "", "talisman": null },
+        { "src": "img/lisbon-church-organ.jpg", "title": "Gilded Organ", "alt": "A gilded baroque pipe organ and carved ceiling inside a Lisbon church", "story": "", "talisman": null },
+        { "src": "img/lisbon-cobble-street.jpg", "title": "The Cobbled Hill", "alt": "A steep cobbled Lisbon street lined with pastel buildings", "story": "", "talisman": null },
+        { "src": "img/lisbon-ginja-mural.jpg", "title": "Ginja do Bairro", "alt": "A painted Ginja do Bairro mural of a red-haired woman with a cherry liqueur", "story": "", "talisman": null }
       ]
     },
     {
