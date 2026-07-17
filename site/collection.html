@@ -228,6 +228,14 @@ fetch('collections.json?v='+Date.now()).then(r=>r.json()).then(data=>{
   };
   // shop wall: render the whole set at once, all visible — no scroll-reveal (you weigh them together)
   c.photos.forEach((p,i)=>{ flow.appendChild(makeTile(p,i)); });
+
+  // deep link from the gallery: ?open=<filename> jumps straight to that photo's buy card
+  const openParam=params.get('open');
+  if(openParam){
+    const bn=s=>(s||'').split('/').pop();
+    const oi=c.photos.findIndex(p=>bn(p.src)===bn(openParam));
+    if(oi>=0) openLB(oi);
+  }
 });
 
 // ---- lightbox ----
@@ -266,8 +274,8 @@ function openLB(i){
     let read = p.talisman.article
       ? '<a class="read" href="'+p.talisman.article+'">Read the story it came from &rarr;</a>'
       : '';
-    tal.innerHTML='<div class="th">&#10022; This one is a token</div>'+
-      '<div class="talnote">A photograph you keep as a token for the life you\'re walking toward, not decoration for a wall.</div>'+
+    tal.innerHTML='<div class="th">&#10022; Keep this one close</div>'+
+      '<div class="talnote">A photograph to keep as a reminder of the life you\'re walking toward, not just decoration for a wall.</div>'+
       buy+read;
   } else {
     tal.style.display='none'; tal.innerHTML='';

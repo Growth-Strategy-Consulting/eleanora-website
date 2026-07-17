@@ -472,6 +472,43 @@ if(!reduce){
   });
 }
 </script>
+<script>
+/* ---- SHOP WIRING ----
+   Only photos that are the SAME image sold in a Postcard collection (or Print) get a buy link,
+   and that link opens STRAIGHT to the photo inside its album. Everything else is view-only art:
+   the "See the print" line is removed and the tile no longer links to the shop.
+   Keyed by the gallery image's filename → { place: album slug, open: the shop photo's filename }. */
+const GALLERY_SHOP = {
+  'bw-smoke-editorial.jpg':     {place:'self-portraits', open:'bw-smoke-editorial.jpg'},        // After Dark → Slow Burn
+  'studio-fur-silver.jpg':      {place:'self-portraits', open:'studio-fur-silver.jpg'},          // Fur & Silver → The Canvas
+  'her-floral-bikini.jpg':      {place:'self-portraits', open:'beach-floral-bikini-sun-hat.jpg'},// Turned to the Sea → Facing the Sea
+  'her-brazil-standing.jpg':    {place:'brazil',         open:'brazil-bikini-standing.jpg'},      // Salt on Skin
+  'wild-brazil-cliff.jpg':      {place:'brazil',         open:'brazil-pink-cliff.jpg'},           // The Descent
+  'world-brazil-kombi.jpg':     {place:'brazil',         open:'brazil-kombi.jpg'},                // Red Earth
+  'her-brazil-palm-bw.jpg':     {place:'brazil',         open:'brazil-palm-bw.jpg'},              // Unhurried
+  'her-athens-records.jpg':     {place:'greece',         open:'athens-record-wall.jpg'},          // The Record Wall
+  'world-athens-marble.jpg':    {place:'greece',         open:'athens-marble-magenta.jpg'},       // Marble & Rose
+  'world-croatia-loggia.jpg':   {place:'croatia',        open:'croatia-loggia.jpg'},              // The Loggia
+  'world-lisbon-rooftops.jpg':  {place:'portugal',       open:'lisbon-rooftops-castle.jpg'},      // Red Rooftops
+  'world-italy-yellow-door.jpg':{place:'puglia',         open:'blog-italy-flowerdoor.jpg'},       // Piano, Piano
+  'wild-polignano-cove.jpg':    {place:'puglia',         open:'puglia-polignano-cove-boats.jpg'}, // The Cove
+};
+(function(){
+  document.querySelectorAll('#wall .tile').forEach(function(t){
+    var img=t.querySelector('img'); if(!img)return;
+    var bn=(img.getAttribute('src')||'').split('/').pop();
+    var m=GALLERY_SHOP[bn];
+    var buy=t.querySelector('.buy');
+    if(m){
+      t.setAttribute('href','collection.html?place='+m.place+'&open='+encodeURIComponent(m.open));
+      if(buy) buy.textContent='See the postcard →';
+    } else {
+      if(buy) buy.remove();      // no product: drop the line
+      t.removeAttribute('href'); // view-only art: no shop link
+    }
+  });
+})();
+</script>
 <style id="gal-mobile">
 /* MOBILE: one uniform 2-up square grid for EVERY filter (kills the two clashing
    layout systems) + tap-to-enlarge lightbox. Desktop layout untouched. */
