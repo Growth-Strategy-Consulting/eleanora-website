@@ -69,7 +69,17 @@ nav a:hover::after,nav a.on::after{width:100%;}
   text-wrap:balance;text-shadow:0 8px 48px rgba(0,0,0,.5);}
 .g-hero .accent{font-family:'Allura',cursive;font-size:clamp(28px,3.6vw,46px);color:var(--gold);margin-top:10px;
   text-shadow:0 2px 26px rgba(231,196,137,.3);}
-.g-hero p{max-width:52ch;margin:22px auto 0;font-size:15px;line-height:1.9;color:#e7e2d4;text-shadow:0 2px 14px rgba(0,0,0,.5);}
+/* this page's headline is a sentence, not a word, so cap the display size below the
+   96px ceiling and let it wrap in balance instead of shouting */
+.g-hero h1{font-size:clamp(38px,5.4vw,66px);letter-spacing:-.02em;max-width:16ch;}
+.g-hero p{max-width:46ch;margin:20px auto 0;font-size:clamp(15px,1.5vw,17px);line-height:1.85;
+  color:#e7e2d4;font-style:italic;text-shadow:0 2px 14px rgba(0,0,0,.5);}
+/* standfirst: the rest of the copy as an editorial lede on the solid ground, with air */
+.posters-lede{padding:clamp(52px,8vh,92px) 24px clamp(8px,2vh,20px);}
+.posters-lede p{max-width:58ch;margin:0 auto;text-align:center;font-size:clamp(16px,1.6vw,19px);
+  line-height:1.95;color:var(--read);text-wrap:pretty;}
+.posters-lede p::before{content:"";display:block;width:54px;height:1px;margin:0 auto clamp(26px,4vh,38px);
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 .g-hero .ey,.g-hero h1,.g-hero .accent,.g-hero p{opacity:0;transform:translateY(24px);animation:rise 1s var(--ease) forwards;}
 .g-hero .ey{animation-delay:.2s;} .g-hero h1{animation-delay:.4s;} .g-hero .accent{animation-delay:.6s;} .g-hero p{animation-delay:.78s;}
 @keyframes rise{to{opacity:1;transform:none;}}
@@ -171,10 +181,16 @@ footer .cr .script{font-size:18px;color:var(--gold);}
   <div class="bg"><img src="img/world-italy-orange-corridor.jpg" alt="A glowing orange corridor opening to bright light, Italy"></div>
   <div class="inner">
     <div class="ey lab"><a href="prints.html" style="color:var(--gold);opacity:.85">Prints</a> · Posters</div>
-    <h1 class="serif">Posters</h1>
-    <div class="accent">what I brought back</div>
-    <p>Open edition, archival matte, printed in the States. Every one is holding a story, and you get to read it before you decide.</p>
+    <!-- Copy authored by Elena 2026-07-20, placed verbatim. Headline + opening line over the
+         image; the rest sits as the standfirst below (.posters-lede). -->
+    <h1 class="serif">The girl you can't quite place.</h1>
+    <p>She lives in the golden hour, somewhere between memory and a dream.</p>
   </div>
+</section>
+
+<!-- ============ STANDFIRST (rest of Elena's authored copy, verbatim) ============ -->
+<section class="posters-lede">
+  <p>No name, just a face you're certain you've met before: in a passing crowd, in a reverie, in a life that almost was yours. Every poster is a window into her world. Open edition, archival matte, made to last. A quiet reminder to smile, to love, and to let your light spill into every room you enter.</p>
 </section>
 
 <!-- ================= THE PRINTS ================= -->
