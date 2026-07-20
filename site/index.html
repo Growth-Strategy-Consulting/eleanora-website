@@ -251,6 +251,19 @@ body.anim .reveal.in{opacity:1;transform:none;}
   .hero h1,.hero .accent,.hero .sub{opacity:1;transform:none;}
   #veil{display:none;}
 }
+
+/* homepage prints teaser */
+.prints-intro{max-width:640px;margin:0 auto 42px;text-align:center;color:var(--body);
+  font-size:16px;line-height:1.75;padding:0 24px;}
+.prints-grid.home{display:flex;flex-wrap:wrap;justify-content:center;gap:34px;
+  max-width:1120px;margin:0 auto;padding:0 24px;}
+.prints-grid.home .pcard{flex:0 1 300px;text-align:center;}
+.prints-grid.home .pcard .ph{display:block;aspect-ratio:3/4;overflow:hidden;border-radius:2px;margin-bottom:16px;}
+.prints-grid.home .pcard h3{font-size:23px;margin-bottom:6px;color:var(--cream);}
+.prints-grid.home .pcard .meta{font-size:12px;letter-spacing:1.6px;color:var(--sand);opacity:.7;margin-bottom:10px;}
+.prints-grid.home .pcard .cta{display:block;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold);}
+.prints-grid.home .pcard .cta.soon{color:var(--sand);opacity:.6;margin-top:4px;}
+@media(max-width:760px){.prints-grid.home .pcard{flex:0 1 46%;}}
 </style>
 </head>
 <body>
@@ -265,7 +278,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
   </a>
   <nav><ul>
     <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="collections.html">Postcards</a></li>
+    <li><a href="postcards.html">Postcards</a></li>
     <li><a href="journal.html">Journal</a></li>
     <li><a href="prints.html">Prints</a></li>
     <li><a href="about.html">About</a></li>
@@ -299,63 +312,6 @@ body.anim .reveal.in{opacity:1;transform:none;}
   </div>
 </section>
 
-<!-- ================= GALLERY (editorial mosaic) ================= -->
-<div class="sec-head" id="gallery">
-  <span class="chap reveal">selected work</span>
-  <h3 class="serif reveal">The Gallery</h3>
-  <div class="rule reveal"></div>
-</div>
-<section class="mosaic">
-  <figure class="feature reveal">
-    <img src="img/bw-smoke-editorial.jpg" alt="Black-and-white editorial portrait, a feather at her shoulder and soft smoke curling past her face">
-    <figcaption><div class="t">After Dark</div><div class="s">Editorial · Studio</div></figcaption>
-  </figure>
-  <figure class="side reveal">
-    <img src="img/lace-crown-headshot.jpg" alt="Editorial portrait in a black lace crown, eyes steady to the lens">
-    <figcaption><div class="t">The Crown</div><div class="s">Editorial</div></figcaption>
-  </figure>
-  <figure class="band reveal">
-    <img src="img/hero-sunset-silhouette.jpg" alt="A lone silhouette walking the shoreline as the sun drops into the sea">
-    <figcaption><div class="t">Last Light</div><div class="s">The Gulf</div></figcaption>
-  </figure>
-</section>
-<div class="gallery-cta reveal"><a class="btn" href="gallery.html">Enter the Gallery</a></div>
-
-<!-- ================= COLLECTIONS (cinematic tiles per place) ================= -->
-<section class="collections glow-b" id="collections">
-  <div class="sec-head" style="padding-bottom:42px">
-    <span class="chap reveal">postcards · send a little light</span>
-    <h3 class="serif reveal">The Postcard Collection</h3>
-    <div class="rule reveal"></div>
-  </div>
-  <div class="coll-grid">
-    <a class="coll-tile trio reveal" href="collection.html?place=croatia">
-      <img src="img/blog-croatia-island.jpg" alt="A small island floating in the calm sea off the Dubrovnik coast">
-      <div class="t-scrim"></div>
-      <div class="t-label"><span class="t-eye">Postcards</span><span class="t-place serif">Dubrovnik</span></div>
-    </a>
-    <a class="coll-tile trio reveal" href="collection.html?place=greece">
-      <img src="img/hero-corfu-sunset.jpg" alt="The sun low over the hills and water at dusk in Corfu">
-      <div class="t-scrim"></div>
-      <div class="t-label"><span class="t-eye">Postcards</span><span class="t-place serif">Greece</span></div>
-    </a>
-    <a class="coll-tile trio reveal" href="collection.html?place=italy">
-      <img src="img/blog-italy-flowerdoor.jpg" alt="A yellow doorway framed by climbing flowers on a street in Bari, Italy">
-      <div class="t-scrim"></div>
-      <div class="t-label"><span class="t-eye">Postcards</span><span class="t-place serif">Italy</span></div>
-    </a>
-    <a class="coll-tile trio reveal" href="collection.html?place=brazil">
-      <img src="img/cover-brazil.jpg" alt="A sunlit stretch of the Brazilian coast, cliffs falling to clear water">
-      <div class="t-scrim"></div>
-      <div class="t-label"><span class="t-eye">Postcards</span><span class="t-place serif">Brazil</span></div>
-    </a>
-  </div>
-  <div class="coll-cap reveal">Little photographs made to be sent · a little light for whoever needs it</div>
-  <div class="coll-cta reveal" style="text-align:center;margin-top:34px">
-    <a href="collections.html" style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--jg-gold,#D9A441);border-bottom:1px solid rgba(217,164,65,.4);padding-bottom:5px">See all postcards &rarr;</a>
-  </div>
-</section>
-
 <!-- ================= JOURNAL TEASER ================= -->
 <section class="jteaser glow-a" id="journal">
   <span class="chap reveal">words &amp; light</span>
@@ -386,6 +342,42 @@ body.anim .reveal.in{opacity:1;transform:none;}
 </script>
 
 <!-- ================= ABOUT (split) ================= -->
+
+<!-- ================= PRINTS (tokens from the stories) ================= -->
+<!-- Order set by Elena 2026-07-19: stories first, then the tokens that ride with them. -->
+<div class="sec-head" id="prints">
+  <span class="chap reveal">take one home</span>
+  <h3 class="serif reveal">The Prints</h3>
+  <div class="rule reveal"></div>
+</div>
+<!-- PLACEHOLDER COPY — must run through /eleanora-voice (Card B) before launch. -->
+<p class="prints-intro reveal">Every print is a token from a story. Read it first, then decide if you want to live with it.</p>
+<div class="prints-grid home" id="homePrints"></div>
+<div class="gallery-cta reveal"><a class="btn" href="prints.html">See all the prints</a></div>
+
+
+<!-- ================= GALLERY (editorial mosaic) ================= -->
+<div class="sec-head" id="gallery">
+  <span class="chap reveal">selected work</span>
+  <h3 class="serif reveal">The Gallery</h3>
+  <div class="rule reveal"></div>
+</div>
+<section class="mosaic">
+  <figure class="feature reveal">
+    <img src="img/bw-smoke-editorial.jpg" alt="Black-and-white editorial portrait, a feather at her shoulder and soft smoke curling past her face">
+    <figcaption><div class="t">After Dark</div><div class="s">Editorial · Studio</div></figcaption>
+  </figure>
+  <figure class="side reveal">
+    <img src="img/lace-crown-headshot.jpg" alt="Editorial portrait in a black lace crown, eyes steady to the lens">
+    <figcaption><div class="t">The Crown</div><div class="s">Editorial</div></figcaption>
+  </figure>
+  <figure class="band reveal">
+    <img src="img/hero-sunset-silhouette.jpg" alt="A lone silhouette walking the shoreline as the sun drops into the sea">
+    <figcaption><div class="t">Last Light</div><div class="s">The Gulf</div></figcaption>
+  </figure>
+</section>
+<div class="gallery-cta reveal"><a class="btn" href="gallery.html">Enter the Gallery</a></div>
+
 <section class="split glow-b">
   <div class="ph"><img src="img/pool-bralette.jpg" alt="Eleanora in a garden pool surrounded by palms and greenery"></div>
   <div class="body">
@@ -402,7 +394,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
 <footer id="footer">
   <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/mark-book-arch-cream-t.png" alt="Eleanora seal"></a></div>
   <div class="fnav">
-    <a href="gallery.html">Gallery</a><a href="collections.html">Postcards</a><a href="journal.html">Journal</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="#">Instagram</a><a href="#footer">Contact</a>
+    <a href="gallery.html">Gallery</a><a href="postcards.html">Postcards</a><a href="journal.html">Journal</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="#">Instagram</a><a href="#footer">Contact</a>
   </div>
   <div class="tag">Real plants · Real light · The art of women &amp; the wild</div>
   <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on <span class="script">x</span></div>
@@ -480,5 +472,26 @@ if(!reduce){
 }
 </script>
 <script src="mobile-nav.js" defer></script>
+
+<script>
+/* homepage Prints teaser — renders 3 open-tier prints from prints.json (single source of truth) */
+(function(){
+  fetch('prints.json').then(function(r){return r.json();}).then(function(d){
+    var grid=document.getElementById('homePrints'); if(!grid) return;
+    var open=d.prints.filter(function(p){return p.tier==='open';}).slice(0,3);
+    var from=Math.min.apply(null,d.ladder.sizes.map(function(s){return s.price;}));
+    if(!open.length){ grid.innerHTML=''; return; }
+    grid.innerHTML=open.map(function(p){
+      return '<article class="pcard reveal">'
+        +'<a class="ph" href="'+p.article+'"><img src="'+p.img+'" alt="'+p.alt+'"></a>'
+        +'<h3 class="serif">'+p.name+'</h3>'
+        +'<div class="meta">'+(p.articleTitle||'')+'</div>'
+        +'<a class="cta" href="'+p.article+'">Read the story</a>'
+        +'<span class="cta soon">From $'+from+'</span>'
+        +'</article>';
+    }).join('');
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>

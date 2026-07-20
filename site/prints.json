@@ -1,0 +1,283 @@
+{
+  "_readme": {
+    "what": "Single source of truth for the print shop. prints.html renders from this. Replaces the print blocks that were hardcoded in prints.html and the print half of collections.json.",
+    "supersedes": "collections.json's checkout note (GoDaddy Payments) is STALE. Checkout is Shopify Buy Button on corraoelena.com as of the 2026-07-16 pivot. collections.json now governs POSTCARDS ONLY, which are deferred to September.",
+    "sorting": "Place-sorted. `place` drives the filter chips and the grouping. Story lives on every card via `article`, but never drives the sort.",
+    "how-to-add-a-print": "Append to `prints` with: slug, name, img, alt, place, article (real journal page or null), line (the one-line hook), tier ('open' or 'vanishing'), and sizes[] (omit to inherit the default ladder).",
+    "the-rule": "A print does NOT ship without a true story. `article` must point at a real journal entry. No article, no listing. See Journal/Threshold/00-bridge-print-buyer.md.",
+    "no-overlap": "Elena, 2026-07-19: anything in the vanishing tier is NEVER in the open tier. Enforced by `tier`, not by convention.",
+    "working-titles": "Names in [brackets] are Penny working titles awaiting Elena's rename pass.",
+    "buyUrl": "null until the Shopify Buy Button variant IDs exist. Null renders the card as browsable but not buyable, with the coming-soon state.",
+    "poster-series": "10 self-portrait poster designs from one Canva doc (DAHP5qbRkYs). PRINT MASTERS live in _intake/'Eleanora Self Portrait Poster Designs Large ' at 5400x7200 = a true 18x24 at 300dpi. Design 10 also has a native 24x36 master (11.png, 7200x10800). Design 8 must use 8-rotated-ccw90.png (7200x5400, landscape). Verified 2026-07-20 by inspecting pixels at 100%: real resolved detail, not upscaled. Web JPEGs in img/posters/ are derived from these masters. Names are still [placeholders] and every entry has article:null, so nothing may list yet.",
+    "holding-names": "Names set 2026-07-20 via /eleanora-voice against the naming SOP. These are HOLDING names (SOP: orphans get a light holding name, upgraded when a story adopts them). Designs 1, 6, 7 and 9 are flagged 'needs Elena's moment-feeling' because the SOP forbids guessing the shutter-moment feeling that makes a real hero name. `slugFinal` is the slug to adopt once names are confirmed; `slug` stays poster-N until the Canva re-export lands with named pages.",
+    "costs": "Landed costs and vendor/provider IDs moved OUT of this file 2026-07-20: this repo is PUBLIC. They live in 1-Clients/Eleanora/offers/prints/print-costs-PRIVATE.json in the main repo. The site only needs `price`."
+  },
+  "ladder": {
+    "_note": "Prices LOCKED by Elena 2026-07-19. Landed cost = Printify product + US shipping, Archival Matte. Shipping is built into the price (free shipping at checkout).",
+    "sizes": [
+      {
+        "tier": "S",
+        "label": "5 x 7",
+        "px": "1547 x 2147",
+        "price": 20
+      },
+      {
+        "tier": "M",
+        "label": "11 x 14",
+        "px": "3347 x 4247",
+        "price": 42
+      },
+      {
+        "tier": "L",
+        "label": "24 x 36",
+        "px": "7247 x 10847",
+        "price": 68
+      }
+    ],
+    "OPEN-QUESTION-L": "24x36 at true 300dpi needs 7247x10847px. Elena's best camera files are 5712x4284. L cannot clear her own 300dpi rule. Awaiting her call: drop L to 12x18, accept ~150dpi at 24x36 (standard for large wall art), or AI upscale. NOTHING SHIPS AT L UNTIL SHE DECIDES.",
+    "multi-buy": "Additional items ship at $1.99 vs $6.99 first. A 2nd 5x7 in the same order lands at $5.94. Set/bundle pricing flagged to Elena, not built.",
+    "RESOLVED-2026-07-20": "The 18x24 masters yield 1028 dpi at 5x7 and 491 dpi at 11x14, so S and M clear the 300dpi rule with room to spare. L 24x36 lands at 200 dpi from an 18x24 file and FAILS for 9 of 10 designs; only design 10 has a native 24x36, and even that is 7200x10800 against the required 7247x10847, 0.65% short. Printify's targets are print size + 0.16in of bleed, so a Canva canvas set to 24.16 x 36.16 in exported at max would clear L exactly. Elena's call: redesign each poster on a 2:3 canvas for L, or ship S and M only. Note 3:4 art does not fit any ladder size without a crop.",
+    "L-24x36-MEASURED-2026-07-20": "Design 10's 24x36 master (11.png, 7200x10800) was made by resizing the Canva canvas, not by re-rendering. Measured: stipple texture period grew 1.43x while the file grew 1.33x, so the art was enlarged. True detail behind it is ~225 dpi, not 300. ACCEPTABLE at 24x36 (wall art is normally 150-200 dpi; viewing distance scales with size) but it does not literally meet the 300dpi rule. Resizing the canvas will never recover detail; only higher-res source art will. Also 7200x10800 is 0.65% under Printify's 7247x10847 because they want 0.16in of bleed: set the Canva canvas to 24.16 x 36.16 in to clear it exactly."
+  },
+  "places": [
+    {
+      "slug": "croatia",
+      "label": "Croatia"
+    },
+    {
+      "slug": "italy",
+      "label": "Italy"
+    },
+    {
+      "slug": "greece",
+      "label": "Greece"
+    },
+    {
+      "slug": "brazil",
+      "label": "Brazil"
+    },
+    {
+      "slug": "self-portraits",
+      "label": "Self Portraits"
+    }
+  ],
+  "prints": [
+    {
+      "slug": "island-at-sea",
+      "name": "Island at Sea",
+      "img": "img/croatia-island.jpg",
+      "alt": "A small island sitting alone in open water off the Croatian coast",
+      "place": "croatia",
+      "article": "journal-dubrovnik.html",
+      "articleTitle": "Drowning, but in Croatia",
+      "line": "What if this picture reminded you, every day, that the leap into open water was the point?",
+      "tier": "open",
+      "buyUrl": null
+    },
+    {
+      "slug": "the-flower-door",
+      "name": "The Flower Door",
+      "img": "img/blog-italy-flowerdoor.jpg",
+      "alt": "A doorway in Italy framed by climbing flowers",
+      "place": "italy",
+      "article": "journal-italy.html",
+      "articleTitle": "The Thing We Keep Running From",
+      "line": "What if this picture reminded you, every day, to let your life bloom in the place you already are?",
+      "tier": "open",
+      "buyUrl": null
+    },
+    {
+      "slug": "the-portal",
+      "name": "[working title — the portal]",
+      "img": "img/athens-doorway.jpg",
+      "alt": "An old doorway in Athens, worn stone and shadow",
+      "place": "greece",
+      "article": "journal-portals.html",
+      "articleTitle": "I Think I've Been Collecting Portals",
+      "line": "What if this picture reminded you, every day, that every old door is an invitation?",
+      "tier": "open",
+      "buyUrl": null
+    },
+    {
+      "slug": "the-canvas",
+      "name": "The Canvas",
+      "img": "img/studio-fur-silver.jpg",
+      "alt": "Eleanora in an open fur coat, black and white",
+      "place": "studio",
+      "article": "journal-quiet-one.html",
+      "articleTitle": "The Good Girl (who was already gone)",
+      "line": "Make my dreams come true. Put a little of my art on your wall.",
+      "tier": "vanishing",
+      "edition": 33,
+      "price": 380,
+      "available": "september",
+      "buyUrl": null
+    },
+    {
+      "slug": "the-girl-you-cant-place",
+      "name": "[working title — the girl you can't place]",
+      "img": "img/about-smoke.jpg",
+      "alt": "Eleanora in black and white, a feather at her shoulder and soft smoke curling",
+      "place": "studio",
+      "article": "journal-behind-the-camera.html",
+      "articleTitle": "The Girl Behind the Camera (but also in front)",
+      "line": "What if this picture reminded you, every day, that you've always been someone worth becoming?",
+      "tier": "vanishing",
+      "edition": 33,
+      "price": 250,
+      "available": "september",
+      "buyUrl": null
+    },
+    {
+      "slug": "poster-1",
+      "name": "What the Garden Kept",
+      "img": "img/posters/poster-1.jpg",
+      "alt": "A painted portrait of a woman in a red headscarf and black bodysuit, seated cross-legged against dark leaves",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena: name it and attach its story before it can list. Print master = _intake/'Eleanora Self Portrait Poster Designs Large '/1.png at 5400x7200 (18x24 @300dpi). Clears S and M; fails L.",
+      "nameStatus": "holding — needs Elena's moment-feeling",
+      "slugFinal": "what-the-garden-kept"
+    },
+    {
+      "slug": "poster-2",
+      "name": "The Only One Looking Back",
+      "img": "img/posters/poster-2.jpg",
+      "alt": "A gold-and-blue portrait of a woman before a wall of blue tiled faces",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena: name it and attach its story before it can list. Print master = _intake/'Eleanora Self Portrait Poster Designs Large '/2.png at 5400x7200 (18x24 @300dpi). Clears S and M; fails L.",
+      "nameStatus": "holding",
+      "slugFinal": "the-only-one-looking-back"
+    },
+    {
+      "slug": "poster-3",
+      "name": "Before the Colors Set",
+      "img": "img/posters/poster-3.jpg",
+      "alt": "A watercolour portrait of a woman in a sheer black top against blue Portuguese tiles",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena: name it and attach its story before it can list. Print master = _intake/'Eleanora Self Portrait Poster Designs Large '/3.png at 5400x7200 (18x24 @300dpi). Clears S and M; fails L.",
+      "nameStatus": "holding",
+      "slugFinal": "before-the-colors-set"
+    },
+    {
+      "slug": "poster-4",
+      "name": "Let Them Wait",
+      "img": "img/posters/poster-4.jpg",
+      "alt": "An art-nouveau profile of a woman smoking, framed by smoke and feathers",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena: name it and attach its story before it can list. Print master = _intake/'Eleanora Self Portrait Poster Designs Large '/4.png at 5400x7200 (18x24 @300dpi). Clears S and M; fails L.",
+      "nameStatus": "holding",
+      "slugFinal": "let-them-wait"
+    },
+    {
+      "slug": "poster-5",
+      "name": "The Coronation",
+      "img": "img/posters/poster-5.jpg",
+      "alt": "A woman in black lace crowned with pink flowers, edged in gold light",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena: name it and attach its story before it can list. Print master = _intake/'Eleanora Self Portrait Poster Designs Large '/5.png at 5400x7200 (18x24 @300dpi). Clears S and M; fails L.",
+      "nameStatus": "holding",
+      "slugFinal": "the-coronation"
+    },
+    {
+      "slug": "poster-6",
+      "name": "Where the Wishes Land",
+      "img": "img/posters/poster-6.jpg",
+      "alt": "A woman in a magenta tulle skirt lying on the sand, gold stars scattering above the sea",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena: name it and attach its story before it can list. Print master = _intake/'Eleanora Self Portrait Poster Designs Large '/6.png at 5400x7200 (18x24 @300dpi). Clears S and M; fails L.",
+      "nameStatus": "holding — needs Elena's moment-feeling",
+      "slugFinal": "where-the-wishes-land"
+    },
+    {
+      "slug": "poster-7",
+      "name": "Same Girl, Different Garden",
+      "img": "img/posters/poster-7.jpg",
+      "alt": "A woman in a red headscarf seated on a stool against a collage of leaves",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena: name it and attach its story before it can list. Print master = _intake/'Eleanora Self Portrait Poster Designs Large '/7.png at 5400x7200 (18x24 @300dpi). Clears S and M; fails L.",
+      "nameStatus": "holding — needs Elena's moment-feeling",
+      "slugFinal": "same-girl-different-garden"
+    },
+    {
+      "slug": "poster-8",
+      "name": "Let Go at the Top",
+      "img": "img/posters/poster-8.jpg",
+      "alt": "A woman in a red headscarf seated on a stool among round green leaves, one arm raised through an arc of gold light",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena: name it and attach its story before it can list. Print master = 8-rotated-ccw90.png (7200x5400, LANDSCAPE). Being landscape it loses 41-50% of the frame when cropped into the portrait ladder sizes. Still clears 300dpi at S and M.",
+      "nameStatus": "holding",
+      "slugFinal": "let-go-at-the-top",
+      "orientation": "landscape"
+    },
+    {
+      "slug": "poster-9",
+      "name": "This Time",
+      "img": "img/posters/poster-9.jpg",
+      "alt": "A silhouette on a beach beneath a burning sky, lettered 'My sweet dear, dream bigger this time'",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena: name it and attach its story before it can list. Print master = _intake/'Eleanora Self Portrait Poster Designs Large '/9.png at 5400x7200 (18x24 @300dpi). Clears S and M; fails L.",
+      "nameStatus": "holding — needs Elena's moment-feeling",
+      "slugFinal": "this-time"
+    },
+    {
+      "slug": "poster-10",
+      "name": "After the Noise",
+      "img": "img/posters/poster-10.jpg",
+      "alt": "A stylised portrait of a face at rest, cheek turned, in warm ochre and blue",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena: name it and attach its story before it can list. Two masters: 10.png (5400x7200, 18x24) and 11.png (7200x10800, native 24x36). The only design that can carry L.",
+      "nameStatus": "holding",
+      "slugFinal": "after-the-noise"
+    }
+  ]
+}
