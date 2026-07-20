@@ -50,7 +50,7 @@
 
   const card = p => {
     const hasStory = !!p.article;
-    const wide = p.orientation === 'landscape';
+    const feat = !!p.feature;
     const img = `<img src="${esc(p.img)}" alt="${esc(p.alt)}">`;
     const frame = hasStory
       ? `<a class="ph" href="${esc(p.article)}">${img}</a>`
@@ -65,7 +65,7 @@
             : `<span class="cta soon">From $${from} · opening soon</span>`}`
       : `<span class="cta soon">The story is being written</span>`;
 
-    return `<article class="pcard${wide ? ' wide' : ''}${hasStory ? '' : ' pending'}" data-cat="${esc(p.place)}">
+    return `<article class="pcard${feat ? ' feature' : ''}${hasStory ? '' : ' pending'}" data-cat="${esc(p.place)}">
       ${frame}
       <h3 class="serif">${esc(p.name)}</h3>
       ${body}
