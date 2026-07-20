@@ -22,7 +22,8 @@
     return;
   }
 
-  const open = data.prints.filter(p => p.tier === 'open');
+  // `hidden: true` pulls a print off the page without deleting it from the file.
+  const open = data.prints.filter(p => p.tier === 'open' && !p.hidden);
   const from = Math.min(...data.ladder.sizes.map(s => s.price));
 
   // Story-backed prints lead. They are the ones that can actually sell, and a shop
@@ -32,11 +33,17 @@
   const pending = open.filter(p => !p.article);
   const ordered = ready.concat(pending);
 
-  // chips are built from the places that actually have prints, so no empty filters
+  // chips are built from the places that actually have prints, so no empty filters.
+  // With only one place left there is nothing to filter, so the bar hides entirely
+  // rather than offering "All" and one category that show the same thing.
   const live = data.places.filter(pl => open.some(p => p.place === pl.slug));
-  chips.innerHTML =
-    `<button class="on" data-f="all">All</button>` +
-    live.map(pl => `<button data-f="${pl.slug}">${pl.label}</button>`).join('');
+  if (live.length > 1) {
+    chips.innerHTML =
+      `<button class="on" data-f="all">All</button>` +
+      live.map(pl => `<button data-f="${pl.slug}">${pl.label}</button>`).join('');
+  } else {
+    chips.style.display = 'none';
+  }
 
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -78,8 +85,9 @@
   });
 
   if (note) {
-    note.textContent = ready.length
-      ? `${ready.length} ready to hang · ${pending.length} still finding their words`
-      : 'The first prints are being made now.';
+    const bits = [];
+    if (ready.length)   bits.push(`${ready.length} ready to hang`);
+    if (pending.length) bits.push(`${pending.length} still finding their words`);
+    note.textContent = bits.length ? bits.join(' · ') : 'The first prints are being made now.';
   }
 })();

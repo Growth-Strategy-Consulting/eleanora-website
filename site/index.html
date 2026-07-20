@@ -478,7 +478,7 @@ if(!reduce){
 (function(){
   fetch('prints.json').then(function(r){return r.json();}).then(function(d){
     var grid=document.getElementById('homePrints'); if(!grid) return;
-    var open=d.prints.filter(function(p){return p.tier==='open';}).slice(0,3);
+    var open=d.prints.filter(function(p){return p.tier==='open'&&!p.hidden;}).slice(0,3);
     var from=Math.min.apply(null,d.ladder.sizes.map(function(s){return s.price;}));
     if(!open.length){ grid.innerHTML=''; return; }
     grid.innerHTML=open.map(function(p){

@@ -10,7 +10,8 @@
     "buyUrl": "null until the Shopify Buy Button variant IDs exist. Null renders the card as browsable but not buyable, with the coming-soon state.",
     "poster-series": "10 self-portrait poster designs from one Canva doc (DAHP5qbRkYs). PRINT MASTERS live in _intake/'Eleanora Self Portrait Poster Designs Large ' at 5400x7200 = a true 18x24 at 300dpi. Design 10 also has a native 24x36 master (11.png, 7200x10800). Design 8 must use 8-rotated-ccw90.png (7200x5400, landscape). Verified 2026-07-20 by inspecting pixels at 100%: real resolved detail, not upscaled. Web JPEGs in img/posters/ are derived from these masters. Names are still [placeholders] and every entry has article:null, so nothing may list yet.",
     "holding-names": "Names set 2026-07-20 via /eleanora-voice against the naming SOP. These are HOLDING names (SOP: orphans get a light holding name, upgraded when a story adopts them). Designs 1, 6, 7 and 9 are flagged 'needs Elena's moment-feeling' because the SOP forbids guessing the shutter-moment feeling that makes a real hero name. `slugFinal` is the slug to adopt once names are confirmed; `slug` stays poster-N until the Canva re-export lands with named pages.",
-    "costs": "Landed costs and vendor/provider IDs moved OUT of this file 2026-07-20: this repo is PUBLIC. They live in 1-Clients/Eleanora/offers/prints/print-costs-PRIVATE.json in the main repo. The site only needs `price`."
+    "costs": "Landed costs and vendor/provider IDs moved OUT of this file 2026-07-20: this repo is PUBLIC. They live in 1-Clients/Eleanora/offers/prints/print-costs-PRIVATE.json in the main repo. The site only needs `price`.",
+    "hidden": "`hidden: true` removes a print from the rendered grid without deleting it. Elena, 2026-07-20: the 3 travel prints are hidden so the Posters page shows only the self-portrait poster series while she previews it. Their journal entries and data are intact. Delete the flag to restore."
   },
   "ladder": {
     "_note": "Prices LOCKED by Elena 2026-07-19. Landed cost = Printify product + US shipping, Archival Matte. Shipping is built into the price (free shipping at checkout).",
@@ -72,7 +73,8 @@
       "articleTitle": "Drowning, but in Croatia",
       "line": "What if this picture reminded you, every day, that the leap into open water was the point?",
       "tier": "open",
-      "buyUrl": null
+      "buyUrl": null,
+      "hidden": true
     },
     {
       "slug": "the-flower-door",
@@ -84,7 +86,8 @@
       "articleTitle": "The Thing We Keep Running From",
       "line": "What if this picture reminded you, every day, to let your life bloom in the place you already are?",
       "tier": "open",
-      "buyUrl": null
+      "buyUrl": null,
+      "hidden": true
     },
     {
       "slug": "the-portal",
@@ -96,7 +99,8 @@
       "articleTitle": "I Think I've Been Collecting Portals",
       "line": "What if this picture reminded you, every day, that every old door is an invitation?",
       "tier": "open",
-      "buyUrl": null
+      "buyUrl": null,
+      "hidden": true
     },
     {
       "slug": "the-canvas",
