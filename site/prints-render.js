@@ -51,7 +51,10 @@
   const card = p => {
     const hasStory = !!p.article;
     const feat = !!p.feature;
-    const img = `<img src="${esc(p.img)}" alt="${esc(p.alt)}">`;
+    // optional per-image crop focus for off-center subjects (e.g. a landscape frame
+    // whose face sits to one side). object-position "x% y%" from prints.json.
+    const pos = p.objectPosition ? ` style="object-position:${esc(p.objectPosition)}"` : '';
+    const img = `<img src="${esc(p.img)}" alt="${esc(p.alt)}"${pos}>`;
     const frame = hasStory
       ? `<a class="ph" href="${esc(p.article)}">${img}</a>`
       : `<div class="ph">${img}</div>`;
