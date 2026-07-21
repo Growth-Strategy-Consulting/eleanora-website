@@ -70,8 +70,12 @@ nav a:hover::after,nav a.on::after{width:100%;}
 .g-hero .accent{font-family:'Allura',cursive;font-size:clamp(28px,3.6vw,46px);color:var(--gold);margin-top:10px;
   text-shadow:0 2px 26px rgba(231,196,137,.3);}
 .g-hero p{max-width:52ch;margin:22px auto 0;font-size:15px;line-height:1.9;color:#e7e2d4;text-shadow:0 2px 14px rgba(0,0,0,.5);}
-.g-hero .ey,.g-hero h1,.g-hero .accent,.g-hero p{opacity:0;transform:translateY(24px);animation:rise 1s var(--ease) forwards;}
-.g-hero .ey{animation-delay:.2s;} .g-hero h1{animation-delay:.4s;} .g-hero .accent{animation-delay:.6s;} .g-hero p{animation-delay:.78s;}
+.g-hero .hero-cta{display:inline-block;margin-top:28px;font-size:11px;letter-spacing:2.6px;text-transform:uppercase;
+  color:var(--forest-dd);background:var(--gold);border:1px solid var(--gold);padding:15px 32px;border-radius:2px;
+  transition:background .4s var(--ease),color .4s var(--ease);}
+.g-hero .hero-cta:hover{background:transparent;color:var(--gold);}
+.g-hero .ey,.g-hero h1,.g-hero .accent,.g-hero p,.g-hero .hero-cta{opacity:0;transform:translateY(24px);animation:rise 1s var(--ease) forwards;}
+.g-hero .ey{animation-delay:.2s;} .g-hero h1{animation-delay:.4s;} .g-hero .accent{animation-delay:.6s;} .g-hero p{animation-delay:.78s;} .g-hero .hero-cta{animation-delay:.96s;}
 @keyframes rise{to{opacity:1;transform:none;}}
 
 /* ---------- PRINT GRID (editorial cards) ---------- */
@@ -195,15 +199,15 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 
 <!-- ================= HERO ================= -->
 <section class="g-hero">
-  <div class="bg"><img src="img/world-italy-orange-corridor.jpg" alt="A glowing orange corridor opening to bright light, Italy"></div>
+  <div class="bg"><img src="img/puglia-bari-ape-truck.jpg" alt="A blue Piaggio Ape three-wheeler parked on a street in Puglia, Italy"></div>
   <div class="inner">
     <div class="ey lab">The Shop</div>
     <h1 class="serif">Prints</h1>
     <div class="accent">three ways to keep it</div>
-    <!-- Rewritten 2026-07-20 via /eleanora-voice (Card D orienter register). Full statement folded
-         into the hero to match the sibling pattern (Gallery / Posters / Journal). The old floating
-         .choose-intro band was removed in the same pass. -->
-    <p>I don't sell pictures. I sell what was true when I made it, printed big enough to live with, and the story underneath is yours to read before you decide. Posters are open now; the signed thirty-three and the postcards come in September. Some of these are still finding their words, and I'd rather say so than pretend the shelf is full.</p>
+    <!-- Copy set 2026-07-21 via /eleanora-voice (House Register). About the prints + one CTA;
+         no tier/edition/date facts, per Elena. Button leads to the live Posters shop. -->
+    <p>Every print here is a piece of something that was true, printed big enough to live with. Find the one that already feels like yours.</p>
+    <a class="hero-cta" href="posters.html">Shop the prints</a>
   </div>
 </section>
 
