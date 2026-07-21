@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eleanora — Brand Manual</title>
 <meta name="description" content="The Eleanora identity system: essence, logo suite, distinctive brand assets, color, typography, image world, and voice.">
-<link rel="icon" type="image/png" sizes="32x32" href="../site/img/mark-book-arch-cream-t.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../site/img/logo/xo-eleanora-monogram-cream-gold.png">
 <link rel="apple-touch-icon" href="../site/img/apple-touch-icon.png">
 <style>
 @font-face{font-family:'Pinyon Script';src:url('assets/fonts/PinyonScript-Regular.ttf');font-display:swap;}
@@ -41,7 +41,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);display:flex;ali
   gap:20px;padding:20px clamp(20px,4vw,46px);transition:padding .4s var(--ease),background .4s ease,box-shadow .4s ease;}
 header.solid{background:rgba(20,28,22,.9);backdrop-filter:blur(10px);padding:12px clamp(20px,4vw,46px);box-shadow:0 1px 0 rgba(0,0,0,.35);}
 .brand{display:flex;align-items:center;gap:11px;color:var(--cream);flex-shrink:0;}
-.brand img{width:34px;height:auto;filter:none;}
+.brand img{height:34px;width:auto;filter:none;}
 .brand .wm{font-family:'Pinyon Script',cursive;font-size:32px;line-height:1;padding-left:1px;}
 .desknav ul{display:flex;gap:clamp(13px,1.7vw,26px);list-style:none;}
 .desknav a{font-size:11.5px;letter-spacing:2.2px;text-transform:uppercase;color:var(--cream);opacity:.86;position:relative;transition:.35s;}
@@ -125,26 +125,43 @@ section{position:relative;padding:clamp(84px,13vh,150px) clamp(22px,6vw,86px);}
 
 /* ---------- 02 LOGO ---------- */
 .lockup-stage{margin-top:clamp(34px,5vh,60px);background:radial-gradient(120% 120% at 50% 34%,#26332b,var(--forest-d) 72%);
-  border:1px solid var(--dark-line);padding:clamp(40px,8vw,110px) 24px;display:flex;justify-content:center;}
-.lockup-stage img{width:min(400px,72vw);height:auto;filter:drop-shadow(0 20px 60px rgba(0,0,0,.4));}
-.logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:clamp(40px,6vh,70px);border-top:1px solid var(--parch-line);}
-.logo-cell{padding:clamp(26px,2.6vw,40px) clamp(22px,2vw,34px) clamp(26px,2.6vw,40px) 0;border-right:1px solid var(--parch-line);}
-.logo-cell:last-child{border-right:0;}
-.logo-cell .tag{font-family:'Didot',Georgia,serif;font-size:26px;color:var(--clay-ink);}
-.logo-cell h3{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(22px,2vw,27px);margin:14px 0 12px;color:var(--ink);}
-.logo-cell p{font-size:14.5px;line-height:1.6;color:var(--ink-soft);max-width:32ch;}
-.dl{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;
+  border:1px solid var(--dark-line);padding:clamp(40px,7vw,92px) 24px;display:flex;justify-content:center;}
+.lockup-stage img{width:min(340px,66vw);height:auto;filter:drop-shadow(0 20px 60px rgba(0,0,0,.4));}
+.logo-lead{margin-top:clamp(44px,6vh,68px);}
+.logo-lead .eyebrow-script{color:var(--clay-ink);font-size:clamp(26px,3.4vw,38px);}
+.logo-lead h3{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(24px,2.4vw,32px);color:var(--ink);margin-top:4px;}
+/* the mark family — three marks on dark tiles */
+.mark-family{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px);margin-top:clamp(22px,3.5vh,38px);}
+.mark{border:1px solid var(--dark-line);background:radial-gradient(130% 130% at 50% 36%,#26332b,var(--forest-d) 78%);
+  padding:clamp(30px,3vw,46px) 22px clamp(24px,2.2vw,32px);text-align:center;display:flex;flex-direction:column;align-items:center;}
+.mark .art{height:clamp(150px,17vw,208px);display:flex;align-items:center;justify-content:center;margin-bottom:22px;}
+.mark .art img{max-height:100%;width:auto;filter:none;}
+.mark h4{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(19px,1.7vw,24px);color:var(--cream);}
+.mark .use{font-size:13px;line-height:1.55;color:var(--body);max-width:26ch;margin-top:9px;}
+/* four color finishes */
+.finishes{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.4vw,18px);margin-top:clamp(22px,3.5vh,38px);}
+.finish{border:1px solid var(--parch-line);overflow:hidden;background:var(--cream);}
+.finish .sw{height:clamp(120px,13vw,158px);display:flex;align-items:center;justify-content:center;padding:20px;}
+.finish .sw.dark{background:var(--forest-d);}
+.finish .sw.lite{background:var(--parch);}
+.finish .sw img{max-height:100%;max-width:78%;width:auto;filter:none;object-fit:contain;}
+.finish .cap{padding:12px 15px 14px;}
+.finish .cap .nm{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:16px;color:var(--ink);}
+.finish .cap .on{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--clay-ink);margin-top:5px;}
+/* clear space + care */
+.clearspace{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(22px,4vw,56px);margin-top:clamp(32px,5vh,52px);
+  border-top:1px solid var(--parch-line);padding-top:clamp(28px,3.5vh,42px);}
+.clearspace .demo{display:flex;align-items:center;gap:16px;}
+.clearspace .demo .spark{color:var(--clay-ink);font-size:18px;}
+.clearspace .demo .box{width:106px;aspect-ratio:.72;background:var(--forest-d);border:1px dashed rgba(231,196,137,.45);
+  display:flex;align-items:center;justify-content:center;padding:12px;}
+.clearspace .demo .box img{max-height:100%;width:auto;filter:none;}
+.clearspace .txt{flex:1;min-width:260px;}
+.clearspace .txt h4{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(20px,1.9vw,26px);color:var(--ink);}
+.clearspace .txt p{font-size:14.5px;line-height:1.6;color:var(--ink-soft);max-width:48ch;margin-top:8px;}
+.dl{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;
   color:var(--clay-ink);border-bottom:1px solid var(--clay-ink);padding-bottom:4px;transition:.3s;}
 .dl:hover{color:var(--ink);border-color:var(--ink);gap:12px;}
-.seal-row{display:flex;gap:16px;margin-top:20px;flex-wrap:wrap;}
-.seal-chip{width:118px;aspect-ratio:1;border:1px solid var(--parch-line);display:flex;align-items:center;justify-content:center;}
-.seal-chip.on-forest{background:var(--forest-d);}
-.seal-chip.on-cream{background:var(--cream);}
-.seal-chip img{width:58%;height:auto;filter:none;}
-.clear-demo{display:flex;align-items:center;gap:18px;margin-top:20px;}
-.clear-demo .spark{color:var(--clay);font-size:20px;}
-.clear-demo .box{width:96px;aspect-ratio:1;background:var(--forest-d);border:1px dashed rgba(231,196,137,.5);display:flex;align-items:center;justify-content:center;}
-.clear-demo .box img{width:56%;filter:none;}
 
 /* ---------- 03 DBA GRID ---------- */
 .dba-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--dark-line);border-left:1px solid var(--dark-line);}
@@ -277,9 +294,8 @@ section{position:relative;padding:clamp(84px,13vh,150px) clamp(22px,6vw,86px);}
 
 /* ---------- FOOTER ---------- */
 footer{background:var(--forest-dd);text-align:center;padding:clamp(56px,9vh,96px) 24px;}
-footer img{width:76px;height:auto;margin:0 auto 26px;filter:none;}
-footer .wm{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:26px;letter-spacing:8px;padding-left:8px;color:var(--cream);}
-footer .fine{margin-top:20px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);}
+footer img{height:clamp(128px,16vw,168px);width:auto;margin:0 auto;filter:none;}
+footer .fine{margin-top:26px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);}
 
 /* ---------- REVEAL MOTION ---------- */
 /* Default = fully visible (no-JS safe). JS adds .reveal-armed to hide, then .revealed to play. */
@@ -300,9 +316,8 @@ footer .fine{margin-top:20px;font-size:11px;letter-spacing:3px;text-transform:up
   .sec-intro{grid-template-columns:1fr;gap:26px;align-items:start;}
   .pillars,.dba-grid,.swatches{grid-template-columns:repeat(2,1fr);}
   .pillar:nth-child(2){border-right:0;}
-  .logo-grid{grid-template-columns:1fr;}
-  .logo-cell{border-right:0;border-bottom:1px solid var(--parch-line);padding-right:0;}
-  .logo-cell:last-child{border-bottom:0;}
+  .mark-family{grid-template-columns:1fr;}
+  .finishes{grid-template-columns:repeat(2,1fr);}
   .type-split,.type-util,.voice-split{grid-template-columns:1fr;}
   .type-util>div:first-child{border-right:0;border-bottom:1px solid var(--parch-line);}
   .mockups{grid-template-columns:1fr;max-width:460px;margin-inline:auto;}
@@ -345,7 +360,7 @@ footer .fine{margin-top:20px;font-size:11px;letter-spacing:3px;text-transform:up
 
 <header id="nav">
   <a class="brand" href="../site/index.html" aria-label="Eleanora home">
-    <img src="../site/img/mark-book-arch-cream-t.png" alt="">
+    <img src="../site/img/logo/xo-eleanora-monogram-cream-gold.png" alt="">
     <span class="wm">Eleanora</span>
   </a>
   <nav class="desknav" aria-label="Brand manual sections">
@@ -425,34 +440,65 @@ footer .fine{margin-top:20px;font-size:11px;letter-spacing:3px;text-transform:up
         <p class="eyebrow-script will-reveal">the mark at the door</p>
         <h2 class="will-reveal">Logo suite</h2>
       </div>
-      <div class="lede will-reveal"><p>An arch, a botanical specimen, a serif name, and two small points of light. Together, they tell the whole story before a word is read.</p></div>
+      <div class="lede will-reveal"><p>A botanical arch, the name in script, a heart tucked into the frame. One full lockup for the moments that matter, two smaller keepsakes for everything else, each supplied in four finishes.</p></div>
     </div>
-    <div class="lockup-stage will-reveal"><img src="../site/img/eleanora-lockup-2400.png" alt="Eleanora primary lockup: a garden arch framing a botanical sprig above the serif name and the line an archive of her stories"></div>
-    <div class="logo-grid">
-      <div class="logo-cell will-reveal">
-        <span class="tag">A</span>
-        <h3>Primary lockup</h3>
-        <p>Use for covers, title cards, packaging, press materials, and meaningful first impressions.</p>
-        <a class="dl" href="../site/img/eleanora-lockup-2400.png" download>Download PNG ↓</a>
+    <div class="lockup-stage will-reveal"><img src="../site/img/logo/xo-eleanora-lockup-cream-gold.png" alt="xo Eleanora primary lockup: a botanical arch framing a wildflower sprig above the script name and the line an archive of her stories"></div>
+
+    <div class="logo-lead will-reveal">
+      <p class="eyebrow-script">one signature, three marks</p>
+      <h3>The mark family</h3>
+    </div>
+    <div class="mark-family will-reveal stagger">
+      <div class="mark">
+        <div class="art"><img src="../site/img/logo/xo-eleanora-lockup-cream-gold.png" alt="Full xo Eleanora lockup"></div>
+        <h4>Primary lockup</h4>
+        <p class="use">The full signature. Covers, title cards, packaging, and meaningful first impressions.</p>
       </div>
-      <div class="logo-cell will-reveal">
-        <span class="tag">B</span>
-        <h3>Archive seal</h3>
-        <p>Use at small sizes, on social avatars, footers, stickers, and as a quiet maker's stamp.</p>
-        <div class="seal-row">
-          <span class="seal-chip on-forest"><img src="../site/img/mark-book-arch-cream-t.png" alt="Cream Eleanora seal on forest"></span>
-          <span class="seal-chip on-cream"><img src="../site/img/mark-book-arch-green-t.png" alt="Forest Eleanora seal on cream"></span>
-        </div>
+      <div class="mark">
+        <div class="art"><img src="../site/img/logo/xo-eleanora-badge-cream-gold.png" alt="Oval botanical badge"></div>
+        <h4>Botanical badge</h4>
+        <p class="use">The sprig alone, framed. Social avatars, watermarks, and section breaks.</p>
       </div>
-      <div class="logo-cell will-reveal">
-        <span class="tag">C</span>
-        <h3>Clear space</h3>
-        <p>Protect at least one spark-width on every side. Never squeeze, outline, recolor, or place over busy detail.</p>
-        <div class="clear-demo">
-          <span class="spark">✦</span>
-          <span class="box"><img src="../site/img/mark-book-arch-green-t.png" alt=""></span>
-          <span class="spark">✦</span>
-        </div>
+      <div class="mark">
+        <div class="art"><img src="../site/img/logo/xo-eleanora-monogram-cream-gold.png" alt="xo heart monogram"></div>
+        <h4>xo monogram</h4>
+        <p class="use">Her initials as a heart. Favicons, stamps, stickers, the smallest spaces.</p>
+      </div>
+    </div>
+
+    <div class="logo-lead will-reveal">
+      <p class="eyebrow-script">know the ground</p>
+      <h3>Four finishes</h3>
+    </div>
+    <div class="finishes will-reveal stagger">
+      <div class="finish">
+        <div class="sw dark"><img src="../site/img/logo/xo-eleanora-badge-cream-gold.png" alt="Cream and gold badge on forest"></div>
+        <div class="cap"><span class="nm">Cream + Gold</span><span class="on">On dark &middot; primary</span></div>
+      </div>
+      <div class="finish">
+        <div class="sw dark"><img src="../site/img/logo/xo-eleanora-badge-cream.png" alt="Cream badge on forest"></div>
+        <div class="cap"><span class="nm">Cream</span><span class="on">On dark &middot; one-color</span></div>
+      </div>
+      <div class="finish">
+        <div class="sw lite"><img src="../site/img/logo/xo-eleanora-badge-green-gold.png" alt="Green and gold badge on parchment"></div>
+        <div class="cap"><span class="nm">Green + Gold</span><span class="on">On light &middot; primary</span></div>
+      </div>
+      <div class="finish">
+        <div class="sw lite"><img src="../site/img/logo/xo-eleanora-badge-green.png" alt="Green badge on parchment"></div>
+        <div class="cap"><span class="nm">Green</span><span class="on">On light &middot; one-color</span></div>
+      </div>
+    </div>
+
+    <div class="clearspace will-reveal">
+      <div class="demo">
+        <span class="spark">✦</span>
+        <span class="box"><img src="../site/img/logo/xo-eleanora-lockup-cream-gold.png" alt=""></span>
+        <span class="spark">✦</span>
+      </div>
+      <div class="txt">
+        <h4>Clear space &amp; care</h4>
+        <p>Give every mark at least one spark-width of quiet on all sides. Never squeeze, recolor outside these four finishes, add effects, or set it over busy detail. Every mark ships in all four finishes.</p>
+        <a class="dl" href="../site/img/logo/xo-eleanora-lockup-cream-gold.png" download>Download primary ↓</a>
       </div>
     </div>
   </div>
@@ -683,7 +729,7 @@ footer .fine{margin-top:20px;font-size:11px;letter-spacing:3px;text-transform:up
       <!-- quiet card -->
       <div class="quiet">
         <div class="inr">
-          <img src="../site/img/mark-book-arch-green-t.png" alt="Eleanora seal">
+          <img src="../site/img/logo/xo-eleanora-monogram-green-gold.png" alt="xo Eleanora monogram">
           <span class="ln">leave the door open,<br>and the light on</span>
           <span class="sp">✦</span>
         </div>
@@ -709,8 +755,7 @@ footer .fine{margin-top:20px;font-size:11px;letter-spacing:3px;text-transform:up
 </section>
 
 <footer>
-  <img src="../site/img/mark-book-arch-cream-t.png" alt="Eleanora seal">
-  <div class="wm serif">ELEANORA</div>
+  <img src="../site/img/logo/xo-eleanora-lockup-cream-gold.png" alt="xo Eleanora — an archive of her stories">
   <p class="fine">Brand Manual · 2026 · Leave the door open, and the light on</p>
 </footer>
 
