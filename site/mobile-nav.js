@@ -11,10 +11,11 @@
   var header = document.querySelector('header');
   if (!header || document.getElementById('mnav-toggle')) return;
 
-  // --- gather links: prefer the footer nav, fall back to the top nav, then a default set ---
+  // --- gather links: mirror the TOP nav exactly — top-level items only, no
+  //     submenu children, no footer extras. `> a` skips the dropdown anchors. ---
   function gather() {
     var out = [];
-    var srcs = document.querySelectorAll('footer .fnav a, header nav a');
+    var srcs = document.querySelectorAll('header nav > ul > li > a');
     srcs.forEach(function (a) {
       var href = a.getAttribute('href') || '';
       var text = (a.textContent || '').trim();
@@ -25,7 +26,7 @@
     });
     if (!out.length) {
       out = [['Gallery','gallery.html'],['Prints','prints.html'],['Journal','journal.html'],
-             ['Portfolio','portfolio.html'],['About Me','about.html'],['Contact','index.html#footer']]
+             ['Portfolio','portfolio.html'],['About Me','about.html']]
         .map(function (p) { return { text: p[0], href: p[1] }; });
     }
     return out;
@@ -57,6 +58,7 @@
     '#mnav-panel .mnav-seal{width:58px;height:58px;margin-bottom:14px;opacity:.92;',
       'transform:translateY(10px);transition:transform .5s .05s cubic-bezier(.16,1,.3,1);}',
     'body.mnav-open #mnav-panel .mnav-seal{transform:none;}',
+    '#mnav-panel .mnav-seal-link{padding:0;min-height:0;display:block;}',
     '#mnav-panel a{font-family:"Didot","Bodoni 72",Georgia,serif;font-size:28px;letter-spacing:.02em;',
       'color:var(--cream,#F6F1E7);text-decoration:none;padding:14px 18px;min-height:44px;',
       'display:flex;align-items:center;line-height:1;position:relative;',
@@ -89,7 +91,8 @@
   var sealSrc = (document.querySelector('.brand img') || {}).getAttribute
     ? document.querySelector('.brand img').getAttribute('src') : null;
   var html = '<button id="mnav-close" aria-label="Close menu">&times;</button>';
-  if (sealSrc) html += '<img class="mnav-seal" src="' + sealSrc + '" alt="" aria-hidden="true">';
+  if (sealSrc) html += '<a class="mnav-seal-link" href="index.html" aria-label="Eleanora — home">' +
+    '<img class="mnav-seal" src="' + sealSrc + '" alt=""></a>';
   gather().forEach(function (l, i) {
     var cur = l.href.toLowerCase().indexOf(here) === 0 && here !== 'index.html' ||
               (here === 'index.html' && (l.href === 'index.html' || l.href === '#top' || l.href === '/'));
@@ -122,7 +125,7 @@
   });
   panel.querySelector('#mnav-close').addEventListener('click', close);
   panel.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A') close();               // navigating away
+    if (e.target.closest('a')) close();                  // navigating away (incl. seal → home)
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && document.body.classList.contains('mnav-open')) close();
