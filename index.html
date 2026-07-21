@@ -31,6 +31,9 @@
 :root{
   --clay:#B87F51; --cream:#F6F1E7; --ink:#2B2019;
   --sir-deep:#1E3A3A; --sir-teal:#234E4E; --sir-foam:#9FBFB4; --sir-pink:#E8A9A0; --sir-gold:#E7C489; --sir-pearl:#F4EDE1;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  /* z-scale: bg < mist < scrim < content < grain */
+  --z-bg:0; --z-mist:1; --z-scrim:2; --z-content:3; --z-grain:60;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{height:100%;}
@@ -39,21 +42,21 @@ body{background:#12211f;color:var(--sir-pearl);font-family:'Helvetica Neue',Aria
 a{color:inherit;text-decoration:none;}
 
 /* film grain — shared texture */
-body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.055;mix-blend-mode:multiply;
+body::after{content:"";position:fixed;inset:0;z-index:var(--z-grain);pointer-events:none;opacity:.055;mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 
 /* ---------- the water world ---------- */
-.gate{position:relative;height:100%;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;overflow:hidden;padding:40px 24px;}
+.gate{position:relative;min-height:100%;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;padding:44px 24px;}
 
-.gate .bg{position:absolute;inset:0;z-index:0;}
+.gate .bg{position:absolute;inset:0;z-index:var(--z-bg);}
 .gate .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;image-orientation:from-image;
   filter:saturate(1.0) contrast(1.06) brightness(.82) sepia(.1) hue-rotate(-4deg);
   transform:scale(1.06);animation:slowzoom 28s ease-out forwards;}
 @keyframes slowzoom{to{transform:scale(1.15);}}
 
 /* drifting forest mist */
-.gate .caustic{position:absolute;inset:-25%;z-index:1;filter:blur(64px);opacity:.55;pointer-events:none;
+.gate .caustic{position:absolute;inset:-25%;z-index:var(--z-mist);filter:blur(64px);pointer-events:none;
   background:
     radial-gradient(46% 30% at 30% 60%, rgba(224,230,214,.7), transparent 62%),
     radial-gradient(40% 26% at 72% 68%, rgba(198,210,186,.6), transparent 62%),
@@ -62,7 +65,7 @@ body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opa
 @keyframes drift{0%{transform:translate(0,0) scale(1);}100%{transform:translate(-3%,-2%) scale(1.08);}}
 
 /* scrim: dark text-safe band through the middle + vignette edges */
-.gate .scrim{position:absolute;inset:0;z-index:2;
+.gate .scrim{position:absolute;inset:0;z-index:var(--z-scrim);
   background:
     radial-gradient(72% 54% at 50% 44%, rgba(11,19,14,.66), transparent 72%),
     radial-gradient(122% 92% at 50% 50%, transparent 48%, rgba(9,15,11,.62) 100%),
@@ -73,76 +76,91 @@ body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opa
       rgba(9,15,11,.66) 66%,
       rgba(10,17,12,.92) 100%);}
 
-.gate .inner{position:relative;z-index:3;width:100%;max-width:560px;display:flex;flex-direction:column;align-items:center;
-  animation:rise 1.4s cubic-bezier(.2,.8,.2,1) both;}
+.gate .inner{position:relative;z-index:var(--z-content);width:100%;max-width:560px;display:flex;flex-direction:column;align-items:center;
+  animation:rise 1.4s var(--ease-out) both;}
 @keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
 
-.gate .ey{color:var(--sir-pearl);opacity:.92;font-size:clamp(10px,2.6vw,12px);letter-spacing:clamp(3px,1.2vw,5px);
+/* the seal — crisp 1254px mark, rendered small */
+.gate .crest{width:clamp(56px,12vw,72px);height:auto;opacity:.9;margin-bottom:6px;
+  filter:drop-shadow(0 4px 18px rgba(0,0,0,.55));animation:sealin 1.6s var(--ease-out) both;}
+@keyframes sealin{from{opacity:0;transform:translateY(-8px) scale(.94);}to{opacity:.9;transform:none;}}
+
+/* live-text wordmark — infinitely crisp, replaces the raster lockup */
+.gate .wordmark{font-family:'Pinyon Script','Allura',cursive;font-weight:400;line-height:.92;color:var(--sir-pearl);
+  font-size:clamp(62px,13vw,120px);margin:2px 0 8px;letter-spacing:.01em;
+  text-shadow:0 2px 14px rgba(0,0,0,.6),0 12px 54px rgba(0,0,0,.5);}
+
+.gate .ey{color:var(--sir-pearl);opacity:.9;font-size:clamp(11px,2.6vw,13px);letter-spacing:clamp(3px,1.2vw,5px);
   text-transform:uppercase;text-shadow:0 1px 3px rgba(0,0,0,.7),0 2px 18px rgba(0,0,0,.6);}
-.gate .wordmark{font-family:'Pinyon Script','Allura',cursive;font-weight:400;line-height:.9;
-  font-size:clamp(58px,11vw,118px);margin:12px 0 4px;
-  text-shadow:0 2px 14px rgba(0,0,0,.65),0 10px 54px rgba(0,0,0,.5);}
 
 /* invitation card — a contrast panel so small text stays legible over the photo (WCAG 4.5:1) */
-.card{margin-top:24px;width:min(400px,90vw);background:rgba(9,19,17,.85);
+.card{margin-top:26px;width:min(410px,92vw);background:rgba(9,19,17,.85);
   -webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);
-  border:1px solid rgba(244,237,225,.18);border-radius:16px;padding:26px 24px 22px;
+  border:1px solid rgba(244,237,225,.18);border-radius:16px;padding:28px 26px 24px;
   box-shadow:0 24px 60px rgba(0,0,0,.5);}
 .promise{font-size:clamp(15px,2vw,18px);line-height:1.65;opacity:.97;text-shadow:0 1px 2px rgba(0,0,0,.5);}
-.promise em{font-style:normal;font-family:'Pinyon Script',cursive;font-size:1.45em;color:var(--sir-gold);letter-spacing:0;}
+.promise em{font-style:normal;font-family:'Pinyon Script',cursive;font-size:1.5em;color:var(--sir-gold);letter-spacing:0;}
 
-/* waitlist — the ONE primary action (attention ratio ~1:1) */
+/* PRIMARY action — the waitlist email capture (attention ratio ~1:1) */
 .wait{margin-top:18px;display:flex;flex-direction:column;gap:11px;}
 .wait input{width:100%;background:rgba(244,237,225,.10);border:1px solid rgba(244,237,225,.34);
   border-radius:10px;color:var(--sir-pearl);font-family:'Helvetica Neue',Arial,sans-serif;
   font-size:15px;letter-spacing:.4px;text-align:center;padding:14px 16px;outline:none;transition:border-color .3s,background .3s;}
-.wait input::placeholder{color:rgba(244,237,225,.6);}
+.wait input::placeholder{color:rgba(244,237,225,.72);}
 .wait input:focus{border-color:var(--sir-gold);background:rgba(244,237,225,.14);}
 .btn{width:100%;background:var(--sir-gold);color:#183230;border:0;border-radius:10px;cursor:pointer;
   font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;padding:15px 18px;
   transition:transform .2s,box-shadow .3s,background .3s;}
 .btn:hover{background:#eecf95;transform:translateY(-1px);box-shadow:0 10px 26px rgba(0,0,0,.35);}
 .btn[disabled]{opacity:.6;cursor:default;transform:none;box-shadow:none;}
-a.btn{display:block;text-align:center;text-decoration:none;}
-.trigger{margin-top:11px;font-size:11px;letter-spacing:1.2px;color:rgba(244,237,225,.74);}
+.note{min-height:15px;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:rgba(244,237,225,.8);
+  opacity:0;transition:opacity .3s;}
+.note.show{opacity:.9;}
+.note.bad{color:var(--sir-pink);}
 
-/* secondary: "I have a password" reveal */
-.alt{margin-top:16px;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;
-  color:rgba(244,237,225,.6);cursor:pointer;transition:color .3s;display:inline-block;}
-.alt:hover{color:var(--sir-gold);}
-.pwview{display:none;}
-.card.show-pw .waitview{display:none;}
-.card.show-pw .pwview{display:block;}
-.pwview .field{position:relative;display:flex;align-items:center;}
-.pwview input{width:100%;background:rgba(244,237,225,.08);border:1px solid rgba(244,237,225,.30);border-radius:10px;
-  color:var(--sir-pearl);font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;letter-spacing:3px;
-  text-align:center;padding:14px 44px 14px 16px;outline:none;transition:border-color .3s;}
-.pwview input::placeholder{color:rgba(244,237,225,.5);letter-spacing:3px;text-transform:lowercase;}
-.pwview input:focus{border-color:var(--sir-gold);}
-.pwview .go{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;cursor:pointer;color:var(--sir-gold);opacity:.9;padding:8px;transition:.3s;}
-.pwview .go:hover{opacity:1;transform:translateY(-50%) translateX(2px);}
-.pwview .go svg{display:block;}
-.msg{margin-top:13px;min-height:16px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sir-pink);opacity:0;transition:opacity .3s;}
+/* SECONDARY action — password, revealed by the "birdie" link below the divider */
+.keyrow{margin-top:22px;padding-top:18px;border-top:1px solid rgba(244,237,225,.14);}
+.birdie{display:inline-block;background:none;border:0;cursor:pointer;font-family:inherit;
+  font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:rgba(244,237,225,.62);
+  transition:color .3s;padding:2px 0;}
+.birdie:hover{color:var(--sir-gold);}
+.pwform{display:none;margin-top:2px;}
+.keyrow.show-pw .birdie{display:none;}
+.keyrow.show-pw .pwform{display:block;animation:rise .5s var(--ease-out) both;}
+.pwform .field{position:relative;display:flex;align-items:center;}
+.pwform input{width:100%;background:rgba(244,237,225,.08);border:1px solid rgba(244,237,225,.28);border-radius:10px;
+  color:var(--sir-pearl);font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;letter-spacing:3px;
+  text-align:center;padding:13px 44px 13px 16px;outline:none;transition:border-color .3s;}
+.pwform input::placeholder{color:rgba(244,237,225,.55);letter-spacing:3px;text-transform:lowercase;}
+.pwform input:focus{border-color:var(--sir-gold);}
+.pwform .go{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;cursor:pointer;
+  color:var(--sir-gold);opacity:.9;padding:8px;transition:opacity .3s,transform .3s;}
+.pwform .go:hover{opacity:1;transform:translateY(-50%) translateX(2px);}
+.pwform .go svg{display:block;}
+.msg{margin-top:11px;min-height:14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sir-pink);opacity:0;transition:opacity .3s;}
 .card.err .msg{opacity:.95;}
 .card.err .field{animation:shake .4s;}
-.back{margin-top:13px;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:rgba(244,237,225,.58);cursor:pointer;display:inline-block;}
-.back:hover{color:var(--sir-gold);}
 @keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-7px);}40%{transform:translateX(6px);}60%{transform:translateX(-4px);}80%{transform:translateX(3px);}}
 
-/* success state (correct password) */
+/* email-sent state: swap the whole card body for a quiet confirmation */
 .done{display:none;}
-.card.sent .waitview,.card.sent .pwview{display:none;}
-.card.sent .done{display:block;}
-.done .dwm{font-family:'Pinyon Script',cursive;font-size:42px;color:var(--sir-gold);line-height:1;}
-.done p{margin-top:10px;font-size:13px;letter-spacing:.4px;opacity:.9;}
-
-.gate .seal{position:relative;z-index:3;margin-top:38px;width:50px;height:50px;opacity:.72;}
-.gate .seal img{width:100%;height:100%;object-fit:contain;filter:none;}
+.card.sent .waitview{display:none;}
+.card.sent .done{display:block;animation:rise .7s var(--ease-out) both;}
+.done .dwm{font-family:'Pinyon Script',cursive;font-size:44px;color:var(--sir-gold);line-height:1;}
+.done p{margin-top:10px;font-size:13px;letter-spacing:.4px;opacity:.92;line-height:1.6;}
 
 @media(max-width:520px){
-  .gate .ey{letter-spacing:2.5px;font-size:10px;}
-  .gate .wordmark{margin-top:8px;}
-  .card{margin-top:20px;padding:22px 18px;}
+  .gate{padding:36px 22px;}
+  .gate .ey{letter-spacing:2.5px;}
+  .card{margin-top:20px;padding:24px 20px 20px;}
+}
+
+/* reduced motion — crossfade in, no drift/zoom/shake */
+@media (prefers-reduced-motion: reduce){
+  .gate .bg img{animation:none;transform:none;}
+  .gate .caustic{animation:none;}
+  .gate .inner,.gate .crest,.card.sent .done{animation:none;}
+  .card.err .field{animation:none;}
 }
 </style>
 </head>
@@ -153,31 +171,43 @@ a.btn{display:block;text-align:center;text-decoration:none;}
   <div class="scrim"></div>
 
   <div class="inner">
-    <!-- COPY IS PLACEHOLDER until run through the caption skill in Elena's voice. -->
-    <img class="gate-lockup" src="img/eleanora-lockup.png" alt="Eleanora — an archive of her stories" style="width:min(290px,64vw);height:auto;display:block;margin:0 auto;filter:none">
-    <h1 class="wordmark" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Eleanora</h1>
+    <img class="crest" src="img/mark-book-arch-cream-t.png" alt="">
+    <!-- live-text wordmark: crisp at any size, replaces the 338px raster lockup -->
+    <h1 class="wordmark">Eleanora</h1>
+    <!-- eyebrow: the LOCKED brand descriptor that rides with the wordmark -->
+    <p class="ey">an archive of her stories</p>
 
     <div class="card" id="card">
       <div class="waitview">
-        <p class="promise">Not open to everyone yet.<br>Be one of the first <em>through the door.</em></p>
-        <a class="btn" href="https://www.patreon.com/eleanora333" target="_blank" rel="noopener">Go to my Patreon</a>
-        <span class="alt" id="toPw">I have a password</span>
+        <!-- copy: approved eleanora-voice, Card B (free-layer / Bridgerton), 7/21 -->
+        <p class="promise">The doors haven't opened yet.<br>Slip your name beneath them, and you're the first I <em>let through.</em></p>
+
+        <!-- PRIMARY: email capture → MailerLite group "Eleanora — Journal" -->
+        <form class="wait" id="wait" novalidate>
+          <input id="email" type="email" name="email" placeholder="your email" required autocomplete="email" aria-label="your email">
+          <button class="btn" id="joinBtn" type="submit">Leave my name</button>
+          <p class="note" id="wnote" aria-live="polite"></p>
+        </form>
+
+        <!-- SECONDARY: insider password, hidden until the birdie link is clicked -->
+        <div class="keyrow" id="keyrow">
+          <button type="button" class="birdie" id="birdie">a little birdie told me</button>
+          <form class="pwform" id="key" autocomplete="off">
+            <div class="field">
+              <input id="pw" type="password" placeholder="say the word" aria-label="password">
+              <button class="go" type="submit" aria-label="enter">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+            <p class="msg" id="msg">that's not it. try again.</p>
+          </form>
+        </div>
       </div>
 
-      <form class="pwview" id="key" autocomplete="off">
-        <div class="field">
-          <input id="pw" type="password" placeholder="say the word" aria-label="password">
-          <button class="go" type="submit" aria-label="enter">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-        </div>
-        <p class="msg" id="msg">that's not it. try again.</p>
-        <span class="back" id="toWait">&larr; back</span>
-      </form>
-
+      <!-- email confirmation state — approved eleanora-voice, Card B, 7/21 -->
       <div class="done">
-        <div class="dwm">You're in.</div>
-        <p>The rooms are being hung. Come back soon.</p>
+        <div class="dwm">Consider it done.</div>
+        <p>The next time this door opens, it opens for you first.</p>
       </div>
     </div>
   </div>
@@ -185,16 +215,53 @@ a.btn{display:block;text-align:center;text-decoration:none;}
 </div>
 
 <script>
-// ---- soft gate ----------------------------------------------------------
-// The password is stored as a SHA-256 hash so it isn't sitting here in plain
-// text. Keeps the casual public out; NOT bank-grade (a determined technical
-// visitor could reach a real destination page directly).
-//
-// TEMP word right now: "sirena"  — give Penny the real word to swap in.
-// DEST: once the full site is deployed behind the gate, point this at it and
-// switch the success handler to redirect. For now, correct word shows the
-// "You're in / rooms being hung" state instead of a 404.
-const EXPECTED = "799c7c9316f8ac229657f7251aa364a803089be5d123e91204287fe0f7e4bc44";
+// ---- 1. WAITLIST (primary) → MailerLite ---------------------------------
+// Posts to the MailerLite embedded-form endpoint (group "Eleanora — Journal").
+// Public by design — no API key here. The endpoint is cross-origin and returns
+// no readable CORS headers, so we fire no-cors and optimistically confirm; the
+// subscribe still registers. Verify once live with a real signup in the group.
+const ML_ENDPOINT = "https://assets.mailerlite.com/jsonp/2518337/forms/193587317692172210/subscribe";
+const card    = document.getElementById("card");
+const wForm   = document.getElementById("wait");
+const emailEl = document.getElementById("email");
+const joinBtn = document.getElementById("joinBtn");
+const wnote   = document.getElementById("wnote");
+
+function wsay(text, bad){
+  wnote.textContent = text;
+  wnote.classList.add("show");
+  wnote.classList.toggle("bad", !!bad);
+}
+
+wForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const email = (emailEl.value || "").trim();
+  if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+    wsay("that email looks off. try again?", true);
+    emailEl.focus();
+    return;
+  }
+  joinBtn.setAttribute("disabled","disabled");
+  wsay("one moment…", false);
+  fetch(ML_ENDPOINT, {
+    method:"POST",
+    headers:{ "Content-Type":"application/x-www-form-urlencoded" },
+    body:"fields[email]=" + encodeURIComponent(email) + "&ml-submit=1&anticsrf=true",
+    mode:"no-cors"
+  }).then(() => {
+    card.classList.add("sent");
+  }).catch(() => {
+    joinBtn.removeAttribute("disabled");
+    wsay("hmm, that didn't go through. one more try?", true);
+  });
+});
+emailEl.addEventListener("input", () => { wnote.classList.remove("show","bad"); });
+
+// ---- 2. SOFT GATE (secondary) -------------------------------------------
+// Password stored as a SHA-256 hash so it isn't sitting here in plain text.
+// Keeps the casual public out; NOT bank-grade.
+// Word: "yellowbird" (revealed by the "a little birdie told me" link). SHA-256 below.
+const EXPECTED = "1f76b0e5058f716c3026eeb07599915e84f2c6de83fee6d1754d55f008689cc0";
 const DEST = "site/index.html"; // the site lives behind the gate in /site/
 
 async function sha256(str){
@@ -202,31 +269,24 @@ async function sha256(str){
   return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,"0")).join("");
 }
 
-const card = document.getElementById("card");
-const form = document.getElementById("key");
-const pw   = document.getElementById("pw");
+const form   = document.getElementById("key");
+const pw     = document.getElementById("pw");
+const keyrow = document.getElementById("keyrow");
 
-document.getElementById("toPw").addEventListener("click", () => {
-  card.classList.remove("err");
-  card.classList.add("show-pw");
+// the birdie link reveals the password field
+document.getElementById("birdie").addEventListener("click", () => {
+  keyrow.classList.add("show-pw");
   pw.focus();
-});
-document.getElementById("toWait").addEventListener("click", () => {
-  card.classList.remove("show-pw","err");
 });
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const hash = await sha256(pw.value.trim().toLowerCase());
-  if (hash === EXPECTED){
+  if(hash === EXPECTED){
     card.classList.remove("err");
-    if (DEST){
-      sessionStorage.setItem("eleanora_pass", "1");
-      // cache-bust so the freshest homepage always loads (no stale/flash during edits)
-      location.href = DEST + "?v=" + Date.now();
-    } else {
-      card.classList.add("sent"); // no site behind the gate yet
-    }
+    sessionStorage.setItem("eleanora_pass", "1");
+    // cache-bust so the freshest homepage always loads
+    location.href = DEST + "?v=" + Date.now();
   } else {
     card.classList.add("err");
     pw.value = "";
