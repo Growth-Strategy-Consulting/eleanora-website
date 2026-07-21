@@ -122,6 +122,7 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
 @media(max-width:560px){ .flow{gap:5px;padding:0 10px;} .p .cap{font-size:10.5px;padding:5px 1px 0;}
   .bundlebar{gap:4px 12px;padding:12px 12px;} .bundlebar .bb-lead{font-size:16px;} .bundlebar .bb-deal{font-size:10.5px;letter-spacing:1px;} .bundlebar .bb-note{margin-left:0;flex-basis:100%;} }
 </style>
+<link rel="stylesheet" href="nav.css">
 </head>
 <body>
 
@@ -131,11 +132,27 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
     <span class="wm">Eleanora</span>
   </a>
   <nav><ul>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="collections.html" class="here">Postcards</a></li>
-    <li><a href="journal.html">Journal</a></li>
-    <li><a href="prints.html">Prints</a></li>
-    <li><a href="about.html">About</a></li>
+    <li><a href="gallery.html" class="on">Gallery</a></li>
+    <li class="has-menu"><a href="prints.html">Prints</a>
+      <ul class="submenu">
+        <li><a href="limited-edition.html">The Limited Edition</a></li>
+        <li><a href="posters.html">Posters</a></li>
+        <li><a href="postcards.html">Postcards</a></li>
+      </ul>
+    </li>
+    <li class="has-menu"><a href="journal.html">Journal</a>
+      <ul class="submenu">
+        <li><a href="journal.html">Feed</a></li>
+        <li><span class="soon">The Curio Cabinet</span></li>
+      </ul>
+    </li>
+    <li class="has-menu"><a href="portfolio.html">Portfolio</a>
+      <ul class="submenu">
+        <li><a href="portfolio-headshots.html">Headshots</a></li>
+        <li><a href="portfolio-nature.html">Nature</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html">About Me</a></li>
   </ul></nav>
 </header>
 
@@ -182,7 +199,7 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
   <div class="fseal"><img src="img/mark-book-arch-cream-t.png" alt="Eleanora seal"></div>
   <div class="fwm">Eleanora</div>
   <div class="fnav">
-    <a href="gallery.html">Gallery</a><a href="postcards.html">Postcards</a><a href="journal.html">Journal</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
+    <a href="gallery.html">Gallery</a><a href="prints.html">Prints</a><a href="journal.html">Journal</a><a href="portfolio.html">Portfolio</a><a href="about.html">About Me</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
   </div>
   <div class="tag">where I've been · where I'm going · the people along the way</div>
   <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on</div>

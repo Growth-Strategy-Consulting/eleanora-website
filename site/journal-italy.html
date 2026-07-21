@@ -140,6 +140,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
   #veil{display:none;}
 }
 </style>
+<link rel="stylesheet" href="nav.css">
 </head>
 <body data-slug="journal-italy">
 
@@ -153,10 +154,26 @@ body.anim .reveal.in{opacity:1;transform:none;}
   </a>
   <nav><ul>
     <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="postcards.html">Postcards</a></li>
-    <li><a href="journal.html" class="on">Journal</a></li>
-    <li><a href="prints.html">Prints</a></li>
-    <li><a href="about.html">About</a></li>
+    <li class="has-menu"><a href="prints.html">Prints</a>
+      <ul class="submenu">
+        <li><a href="limited-edition.html">The Limited Edition</a></li>
+        <li><a href="posters.html">Posters</a></li>
+        <li><a href="postcards.html">Postcards</a></li>
+      </ul>
+    </li>
+    <li class="has-menu"><a href="journal.html" class="on">Journal</a>
+      <ul class="submenu">
+        <li><a href="journal.html">Feed</a></li>
+        <li><span class="soon">The Curio Cabinet</span></li>
+      </ul>
+    </li>
+    <li class="has-menu"><a href="portfolio.html">Portfolio</a>
+      <ul class="submenu">
+        <li><a href="portfolio-headshots.html">Headshots</a></li>
+        <li><a href="portfolio-nature.html">Nature</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html">About Me</a></li>
   </ul></nav>
 </header>
 
@@ -225,7 +242,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
 <footer id="footer">
   <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/mark-book-arch-cream-t.png" alt="Eleanora seal"></a></div>
   <div class="fnav">
-    <a href="gallery.html">Gallery</a><a href="postcards.html">Postcards</a><a href="journal.html">Journal</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
+    <a href="gallery.html">Gallery</a><a href="prints.html">Prints</a><a href="journal.html">Journal</a><a href="portfolio.html">Portfolio</a><a href="about.html">About Me</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
   </div>
   <div class="tag">Real plants · Real light · The art of women &amp; the wild</div>
   <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on <span class="script">x</span></div>

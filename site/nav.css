@@ -1,0 +1,64 @@
+/* nav.css — shared desktop dropdown menus for corraoelena.com
+   Base nav rules live inline in each page (header/brand/nav a). This file only
+   ADDS the hover/focus dropdown layer, so it never fights the inline styles.
+   Pure CSS: desktop opens on hover + keyboard focus; below 900px the whole
+   top nav is hidden and the hamburger (mobile-nav.js) takes over, so submenus
+   need no mobile logic here. Dark-cinematic brand: forest panel, gold accent. */
+
+/* the parent <li> anchors the absolute panel */
+nav li.has-menu{position:relative;}
+
+/* down-caret so a menu parent reads as a menu */
+nav li.has-menu > a{padding-right:16px;}
+nav li.has-menu > a::before{
+  content:"";position:absolute;right:0;top:50%;width:5px;height:5px;
+  border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:translateY(-70%) rotate(45deg);opacity:.5;
+  transition:opacity .3s var(--ease),transform .3s var(--ease);}
+nav li.has-menu:hover > a::before,
+nav li.has-menu:focus-within > a::before{opacity:1;transform:translateY(-30%) rotate(45deg);}
+
+/* the panel */
+.submenu{
+  display:block;position:absolute;top:100%;left:50%;
+  transform:translateX(-50%) translateY(8px);
+  min-width:214px;margin-top:15px;padding:11px 0;list-style:none;
+  background:rgba(20,28,22,.95);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid rgba(231,196,137,.18);border-radius:3px;
+  box-shadow:0 20px 46px rgba(0,0,0,.44);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .32s var(--ease),transform .32s var(--ease),visibility 0s linear .32s;
+  z-index:var(--z-nav);}
+/* invisible bridge across the gap so the panel doesn't drop mid-reach */
+.submenu::before{content:"";position:absolute;top:-15px;left:0;right:0;height:15px;}
+
+nav li.has-menu:hover > .submenu,
+nav li.has-menu:focus-within > .submenu{
+  opacity:1;visibility:visible;pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+  transition:opacity .32s var(--ease),transform .32s var(--ease);}
+
+.submenu li{display:block;}
+.submenu a,
+.submenu .soon{
+  display:block;white-space:nowrap;padding:10px 24px;
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;line-height:1.1;
+  color:var(--cream);opacity:.82;
+  transition:color .28s var(--ease),opacity .28s var(--ease),
+             background .28s var(--ease),padding-left .28s var(--ease);}
+/* the animated underline from the top nav shouldn't run inside the panel */
+.submenu a::after{display:none;}
+.submenu a:hover{opacity:1;color:var(--gold);
+  background:rgba(231,196,137,.06);padding-left:28px;}
+
+/* greyed, not-yet-built item — carries a quiet "soon" tag, not clickable */
+.submenu .soon{opacity:.42;cursor:default;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.submenu .soon::after{content:"soon";
+  font-size:8.5px;letter-spacing:1.5px;color:var(--gold);opacity:.7;}
+
+@media(prefers-reduced-motion:reduce){
+  .submenu,
+  nav li.has-menu > a::before{transition-duration:.001ms;}
+}

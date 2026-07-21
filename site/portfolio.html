@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>if(sessionStorage.getItem("eleanora_pass")!=="1")location.replace("/");</script>
+<script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('veil-on');}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio · Eleanora</title>
+<link rel="icon" type="image/png" sizes="32x32" href="img/mark-book-arch-green-t.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="img/mark-book-arch-cream-t.png" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<style>
+@font-face{font-family:'Pinyon Script';src:url('../brand-hub/assets/fonts/PinyonScript-Regular.ttf');font-display:swap;}
+@font-face{font-family:'Allura';src:url('../brand-hub/assets/fonts/Allura-Regular.ttf');font-display:swap;}
+:root{
+  --forest:#2F4034; --forest-d:#1C271F; --forest-dd:#141C16; --sage:#93A283;
+  --clay:#B87F51; --clay-l:#CE9A6B; --gold:#E7C489; --sand:#E4D7BE;
+  --parch:#EFE6D3; --cream:#F6F1E7; --ink:#2B2019; --body:#d3dacb;
+  --z-nav:50; --z-grain:80; --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--forest-d);color:var(--cream);font-family:'Helvetica Neue',Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;}
+.serif{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;}
+.lab{font-size:12px;letter-spacing:3.5px;text-transform:uppercase;}
+a{color:inherit;text-decoration:none;}
+::selection{background:rgba(231,196,137,.28);color:var(--cream);}
+
+.grain{position:fixed;inset:0;z-index:var(--z-grain);pointer-events:none;opacity:.5;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+#veil{position:fixed;inset:0;z-index:79;pointer-events:none;opacity:0;visibility:hidden;
+  background:radial-gradient(130% 112% at 50% 42%,#24322a 0%,var(--forest-d) 70%,var(--forest-dd) 100%);
+  transition:opacity .55s var(--ease),visibility 0s linear .55s;}
+html.veil-on #veil{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .5s var(--ease);}
+
+/* NAV (base — dropdowns come from nav.css) */
+header{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);display:flex;align-items:center;justify-content:space-between;
+  padding:24px 46px;transition:padding .4s var(--ease),background .4s ease,box-shadow .4s ease;}
+header.solid{background:rgba(20,28,22,.86);backdrop-filter:blur(9px);padding:14px 46px;box-shadow:0 1px 0 rgba(0,0,0,.3);}
+.brand{display:flex;align-items:center;gap:12px;color:var(--cream);}
+.brand .wm{font-family:'Pinyon Script',cursive;font-size:34px;line-height:1;padding-left:2px;}
+nav ul{display:flex;gap:34px;list-style:none;}
+nav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream);opacity:.88;position:relative;transition:.4s;}
+nav a.on{color:var(--gold);opacity:1;}
+nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:.3s var(--ease);}
+nav a:hover::after,nav a.on::after{width:100%;}
+
+/* PORTFOLIO */
+.pf{flex:1;display:flex;align-items:center;padding:150px clamp(24px,6vw,86px) 90px;
+  background:
+    radial-gradient(760px 420px at 12% 8%,rgba(147,162,131,.14),transparent 70%),
+    radial-gradient(680px 460px at 96% 96%,rgba(184,127,81,.16),transparent 72%),
+    var(--forest-d);}
+.pf .wrap{max-width:1080px;margin:0 auto;width:100%;}
+.pf .ey{color:var(--gold);margin-bottom:20px;}
+.pf h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(44px,6.4vw,84px);line-height:1.03;
+  letter-spacing:-.01em;text-wrap:balance;}
+.pf .lede{margin-top:24px;font-size:16px;line-height:1.9;color:var(--body);max-width:52ch;}
+.cats{margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+.cat{position:relative;display:block;padding:38px 34px;border:1px solid rgba(231,196,137,.2);border-radius:3px;
+  background:rgba(20,28,22,.4);transition:border-color .4s var(--ease),background .4s var(--ease),transform .4s var(--ease);}
+.cat:hover{border-color:rgba(231,196,137,.5);background:rgba(20,28,22,.62);transform:translateY(-3px);}
+.cat h2{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:30px;color:var(--cream);}
+.cat p{margin-top:12px;font-size:14px;line-height:1.7;color:var(--body);opacity:.85;}
+.cat .go{margin-top:20px;display:inline-block;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold);}
+.cat.soon{opacity:.72;}
+.cat.soon .go{color:var(--sand);opacity:.7;}
+
+footer{background:var(--forest-dd);color:var(--sand);padding:60px 40px 34px;text-align:center;position:relative;}
+footer::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(90%,420px);height:1px;
+  background:linear-gradient(90deg,transparent,rgba(231,196,137,.4),transparent);}
+footer .seal{width:70px;height:70px;margin:0 auto 22px;opacity:.9;}
+footer .seal img{width:100%;height:100%;object-fit:contain;}
+footer .fnav{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:22px;}
+footer .fnav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;opacity:.85;transition:.3s;}
+footer .fnav a:hover{color:var(--gold);opacity:1;}
+footer .tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--cream);opacity:.9;}
+footer .cr{margin-top:20px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
+
+@media(max-width:900px){ header{padding:16px 22px;} header.solid{padding:12px 22px;} nav ul{display:none;} }
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;} *,*::before,*::after{transition-duration:.001ms!important;} #veil{display:none;}
+}
+</style>
+<link rel="stylesheet" href="nav.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div id="veil" aria-hidden="true"></div>
+
+<header id="hdr">
+  <a class="brand" href="index.html">
+    <img src="img/mark-book-arch-cream-t.png" alt="Eleanora" width="60" height="60" style="width:60px;height:60px;display:block;flex:0 0 auto">
+    <span class="wm">Eleanora</span>
+  </a>
+  <nav><ul>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li class="has-menu"><a href="prints.html">Prints</a>
+      <ul class="submenu">
+        <li><a href="limited-edition.html">The Limited Edition</a></li>
+        <li><a href="posters.html">Posters</a></li>
+        <li><a href="postcards.html">Postcards</a></li>
+      </ul>
+    </li>
+    <li class="has-menu"><a href="journal.html">Journal</a>
+      <ul class="submenu">
+        <li><a href="journal.html">Feed</a></li>
+        <li><span class="soon">The Curio Cabinet</span></li>
+      </ul>
+    </li>
+    <li class="has-menu"><a href="portfolio.html" class="on">Portfolio</a>
+      <ul class="submenu">
+        <li><a href="portfolio-headshots.html">Headshots</a></li>
+        <li><a href="portfolio-nature.html">Nature</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html">About Me</a></li>
+  </ul></nav>
+</header>
+
+<main class="pf">
+  <div class="wrap">
+    <div class="ey lab">The working portfolio</div>
+    <h1 class="serif">Portfolio</h1>
+    <p class="lede">The professional work, sorted by the kind of frame it lives in. I'm still building this out, so a few rooms are being hung. Start with what's here.</p>
+    <div class="cats">
+      <a class="cat" href="portfolio-headshots.html">
+        <h2 class="serif">Headshots</h2>
+        <p>Studio and editorial faces. Clean light, direct gaze.</p>
+        <span class="go">View headshots &rarr;</span>
+      </a>
+      <a class="cat" href="portfolio-nature.html">
+        <h2 class="serif">Nature</h2>
+        <p>On location, in the wild. Real plants, real light.</p>
+        <span class="go">View nature &rarr;</span>
+      </a>
+      <div class="cat soon">
+        <h2 class="serif">More coming</h2>
+        <p>Still deciding how to sort the rest of the model work.</p>
+        <span class="go">In progress</span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer id="footer">
+  <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/mark-book-arch-cream-t.png" alt="Eleanora seal"></a></div>
+  <div class="fnav">
+    <a href="gallery.html">Gallery</a><a href="prints.html">Prints</a><a href="journal.html">Journal</a><a href="portfolio.html">Portfolio</a><a href="about.html">About Me</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
+  </div>
+  <div class="tag">Real plants · Real light · The art of women &amp; the wild</div>
+  <div class="cr">© 2026 Eleanora</div>
+</footer>
+
+<script>
+const hdr=document.getElementById('hdr');
+const onScroll=()=>hdr.classList.toggle('solid',scrollY>60);
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+const root=document.documentElement;
+requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.remove('veil-on')));
+setTimeout(()=>root.classList.remove('veil-on'),1600);
+</script>
+<script src="mobile-nav.js" defer></script>
+</body>
+</html>

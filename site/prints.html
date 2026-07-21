@@ -155,6 +155,7 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 @media (prefers-reduced-motion: reduce){.ccard{opacity:1;transform:none;}}
 
 </style>
+<link rel="stylesheet" href="nav.css">
 </head>
 <body>
 
@@ -168,10 +169,26 @@ footer .cr .script{font-size:18px;color:var(--gold);}
   </a>
   <nav><ul>
     <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="work-with-me.html">Work With Me</a></li>
-    <li><a href="journal.html">Journal</a></li>
-    <li><a href="prints.html" class="on">Prints</a></li>
-    <li><a href="about.html">About</a></li>
+    <li class="has-menu"><a href="prints.html" class="on">Prints</a>
+      <ul class="submenu">
+        <li><a href="limited-edition.html">The Limited Edition</a></li>
+        <li><a href="posters.html">Posters</a></li>
+        <li><a href="postcards.html">Postcards</a></li>
+      </ul>
+    </li>
+    <li class="has-menu"><a href="journal.html">Journal</a>
+      <ul class="submenu">
+        <li><a href="journal.html">Feed</a></li>
+        <li><span class="soon">The Curio Cabinet</span></li>
+      </ul>
+    </li>
+    <li class="has-menu"><a href="portfolio.html">Portfolio</a>
+      <ul class="submenu">
+        <li><a href="portfolio-headshots.html">Headshots</a></li>
+        <li><a href="portfolio-nature.html">Nature</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html">About Me</a></li>
   </ul></nav>
 </header>
 
@@ -183,8 +200,10 @@ footer .cr .script{font-size:18px;color:var(--gold);}
     <div class="ey lab">The Shop</div>
     <h1 class="serif">Prints</h1>
     <div class="accent">three ways to keep it</div>
-    <!-- Written 2026-07-20 via /eleanora-voice against the House Register. -->
-    <p>Posters are open. The signed thirty-three and the postcards come in September.</p>
+    <!-- Rewritten 2026-07-20 via /eleanora-voice (Card D orienter register). Full statement folded
+         into the hero to match the sibling pattern (Gallery / Posters / Journal). The old floating
+         .choose-intro band was removed in the same pass. -->
+    <p>I don't sell pictures. I sell what was true when I made it, printed big enough to live with, and the story underneath is yours to read before you decide. Posters are open now; the signed thirty-three and the postcards come in September. Some of these are still finding their words, and I'd rather say so than pretend the shelf is full.</p>
   </div>
 </section>
 
@@ -192,10 +211,6 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 <!-- Chooser. Prints is the parent; Posters is the only one live at launch.
      Postcards + the signed tier ship September (see brand/site-restructure-decisions-2026-07-19.md). -->
 <section class="choose">
-  <!-- Written 2026-07-20 via /eleanora-voice. The last two sentences are deliberate: they make the
-       unwritten-story cards read as honest rather than as an empty shelf. -->
-  <p class="choose-intro">I don't sell pictures. I sell what was true when I made it, printed big enough to live with, and the story underneath is free to read before you decide. Some of these are still finding their words. I'd rather say that than pretend the shelf is full.</p>
-
   <div class="choose-grid">
 
     <article class="ccard">
@@ -230,7 +245,7 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 <footer id="footer">
   <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/mark-book-arch-cream-t.png" alt="Eleanora seal"></a></div>
   <div class="fnav">
-    <a href="gallery.html">Gallery</a><a href="work-with-me.html">Work With Me</a><a href="journal.html">Journal</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
+    <a href="gallery.html">Gallery</a><a href="prints.html">Prints</a><a href="journal.html">Journal</a><a href="portfolio.html">Portfolio</a><a href="about.html">About Me</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
   </div>
   <div class="tag">Real plants · Real light · The art of women &amp; the wild</div>
   <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on <span class="script">x</span></div>
