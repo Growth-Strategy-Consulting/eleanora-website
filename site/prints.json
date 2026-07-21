@@ -8,7 +8,7 @@
     "no-overlap": "Elena, 2026-07-19: anything in the vanishing tier is NEVER in the open tier. Enforced by `tier`, not by convention.",
     "working-titles": "Names in [brackets] are Penny working titles awaiting Elena's rename pass.",
     "buyUrl": "null until the Shopify Buy Button variant IDs exist. Null renders the card as browsable but not buyable, with the coming-soon state.",
-    "poster-series": "10 self-portrait poster designs, RE-UPLOADED 2026-07-20 from Elena's renamed Canva exports (no white edges, uniform 2:3 portrait 2319x3471). Names + slugs come from HER filenames, which are the source of truth. Masters filed in _intake/poster-masters-2026-07-20/. 'After the Noise' was retired and 'Blue Beach' added in this pass. All portrait now, so the feature no longer needs the old landscape handling.",
+    "poster-series": "All 16 self-portrait posters from ~/Downloads/03_PRINT_READY (sole source of truth, Elena 2026-07-20). Ordered so near-duplicate pairs sit far apart: Let Them Wait (B&W) vs Let Them Wait in Color; the two DREAM BIGGER images (This Time, Where the Wishes Land); the two red-headscarf frames; the two beach-suit frames. 'Cobalt' is the former Blue Beach, renamed. 'Stupid Games by ROB' published per Elena 2026-07-21 (she confirmed it's hers to sell). None buyable yet (buyUrl null); none story-backed yet.",
     "holding-names": "Names set 2026-07-20 via /eleanora-voice against the naming SOP. These are HOLDING names (SOP: orphans get a light holding name, upgraded when a story adopts them). Designs 1, 6, 7 and 9 are flagged 'needs Elena's moment-feeling' because the SOP forbids guessing the shutter-moment feeling that makes a real hero name. `slugFinal` is the slug to adopt once names are confirmed; `slug` stays poster-N until the Canva re-export lands with named pages.",
     "costs": "Landed costs and vendor/provider IDs moved OUT of this file 2026-07-20: this repo is PUBLIC. They live in 1-Clients/Eleanora/offers/prints/print-costs-PRIVATE.json in the main repo. The site only needs `price`.",
     "hidden": "`hidden: true` removes a print from the rendered grid without deleting it. Elena, 2026-07-20: the 3 travel prints are hidden so the Posters page shows only the self-portrait poster series while she previews it. Their journal entries and data are intact. Delete the flag to restore."
@@ -143,7 +143,7 @@
       "line": null,
       "tier": "open",
       "buyUrl": null,
-      "_todo": "Elena names/stories this before it can list. Web from _intake/poster-masters-2026-07-20/web-source; print master (large) exists for some in print-large/."
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
     },
     {
       "slug": "the-only-one-looking-back",
@@ -156,85 +156,33 @@
       "line": null,
       "tier": "open",
       "buyUrl": null,
-      "_todo": "Elena names/stories this before it can list. Web from _intake/poster-masters-2026-07-20/web-source; print master (large) exists for some in print-large/."
-    },
-    {
-      "slug": "before-the-colors-set",
-      "name": "Before the Colors Set",
-      "img": "img/posters/before-the-colors-set.jpg",
-      "alt": "A watercolour portrait in a sheer black top against blue tiles",
-      "place": "self-portraits",
-      "article": null,
-      "articleTitle": null,
-      "line": null,
-      "tier": "open",
-      "buyUrl": null,
-      "_todo": "Elena names/stories this before it can list. Web from _intake/poster-masters-2026-07-20/web-source; print master (large) exists for some in print-large/."
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
     },
     {
       "slug": "let-them-wait",
       "name": "Let Them Wait",
       "img": "img/posters/let-them-wait.jpg",
-      "alt": "An art-nouveau profile of a woman smoking, framed by smoke and feathers",
+      "alt": "A black-and-white art-nouveau profile of a woman smoking among smoke and feathers",
       "place": "self-portraits",
       "article": null,
       "articleTitle": null,
       "line": null,
       "tier": "open",
       "buyUrl": null,
-      "_todo": "Elena names/stories this before it can list. Web from _intake/poster-masters-2026-07-20/web-source; print master (large) exists for some in print-large/."
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
     },
     {
-      "slug": "the-coronation",
-      "name": "The Coronation",
-      "img": "img/posters/the-coronation.jpg",
-      "alt": "A woman in black lace crowned with pink and magenta flowers",
+      "slug": "cobalt",
+      "name": "Cobalt",
+      "img": "img/posters/cobalt.jpg",
+      "alt": "A woman in a blue swimsuit on a torn-collage beach of cobalt and orange",
       "place": "self-portraits",
       "article": null,
       "articleTitle": null,
       "line": null,
       "tier": "open",
       "buyUrl": null,
-      "_todo": "Elena names/stories this before it can list. Web from _intake/poster-masters-2026-07-20/web-source; print master (large) exists for some in print-large/."
-    },
-    {
-      "slug": "where-the-wishes-land",
-      "name": "Where the Wishes Land",
-      "img": "img/posters/where-the-wishes-land.jpg",
-      "alt": "A woman in a magenta tulle skirt on the sand, gold stars scattering over the sea",
-      "place": "self-portraits",
-      "article": null,
-      "articleTitle": null,
-      "line": null,
-      "tier": "open",
-      "buyUrl": null,
-      "_todo": "Elena names/stories this before it can list. Web from _intake/poster-masters-2026-07-20/web-source; print master (large) exists for some in print-large/."
-    },
-    {
-      "slug": "same-girl-different-garden",
-      "name": "Same Girl, Different Garden",
-      "img": "img/posters/same-girl-different-garden.jpg",
-      "alt": "A woman in a red headscarf seated on a stool against a collage of leaves",
-      "place": "self-portraits",
-      "article": null,
-      "articleTitle": null,
-      "line": null,
-      "tier": "open",
-      "buyUrl": null,
-      "_todo": "Elena names/stories this before it can list. Web from _intake/poster-masters-2026-07-20/web-source; print master (large) exists for some in print-large/."
-    },
-    {
-      "slug": "blue-beach",
-      "name": "Blue Beach",
-      "img": "img/posters/blue-beach.jpg",
-      "alt": "A woman in a blue swimsuit on a torn-collage beach of orange and blue",
-      "place": "self-portraits",
-      "article": null,
-      "articleTitle": null,
-      "line": null,
-      "tier": "open",
-      "buyUrl": null,
-      "_todo": "Elena names/stories this before it can list. Web from _intake/poster-masters-2026-07-20/web-source; print master (large) exists for some in print-large/."
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
     },
     {
       "slug": "this-time",
@@ -247,12 +195,90 @@
       "line": null,
       "tier": "open",
       "buyUrl": null,
-      "_todo": "Elena names/stories this before it can list. Web from _intake/poster-masters-2026-07-20/web-source; print master (large) exists for some in print-large/."
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
     },
     {
-      "slug": "let-go-at-the-top",
-      "name": "Let Go at the Top",
-      "img": "img/posters/let-go-at-the-top.jpg",
+      "slug": "the-coronation",
+      "name": "The Coronation",
+      "img": "img/posters/the-coronation.jpg",
+      "alt": "A woman in black lace crowned with pink and magenta flowers",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
+    },
+    {
+      "slug": "nyc-dreamer",
+      "name": "NYC Dreamer",
+      "img": "img/posters/nyc-dreamer.jpg",
+      "alt": "A woman smoking by a window in warm golden light, plants around her",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
+    },
+    {
+      "slug": "alone-with-my-thoughts-on-nauset",
+      "name": "Alone With My Thoughts on Nauset",
+      "img": "img/posters/alone-with-my-thoughts-on-nauset.jpg",
+      "alt": "A woman standing alone on the rocks above the sea under a dramatic sky",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
+    },
+    {
+      "slug": "before-the-colors-set",
+      "name": "Before the Colors Set",
+      "img": "img/posters/before-the-colors-set.jpg",
+      "alt": "A watercolour portrait in a sheer black top against blue tiles",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
+    },
+    {
+      "slug": "same-girl-different-garden",
+      "name": "Same Girl, Different Garden",
+      "img": "img/posters/same-girl-different-garden.jpg",
+      "alt": "A woman in a red headscarf seated among round green leaves",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
+    },
+    {
+      "slug": "no-rush",
+      "name": "No Rush",
+      "img": "img/posters/no-rush.jpg",
+      "alt": "A woman in a sun hat and yellow floral swimsuit on a bright beach",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
+    },
+    {
+      "slug": "after-the-noise",
+      "name": "After the Noise",
+      "img": "img/posters/after-the-noise.jpg",
       "alt": "A stylised portrait of a face at rest, cheek turned, in warm ochre and blue",
       "place": "self-portraits",
       "article": null,
@@ -260,7 +286,59 @@
       "line": null,
       "tier": "open",
       "buyUrl": null,
-      "_todo": "Elena names/stories this before it can list. Web from _intake/poster-masters-2026-07-20/web-source; print master (large) exists for some in print-large/."
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
+    },
+    {
+      "slug": "let-them-wait-in-color",
+      "name": "Let Them Wait in Color",
+      "img": "img/posters/let-them-wait-in-color.jpg",
+      "alt": "An art-nouveau profile of a woman smoking, smoke and white feathers, gold",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
+    },
+    {
+      "slug": "where-the-wishes-land",
+      "name": "Where the Wishes Land",
+      "img": "img/posters/where-the-wishes-land.jpg",
+      "alt": "A woman in a magenta dress on the beach, lettered dream bigger, this time",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
+    },
+    {
+      "slug": "let-go-at-the-top",
+      "name": "Let Go at the Top",
+      "img": "img/posters/let-go-at-the-top.jpg",
+      "alt": "A woman in a red headscarf on a swing among round green leaves",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
+    },
+    {
+      "slug": "stupid-games-by-rob",
+      "name": "Stupid Games by ROB",
+      "img": "img/posters/stupid-games-by-rob.jpg",
+      "alt": "A psychedelic painting of a figure entwined with a rainbow serpent",
+      "place": "self-portraits",
+      "article": null,
+      "articleTitle": null,
+      "line": null,
+      "tier": "open",
+      "buyUrl": null,
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
     }
   ]
 }
