@@ -99,12 +99,14 @@ footer .seal img{filter:none;}
 footer .seal:hover{opacity:1;transform:translateY(-2px);
   filter:drop-shadow(0 7px 22px rgba(231,196,137,.34));}
 
-/* the sign-off, in her hand — script signature above the tagline */
+/* the sign-off, in her hand — script signature above the tagline.
+   Pinyon Script = the same hand as the header "Eleanora" wordmark, so
+   the footer signs off in the logo's own script. */
 footer .tag::before{
   content:"xo, Eleanora";display:block;
-  font-family:'Allura',cursive;font-style:normal;font-weight:400;
-  font-size:clamp(38px,4.4vw,56px);line-height:1;letter-spacing:0;
-  color:var(--gold);opacity:1;margin-bottom:18px;
+  font-family:'Pinyon Script','Allura',cursive;font-style:normal;font-weight:400;
+  font-size:clamp(40px,4.6vw,58px);line-height:1.05;letter-spacing:0;
+  color:var(--gold);opacity:1;margin-bottom:16px;
   text-shadow:0 2px 26px rgba(231,196,137,.22);
 }
 /* the tagline — now a quiet serif descriptor beneath the signature */
