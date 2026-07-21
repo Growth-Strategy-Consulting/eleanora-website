@@ -62,3 +62,78 @@ nav li.has-menu:focus-within > .submenu{
   .submenu,
   nav li.has-menu > a::before{transition-duration:.001ms;}
 }
+
+
+/* ============================================================
+   FOOTER — impeccable pass
+   Reinterprets the existing footer parts (.seal / .tag / .fnav / .cr)
+   into a real sign-off: the mark, then the tagline as a Didot closing
+   line (not an all-caps label), a refined nav row, a quiet copyright.
+   CSS-only + loaded after each page's inline <style>, so it overrides
+   by source order and keeps every per-page tagline + the seal's
+   secret /bookclub/ link untouched.
+   ============================================================ */
+footer{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  position:relative;overflow:hidden;
+  padding:clamp(74px,9vw,120px) clamp(24px,6vw,64px) clamp(38px,5vw,54px);
+  background:
+    radial-gradient(120% 92% at 50% 0%, rgba(231,196,137,.055), transparent 58%),
+    radial-gradient(90% 130% at 50% 128%, rgba(147,162,131,.08), transparent 70%),
+    var(--forest-dd);
+}
+/* a single deliberate gold seam, softly faded, marks the threshold */
+footer::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:min(78%,560px);height:1px;
+  background:linear-gradient(90deg,transparent,rgba(231,196,137,.5),transparent);
+}
+
+/* the seal — the mark, and the quiet door to the book club */
+footer .seal{
+  order:1;width:56px;height:56px;margin:0 0 28px;opacity:.9;
+  transition:transform .5s var(--ease),opacity .4s ease,filter .5s var(--ease);
+}
+footer .seal a{display:block;width:100%;height:100%;}
+footer .seal img{filter:none;}
+footer .seal:hover{opacity:1;transform:translateY(-2px);
+  filter:drop-shadow(0 7px 22px rgba(231,196,137,.34));}
+
+/* the tagline — promoted from a caps label to the closing line, in her serif */
+footer .tag{
+  order:2;text-transform:none;letter-spacing:0;
+  font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-weight:400;
+  font-size:clamp(22px,2.5vw,33px);line-height:1.32;color:var(--cream);opacity:.96;
+  max-width:27ch;margin:0 0 36px;text-wrap:balance;
+}
+
+/* nav — the same gold underline as the top nav, grown from center */
+footer .fnav{
+  order:3;display:flex;justify-content:center;flex-wrap:wrap;
+  gap:clamp(16px,2.4vw,32px);margin:0 0 30px;
+}
+footer .fnav a{
+  position:relative;font-size:11px;letter-spacing:2.6px;text-transform:uppercase;
+  color:var(--sand);opacity:.72;
+  transition:color .3s var(--ease),opacity .3s var(--ease);
+}
+footer .fnav a::after{
+  content:"";position:absolute;left:50%;bottom:-6px;width:0;height:1px;
+  background:var(--gold);transform:translateX(-50%);transition:width .3s var(--ease);
+}
+footer .fnav a:hover{color:var(--gold);opacity:1;}
+footer .fnav a:hover::after{width:100%;}
+
+/* copyright — quiet, at the base; keeps the hand-signed x */
+footer .cr{
+  order:4;margin-top:0;font-size:11px;letter-spacing:1.4px;color:#8b9385;opacity:.92;
+}
+footer .cr .script{font-family:'Allura',cursive;font-size:19px;color:var(--gold);letter-spacing:0;}
+
+@media(max-width:600px){
+  footer .tag{font-size:clamp(21px,6.4vw,29px);max-width:17ch;}
+  footer .fnav{gap:13px 18px;}
+}
+@media(prefers-reduced-motion:reduce){
+  footer .seal,footer .fnav a,footer .fnav a::after{transition-duration:.001ms;}
+}
