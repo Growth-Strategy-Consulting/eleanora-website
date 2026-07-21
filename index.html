@@ -260,7 +260,8 @@ emailEl.addEventListener("input", () => { wnote.classList.remove("show","bad"); 
 // ---- 2. SOFT GATE (secondary) -------------------------------------------
 // Password stored as a SHA-256 hash so it isn't sitting here in plain text.
 // Keeps the casual public out; NOT bank-grade.
-// Word: "yellowbird" (revealed by the "a little birdie told me" link). SHA-256 below.
+// The insider word is stored ONLY as a SHA-256 hash below, never in plain text.
+// It's revealed on the front end via the "a little birdie told me" link.
 const EXPECTED = "1f76b0e5058f716c3026eeb07599915e84f2c6de83fee6d1754d55f008689cc0";
 const DEST = "site/index.html"; // the site lives behind the gate in /site/
 
