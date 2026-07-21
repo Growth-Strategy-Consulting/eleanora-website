@@ -54,24 +54,21 @@
     // optional per-image crop focus for off-center subjects (e.g. a landscape frame
     // whose face sits to one side). object-position "x% y%" from prints.json.
     const pos = p.objectPosition ? ` style="object-position:${esc(p.objectPosition)}"` : '';
+    // Every card opens its own detail page (poster.html?slug=...), where the
+    // sizes and the buy live. Buy links out to Shopify from there.
+    const detail = `poster.html?slug=${encodeURIComponent(p.slug)}`;
     const img = `<img src="${esc(p.img)}" alt="${esc(p.alt)}"${pos}>`;
-    const frame = hasStory
-      ? `<a class="ph" href="${esc(p.article)}">${img}</a>`
-      : `<div class="ph">${img}</div>`;
+    const frame = `<a class="ph" href="${detail}">${img}</a>`;
 
-    // With a story: read it, then buy it. Without: say so plainly and stop.
-    const body = hasStory
-      ? `${p.line ? `<div class="meta">${esc(p.line)}</div>` : ''}
-         <a class="cta" href="${esc(p.article)}">Read the story</a>
-         ${p.buyUrl
-            ? `<a class="cta" href="${esc(p.buyUrl)}">From $${from}</a>`
-            : `<span class="cta soon">From $${from} · opening soon</span>`}`
-      : `<span class="cta soon">The story is being written</span>`;
+    const cta = p.buyUrl
+      ? `From $${from}`
+      : hasStory ? 'Read the story' : 'View the print';
 
     return `<article class="pcard${feat ? ' feature' : ''}${hasStory ? '' : ' pending'}" data-cat="${esc(p.place)}">
       ${frame}
-      <h3 class="serif">${esc(p.name)}</h3>
-      ${body}
+      <h3 class="serif"><a href="${detail}">${esc(p.name)}</a></h3>
+      ${p.line ? `<div class="meta">${esc(p.line)}</div>` : ''}
+      <a class="cta" href="${detail}">${cta} &rarr;</a>
     </article>`;
   };
 
