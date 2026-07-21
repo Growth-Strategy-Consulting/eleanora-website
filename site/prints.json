@@ -326,7 +326,8 @@
       "tier": "open",
       "buyUrl": null,
       "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null.",
-      "objectPosition": "72% 42%"
+      "objectPosition": "72% 42%",
+      "orientation": "landscape"
     },
     {
       "slug": "stupid-games-by-rob",

@@ -22,19 +22,29 @@
 
   document.title = p.name + ' — Eleanora';
 
-  // image (honor optional per-image crop focus)
+  const landscape = p.orientation === 'landscape';
+
+  // image: portrait prints crop to a 2:3 frame (honoring any crop focus); a landscape
+  // print shows the WHOLE picture in a 3:2 frame, no crop.
   const img = $('pdImg');
   img.src = p.img; img.alt = p.alt || p.name;
-  if (p.objectPosition) img.style.objectPosition = p.objectPosition;
+  if (landscape) {
+    img.closest('.ph').classList.add('wide');
+  } else if (p.objectPosition) {
+    img.style.objectPosition = p.objectPosition;
+  }
 
   $('pdTitle').textContent = p.name;
   const line = $('pdLine');
   if (p.line) { line.textContent = p.line; } else { line.style.display = 'none'; }
 
-  // size ladder (shared across prints)
+  // size ladder (shared). Landscape prints rotate the dimensions: 5 x 7 -> 7 x 5.
   const sizes = (data.ladder && data.ladder.sizes) || [];
+  const label = s => landscape
+    ? s.label.split(/\s*x\s*/).reverse().join(' x ')
+    : s.label;
   $('pdSizes').innerHTML = sizes.map(s =>
-    `<div class="row"><span class="sz">${esc(s.label)}</span><span>$${esc(s.price)}</span></div>`
+    `<div class="row"><span class="sz">${esc(label(s))}</span><span>$${esc(s.price)}</span></div>`
   ).join('');
 
   // buy: link OUT to Shopify product page; honest fallback until it exists

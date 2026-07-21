@@ -157,6 +157,9 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 .pback:hover{color:var(--gold);opacity:1;}
 .pd-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,5vw,70px);align-items:start;}
 .pd-img .ph{position:relative;overflow:hidden;aspect-ratio:2/3;border:2px solid var(--gold);box-shadow:0 30px 70px rgba(0,0,0,.5);background:var(--forest-dd);}
+/* landscape prints show the whole picture in a 3:2 frame */
+.pd-img .ph.wide{aspect-ratio:3/2;}
+.pd-img .ph.wide img{object-fit:cover;}
 .pd-img .ph::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(20,28,22,.55);pointer-events:none;}
 .pd-img .ph img{width:100%;height:100%;object-fit:cover;image-orientation:from-image;}
 .pd-info{padding-top:4px;}
