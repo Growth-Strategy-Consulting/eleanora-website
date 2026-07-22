@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="brand/assets/mark-book-arch-cream-t.png" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Kaushan+Script&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Kaushan+Script&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --pine:#22331F;
@@ -59,8 +59,8 @@
   /* per-phase text theming: JS tags each panel .on-dark / .on-light.
      .on-light re-points the brand vars to deep ink so copy stays legible in daylight. */
   .on-light{
-    --cream:#33270f; --cream-dim:#5f4b26;
-    --gold:#855610; --gold-soft:#6f4a12; --terracotta:#8f451c;
+    --cream:#2b220c; --cream-dim:#3e2f12;
+    --gold:#402d0e; --gold-soft:#4a3410; --terracotta:#4e260e;
   }
   .on-dark .law-body p, .on-dark .prelude p, .on-dark .lede,
   .on-dark .door, .on-dark .ninetynine{ text-shadow:0 1px 16px rgba(0,0,0,.32); }
@@ -132,13 +132,21 @@
 
   /* ---------- prelude ---------- */
   .prelude .lede{
-    font-family:var(--sans); font-weight:700; font-size:clamp(1.9rem,5vw,3rem);
-    line-height:1.14; letter-spacing:-.02em; color:var(--cream); margin-bottom:.7em; text-wrap:balance;
+    font-family:var(--sans); font-weight:700; font-size:clamp(1.75rem,4.4vw,2.7rem);
+    line-height:1.16; letter-spacing:-.02em; color:var(--cream); margin-bottom:.7em; text-wrap:balance;
   }
   .prelude p{ font-size:1.12rem; max-width:60ch; margin-left:auto; margin-right:auto; }
+  .prelude .wager{ font-size:1.16rem; line-height:1.72; max-width:56ch; color:var(--cream); margin:0 auto clamp(26px,4vh,40px); }
+  .prelude .wager .dare{ color:var(--gold-soft); font-family:var(--serif); font-style:italic; }
   .prelude p strong{ font-weight:600; color:var(--cream); }
   .prelude .beat{ font-family:var(--serif); font-style:italic; font-size:clamp(1.3rem,3.4vw,1.7rem); color:var(--gold-soft); line-height:1.4; max-width:none; }
   .three-roads{ font-family:var(--serif); font-style:italic; color:var(--gold-soft); opacity:.9; letter-spacing:.02em; font-size:1.05rem; }
+
+  /* the reveal: "Happiness is a mindset." carries the focus */
+  .prelude .secret-lead{ font-family:var(--sans); font-weight:500; font-size:.98rem; letter-spacing:.06em; text-transform:uppercase; color:var(--cream-dim); opacity:.7; margin:0 0 .5em; }
+  .prelude .secret{ font-family:var(--serif); font-style:italic; font-size:clamp(2.1rem,5vw,3.1rem); line-height:1.12; letter-spacing:.005em; color:var(--gold-soft); margin:0 auto .34em; max-width:none; text-wrap:balance; }
+  .prelude .secret-sub{ font-size:1.08rem; color:var(--cream-dim); margin:0 auto; max-width:50ch; }
+  .prelude .aside{ font-family:var(--serif); font-style:italic; font-size:1.1rem; color:var(--cream-dim); opacity:.66; margin:1.5em auto 0; max-width:none; }
 
   /* ---------- Law Zero ---------- */
   .lawzero .plate{
@@ -155,9 +163,9 @@
     line-height:1.36; color:var(--cream); margin:0; text-wrap:balance;
   }
   .lawzero .under{
-    margin:clamp(30px,4.6vh,50px) auto 0; max-width:42ch;
-    font-family:var(--serif); font-style:italic; font-size:clamp(1.18rem,2.8vw,1.62rem);
-    line-height:1.5; letter-spacing:.01em; color:var(--gold-soft); text-wrap:balance;
+    margin:clamp(34px,5vh,56px) auto 0; max-width:34ch; text-align:center;
+    font-family:var(--serif); font-style:italic; font-size:clamp(1.14rem,2.6vw,1.5rem);
+    line-height:1.55; letter-spacing:.01em; color:var(--cream-dim); text-wrap:balance;
   }
 
   /* ---------- the wheel ---------- */
@@ -467,13 +475,44 @@
   .rail a.dot.active .moon-disc{ stroke:var(--gold) }
   @media (max-width:900px){ .rail{ display:none } }
 
-  /* ---------- reveal motion ---------- */
-  .reveal{ opacity:0; transform:translateY(30px); transition:opacity .95s var(--ease), transform .95s var(--ease); }
-  .reveal.in{ opacity:1; transform:none }
-  .reveal.d1{ transition-delay:.12s } .reveal.d2{ transition-delay:.24s } .reveal.d3{ transition-delay:.36s }
+  /* mobile wayfinding — replaces the hidden rail on the long 12-law scroll */
+  .mnav{ display:none; }
+  @media (max-width:900px){
+    .mnav{ display:block; position:fixed; top:0; left:0; right:0; z-index:var(--z-rail);
+      opacity:0; transform:translateY(-6px); transition:opacity .35s var(--ease), transform .35s var(--ease); pointer-events:none; }
+    .mnav.on{ opacity:1; transform:none; }
+    .mnav-bar{ height:2px; background:rgba(217,164,65,.16); }
+    .mnav-bar i{ display:block; height:100%; width:0; background:linear-gradient(90deg,var(--gold-soft),var(--gold)); box-shadow:0 0 6px rgba(217,164,65,.55); }
+    .mnav-now{ pointer-events:auto; display:inline-flex; align-items:center; gap:.45em; padding:6px 14px 8px; border:0; cursor:pointer;
+      font-family:var(--sans); font-weight:500; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-soft);
+      background:linear-gradient(180deg, rgba(10,14,10,.9), rgba(10,14,10,0)); -webkit-tap-highlight-color:transparent; }
+    .mnav-g{ font-size:.92rem; letter-spacing:0; }
+    .mnav-caret{ font-size:.6rem; opacity:.7; transition:transform .3s var(--ease); }
+    .mnav.open .mnav-caret{ transform:rotate(180deg); }
+    /* the jump tray — a compact rail of the 12 signs */
+    .mnav-tray{ pointer-events:auto; display:none; flex-wrap:wrap; gap:2px; padding:6px 8px 10px; max-width:320px;
+      background:linear-gradient(180deg, rgba(10,14,10,.96), rgba(10,14,10,.9)); border-bottom:1px solid rgba(217,164,65,.2); }
+    .mnav.open .mnav-tray{ display:flex; }
+    .mnav-sign{ pointer-events:auto; flex:0 0 auto; width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center;
+      border:0; background:transparent; color:var(--cream-dim); font-size:1.15rem; cursor:pointer; border-radius:8px; -webkit-tap-highlight-color:transparent; }
+    .mnav-sign:hover{ color:var(--gold-soft); }
+    .mnav-sign[aria-current="true"]{ color:var(--gold); background:rgba(217,164,65,.14); }
+    .mnav-sign:focus-visible{ outline:2px solid var(--gold-soft); outline-offset:1px; }
+  }
+  @media (prefers-reduced-motion: reduce){ .mnav, .mnav-caret{ transition:none; } }
+
+  /* ---------- reveal motion ----------
+     Content is VISIBLE by default. Hiding is armed only when JS confirms it can
+     animate (see the arming script in <head>), so a blocked/slow/throttled script
+     or a stalled IntersectionObserver can never ship a blank section. */
+  .reveal{ opacity:1; transform:none; }
+  .reveal-anim .reveal{ opacity:0; transform:translateY(30px); transition:opacity .95s var(--ease), transform .95s var(--ease); }
+  .reveal-anim .reveal.in{ opacity:1; transform:none }
+  .reveal-anim .reveal.d1{ transition-delay:.12s } .reveal-anim .reveal.d2{ transition-delay:.24s } .reveal-anim .reveal.d3{ transition-delay:.36s }
   /* the square photo settles in with a subtle scale instead of a slide */
-  .law-img.reveal{ transform:scale(1.05); transition:opacity 1.1s var(--ease), transform 1.1s var(--ease); }
-  .law-img.reveal.in{ transform:scale(1); }
+  .law-img.reveal{ transform:none; }
+  .reveal-anim .law-img.reveal{ transform:scale(1.05); transition:opacity 1.1s var(--ease), transform 1.1s var(--ease); }
+  .reveal-anim .law-img.reveal.in{ transform:scale(1); }
 
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; scroll-snap-type:none }
@@ -485,10 +524,30 @@
 </style>
 <script>/* members who already paid get the guide without the closing sell */
 if(new URLSearchParams(location.search).has('member')){document.documentElement.classList.add('is-member');}</script>
+<script>/* Arm scroll-reveal ONLY when we can actually animate. If this never runs (JS off/blocked),
+   content is visible by default and nothing is hidden. DISARMING (not a transition) is the safety
+   net: snapping to the visible base state can't be paused by a hidden tab the way a transition can. */
+(function(){try{
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var de=document.documentElement;
+  de.classList.add('reveal-anim');
+  var disarm=function(){ de.classList.remove('reveal-anim'); };
+  // If the tab was hidden during load (IO + transitions stall), snap everything visible on return.
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) disarm(); });
+}catch(e){}})();</script>
 </head>
 <body>
 <div id="sky"></div>
 <canvas id="stars"></canvas>
+
+<!-- mobile wayfinding: progress through the 12 laws + current sign, tap to jump (desktop rail is hidden <900px) -->
+<div class="mnav">
+  <div class="mnav-bar" aria-hidden="true"><i></i></div>
+  <button class="mnav-now" type="button" aria-expanded="false" aria-label="Jump to a sign">
+    <span class="mnav-g" aria-hidden="true"></span><span class="mnav-name"></span><span class="mnav-caret" aria-hidden="true">&#9662;</span>
+  </button>
+  <div class="mnav-tray" role="menu" aria-label="The twelve signs"></div>
+</div>
 
 <nav class="rail" id="rail" aria-label="Jump to a sign">
   <a class="home" href="#wheel" title="The Wheel">&#10022;</a>
@@ -499,7 +558,7 @@ if(new URLSearchParams(location.search).has('member')){document.documentElement.
   <div class="hero-in">
     <p class="kicker">Read this first</p>
     <h1>The 1% Manifesto</h1>
-    <p class="sub">the door to the life you keep almost living</p>
+    <p class="sub">a hundred dollars says you don't make it to the end</p>
     <p class="meta">by Eleanora</p>
   </div>
   <div class="scrollcue" aria-hidden="true"></div>
@@ -508,6 +567,7 @@ if(new URLSearchParams(location.search).has('member')){document.documentElement.
 <!-- PRELUDE I -->
 <section class="panel prelude" id="prelude-1">
   <div class="inner narrow reveal">
+    <p class="wager">Here is my problem with you. You are going to start reading this, maybe even nod along for ten to fifteen percent, and then close the tab and live exactly the way you did this morning. Reading a thing and being ready to live it are not the same, and you are not ready. You could read these words a hundred times. Until the day you can actually digest them, they stay pretty concepts that happen to other people. So I am betting against you. A hundred dollars says you do not make it to the end and mean it. <span class="dare">Prove me wrong.</span></p>
     <p class="lede">You came here for the 1%. You're thinking money. I get it.</p>
     <p>That's not the 1% I mean though. I mean the people who wake up and actually love their life. And it has nothing to do with money. Money buys you opportunities, that part is true. But you can have every opportunity on earth and still be miserable. You can have all of it and never once figure out what happy was even supposed to feel like.</p>
     <p class="beat">That is the room almost no one gets into. I'm going to show you the door to it.</p>
@@ -529,8 +589,10 @@ if(new URLSearchParams(location.search).has('member')){document.documentElement.
 <section class="panel prelude" id="prelude-2">
   <div class="inner narrow reveal">
     <p class="lede">So you found it. Congratulations. The secret to happiness, right here, no fine print.</p>
-    <p>Here it is. <strong>Happiness is a mindset.</strong> You find whatever you go looking for.</p>
-    <p class="beat">Alright. Have fun with that.</p>
+    <p class="secret-lead">Here it is.</p>
+    <p class="secret">Happiness is a mindset.</p>
+    <p class="secret-sub">You find whatever you go looking for.</p>
+    <p class="aside">Alright. Have fun with that.</p>
     <p>No. For real. I know you have heard "it is all mindset" a hundred times and rolled your eyes. So do not take my word for it. Buy a red car and suddenly red cars are everywhere. They were always there, your eyes just started letting them in. Decide someone is against you, and every little thing they do turns into proof. Two people walk out of the same room having lived two different days.</p>
     <p>That is not magic, it is just how attention works. You do not see the world as it is, you see it the way you are looking for it. Look for everything wrong and you will find it, all day. Look for one thing to be grateful for, and that shows up too. Same life, different eyes. So the life in front of you is not only happening to you. You are painting it, and you have been holding the brush the whole time. That part comes first. The work comes after, and when you do it from there, that is when things start to move.</p>
     <p>And here is what makes it click. This comes from three places that have nothing to do with each other. Cold logic, the kind you can prove on paper. The zodiac, the oldest map we have of who a person is. And the old wisdom the mystics wrote down long before any of us got here. Three roads that never once talk to each other, and they all end at the same door. When three strangers that different tell you the exact same thing, you stop calling it a coincidence. You start calling it the truth.</p>
@@ -647,8 +709,8 @@ if(new URLSearchParams(location.search).has('member')){document.documentElement.
         </a>
       </div>
       <div class="hundred">
-        <p>One more thing, since you made it. Almost no one reaches the bottom of this. You did, and that already tells me something about you.</p>
-        <p>So I am giving you a hundred dollars. Right now. The one thing I charge just to sit down with me, one to one, and start building your way out, is two hundred. For you, for making it all the way here, it is <span class="win">one hundred</span>. Half off, and you did not even have to ask.</p>
+        <p>So. The hundred dollars. I bet you would not make it here and mean it, remember. You did. I was wrong about you, and I have never been happier to lose.</p>
+        <p>This is where I am supposed to collect. Instead I am handing it to you. The one thing I charge to sit down with me, just the two of us, and start building your way out, is two hundred. For you, for proving me wrong, it is <span class="win">one hundred</span>. You won the bet, dreamer. Spend the winnings on the version of you who does not need me anymore.</p>
       </div>
       <p class="whisper">I did it this way. I am happy now, on purpose, just because I decided to be.</p>
     </div>
@@ -1002,8 +1064,8 @@ const slug = s => s.toLowerCase();
       for(const en of ents){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} }
     },{rootMargin:'0px 0px -8% 0px',threshold:0.12});
     reveals.forEach(e=>io.observe(e));
-    // safety net: never leave anything hidden
-    addEventListener('load',()=>setTimeout(()=>{ reveals.forEach(e=>e.classList.add('in')); },1800));
+    // safety net: after load, disarm so anything not yet revealed snaps visible (transition-proof).
+    addEventListener('load',()=>setTimeout(()=>{ document.documentElement.classList.remove('reveal-anim'); },1800));
   }
 
   // rail active state tracks the sign in view
@@ -1020,6 +1082,61 @@ const slug = s => s.toLowerCase();
     },{threshold:0.5});
     panels.forEach(p=>p&&sio.observe(p));
   }
+})();
+
+/* ------------------------------------------------------------------ *
+ *  MOBILE WAYFINDING — the desktop rail is hidden <900px, so give a   *
+ *  progress bar + current-sign readout across the long 12-law scroll. *
+ * ------------------------------------------------------------------ */
+(function(){
+  const mnav=document.querySelector('.mnav'); if(!mnav || typeof LAWS==='undefined') return;
+  const fill=mnav.querySelector('.mnav-bar i'), gEl=mnav.querySelector('.mnav-g'), nEl=mnav.querySelector('.mnav-name');
+  const nowBtn=mnav.querySelector('.mnav-now'), tray=mnav.querySelector('.mnav-tray');
+  const els=LAWS.map(L=>document.getElementById(L.name.toLowerCase()));
+  const first=els[0], last=els[els.length-1];
+  if(!first || !last) return;
+  let top=0, bottom=0, ticking=false, curIdx=-1;
+
+  // build the jump tray: one glyph button per sign
+  const signBtns=LAWS.map((L,i)=>{
+    const b=document.createElement('button');
+    b.type='button'; b.className='mnav-sign'; b.textContent=L.g;
+    b.setAttribute('role','menuitem'); b.setAttribute('aria-label',L.name+', law '+(i+1));
+    b.addEventListener('click',()=>{ closeTray(); if(els[i]) els[i].scrollIntoView({behavior:'smooth',block:'start'}); });
+    tray.appendChild(b); return b;
+  });
+  function openTray(){ mnav.classList.add('open'); nowBtn.setAttribute('aria-expanded','true'); }
+  function closeTray(){ mnav.classList.remove('open'); nowBtn.setAttribute('aria-expanded','false'); }
+  nowBtn.addEventListener('click',()=>{ mnav.classList.contains('open')?closeTray():openTray(); });
+  document.addEventListener('click',(e)=>{ if(mnav.classList.contains('open') && !mnav.contains(e.target)) closeTray(); });
+  document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeTray(); });
+  function measure(){
+    top=first.getBoundingClientRect().top+window.scrollY;
+    const lb=last.getBoundingClientRect();
+    bottom=lb.top+window.scrollY+lb.height;
+  }
+  function update(){
+    ticking=false;
+    if(!bottom) measure();
+    const sample=window.scrollY+window.innerHeight*0.5;
+    if(sample>=top && sample<=bottom){
+      mnav.classList.add('on');
+      let p=(sample-top)/(bottom-top); p=p<0?0:p>1?1:p;
+      fill.style.width=(p*100).toFixed(2)+'%';
+      let idx=0; for(let i=0;i<els.length;i++){ if(els[i] && sample>=els[i].getBoundingClientRect().top+window.scrollY) idx=i; }
+      if(idx!==curIdx){
+        curIdx=idx; const L=LAWS[idx]; gEl.textContent=L.g; nEl.textContent=L.name+' · '+(idx+1)+'/12';
+        signBtns.forEach((b,i)=>b.setAttribute('aria-current', i===idx?'true':'false'));
+      }
+    } else {
+      mnav.classList.remove('on');
+    }
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', ()=>{ measure(); update(); }, {passive:true});
+  addEventListener('load', ()=>{ measure(); update(); });
+  measure(); update();
 })();
 
 /* ------------------------------------------------------------------ *
