@@ -6,9 +6,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Tokens — Eleanora (mockup)</title>
-<link rel="icon" type="image/png" sizes="32x32" href="img/mark-book-arch-green-t.png" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/png" sizes="32x32" href="img/mark-book-arch-cream-t.png" media="(prefers-color-scheme: dark)">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/logo/xo-eleanora-monogram-green-gold.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="img/logo/xo-eleanora-monogram-cream-gold.png" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="img/logo/xo-eleanora-monogram-cream-gold.png">
 <style>
 @font-face{font-family:'Pinyon Script';src:url('../brand-hub/assets/fonts/PinyonScript-Regular.ttf');font-display:swap;}
 @font-face{font-family:'Allura';src:url('../brand-hub/assets/fonts/Allura-Regular.ttf');font-display:swap;}
@@ -28,7 +28,6 @@ img{display:block;width:100%;height:100%;object-fit:cover;image-orientation:from
 .script{font-family:'Allura',cursive;}
 .lab{font-size:12px;letter-spacing:3.5px;text-transform:uppercase;}
 a{color:inherit;text-decoration:none;}
-button{font-family:inherit;}
 ::selection{background:rgba(231,196,137,.28);color:var(--cream);}
 
 .grain{position:fixed;inset:0;z-index:var(--z-grain);pointer-events:none;opacity:.5;mix-blend-mode:soft-light;
@@ -48,73 +47,61 @@ nav ul{display:flex;gap:34px;list-style:none;}
 nav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream);opacity:.88;position:relative;transition:.4s;}
 nav a.on{color:var(--gold);opacity:1;}
 
-/* ---------- COMPACT HERO ---------- */
-.p-hero{position:relative;min-height:56vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:130px 24px 40px;overflow:hidden;}
-.p-hero::before{content:"";position:absolute;inset:0;z-index:0;
-  background:radial-gradient(120% 90% at 50% 12%,#25342b 0%,var(--forest-d) 52%,var(--forest-dd) 100%);}
-.p-hero>*{position:relative;z-index:1;}
-.p-hero .ey{color:var(--gold);margin-bottom:18px;opacity:.9;}
-.p-hero h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(40px,6vw,78px);line-height:1;letter-spacing:-.02em;
-  color:var(--cream);text-wrap:balance;max-width:16ch;}
-.p-hero .accent{font-family:'Allura',cursive;font-size:clamp(28px,3.6vw,44px);color:var(--gold);margin-top:12px;}
-.p-hero p{max-width:56ch;margin:22px auto 0;font-size:clamp(14.5px,1.5vw,16px);line-height:1.85;color:var(--read);}
+/* ---------- PAGE HERO (matches the other pages' short banner) ---------- */
+.g-hero{position:relative;height:70vh;min-height:520px;overflow:hidden;}
+.g-hero .bg{position:absolute;inset:0;}
+.g-hero .bg img{object-position:50% 35%;transform:scale(1.06);animation:kb 22s var(--ease) forwards;filter:saturate(.9) contrast(1.04) brightness(.83) sepia(.04);}
+@keyframes kb{to{transform:scale(1.14);}}
+.g-hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(rgba(9,18,12,.42),rgba(9,18,12,.42)),
+             radial-gradient(120% 120% at 50% 44%,transparent 34%,rgba(20,28,22,.5) 100%),
+             linear-gradient(180deg,rgba(20,28,22,.55) 0%,rgba(20,28,22,.12) 40%,rgba(20,28,22,.4) 72%,rgba(20,28,22,.96) 100%);}
+.g-hero .inner{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;color:var(--cream);padding:0 24px;}
+.g-hero .ey{color:var(--gold);margin-bottom:16px;}
+.g-hero h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(34px,4.8vw,58px);line-height:1.04;letter-spacing:-.02em;
+  text-wrap:balance;text-shadow:0 8px 48px rgba(0,0,0,.5);max-width:18ch;}
+.g-hero .accent{font-family:'Allura',cursive;font-size:clamp(26px,3.4vw,42px);color:var(--gold);margin-top:10px;
+  text-shadow:0 2px 26px rgba(231,196,137,.3);}
+.g-hero p{max-width:50ch;margin:18px auto 0;font-size:clamp(14.5px,1.5vw,16px);line-height:1.8;
+  color:#e7e2d4;text-shadow:0 2px 14px rgba(0,0,0,.5);}
+.g-hero .ey,.g-hero h1,.g-hero .accent,.g-hero p{opacity:0;transform:translateY(24px);animation:rise 1s var(--ease) forwards;}
+.g-hero .ey{animation-delay:.2s;} .g-hero h1{animation-delay:.4s;} .g-hero .accent{animation-delay:.6s;} .g-hero p{animation-delay:.78s;}
 
-/* ---------- START HERE band ---------- */
-.starthere{max-width:1080px;margin:clamp(30px,5vh,64px) auto clamp(46px,7vh,96px);padding:0 clamp(20px,4vw,40px);text-align:center;}
-.starthere .kick{color:var(--gold);margin-bottom:14px;}
-.starthere h2{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(34px,5vw,62px);letter-spacing:-.02em;
-  line-height:1;color:var(--cream);}
-.starthere .accent{font-family:'Allura',cursive;font-size:clamp(24px,3vw,38px);color:var(--gold);margin-top:8px;display:block;}
-.starthere .frame{position:relative;margin:30px auto 0;max-width:860px;aspect-ratio:1600/1069;overflow:hidden;
-  border:2px solid var(--gold);box-shadow:0 30px 70px rgba(0,0,0,.5);}
+/* ---------- START HERE (small, landscape, centered — Law Zero) ---------- */
+.starthere{max-width:1220px;margin:clamp(40px,6vh,78px) auto clamp(30px,4vh,50px);padding:0 clamp(20px,4vw,40px);text-align:center;}
+.starthere .lbl{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(22px,2.4vw,28px);letter-spacing:-.01em;
+  color:var(--cream);margin-bottom:16px;}
+.starthere .frame{position:relative;display:block;margin:0 auto;width:min(560px,88%);aspect-ratio:1600/1069;overflow:hidden;
+  border:2px solid var(--gold);box-shadow:0 22px 50px rgba(0,0,0,.42);}
 .starthere .frame::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(20,28,22,.55);pointer-events:none;}
-.starthere .frame img{transition:transform 1.6s var(--ease);}
+.starthere .frame img{transition:transform 1.3s var(--ease);}
 .starthere .frame:hover img{transform:scale(1.04);}
-.starthere .law0{font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-size:clamp(18px,2.2vw,25px);
-  line-height:1.5;color:var(--cream);max-width:30ch;margin:30px auto 0;text-wrap:balance;}
-.starthere .sub0{max-width:60ch;margin:18px auto 0;font-size:15px;line-height:1.8;color:var(--read);}
-.starthere .cta{display:inline-block;margin-top:24px;font-size:12px;letter-spacing:2.6px;text-transform:uppercase;color:var(--gold);
-  position:relative;padding-bottom:5px;}
-.starthere .cta::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold);
-  transform-origin:left;transition:transform .4s var(--ease);}
-.starthere .cta:hover::after{transform:scaleX(0);transform-origin:right;}
 
-.rule{width:min(84%,380px);height:1px;margin:0 auto clamp(40px,6vh,72px);
-  background:linear-gradient(90deg,transparent,rgba(231,196,137,.45),transparent);}
+.rule{width:min(84%,360px);height:1px;margin:0 auto clamp(34px,5vh,60px);
+  background:linear-gradient(90deg,transparent,rgba(231,196,137,.4),transparent);}
 
-/* ---------- THE 12 LAWS ---------- */
-.laws-wrap{max-width:1220px;margin:0 auto clamp(50px,8vh,110px);padding:0 clamp(20px,4vw,40px);}
-.laws-head{text-align:center;max-width:60ch;margin:0 auto clamp(34px,5vh,58px);}
-.laws-head h2{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(28px,3.4vw,44px);letter-spacing:-.02em;color:var(--cream);}
-.laws-head p{margin-top:14px;font-size:15px;line-height:1.8;color:var(--read);}
+/* ---------- THE 12 LAWS (product grid) ---------- */
+.laws-wrap{max-width:1220px;margin:0 auto clamp(40px,6vh,90px);padding:0 clamp(20px,4vw,40px);}
 .laws{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(30px,3vw,52px) clamp(20px,2vw,34px);}
 @media(max-width:1040px){.laws{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.laws{grid-template-columns:1fr;max-width:340px;margin:0 auto;}}
 
 .lawcard{display:flex;flex-direction:column;opacity:0;transform:translateY(22px);animation:rise .9s var(--ease) forwards;}
 @keyframes rise{to{opacity:1;transform:none;}}
+.lawcard .sub{font-size:11px;letter-spacing:2.6px;text-transform:uppercase;color:var(--sand);opacity:.85;margin-bottom:12px;}
 .lawcard .main{position:relative;display:block;aspect-ratio:2/3;overflow:hidden;background:var(--forest-dd);
   border:2px solid var(--gold);box-shadow:0 22px 50px rgba(0,0,0,.42);}
 .lawcard .main::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(20,28,22,.55);pointer-events:none;}
 .lawcard .main img{transition:transform 1.3s var(--ease);}
 .lawcard .main:hover img{transform:scale(1.05);}
-.lawcard .num{position:absolute;top:9px;right:12px;z-index:2;font-family:'Didot','Bodoni 72',Georgia,serif;
-  font-size:26px;color:var(--gold);opacity:.85;text-shadow:0 2px 10px rgba(0,0,0,.6);}
-.lawcard .sub{font-size:11px;letter-spacing:2.6px;text-transform:uppercase;color:var(--sand);opacity:.85;margin-top:15px;}
-.lawcard h3{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;font-size:23px;line-height:1.1;color:var(--cream);margin-top:5px;}
-.lawcard .line{font-size:13px;line-height:1.6;color:var(--read);margin-top:10px;max-width:34ch;}
-.lawcard .cta{display:inline-block;align-self:flex-start;margin-top:16px;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;
-  color:var(--gold);position:relative;padding-bottom:4px;}
-.lawcard .cta::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold);
-  transform-origin:left;transition:transform .4s var(--ease);}
-.lawcard .cta:hover::after{transform:scaleX(0);transform-origin:right;}
+.lawcard h3{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;font-size:23px;line-height:1.1;color:var(--cream);margin-top:16px;}
+.lawcard .line{font-size:13px;line-height:1.6;color:var(--read);margin-top:9px;max-width:34ch;}
 
 /* open / coming slot */
 .lawcard.open .main{display:flex;align-items:center;justify-content:center;border-style:dashed;border-color:rgba(231,196,137,.45);box-shadow:none;}
 .lawcard.open .main span{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:15px;color:var(--sand);opacity:.6;
   letter-spacing:1px;padding:0 18px;text-align:center;}
-.lawcard.open .cta{color:var(--sand);opacity:.6;pointer-events:none;}
 
 /* footer note */
 .foot-note{max-width:720px;margin:0 auto;text-align:center;padding:0 24px;}
@@ -135,7 +122,8 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
-  .lawcard{opacity:1;transform:none;}
+  .g-hero .bg img{animation:none;transform:scale(1.06);}
+  .g-hero .ey,.g-hero h1,.g-hero .accent,.g-hero p,.lawcard{opacity:1;transform:none;}
   #veil{display:none;}
 }
 </style>
@@ -148,7 +136,7 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 
 <header class="top" id="hdr">
   <a class="brand" href="index.html">
-    <img src="img/mark-book-arch-cream-t.png" alt="Eleanora" width="60" height="60" style="width:60px;height:60px;display:block;flex:0 0 auto;filter:none">
+    <img src="img/logo/xo-eleanora-badge-cream-gold.png" alt="Eleanora" width="45" height="60" style="height:60px;width:auto;display:block;flex:0 0 auto;filter:none">
     <span class="wm">Eleanora</span>
   </a>
   <nav><ul>
@@ -176,25 +164,24 @@ footer .cr .script{font-size:18px;color:var(--gold);}
   </ul></nav>
 </header>
 
-<!-- ================= COMPACT HERO ================= -->
-<section class="p-hero">
-  <div class="ey lab">For your eyes, dreamer</div>
-  <h1 class="serif">There is a manual to becoming part of the 1%. This is it.</h1>
-  <div class="accent">and you were hand-picked to find it</div>
-  <p>Twelve laws and one threshold, the whole manual to the one percent, only here it wears paint and a frame. Each piece keeps a law the chosen live by and the crowd never bothers to learn. Start at the door. Choose the one that will not let you look away, and let the rest of your life rearrange itself around it. You were not born to play the jester in someone else's court, dreamer. The crown was always yours. This is where you reach for it.</p>
+<!-- ================= HERO (short banner) ================= -->
+<section class="g-hero">
+  <div class="bg"><img src="img/posters/poster-page-banner.jpg" alt="A dense wall of dark green tropical fronds flecked with gold light"></div>
+  <div class="inner">
+    <div class="ey lab">Prints · The Tokens</div>
+    <h1 class="serif">There is a manual to becoming part of the 1%. This is it.</h1>
+    <div class="accent">and you were hand-picked to find it</div>
+    <p>Twelve laws, one for every turn of the wheel, painted and framed. Take the one that will not let you look away.</p>
+  </div>
 </section>
 
-<!-- ================= START HERE (rendered from tokens.json → threshold) ================= -->
+<!-- ================= START HERE (Law Zero) — rendered from tokens.json → threshold ================= -->
 <section class="starthere" id="starthere"></section>
 
 <div class="rule"></div>
 
-<!-- ================= THE 12 LAWS (rendered from tokens.json → laws) ================= -->
+<!-- ================= THE 12 LAWS — rendered from tokens.json → laws ================= -->
 <section class="laws-wrap">
-  <div class="laws-head">
-    <h2 class="serif">Twelve laws. One is already yours.</h2>
-    <p>Each law keeps its own room, and in every room the art that holds it. The piece on show turns with the season, so the wall is never the same wall twice. Read the law, drift through the pieces, and take the one that was always going to find you.</p>
-  </div>
   <div class="laws" id="laws"></div>
 </section>
 
@@ -204,7 +191,7 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 
 <!-- ================= FOOTER ================= -->
 <footer>
-  <div class="seal"><img src="img/mark-book-arch-cream-t.png" alt="Eleanora seal"></div>
+  <div class="seal"><img src="img/logo/xo-eleanora-badge-cream-gold.png" alt="Eleanora seal" style="width:100%;height:100%;object-fit:contain"></div>
   <div class="tag">Real plants · Real light · The art of women &amp; the wild</div>
   <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on <span class="script">x</span></div>
 </footer>
@@ -217,18 +204,14 @@ async function build(){
   try{ data = await (await fetch('tokens.json',{cache:'no-store'})).json(); }
   catch(e){ document.getElementById('laws').innerHTML='<p style="color:var(--sand);text-align:center;grid-column:1/-1">Could not load tokens.json ('+e+')</p>'; return; }
 
-  // ---- Start Here band (threshold) ----
+  // ---- Start Here (threshold): label + one landscape image only ----
   const t=data.threshold||{};
   const tp=(t.pieces||[]).find(p=>p.slug===t.featured)||(t.pieces||[])[0]||{};
   document.getElementById('starthere').innerHTML=
-    `<div class="kick lab">${t.eyebrow||''}</div>
-     <h2 class="serif">${t.name||'Start Here'}<span class="accent">${t.accent||''}</span></h2>
-     <div class="frame"><img src="${tp.img||''}" alt="${tp.alt||''}"></div>
-     <p class="law0">${t.law||''}</p>
-     <p class="sub0">${t.intro||''}</p>
-     <a class="cta" href="#">${t.cta||'Begin'}</a>`;
+    `<div class="lbl">${t.name||'Start Here'}</div>
+     <a class="frame" href="#"><img src="${tp.img||''}" alt="${tp.alt||''}"></a>`;
 
-  // ---- The 12 law rooms ----
+  // ---- The 12 law tiles: LAW N · picture · name · law line ----
   const g=document.getElementById('laws');
   (data.laws||[]).forEach((L,i)=>{
     const feat=(L.pieces||[]).find(p=>p.status==='featured')||(L.pieces||[])[0];
@@ -237,13 +220,12 @@ async function build(){
     card.className='lawcard'+(open?' open':'');
     card.style.animationDelay=(0.05+i*0.05)+'s';
     const main=open
-      ? `<div class="main"><span class="num serif">${L.roman||''}</span><span>New piece<br>landing soon</span></div>`
-      : `<a class="main" href="#"><span class="num serif">${L.roman||''}</span><img src="${feat.img}" alt="${feat.alt||L.name}"></a>`;
-    card.innerHTML=`${main}
-      <div class="sub">Law ${NUMWORD[L.n]||L.n}</div>
+      ? `<div class="main"><span>New piece<br>landing soon</span></div>`
+      : `<a class="main" href="#"><img src="${feat.img}" alt="${feat.alt||L.name}"></a>`;
+    card.innerHTML=`<div class="sub">Law ${NUMWORD[L.n]||L.n}</div>
+      ${main}
       <h3>${L.name}</h3>
-      <p class="line">${L.law}</p>
-      <a class="cta" href="#">${L.cta} →</a>`;
+      <p class="line">${L.law}</p>`;
     g.appendChild(card);
   });
 }
