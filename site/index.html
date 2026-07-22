@@ -61,7 +61,7 @@ nav a:hover::after,nav a.on::after{width:100%;}
 /* ---------- HERO (centered, monumental) ---------- */
 .hero{position:relative;height:100vh;min-height:640px;overflow:hidden;}
 .hero .bg{position:absolute;inset:0;}
-.hero .bg img{transform:scale(1.05);animation:kb 22s var(--ease) forwards;}
+.hero .bg img{transform:scale(1.05);transform-origin:51% 27.5%;animation:kb 22s var(--ease) forwards;}
 @keyframes kb{to{transform:scale(1.14);}}
 .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(120% 120% at 50% 42%,transparent 34%,rgba(20,28,22,.5) 100%),
@@ -79,7 +79,7 @@ nav a:hover::after,nav a.on::after{width:100%;}
 .hero .cue span{width:1px;height:36px;background:var(--gold);opacity:.6;animation:pulse 2.4s ease-in-out infinite;transform-origin:top;}
 @keyframes pulse{0%,100%{opacity:.15;transform:scaleY(.55);}50%{opacity:.7;transform:scaleY(1);}}
 /* ---------- HIDDEN SUN → the 1% manifesto ---------- */
-.sun-link{position:absolute;left:50.5%;top:26%;z-index:6;
+.sun-link{position:absolute;left:51%;top:27.5%;z-index:6;
   width:clamp(62px,7vw,104px);height:clamp(62px,7vw,104px);
   transform:translate(-50%,-50%);border-radius:50%;cursor:pointer;
   display:flex;align-items:flex-end;justify-content:center;
@@ -247,7 +247,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
-  .hero .bg img{animation:none;transform:scale(1.06);}
+  .hero .bg img{animation:none;transform:scale(1.06);transform-origin:51% 27.5%;}
   .hero h1,.hero .accent,.hero .sub{opacity:1;transform:none;}
   #veil{display:none;}
 }
@@ -274,7 +274,8 @@ body.anim .reveal.in{opacity:1;transform:none;}
 
 <header id="hdr">
   <a class="brand" href="#top">
-    <img src="img/logo/xo-eleanora-badge-seal-cream-gold.png" alt="Eleanora" width="51" height="72" style="height:72px;width:auto;display:block;flex:0 0 auto;filter:none">
+    <img src="img/logo/xo-eleanora-heart-seal-cream-gold.png" alt="Eleanora" width="43" height="60" style="height:60px;width:auto;display:block;flex:0 0 auto;filter:none">
+    <span class="wm">Eleanora</span>
   </a>
   <nav><ul>
     <li><a href="gallery.html">Gallery</a></li>
@@ -408,12 +409,12 @@ body.anim .reveal.in{opacity:1;transform:none;}
 
 <!-- ================= FOOTER ================= -->
 <footer id="footer">
-  <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/logo/xo-eleanora-heart-seal-cream.png" alt="Eleanora seal" style="width:100%;height:100%;object-fit:contain"></a></div>
+  <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/logo/xo-eleanora-badge-seal-cream-gold.png" alt="Eleanora seal" style="width:100%;height:100%;object-fit:contain"></a></div>
   <div class="fnav">
     <a href="gallery.html">Gallery</a><a href="prints.html">Prints</a><a href="journal.html">Journal</a><a href="portfolio.html">Portfolio</a><a href="about.html">About Me</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
   </div>
   <div class="tag">Real plants · Real light · The art of women &amp; the wild</div>
-  <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on <span class="script">x</span></div>
+  <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on <span class="script">xo</span></div>
 </footer>
 
 <script>

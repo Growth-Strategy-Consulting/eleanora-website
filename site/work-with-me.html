@@ -28,8 +28,10 @@
       their own wording before this page goes public. Never invent or overstate.
     • NO PRICES on the page (Elena, 2026-07-13 pivot). Programs described without
       numbers; investment revealed privately after a paid 30-min consult. Internal
-      menu: 1-mo $2,200 · 3-mo $5,500 · consult $200 ($100 for manifesto readers) ·
-      power hour $350 (payment page only, unadvertised) · 12-mo retainer private.
+      menu (ledger is source of truth: offers-and-pricing.md): 1-mo $2,200 · 3-mo $5,500 ·
+      consult $250 ($150 with code MANIFESTO100) · power hour $450 ($350 with code
+      MANIFESTO100) · 12-mo retainer private. The MANIFESTO100 code = $100 off either
+      paid session, for readers who finish the 1% Manifesto (applied at Shopify checkout).
       Full model in 1-Clients/Eleanora/offers/1-to-1-container-spec.md.
     • UNLINKED from site nav on purpose. Entry = TWO links only, wired once
       copy is locked: bottom of the manifesto + the About page. Single-goal
@@ -247,7 +249,7 @@ body.sent #applied{display:block;}
 footer{background:var(--forest-dd);color:var(--sand);padding:56px 40px 40px;text-align:center;position:relative;}
 footer::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(90%,420px);height:1px;
   background:linear-gradient(90deg,transparent,rgba(231,196,137,.4),transparent);}
-footer .seal{width:auto;height:68px;margin:0 auto 20px;opacity:.9;}
+footer .seal{width:auto;height:84px;margin:0 auto 20px;opacity:.9;}
 footer .seal img{filter:none;}
 footer .tag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--cream);opacity:.85;}
 footer .disc{margin:20px auto 0;max-width:52ch;font-size:12px;line-height:1.7;color:var(--sand);opacity:.82;font-style:italic;}
@@ -285,7 +287,8 @@ body.anim .reveal.in{opacity:1;transform:none;}
 
 <header class="top" id="hdr">
   <a class="brand" href="index.html" aria-label="Eleanora — home">
-    <img src="img/logo/xo-eleanora-badge-seal-cream-gold.png" alt="Eleanora" width="51" height="72" style="height:72px;width:auto;display:block;flex:0 0 auto;filter:none">
+    <img src="img/logo/xo-eleanora-heart-seal-cream-gold.png" alt="Eleanora" width="43" height="60" style="height:60px;width:auto;display:block;flex:0 0 auto;filter:none">
+    <span class="wm">Eleanora</span>
   </a>
   <a class="navcta" href="#apply">Apply</a>
 </header>
@@ -503,6 +506,12 @@ body.anim .reveal.in{opacity:1;transform:none;}
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="https://corraoelena.com/site/work-with-me.html?sent=1">
         <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <!-- Manifesto "$100 bet" payoff: readers who arrive via ?offer=manifesto100 get these enabled by the
+             script below, so the application record is tagged for the $100-off discount (ledger: consult $250 →
+             $150, Power Hour $450 → $350). Disabled = not submitted, so normal applications stay clean.
+             Names map 1:1 to the SmartSuite columns, same as the fields below. -->
+        <input type="hidden" name="Offer" id="f-offer" value="Manifesto bet winner: honor $100 off (consult $250 to $150, or Power Hour $450 to $350)" disabled>
+        <input type="hidden" name="Coupon" id="f-coupon" value="MANIFESTO100" disabled>
 
         <div class="field"><label for="f-name">Your name</label><input id="f-name" type="text" name="Name" required></div>
         <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" name="Email" required></div>
@@ -528,16 +537,26 @@ body.anim .reveal.in{opacity:1;transform:none;}
 
 <!-- ================= FOOTER (minimal — single-goal page) ================= -->
 <footer>
-  <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/logo/xo-eleanora-heart-seal-cream.png" alt="Eleanora seal" style="width:100%;height:100%;object-fit:contain"></a></div>
+  <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/logo/xo-eleanora-badge-seal-cream-gold.png" alt="Eleanora seal" style="width:100%;height:100%;object-fit:contain"></a></div>
   <div class="tag">The art of becoming who you already are</div>
   <div class="disc">Results vary from person to person. You get out what you put in. Take that as you will.</div>
-  <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on <span class="script" style="font-size:17px;color:var(--gold)">x</span></div>
+  <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on <span class="script" style="font-size:17px;color:var(--gold)">xo</span></div>
   <a class="home" href="index.html">← Back to Eleanora</a>
 </footer>
 
 <script>
 // After a successful application, FormSubmit redirects back with ?sent=1 → show the thank-you.
 if(location.search.indexOf('sent=1')>-1)document.body.classList.add('sent');
+
+// INTERIM manifesto "$100 bet" honoring (until the Shopify consult/Power Hour products + MANIFESTO100
+// code are live, at which point the manifesto CTA points straight to the Shopify discount link and this
+// can retire). Readers who finish arrive via ?offer=manifesto100; enable the pre-tagged hidden fields so
+// the application record carries the discount for Elena to honor. Disabled fields aren't submitted, so
+// normal applications stay clean. Field names map 1:1 to the SmartSuite columns.
+if(/[?&]offer=manifesto100(?:&|$)/.test(location.search)){
+  const o=document.getElementById('f-offer'), c=document.getElementById('f-coupon');
+  if(o)o.disabled=false; if(c)c.disabled=false;
+}
 const hdr=document.getElementById('hdr');
 const onScroll=()=>hdr.classList.toggle('solid',scrollY>60);
 addEventListener('scroll',onScroll,{passive:true});onScroll();
