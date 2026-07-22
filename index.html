@@ -19,11 +19,11 @@
 <meta name="twitter:title" content="Eleanora — an archive of her stories">
 <meta name="twitter:description" content="An archive of her stories. Be one of the first through the door.">
 <meta name="twitter:image" content="https://corraoelena.com/og-home.jpg">
-<link rel="icon" type="image/png" sizes="32x32" href="site/img/logo/xo-eleanora-monogram-green-gold.png" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/png" sizes="32x32" href="site/img/logo/xo-eleanora-monogram-cream-gold.png" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" sizes="512x512" href="site/img/logo/xo-eleanora-monogram-green-gold.png" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/png" sizes="512x512" href="site/img/logo/xo-eleanora-monogram-cream-gold.png" media="(prefers-color-scheme: dark)">
-<link rel="apple-touch-icon" href="site/img/logo/xo-eleanora-monogram-cream-gold.png">
+<link rel="icon" type="image/png" sizes="32x32" href="site/img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="site/img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="512x512" href="site/img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="512x512" href="site/img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="site/img/logo/xo-eleanora-heart-favicon.png">
 <style>
 @font-face{font-family:'Pinyon Script';src:url('assets/fonts/PinyonScript-Regular.ttf');font-display:swap;}
 @font-face{font-family:'Great Vibes';src:url('assets/fonts/GreatVibes-Regular.ttf');font-display:swap;}
@@ -243,17 +243,25 @@ wForm.addEventListener("submit", (e) => {
   }
   joinBtn.setAttribute("disabled","disabled");
   wsay("one moment…", false);
+  // The MailerLite endpoint returns access-control-allow-origin:*, so we can
+  // read the real {"success":true|false} instead of firing blind. Only celebrate
+  // on a true success; surface the server's rejection otherwise.
   fetch(ML_ENDPOINT, {
     method:"POST",
-    headers:{ "Content-Type":"application/x-www-form-urlencoded" },
-    body:"fields[email]=" + encodeURIComponent(email) + "&ml-submit=1&anticsrf=true",
-    mode:"no-cors"
-  }).then(() => {
-    card.classList.add("sent");
-  }).catch(() => {
-    joinBtn.removeAttribute("disabled");
-    wsay("hmm, that didn't go through. one more try?", true);
-  });
+    headers:{ "Content-Type":"application/x-www-form-urlencoded", "Accept":"application/json" },
+    body:"fields[email]=" + encodeURIComponent(email) + "&ml-submit=1&anticsrf=true"
+  }).then((r) => r.json().catch(() => ({ success:true })))
+    .then((data) => {
+      if(data && data.success === false){
+        joinBtn.removeAttribute("disabled");
+        wsay("that address didn't take. check it and try again?", true);
+      } else {
+        card.classList.add("sent");
+      }
+    }).catch(() => {
+      joinBtn.removeAttribute("disabled");
+      wsay("hmm, that didn't go through. one more try?", true);
+    });
 });
 emailEl.addEventListener("input", () => { wnote.classList.remove("show","bad"); });
 
