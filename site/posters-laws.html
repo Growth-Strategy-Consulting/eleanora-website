@@ -172,11 +172,6 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 .tk-body p:last-child{margin-bottom:0;}
 .tk-law{font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-size:clamp(17px,1.9vw,21px);
   line-height:1.5;color:var(--gold);margin-top:18px;padding-top:18px;border-top:1px solid rgba(231,196,137,.22);}
-.tk-sig{font-family:'Allura',cursive;font-size:44px;line-height:1;margin-top:20px;display:inline-block;
-  background:linear-gradient(100deg,var(--clay-l) 0%,var(--gold) 34%,#fff6df 50%,var(--gold) 66%,var(--clay-l) 100%);
-  background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
-  animation:sig-shine 5.5s linear infinite;}
-@keyframes sig-shine{to{background-position:220% center;}}
 
 /* right: poster mockup + buy */
 .tk-right{background:var(--forest-dd);padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:22px;
@@ -213,7 +208,6 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 }
 body.tk-lock{overflow:hidden;}
 @media (prefers-reduced-motion: reduce){
-  .tk-sig{animation:none;background:none;-webkit-text-fill-color:var(--gold);color:var(--gold);}
   .tk-backdrop,.tk-panel{transition:none;}
 }
 </style>
@@ -303,7 +297,6 @@ body.tk-lock{overflow:hidden;}
       <h2 class="tk-name serif" id="tkName"></h2>
       <div class="tk-body" id="tkBody"></div>
       <p class="tk-law serif" id="tkLaw"></p>
-      <div class="tk-sig">Eleanora</div>
     </div>
     <div class="tk-right">
       <div class="tk-frame" id="tkFrame"><img id="tkImg" alt=""></div>
