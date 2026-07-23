@@ -402,12 +402,22 @@ async function build(){
     card.style.animationDelay=(0.05+i*0.05)+'s';
     const main=open
       ? `<div class="main"><span>New piece<br>landing soon</span></div>`
-      : `<a class="main" href="#"><img src="${feat.img}" alt="${feat.alt||L.name}"></a>`;
+      : `<a class="main" href="#" role="button" data-law="${i}"><img src="${feat.img}" alt="${feat.alt||L.name}"></a>`;
     card.innerHTML=`<div class="sub">Law ${NUMWORD[L.n]||L.n}</div>
       ${main}
       <h3>${L.name}</h3>
       <p class="line">${L.law}</p>`;
     g.appendChild(card);
+  });
+
+  // each law tile opens the popup with that law's manual text + featured piece
+  g.querySelectorAll('.main[data-law]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      const L=data.laws[+a.dataset.law]; if(!L) return;
+      const feat=(L.pieces||[]).find(p=>p.status==='featured')||(L.pieces||[])[0]||{};
+      openToken(L, feat);
+    });
   });
 }
 build();
