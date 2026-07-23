@@ -539,6 +539,14 @@ if(new URLSearchParams(location.search).has('member')){document.documentElement.
   // If the tab was hidden during load (IO + transitions stall), snap everything visible on return.
   document.addEventListener('visibilitychange',function(){ if(!document.hidden) disarm(); });
 }catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HEP68D5V13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HEP68D5V13');
+</script>
 </head>
 <body>
 <div id="sky"></div>
