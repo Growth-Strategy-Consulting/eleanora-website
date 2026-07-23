@@ -432,6 +432,10 @@
   .hundred p{ font-family:var(--serif); font-style:italic; font-size:1.1rem; line-height:1.66; color:var(--cream); margin:0 0 14px; }
   .hundred p:last-child{ margin-bottom:0; }
   .hundred .win{ font-style:normal; color:var(--gold); }
+  .hundred .claim{ margin:26px 0 0; }
+  .hundred .code{ font-family:var(--sans); font-style:normal; font-size:.82rem; letter-spacing:.02em;
+    line-height:1.55; color:var(--cream-dim); opacity:.8; margin:14px 0 0; }
+  .hundred .code b{ color:var(--gold); font-weight:600; letter-spacing:.06em; }
   @media (max-width:560px){
     .way{ grid-template-columns:1fr; row-gap:6px; }
     .way-go, .way--feature .btn, .way-social, .way-soon{ grid-column:1; grid-row:auto; justify-self:start; margin-top:12px; }
@@ -702,7 +706,7 @@ if(new URLSearchParams(location.search).has('member')){document.documentElement.
           <span class="way-d">The whole journey, one month at a time, with me in your ear the whole way. Twelve signs, twelve laws, at whatever pace is yours. It begins with Aries, and the doors are opening soon.</span>
           <span class="way-soon">Opening soon</span>
         </div>
-        <a class="way" href="../site/work-with-me.html" data-cta="one-on-one">
+        <a class="way" href="../site/work-with-me.html?offer=manifesto100#apply" data-cta="one-on-one">
           <span class="way-t">Work with me, one on one</span>
           <span class="way-d">The closest way in, and the hardest to get. Just the two of us, walking your wheel to the version of you who does not need me anymore. Four spots a month. I do not take everyone.</span>
           <span class="way-go">work with me &rarr;</span>
@@ -710,7 +714,12 @@ if(new URLSearchParams(location.search).has('member')){document.documentElement.
       </div>
       <div class="hundred">
         <p>So. The hundred dollars. I bet you would not make it here and mean it, remember. You did. I was wrong about you, and I have never been happier to lose.</p>
-        <p>This is where I am supposed to collect. Instead I am handing it to you. The one thing I charge to sit down with me, just the two of us, and start building your way out, is two hundred. For you, for proving me wrong, it is <span class="win">one hundred</span>. You won the bet, dreamer. Spend the winnings on the version of you who does not need me anymore.</p>
+        <p>This is where I am supposed to collect. Instead I am handing it to you. The one thing I charge is to sit down with me, just the two of us, and start building your way out. Your <span class="win">hundred</span> comes right off it. You won the bet, dreamer. Spend the winnings on the version of you who does not need me anymore.</p>
+        <!-- INTERIM: points to the application (?offer=manifesto100 tags it so Elena honors the discount).
+             SWAP when the Shopify consult product + MANIFESTO100 code exist:
+             href="https://<store>.myshopify.com/discount/MANIFESTO100?redirect=/products/<consult-handle>" -->
+        <a class="btn claim" href="../site/work-with-me.html?offer=manifesto100#apply" data-cta="manifesto-100">Sit down with me &middot; $100 off</a>
+        <p class="code">Your $100 is already on the table. At checkout, the code is <b>MANIFESTO100</b>.</p>
       </div>
       <p class="whisper">I did it this way. I am happy now, on purpose, just because I decided to be.</p>
     </div>
