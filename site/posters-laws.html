@@ -352,7 +352,7 @@ function renderToken(obj,piece){
     ? obj.manual.map(p=>`<p>${esc(p)}</p>`).join('')
     : `<p>${esc(obj.intro||obj.law||'')}</p>`;
   $('tkLaw').textContent = obj.law||'';
-  const img=$('tkImg'); img.src=piece.img||''; img.alt=piece.alt||obj.name||'';
+  const img=$('tkImg'); img.src=piece.img||''; img.alt=piece.alt||obj.name||''; img.style.objectPosition=piece.pos||'50% 50%';
   const landscape = piece.orientation==='landscape';
   $('tkFrame').classList.toggle('wide', landscape);
   const sizes=(data.ladder&&data.ladder.sizes)||[];
@@ -442,7 +442,7 @@ async function build(){
     card.style.animationDelay=(0.05+i*0.05)+'s';
     const main=open
       ? `<div class="main"><span>New piece<br>landing soon</span></div>`
-      : `<a class="main" href="#" role="button" data-law="${i}"><img src="${feat.img}" alt="${feat.alt||L.name}"></a>`;
+      : `<a class="main" href="#" role="button" data-law="${i}"><img src="${feat.img}" alt="${feat.alt||L.name}" style="object-position:${feat.pos||'50% 50%'}"></a>`;
     card.innerHTML=`<div class="sub">Law ${NUMWORD[L.n]||L.n}</div>
       ${main}
       <h3>${L.name}</h3>
