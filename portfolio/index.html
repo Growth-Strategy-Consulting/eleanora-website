@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Corrao Elena — Model</title>
+<meta name="description" content="Corrao Elena — modeling portfolio.">
+<link rel="stylesheet" href="assets/portfolio.css">
+</head>
+<body data-page="index">
+
+<header class="masthead">
+  <a class="wordmark" data-wordmark href="index.html">Corrao Elena</a>
+  <nav class="mainnav" data-nav></nav>
+</header>
+
+<main>
+  <section class="soon">
+    <h1>Coming Soon</h1>
+    <div class="rule"></div>
+    <div class="peek">
+      <div class="peek-row">
+        <input id="pw" type="password" placeholder="don't be nosy" aria-label="password"
+               autocomplete="off" autocapitalize="off" spellcheck="false">
+        <button id="go" type="button">Enter</button>
+      </div>
+      <div class="err" id="err"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <nav class="fnav">
+    <a href="index.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <span class="cr">&copy; 2026 Corrao Elena</span>
+</footer>
+
+<script src="assets/portfolio.js" defer></script>
+<script>
+// Soft gate. Password is stored only as a SHA-256 hash (same word as the main
+// site: "yellowbird"). Input is normalised (trim, lowercase, spaces removed) so
+// "yellowbird" and "yellow bird" both work.
+(function () {
+  var EXPECTED = "1f76b0e5058f716c3026eeb07599915e84f2c6de83fee6d1754d55f008689cc0";
+  async function sha256(s) {
+    var buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+    return Array.from(new Uint8Array(buf)).map(function (b) {
+      return b.toString(16).padStart(2, "0");
+    }).join("");
+  }
+  var pw = document.getElementById("pw"),
+      err = document.getElementById("err"),
+      go = document.getElementById("go");
+  async function tryit() {
+    var norm = pw.value.trim().toLowerCase().replace(/\s+/g, "");
+    if (!norm) return;
+    var h = await sha256(norm);
+    if (h === EXPECTED) {
+      sessionStorage.setItem("cat_ok", "1");
+      location.href = "catalog.html";
+    } else {
+      err.textContent = "Nice try. That's not it.";
+      pw.value = "";
+      pw.focus();
+    }
+  }
+  go.addEventListener("click", tryit);
+  pw.addEventListener("keydown", function (e) { if (e.key === "Enter") tryit(); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+  "model": {
+    "name": "Corrao Elena",
+    "role": "Model",
+    "location": "",
+    "stats": {
+      "Height": "5'0\"",
+      "Bust": "34\"",
+      "Waist": "24\"",
+      "Hips": "36\"",
+      "Dress": "XS",
+      "Shoe": "6.5",
+      "Hair": "Brown",
+      "Eyes": "Green"
+    },
+    "representation": "Freelance",
+    "email": "",
+    "instagram": "",
+    "instagramUrl": ""
+  },
+  "nav": [
+    { "key": "index",   "label": "Portfolio", "href": "index.html" },
+    { "key": "about",   "label": "About",      "href": "about.html" },
+    { "key": "contact", "label": "Contact",    "href": "contact.html" }
+  ],
+  "categories": {
+    "beauty": {
+      "title": "Beauty",
+      "blurb": "Close work. Skin, light, the face.",
+      "cover": "assets/img/lace-crown-headshot.jpg",
+      "images": [
+        { "src": "assets/img/lace-crown-headshot.jpg", "alt": "Beauty portrait in a lace crown, soft studio light", "caption": "" }
+      ]
+    },
+    "fashion": {
+      "title": "Fashion",
+      "blurb": "Editorial and designer work.",
+      "cover": "assets/img/studio-red-heels.jpg",
+      "images": [
+        { "src": "assets/img/studio-red-heels.jpg", "alt": "Studio fashion editorial, red heels", "caption": "" }
+      ]
+    },
+    "lifestyle": {
+      "title": "Lifestyle",
+      "blurb": "Commercial and real-world.",
+      "cover": "assets/img/her-nyc-window.jpg",
+      "images": [
+        { "src": "assets/img/her-nyc-window.jpg", "alt": "Lifestyle portrait at a New York window", "caption": "" }
+      ]
+    },
+    "swim-travel": {
+      "title": "Swim & Travel",
+      "blurb": "Swimwear and on-location.",
+      "cover": "assets/img/her-brazil-beach-black-bikini.jpg",
+      "images": [
+        { "src": "assets/img/her-brazil-beach-black-bikini.jpg", "alt": "Swimwear on the beach in Brazil", "caption": "" }
+      ]
+    }
+  },
+  "selectedOrder": ["beauty", "fashion", "lifestyle", "swim-travel"],
+  "cover": "assets/img/hero-sunset-silhouette.jpg"
+}
