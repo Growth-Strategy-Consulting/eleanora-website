@@ -259,12 +259,7 @@ body.tk-lock{overflow:hidden;}
         <li><span class="soon">The Curio Cabinet</span></li>
       </ul>
     </li>
-    <li class="has-menu"><a href="portfolio.html">Portfolio</a>
-      <ul class="submenu">
-        <li><a href="portfolio-headshots.html">Headshots</a></li>
-        <li><a href="portfolio-nature.html">Nature</a></li>
-      </ul>
-    </li>
+    <li><a href="/portfolio/">Portfolio</a></li>
     <li><a href="about.html">About Me</a></li>
   </ul></nav>
 </header>
@@ -337,7 +332,7 @@ const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;',
 let data;
 
 /* ---- Token popup: left = poster mockup + buy, right = manual text; prev/next walks all 13 rooms ---- */
-let tkTrigger=null, tkItems=[], tkIndex=0;
+let tkTrigger=null, tkItems=[], tkIndex=0, tkBuyUrl=null;
 const tkBgEls=()=>[...document.body.children].filter(el=>el.id!=='tkModal'&&el.tagName!=='SCRIPT');
 const featOf=o=>(o.pieces||[]).find(p=>p.slug===o.featured||p.status==='featured')||(o.pieces||[])[0]||{};
 function selectSize(btn){
@@ -360,6 +355,10 @@ function renderToken(obj,piece){
   $('tkSizes').innerHTML = sizes.map((s,i)=>
     `<button class="tk-size${i===0?' on':''}" type="button" role="radio" aria-checked="${i===0}" tabindex="${i===0?0:-1}"><span class="sz">${esc(lbl(s))}</span><span class="pr">$${esc(s.price)}</span></button>`
   ).join('');
+  tkBuyUrl = piece.buyUrl || null;
+  const cart=$('tkCart'), note=$('tkNote');
+  if(tkBuyUrl){ cart.disabled=false; cart.textContent='Shop this print →'; note.innerHTML='Opens the shop to choose your size &amp; check out'; }
+  else { cart.disabled=true; cart.textContent='Add to cart'; note.textContent='Checkout opening soon'; }
   $('tkLeft')&&($('tkLeft').scrollTop=0);
   $('tkCount').textContent = tkIndex + ' / ' + (tkItems.length-1);
   $('tkPrev').disabled = tkIndex<=0;
@@ -387,6 +386,7 @@ $('tkModal').addEventListener('click',e=>{
   if(e.target.closest('[data-close]')){ closeToken(); return; }
   if(e.target.closest('#tkPrev')){ openAt(tkIndex-1); return; }
   if(e.target.closest('#tkNext')){ openAt(tkIndex+1); return; }
+  if(e.target.closest('#tkCart') && tkBuyUrl){ window.open(tkBuyUrl,'_blank','noopener'); return; }
   const sz=e.target.closest('.tk-size'); if(sz) selectSize(sz);
 });
 addEventListener('keydown',e=>{

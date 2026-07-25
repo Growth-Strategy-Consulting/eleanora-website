@@ -26,7 +26,7 @@
     });
     if (!out.length) {
       out = [['Gallery','gallery.html'],['Prints','prints.html'],['Journal','journal.html'],
-             ['Portfolio','portfolio.html'],['About Me','about.html']]
+             ['Portfolio','/portfolio/'],['About Me','about.html']]
         .map(function (p) { return { text: p[0], href: p[1] }; });
     }
     return out;
