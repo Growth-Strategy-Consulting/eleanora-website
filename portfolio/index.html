@@ -61,7 +61,7 @@
     var h = await sha256(norm);
     if (h === EXPECTED) {
       sessionStorage.setItem("cat_ok", "1");
-      location.href = "catalog.html";
+      location.href = "work.html";
     } else {
       err.textContent = "Nice try. That's not it.";
       pw.value = "";

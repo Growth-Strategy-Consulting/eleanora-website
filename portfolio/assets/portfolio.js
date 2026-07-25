@@ -46,7 +46,8 @@
     });
     var host = document.querySelector("[data-nav]");
     if (!host) return;
-    host.innerHTML = d.nav.map(function (item) {
+    var navset = document.body.getAttribute("data-navset") === "work" && d.navWork ? d.navWork : d.nav;
+    host.innerHTML = navset.map(function (item) {
       var cur = isCurrent(item) ? ' aria-current="page"' : "";
       var chev = item.children ? '<i class="chev" aria-hidden="true"></i>' : "";
       var sub = "";

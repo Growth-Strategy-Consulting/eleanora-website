@@ -19,44 +19,257 @@
     "instagramUrl": ""
   },
   "nav": [
-    { "key": "index",   "label": "Portfolio", "href": "index.html" },
-    { "key": "about",   "label": "About",      "href": "about.html" },
-    { "key": "contact", "label": "Contact",    "href": "contact.html" }
+    {
+      "key": "index",
+      "label": "Portfolio",
+      "href": "index.html"
+    },
+    {
+      "key": "about",
+      "label": "About",
+      "href": "about.html"
+    },
+    {
+      "key": "contact",
+      "label": "Contact",
+      "href": "contact.html"
+    }
   ],
   "categories": {
+    "headshots": {
+      "title": "Headshots",
+      "blurb": "Clean agency and casting faces.",
+      "cover": "catalog/thumbs/01-Headshots/glam-headshot-blue-backdrop.jpg.jpg",
+      "images": [
+        {
+          "src": "catalog/thumbs/01-Headshots/glam-headshot-blue-backdrop.jpg.jpg",
+          "alt": "glam headshot blue backdrop",
+          "caption": ""
+        }
+      ]
+    },
     "beauty": {
       "title": "Beauty",
-      "blurb": "Close work. Skin, light, the face.",
-      "cover": "assets/img/lace-crown-headshot.jpg",
+      "blurb": "Close work — skin, makeup, hair.",
+      "cover": "catalog/thumbs/02-Beauty/dark-lace-floral-crown-portrait.jpg.jpg",
       "images": [
-        { "src": "assets/img/lace-crown-headshot.jpg", "alt": "Beauty portrait in a lace crown, soft studio light", "caption": "" }
+        {
+          "src": "catalog/thumbs/02-Beauty/dark-lace-floral-crown-portrait.jpg.jpg",
+          "alt": "dark lace floral crown portrait",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/02-Beauty/elena 43-2.jpg.jpg",
+          "alt": "elena 43 2",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/02-Beauty/elena 43.jpg.jpg",
+          "alt": "elena 43",
+          "caption": ""
+        }
+      ]
+    },
+    "editorial": {
+      "title": "Editorial",
+      "blurb": "Story-driven and magazine work.",
+      "cover": "catalog/thumbs/03-Editorial/elena 14.jpg.jpg",
+      "images": [
+        {
+          "src": "catalog/thumbs/03-Editorial/elena 14.jpg.jpg",
+          "alt": "elena 14",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/03-Editorial/elena 15.jpg.jpg",
+          "alt": "elena 15",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/03-Editorial/elena 17-2.jpg.jpg",
+          "alt": "elena 17 2",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/03-Editorial/elena 17.jpg.jpg",
+          "alt": "elena 17",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/03-Editorial/elena 24.jpg.jpg",
+          "alt": "elena 24",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/03-Editorial/elena 32-2.jpg.jpg",
+          "alt": "elena 32 2",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/03-Editorial/elena 32.jpg.jpg",
+          "alt": "elena 32",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/03-Editorial/elena 35-2.jpg.jpg",
+          "alt": "elena 35 2",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/03-Editorial/elena 41.jpg.jpg",
+          "alt": "elena 41",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/03-Editorial/elena 45.jpg.jpg",
+          "alt": "elena 45",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/03-Editorial/elenacoo3-2.jpg.jpg",
+          "alt": "elenacoo3 2",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/03-Editorial/elenacoo4-2.jpg.jpg",
+          "alt": "elenacoo4 2",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/03-Editorial/studio-dark-editorial-portrait.jpg.jpg",
+          "alt": "studio dark editorial portrait",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/03-Editorial/studio-fur-coat-couch.jpg.jpg",
+          "alt": "studio fur coat couch",
+          "caption": ""
+        }
       ]
     },
     "fashion": {
       "title": "Fashion",
-      "blurb": "Editorial and designer work.",
-      "cover": "assets/img/studio-red-heels.jpg",
+      "blurb": "Designer and commercial fashion.",
+      "cover": "catalog/thumbs/04-Fashion/elena 9.jpg.jpg",
       "images": [
-        { "src": "assets/img/studio-red-heels.jpg", "alt": "Studio fashion editorial, red heels", "caption": "" }
+        {
+          "src": "catalog/thumbs/04-Fashion/elena 9.jpg.jpg",
+          "alt": "elena 9",
+          "caption": ""
+        }
+      ]
+    },
+    "swimwear": {
+      "title": "Swimwear",
+      "blurb": "Swim and on-location.",
+      "cover": "catalog/thumbs/05-Swimwear/IMG_5495-2.jpg.jpg",
+      "images": [
+        {
+          "src": "catalog/thumbs/05-Swimwear/IMG_5495-2.jpg.jpg",
+          "alt": "IMG 5495 2",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/05-Swimwear/IMG_5535-2.jpg.jpg",
+          "alt": "IMG 5535 2",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/05-Swimwear/IMG_5996-2.jpg.jpg",
+          "alt": "IMG 5996 2",
+          "caption": ""
+        }
       ]
     },
     "lifestyle": {
       "title": "Lifestyle",
       "blurb": "Commercial and real-world.",
-      "cover": "assets/img/her-nyc-window.jpg",
+      "cover": "catalog/thumbs/06-Lifestyle/466838_227533870683200_1965763366_o.jpg.jpg",
       "images": [
-        { "src": "assets/img/her-nyc-window.jpg", "alt": "Lifestyle portrait at a New York window", "caption": "" }
-      ]
-    },
-    "swim-travel": {
-      "title": "Swim & Travel",
-      "blurb": "Swimwear and on-location.",
-      "cover": "assets/img/her-brazil-beach-black-bikini.jpg",
-      "images": [
-        { "src": "assets/img/her-brazil-beach-black-bikini.jpg", "alt": "Swimwear on the beach in Brazil", "caption": "" }
+        {
+          "src": "catalog/thumbs/06-Lifestyle/466838_227533870683200_1965763366_o.jpg.jpg",
+          "alt": "466838 227533870683200 1965763366 o",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/06-Lifestyle/733871_454005161342501_2028730764_n-2.jpg.jpg",
+          "alt": "733871 454005161342501 2028730764 n 2",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/06-Lifestyle/DSC_3119.jpg.jpg",
+          "alt": "DSC 3119",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/06-Lifestyle/DSC_3445.jpg.jpg",
+          "alt": "DSC 3445",
+          "caption": ""
+        },
+        {
+          "src": "catalog/thumbs/06-Lifestyle/DSC_3832.jpg.jpg",
+          "alt": "DSC 3832",
+          "caption": ""
+        }
       ]
     }
   },
-  "selectedOrder": ["beauty", "fashion", "lifestyle", "swim-travel"],
-  "cover": "assets/img/hero-sunset-silhouette.jpg"
+  "selectedOrder": [
+    "headshots",
+    "beauty",
+    "editorial",
+    "fashion",
+    "swimwear",
+    "lifestyle"
+  ],
+  "cover": "assets/img/hero-sunset-silhouette.jpg",
+  "navWork": [
+    {
+      "key": "work",
+      "label": "Portfolio",
+      "href": "work.html",
+      "children": [
+        {
+          "key": "headshots",
+          "label": "Headshots",
+          "href": "headshots.html"
+        },
+        {
+          "key": "beauty",
+          "label": "Beauty",
+          "href": "beauty.html"
+        },
+        {
+          "key": "editorial",
+          "label": "Editorial",
+          "href": "editorial.html"
+        },
+        {
+          "key": "fashion",
+          "label": "Fashion",
+          "href": "fashion.html"
+        },
+        {
+          "key": "swimwear",
+          "label": "Swimwear",
+          "href": "swimwear.html"
+        },
+        {
+          "key": "lifestyle",
+          "label": "Lifestyle",
+          "href": "lifestyle.html"
+        }
+      ]
+    },
+    {
+      "key": "about",
+      "label": "About",
+      "href": "about.html"
+    },
+    {
+      "key": "contact",
+      "label": "Contact",
+      "href": "contact.html"
+    }
+  ]
 }
