@@ -223,6 +223,46 @@ body.tk-lock{overflow:hidden;}
 @media (prefers-reduced-motion: reduce){
   .tk-backdrop,.tk-panel{transition:none;}
 }
+/* ---------- CART ---------- */
+.cart-fab{position:fixed;right:22px;bottom:22px;z-index:60;width:56px;height:56px;border-radius:50%;
+  background:var(--forest-dd);color:var(--gold);border:1px solid var(--gold);cursor:pointer;
+  display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .3s var(--ease),background .3s;}
+.cart-fab:hover{transform:translateY(-2px);background:var(--forest-d);}
+.cart-fab svg{filter:none;}
+.cart-count{position:absolute;top:-5px;right:-5px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;
+  background:var(--gold);color:var(--forest-dd);font:600 12px/22px 'Helvetica Neue',Arial,sans-serif;
+  display:none;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.35);}
+.cart-drawer{position:fixed;inset:0;z-index:95;visibility:hidden;pointer-events:none;}
+.cart-drawer.open{visibility:visible;pointer-events:auto;}
+.cart-scrim{position:absolute;inset:0;background:rgba(10,16,12,.62);opacity:0;transition:opacity .4s var(--ease);}
+.cart-drawer.open .cart-scrim{opacity:1;}
+.cart-panel{position:absolute;top:0;right:0;height:100%;width:min(420px,92vw);background:var(--forest-d);
+  border-left:1px solid rgba(231,196,137,.25);display:flex;flex-direction:column;
+  transform:translateX(100%);transition:transform .42s var(--ease);box-shadow:-20px 0 60px rgba(0,0,0,.45);}
+.cart-drawer.open .cart-panel{transform:none;}
+.cart-head{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;
+  border-bottom:1px solid rgba(231,196,137,.18);font-family:'Didot','Bodoni 72',Georgia,serif;font-size:22px;color:var(--cream);}
+.cart-x{background:none;border:none;color:var(--sand);font-size:28px;line-height:1;cursor:pointer;}
+.cart-body{flex:1;overflow-y:auto;padding:6px 24px;}
+.cart-empty{color:var(--sand);text-align:center;padding:60px 0;opacity:.8;}
+.cart-line{display:grid;grid-template-columns:56px 1fr auto;gap:14px;padding:18px 0;border-bottom:1px solid rgba(231,196,137,.12);align-items:start;}
+.cart-line img{width:56px;height:74px;object-fit:cover;border:1px solid rgba(231,196,137,.3);filter:none;}
+.cart-t{color:var(--cream);font-size:14.5px;line-height:1.3;}
+.cart-s{color:var(--sand);font-size:12px;margin-top:3px;opacity:.85;}
+.cart-q{display:flex;align-items:center;gap:8px;margin-top:10px;}
+.qbtn{width:24px;height:24px;border:1px solid rgba(231,196,137,.4);background:none;color:var(--gold);cursor:pointer;border-radius:4px;line-height:1;font-size:15px;}
+.qbtn:hover{background:rgba(231,196,137,.12);}
+.cart-q span{min-width:18px;text-align:center;color:var(--cream);font-size:13px;}
+.cart-rm{margin-left:6px;background:none;border:none;color:var(--sand);font-size:11px;text-decoration:underline;cursor:pointer;opacity:.7;}
+.cart-rm:hover{opacity:1;}
+.cart-p{color:var(--gold);font-size:14px;white-space:nowrap;}
+.cart-foot{padding:20px 24px;border-top:1px solid rgba(231,196,137,.2);background:var(--forest-dd);}
+.cart-sub{display:flex;justify-content:space-between;color:var(--cream);font-size:16px;margin-bottom:4px;}
+.cart-ship{color:var(--sand);font-size:11.5px;opacity:.8;margin-bottom:14px;}
+.cart-checkout{width:100%;padding:14px;background:var(--gold);color:var(--forest-dd);border:none;border-radius:8px;
+  font:600 13px/1 'Helvetica Neue',Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .3s;}
+.cart-checkout:hover{background:var(--clay-l);}
+.cart-secure{text-align:center;color:var(--sand);font-size:11px;opacity:.7;margin-top:10px;}
 </style>
 <link rel="stylesheet" href="nav.css">
 <!-- Google tag (gtag.js) -->
@@ -325,6 +365,25 @@ body.tk-lock{overflow:hidden;}
   </div>
 </div>
 
+<!-- ================= CART ================= -->
+<button id="cartFab" class="cart-fab" type="button" aria-label="Open cart">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.3 12.3a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg>
+  <span id="cartCount" class="cart-count">0</span>
+</button>
+<div id="cartDrawer" class="cart-drawer" aria-hidden="true">
+  <div class="cart-scrim" data-cart-close></div>
+  <aside class="cart-panel" role="dialog" aria-modal="true" aria-label="Your cart">
+    <div class="cart-head"><span>Your Cart</span><button class="cart-x" data-cart-close aria-label="Close cart" type="button">&times;</button></div>
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-foot" id="cartFoot">
+      <div class="cart-sub"><span>Subtotal</span><span id="cartTotal">$0</span></div>
+      <div class="cart-ship">Shipping calculated at checkout</div>
+      <button class="cart-checkout" id="cartCheckout" type="button">Checkout &rarr;</button>
+      <div class="cart-secure">Secure checkout on Shopify</div>
+    </div>
+  </aside>
+</div>
+
 <script>
 const NUMWORD={1:'One',2:'Two',3:'Three',4:'Four',5:'Five',6:'Six',7:'Seven',8:'Eight',9:'Nine',10:'Ten',11:'Eleven',12:'Twelve'};
 const $=id=>document.getElementById(id);
@@ -332,7 +391,7 @@ const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;',
 let data;
 
 /* ---- Token popup: left = poster mockup + buy, right = manual text; prev/next walks all 13 rooms ---- */
-let tkTrigger=null, tkItems=[], tkIndex=0, tkBuyUrl=null;
+let tkTrigger=null, tkItems=[], tkIndex=0, tkPiece=null;
 const tkBgEls=()=>[...document.body.children].filter(el=>el.id!=='tkModal'&&el.tagName!=='SCRIPT');
 const featOf=o=>(o.pieces||[]).find(p=>p.slug===o.featured||p.status==='featured')||(o.pieces||[])[0]||{};
 function selectSize(btn){
@@ -355,10 +414,12 @@ function renderToken(obj,piece){
   $('tkSizes').innerHTML = sizes.map((s,i)=>
     `<button class="tk-size${i===0?' on':''}" type="button" role="radio" aria-checked="${i===0}" tabindex="${i===0?0:-1}"><span class="sz">${esc(lbl(s))}</span><span class="pr">$${esc(s.price)}</span></button>`
   ).join('');
-  tkBuyUrl = piece.buyUrl || null;
+  tkPiece = piece;
   const cart=$('tkCart'), note=$('tkNote');
-  if(tkBuyUrl){ cart.disabled=false; cart.textContent='Shop this print →'; note.innerHTML='Opens the shop to choose your size &amp; check out'; }
-  else { cart.disabled=true; cart.textContent='Add to cart'; note.textContent='Checkout opening soon'; }
+  const buyable = !!(piece.variants);
+  cart.disabled = !buyable;
+  cart.textContent = 'Add to cart';
+  note.innerHTML = buyable ? 'Archival matte &nbsp;·&nbsp; ships from the US' : 'Coming soon';
   $('tkLeft')&&($('tkLeft').scrollTop=0);
   $('tkCount').textContent = tkIndex + ' / ' + (tkItems.length-1);
   $('tkPrev').disabled = tkIndex<=0;
@@ -386,7 +447,7 @@ $('tkModal').addEventListener('click',e=>{
   if(e.target.closest('[data-close]')){ closeToken(); return; }
   if(e.target.closest('#tkPrev')){ openAt(tkIndex-1); return; }
   if(e.target.closest('#tkNext')){ openAt(tkIndex+1); return; }
-  if(e.target.closest('#tkCart') && tkBuyUrl){ window.open(tkBuyUrl,'_blank','noopener'); return; }
+  if(e.target.closest('#tkCart')){ addSelectedToCart(); return; }
   const sz=e.target.closest('.tk-size'); if(sz) selectSize(sz);
 });
 addEventListener('keydown',e=>{
@@ -459,6 +520,75 @@ async function build(){
   });
 }
 build();
+
+/* ============ CART (on-site drawer → Shopify checkout permalink) ============ */
+const CART_KEY='eleanora_cart';
+const SHOP='https://eleanora-travels.myshopify.com';
+const getCart=()=>{ try{return JSON.parse(localStorage.getItem(CART_KEY))||[];}catch(e){return[];} };
+const setCart=c=>{ localStorage.setItem(CART_KEY,JSON.stringify(c)); renderCart(); };
+const cartCount=()=>getCart().reduce((n,x)=>n+x.qty,0);
+const cartTotal=()=>getCart().reduce((n,x)=>n+x.price*x.qty,0);
+function addToCart(item){
+  const c=getCart(); const ex=c.find(x=>x.variantId===item.variantId);
+  if(ex) ex.qty++; else c.push({...item,qty:1});
+  setCart(c);
+}
+function setQty(vid,q){
+  let c=getCart(); const it=c.find(x=>x.variantId===vid); if(!it) return;
+  it.qty=q; if(it.qty<1) c=c.filter(x=>x.variantId!==vid); setCart(c);
+}
+function selectedTier(){
+  const btns=[...$('tkSizes').querySelectorAll('.tk-size')];
+  const i=Math.max(0, btns.findIndex(b=>b.classList.contains('on')));
+  const sizes=(data.ladder&&data.ladder.sizes)||[];
+  return (sizes[i]&&sizes[i].tier)||'M';
+}
+function addSelectedToCart(){
+  if(!tkPiece||!tkPiece.variants) return;
+  const v=tkPiece.variants[selectedTier()]; if(!v) return;
+  const obj=tkItems[tkIndex]||{};
+  addToCart({ variantId:v.id, slug:tkPiece.slug, name:obj.name||tkPiece.slug, size:v.label, price:v.price, img:tkPiece.img });
+  openCart();
+}
+function renderCart(){
+  const c=getCart(), n=cartCount(), badge=$('cartCount');
+  if(badge){ badge.textContent=n; badge.style.display=n?'grid':'none'; }
+  const body=$('cartBody'), foot=$('cartFoot'); if(!body) return;
+  if(!c.length){ body.innerHTML='<p class="cart-empty">Your cart is empty.</p>'; if(foot)foot.style.display='none'; return; }
+  if(foot)foot.style.display='block';
+  body.innerHTML=c.map(it=>`
+    <div class="cart-line">
+      <img src="${it.img}" alt="">
+      <div class="cart-meta">
+        <div class="cart-t">${esc(it.name)}</div>
+        <div class="cart-s">${esc(it.size)}</div>
+        <div class="cart-q">
+          <button class="qbtn" data-dec="${it.variantId}" aria-label="Decrease quantity">–</button>
+          <span>${it.qty}</span>
+          <button class="qbtn" data-inc="${it.variantId}" aria-label="Increase quantity">+</button>
+          <button class="cart-rm" data-rm="${it.variantId}" type="button">Remove</button>
+        </div>
+      </div>
+      <div class="cart-p">$${(it.price*it.qty).toFixed(0)}</div>
+    </div>`).join('');
+  $('cartTotal').textContent='$'+cartTotal().toFixed(0);
+}
+function openCart(){ const d=$('cartDrawer'); d.classList.add('open'); d.setAttribute('aria-hidden','false'); document.body.classList.add('tk-lock'); }
+function closeCart(){ const d=$('cartDrawer'); d.classList.remove('open'); d.setAttribute('aria-hidden','true'); if(!$('tkModal').classList.contains('open'))document.body.classList.remove('tk-lock'); }
+function checkout(){
+  const c=getCart(); if(!c.length) return;
+  location.href = SHOP + '/cart/' + c.map(x=>x.variantId+':'+x.qty).join(',');
+}
+$('cartFab').addEventListener('click',openCart);
+$('cartDrawer').addEventListener('click',e=>{
+  if(e.target.closest('[data-cart-close]')){ closeCart(); return; }
+  const inc=e.target.closest('[data-inc]'); if(inc){ const v=+inc.dataset.inc; const it=getCart().find(x=>x.variantId===v); setQty(v,(it?it.qty:0)+1); return; }
+  const dec=e.target.closest('[data-dec]'); if(dec){ const v=+dec.dataset.dec; const it=getCart().find(x=>x.variantId===v); setQty(v,(it?it.qty:1)-1); return; }
+  const rm=e.target.closest('[data-rm]'); if(rm){ setQty(+rm.dataset.rm,0); return; }
+  if(e.target.closest('#cartCheckout')){ checkout(); return; }
+});
+addEventListener('keydown',e=>{ if(e.key==='Escape'&&$('cartDrawer').classList.contains('open'))closeCart(); });
+renderCart();
 
 // header solid on scroll
 const hdr=document.getElementById('hdr');
