@@ -6,7 +6,7 @@
 try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('veil-on');}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eleanora — an archive of her stories</title>
+<title>Eleanora — leave the door open, and the light on</title>
 <link rel="icon" type="image/png" sizes="32x32" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/png" sizes="32x32" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" sizes="512x512" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: light)">
@@ -60,44 +60,11 @@ nav a:hover::after,nav a.on::after{width:100%;}
 
 /* ---------- HERO (centered, monumental) ---------- */
 .hero{position:relative;height:100vh;min-height:640px;overflow:hidden;}
-.hero .bg{position:absolute;inset:0;}
-.hero .bg img{transform:scale(1.05);transform-origin:51% 27.5%;animation:kb 22s var(--ease) forwards;}
 @keyframes kb{to{transform:scale(1.14);}}
 .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(120% 120% at 50% 42%,transparent 34%,rgba(20,28,22,.5) 100%),
              linear-gradient(180deg,rgba(20,28,22,.5) 0%,rgba(20,28,22,.06) 30%,rgba(20,28,22,.12) 58%,rgba(20,28,22,.88) 100%);}
 #sparkle{position:absolute;inset:0;z-index:2;pointer-events:none;}
-.hero .inner{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;color:var(--cream);padding:0 24px;}
-.hero h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(52px,9vw,124px);letter-spacing:clamp(8px,1.5vw,20px);
-  line-height:.98;padding-left:.14em;text-shadow:0 8px 48px rgba(0,0,0,.4);}
-.hero .accent{font-family:'Allura',cursive;font-size:clamp(34px,5vw,60px);color:var(--gold);margin-top:8px;
-  text-shadow:0 2px 26px rgba(231,196,137,.3);}
-.hero .sub{margin-top:26px;font-size:13px;letter-spacing:4px;text-transform:uppercase;opacity:.9;}
-.hero .cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;color:var(--cream);
-  font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:.85;display:flex;flex-direction:column;align-items:center;gap:10px;}
-.hero .cue span{width:1px;height:36px;background:var(--gold);opacity:.6;animation:pulse 2.4s ease-in-out infinite;transform-origin:top;}
-@keyframes pulse{0%,100%{opacity:.15;transform:scaleY(.55);}50%{opacity:.7;transform:scaleY(1);}}
-/* ---------- HIDDEN SUN → the 1% manifesto ---------- */
-.sun-link{position:absolute;left:51%;top:27.5%;z-index:6;
-  width:clamp(62px,7vw,104px);height:clamp(62px,7vw,104px);
-  transform:translate(-50%,-50%);border-radius:50%;cursor:pointer;
-  display:flex;align-items:flex-end;justify-content:center;
-  -webkit-tap-highlight-color:transparent;}
-.sun-link::before{content:"";position:absolute;inset:-26%;border-radius:50%;
-  background:radial-gradient(circle,rgba(246,225,168,.62) 0%,rgba(231,196,137,.28) 40%,rgba(231,196,137,0) 72%);
-  opacity:0;transform:scale(.55);
-  transition:opacity .6s var(--ease),transform .7s var(--ease);}
-.sun-link:hover::before,.sun-link:focus-visible::before{opacity:1;transform:scale(1);}
-.sun-link:focus-visible{outline:none;}
-.sun-label{position:absolute;bottom:calc(100% + 14px);left:50%;transform:translateX(-50%);
-  font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);
-  white-space:nowrap;text-shadow:0 1px 14px rgba(0,0,0,.7);
-  opacity:0;transition:opacity .5s var(--ease) .08s;pointer-events:none;}
-.sun-link:hover .sun-label,.sun-link:focus-visible .sun-label{opacity:.9;}
-/* hero load-in */
-.hero h1,.hero .accent,.hero .sub{opacity:0;transform:translateY(26px);animation:rise 1s var(--ease) forwards;}
-.hero h1{animation-delay:.3s;} .hero .accent{animation-delay:.56s;} .hero .sub{animation-delay:.78s;}
 @keyframes rise{to{opacity:1;transform:none;}}
 
 /* ---------- FIELD GLOWS ---------- */
@@ -105,26 +72,6 @@ nav a:hover::after,nav a.on::after{width:100%;}
   radial-gradient(760px 420px at 12% 8%,rgba(147,162,131,.14),transparent 70%),
   radial-gradient(680px 460px at 96% 96%,rgba(184,127,81,.16),transparent 72%),
   var(--forest-d);}
-.glow-b{background:
-  radial-gradient(720px 440px at 90% 6%,rgba(206,154,107,.15),transparent 70%),
-  radial-gradient(640px 460px at 4% 92%,rgba(147,162,131,.13),transparent 72%),
-  var(--forest-d);}
-
-/* ---------- FILM (full-bleed cinematic moment) ---------- */
-.film{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;
-  padding:clamp(90px,12vh,150px) clamp(24px,6vw,86px);}
-.film .bg{position:absolute;inset:0;z-index:0;will-change:transform;}
-.film .bg img{transform:scale(1.12);}
-.film .scrim{position:absolute;inset:0;z-index:1;}
-.film .wrap{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;display:flex;}
-.film .plate{max-width:640px;padding:clamp(30px,4vw,54px);margin:0 auto;text-align:center;
-  background:radial-gradient(130% 130% at 50% 50%,rgba(16,23,18,.86) 0%,rgba(16,23,18,.5) 46%,rgba(16,23,18,0) 82%);}
-.film h2{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,4vw,56px);line-height:1.12;color:var(--cream);
-  letter-spacing:-.015em;text-shadow:0 6px 40px rgba(0,0,0,.5);text-wrap:balance;}
-.film h2 em{color:var(--gold);font-style:italic;}
-.film .pull{font-family:'Allura',cursive;font-size:clamp(30px,4vw,50px);color:var(--gold);margin-top:18px;line-height:1;}
-.scrim-c{background:radial-gradient(ellipse 90% 80% at 50% 50%,rgba(20,28,22,.34),rgba(20,28,22,.72)),
-  linear-gradient(0deg,rgba(20,28,22,.55),transparent 62%);}
 
 /* ---------- SECTION HEAD ---------- */
 .sec-head{text-align:center;padding:clamp(78px,11vh,110px) 24px 42px;}
@@ -133,45 +80,8 @@ nav a:hover::after,nav a.on::after{width:100%;}
   letter-spacing:-.01em;text-wrap:balance;}
 .sec-head .rule{width:54px;height:1px;background:var(--gold);margin:20px auto 0;}
 
-/* ---------- GALLERY (bold editorial mosaic) ---------- */
-.mosaic{max-width:1240px;margin:0 auto;padding:0 clamp(24px,4vw,40px);
-  display:grid;grid-template-columns:1.5fr 1fr;gap:22px;}
-.mosaic figure{position:relative;overflow:hidden;background:var(--forest-dd);box-shadow:0 26px 64px rgba(0,0,0,.42);}
-.mosaic figure::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.22);pointer-events:none;z-index:3;}
-.mosaic figure img{transition:transform 1.3s var(--ease);}
-.mosaic figure:hover img{transform:scale(1.06);}
-.mosaic .feature,.mosaic .side{height:clamp(400px,56vh,600px);}
-.mosaic .band{grid-column:1/-1;height:clamp(280px,42vh,460px);}
-.mosaic figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px;color:var(--cream);z-index:2;
-  background:linear-gradient(0deg,rgba(16,23,18,.82),transparent);
-  opacity:0;transform:translateY(12px);transition:.55s var(--ease);}
-.mosaic figure:hover figcaption{opacity:1;transform:none;}
-.mosaic figcaption .t{font-family:'Didot',Georgia,serif;font-size:clamp(22px,2vw,28px);letter-spacing:.5px;}
-.mosaic figcaption .s{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-top:4px;}
+/* ---------- BUTTON / CTA ---------- */
 .gallery-cta{text-align:center;padding:44px 24px 0;}
-
-/* ---------- COLLECTIONS (cinematic photo tiles per place) ---------- */
-.collections{position:relative;padding-bottom:clamp(90px,12vh,120px);}
-.coll-grid{max-width:1240px;margin:0 auto;padding:0 clamp(24px,4vw,40px);
-  display:grid;grid-template-columns:repeat(6,1fr);gap:18px;}
-.coll-tile{position:relative;display:block;overflow:hidden;height:clamp(280px,34vh,380px);
-  background:var(--forest-dd);box-shadow:0 22px 54px rgba(0,0,0,.42);}
-.coll-tile::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.2);pointer-events:none;z-index:3;}
-.coll-tile img{transition:transform 1.3s var(--ease);}
-.coll-tile:hover img{transform:scale(1.07);}
-.coll-tile .t-scrim{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(0deg,rgba(16,23,18,.86) 0%,rgba(16,23,18,.12) 52%,rgba(16,23,18,.28) 100%);
-  transition:background .5s var(--ease);}
-.coll-tile:hover .t-scrim{background:linear-gradient(0deg,rgba(16,23,18,.8) 0%,rgba(16,23,18,.05) 58%,rgba(16,23,18,.2) 100%);}
-.coll-tile .t-label{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:26px;text-align:center;}
-.coll-tile .t-eye{font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--sand);opacity:.75;}
-.coll-tile .t-place{display:block;font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(24px,2.2vw,32px);
-  color:var(--cream);letter-spacing:.5px;margin-top:6px;transition:color .4s var(--ease);}
-.coll-tile:hover .t-place{color:var(--gold);}
-.coll-tile.trio{grid-column:span 2;}
-.coll-tile.full{grid-column:1/-1;height:clamp(240px,30vh,340px);}
-.coll-cap{text-align:center;margin-top:40px;font-size:12px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--sand);opacity:.7;}
 
 /* ---------- JOURNAL TEASER ---------- */
 .jteaser{position:relative;color:var(--cream);text-align:center;padding:clamp(84px,11vh,104px) 24px;}
@@ -191,24 +101,6 @@ nav a:hover::after,nav a.on::after{width:100%;}
 .btn{display:inline-block;margin-top:40px;border:1px solid var(--gold);color:var(--cream);
   padding:17px 46px;font-size:12px;letter-spacing:3px;text-transform:uppercase;transition:.4s var(--ease);}
 .btn:hover{background:var(--gold);color:var(--forest-dd);}
-
-/* ---------- ABOUT (split, matches About page) ---------- */
-.split{position:relative;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
-.split .ph{position:relative;min-height:min(84vh,700px);overflow:hidden;}
-.split .ph::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 90px 10px rgba(20,28,22,.5);}
-.split .ph img{transform:scale(1.04);}
-.split .body{display:flex;flex-direction:column;justify-content:center;padding:clamp(56px,7vw,100px) clamp(30px,6vw,84px);}
-.split .chap{margin-bottom:18px;}
-.split h2{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(28px,3.4vw,46px);line-height:1.16;
-  color:var(--cream);letter-spacing:-.01em;text-wrap:balance;}
-.split h2 em{color:var(--gold);}
-.split p{margin-top:22px;font-size:16px;line-height:2;color:var(--body);max-width:46ch;}
-.split .pull{font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-size:clamp(20px,2.1vw,26px);
-  color:var(--gold);line-height:1.4;margin:30px 0 4px;max-width:26ch;}
-.split .pull::before{content:"";display:block;width:46px;height:1px;background:var(--clay-l);opacity:.7;margin-bottom:22px;}
-.split .more{margin-top:28px;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);
-  border-bottom:1px solid var(--gold);padding-bottom:5px;width:fit-content;transition:.3s var(--ease);}
-.split .more:hover{color:var(--cream);border-color:var(--cream);}
 
 /* ---------- FOOTER ---------- */
 footer{background:var(--forest-dd);color:var(--sand);padding:72px 40px 36px;text-align:center;position:relative;}
@@ -230,42 +122,198 @@ body.anim .reveal.in{opacity:1;transform:none;}
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:900px){
   header{padding:16px 22px;} header.solid{padding:12px 22px;} nav ul{display:none;}
-  .film{min-height:auto;padding:96px 24px;}
-  .mosaic{grid-template-columns:1fr;}
-  .mosaic .feature,.mosaic .side{height:66vh;max-height:560px;}
-  .coll-grid{grid-template-columns:repeat(2,1fr);}
-  .coll-tile.trio{grid-column:span 1;}
-  .coll-tile.full{grid-column:1/-1;}
-  .coll-tile{height:44vw;min-height:230px;}
-  .jteaser .jt-grid{grid-template-columns:1fr;max-width:420px;}
-  .split{grid-template-columns:1fr;} .split .ph{min-height:70vh;max-height:600px;}
-}
-@media(max-width:520px){
-  .hero h1{font-size:clamp(44px,13vw,66px);}
-  .coll-grid{grid-template-columns:1fr;} .coll-tile{height:64vw;}
+  .jteaser .jt-grid{grid-template-columns:1fr;}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
-  .hero .bg img{animation:none;transform:scale(1.06);transform-origin:51% 27.5%;}
-  .hero h1,.hero .accent,.hero .sub{opacity:1;transform:none;}
   #veil{display:none;}
 }
 
-/* homepage prints teaser */
-.prints-intro{max-width:640px;margin:0 auto 42px;text-align:center;color:var(--body);
-  font-size:16px;line-height:1.75;padding:0 24px;}
-.prints-grid.home{display:flex;flex-wrap:wrap;justify-content:center;gap:34px;
-  max-width:1120px;margin:0 auto;padding:0 24px;}
-.prints-grid.home .pcard{flex:0 1 300px;text-align:center;}
-.prints-grid.home .pcard .ph{display:block;aspect-ratio:3/4;overflow:hidden;border-radius:2px;margin-bottom:16px;}
-.prints-grid.home .pcard h3{font-size:23px;margin-bottom:6px;color:var(--cream);}
-.prints-grid.home .pcard .meta{font-size:12px;letter-spacing:1.6px;color:var(--sand);opacity:.7;margin-bottom:10px;}
-.prints-grid.home .pcard .cta{display:block;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold);}
-.prints-grid.home .pcard .cta.soon{color:var(--sand);opacity:.6;margin-top:4px;}
-@media(max-width:760px){.prints-grid.home .pcard{flex:0 1 46%;}}
 </style>
 <link rel="stylesheet" href="nav.css">
+<style id="redesign">
+/* ===== REDESIGN ADDITIONS (front-door / follower-first) ===== */
+
+/* --- HERO: editorial split. Text on a calm panel, photo in its own frame. --- */
+.hero.hero-split{display:grid;grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);
+  height:100vh;min-height:660px;overflow:hidden;}
+.hero.hero-split::after{display:none;}            /* kill the full-bleed vignette; not needed on a split */
+
+/* solid banner — nav links were illegible over the photo */
+header{background:var(--forest-dd);box-shadow:0 1px 0 rgba(0,0,0,.35);}
+header.solid{background:var(--forest-dd);}
+
+/* HIDDEN MANIFESTO ENTRANCE — a single buddha head her gaze lands on */
+.head-link{position:absolute;z-index:4;right:18%;top:46%;transform:translate(50%,-50%);
+  width:clamp(44px,4.6vw,70px);height:clamp(54px,5.6vw,86px);border-radius:46% 46% 44% 44%;cursor:pointer;
+  display:flex;align-items:flex-end;justify-content:center;-webkit-tap-highlight-color:transparent;}
+.head-link::before{content:"";position:absolute;inset:-26%;border-radius:50%;
+  background:radial-gradient(circle,rgba(246,225,168,.62),rgba(231,196,137,.26) 42%,transparent 72%);
+  opacity:0;transform:scale(.6);transition:opacity .6s var(--ease),transform .7s var(--ease);}
+.head-link:hover::before,.head-link:focus-visible::before{opacity:1;transform:scale(1);}
+.head-link:focus-visible{outline:none;}
+.head-label{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);
+  font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);white-space:nowrap;
+  text-shadow:0 1px 14px rgba(0,0,0,.85);opacity:0;transition:opacity .5s var(--ease) .08s;pointer-events:none;}
+.head-link:hover .head-label,.head-link:focus-visible .head-label{opacity:.95;}
+@media(max-width:860px){.head-link{top:32%;right:23%;}}
+
+/* left: the calm text panel */
+.hs-panel{position:relative;display:flex;align-items:center;
+  background:
+    radial-gradient(680px 520px at 18% 8%,rgba(147,162,131,.12),transparent 70%),
+    radial-gradient(560px 480px at 96% 100%,rgba(184,127,81,.14),transparent 72%),
+    linear-gradient(160deg,var(--forest-d) 0%,var(--forest-dd) 100%);}
+.hs-inner{width:100%;max-width:520px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(30px,5vw,68px);}
+.hero-split .hs-head{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,3.3vw,46px);line-height:1.1;
+  letter-spacing:-.015em;color:var(--cream);text-wrap:balance;margin:0 0 24px;padding:0;
+  opacity:0;transform:translateY(24px);animation:rise 1s var(--ease) .5s forwards;}
+.hero-split .hs-head em{font-style:italic;color:var(--gold);}
+.hs-sub{font-size:16px;line-height:1.85;color:var(--body);max-width:40ch;margin-bottom:38px;
+  opacity:0;transform:translateY(22px);animation:rise 1s var(--ease) .68s forwards;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;
+  opacity:0;transform:translateY(22px);animation:rise 1s var(--ease) .84s forwards;}
+.hbtn{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
+  padding:16px 32px;transition:.4s var(--ease);border:1px solid var(--gold);}
+.hbtn.primary{background:var(--gold);color:var(--forest-dd);box-shadow:0 14px 40px rgba(231,196,137,.22);}
+.hbtn.primary:hover{background:var(--cream);border-color:var(--cream);transform:translateY(-2px);}
+.hbtn.ghost{color:var(--cream);border-color:rgba(246,241,231,.4);}
+.hbtn.ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+/* live dispatch chip — inline in the panel, static */
+.dispatch{display:inline-flex;align-items:center;gap:11px;padding:8px 16px 8px 14px;border-radius:100px;
+  background:rgba(246,241,231,.04);border:1px solid rgba(231,196,137,.26);margin-bottom:30px;
+  max-width:100%;opacity:0;animation:rise 1s var(--ease) .2s forwards;
+  transition:border-color .4s var(--ease),background .4s var(--ease);}
+.dispatch:hover{border-color:rgba(231,196,137,.6);background:rgba(246,241,231,.07);}
+.dispatch .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:0 0 auto;
+  animation:live 2.6s ease-in-out infinite;}
+@keyframes live{0%{box-shadow:0 0 0 0 rgba(231,196,137,.55);}70%{box-shadow:0 0 0 7px rgba(231,196,137,0);}100%{box-shadow:0 0 0 0 rgba(231,196,137,0);}}
+.dispatch .dl{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sand);opacity:.8;flex:0 0 auto;}
+.dispatch .dt{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:14px;color:var(--cream);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1 1 auto;}
+.dispatch .darr{color:var(--gold);flex:0 0 auto;transition:transform .4s var(--ease);}
+.dispatch:hover .darr{transform:translateX(4px);}
+
+/* right: the photo in its own frame */
+.hs-photo{position:relative;overflow:hidden;background:var(--forest-dd);}
+.hs-photo img{width:100%;height:100%;object-fit:cover;object-position:48% 38%;
+  transform:scale(1.04);animation:kb 24s var(--ease) forwards;}
+.hs-photo::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(20,28,22,.5) 0%,transparent 22%),
+             linear-gradient(0deg,rgba(20,28,22,.28),transparent 40%);}
+
+@media(max-width:860px){
+  .hero.hero-split{grid-template-columns:minmax(0,1fr);grid-template-rows:44vh 1fr;height:auto;min-height:100vh;}
+  .hs-photo{order:-1;}
+  .hs-photo img{object-position:50% 34%;}
+  .hs-photo::after{background:linear-gradient(0deg,var(--forest-d) 0%,transparent 34%);}
+  .hs-inner{padding:clamp(34px,8vw,56px) 30px 56px;text-align:left;max-width:560px;}
+}
+@media (prefers-reduced-motion: reduce){
+  .hs-wordmark,.hs-head,.hs-sub,.hero-cta,.dispatch{opacity:1;transform:none;animation:none;}
+  .dispatch .dot,.hs-photo img{animation:none;}
+}
+
+/* --- THE INVITATION (email list — primary conversion). Light "email" palette + gold border. --- */
+.invite{position:relative;padding:clamp(66px,11vh,104px) 24px;overflow:hidden;
+  background:linear-gradient(180deg,var(--forest-dd) 0%,var(--forest-d) 50%,var(--forest-dd) 100%);}
+.invite-inner{max-width:660px;margin:0 auto;text-align:center;position:relative;
+  background:#EFE3C9;border:2px solid #D9A441;box-shadow:0 30px 70px rgba(0,0,0,.45);
+  padding:clamp(40px,6vw,64px) clamp(26px,5vw,58px);}
+.invite-eye{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#B87F51;}
+.invite-head{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,4.4vw,52px);line-height:1.08;
+  letter-spacing:-.02em;color:#2F4034;margin:14px 0 16px;text-wrap:balance;}
+.invite-sub{font-size:15.5px;line-height:1.78;color:#5b5044;max-width:50ch;margin:0 auto 32px;}
+.invite-form{display:flex;gap:12px;max-width:520px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
+.invite-form input[type=email]{flex:1 1 240px;min-width:0;background:#FBF5E6;
+  border:1px solid rgba(185,127,81,.55);color:#2B2019;padding:16px 16px;font-size:15px;font-family:inherit;transition:border-color .3s;}
+.invite-form input[type=email]:focus{outline:none;border-color:#D9A441;}
+.invite-form input[type=email]::placeholder{color:#a59c8c;}
+.invite-form .go{flex:0 0 auto;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#22331F;
+  background:#D9A441;border:0;padding:16px 30px;cursor:pointer;transition:background .3s var(--ease),transform .3s var(--ease);}
+.invite-form .go:hover{background:#c8912f;transform:translateY(-2px);}
+.invite-form .go[disabled]{opacity:.6;cursor:default;transform:none;}
+.invite-form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+.invite-note{margin-top:15px;font-size:12.5px;letter-spacing:.3px;color:#6f665a;}
+.invite.done .invite-form{display:none;}
+@media(max-width:520px){.invite-form .go{flex:1 1 100%;}}
+
+/* --- SECTION 3 · THE WORLD (journal) --- */
+.jteaser .world-sub{max-width:56ch;margin:14px auto 0;font-size:16px;line-height:1.8;color:var(--body);padding:0 24px;}
+/* smaller journal thumbnails */
+.jteaser .jt-grid{max-width:620px;gap:16px;}
+.jteaser .jt-card .ph{aspect-ratio:4/3;}
+.jteaser .jt-card .b{padding:12px 13px 15px;}
+.jteaser .jt-card h4{font-size:15.5px;margin-top:6px;}
+.jteaser .jt-card .place{font-size:9.5px;}
+@media(max-width:900px){.jteaser .jt-grid{max-width:300px;}}
+
+/* --- SECTION 4 · THE GALLERY (mixed drift rows) --- */
+.grows{--gh:clamp(150px,21vh,220px);padding:4px 0 8px;overflow:hidden;}
+.grow{position:relative;height:var(--gh);overflow:hidden;cursor:grab;touch-action:pan-y;margin-bottom:clamp(10px,1.4vw,16px);}
+.grow:last-child{margin-bottom:0;}
+.grow:active{cursor:grabbing;}
+.grow .lane{display:flex;gap:clamp(10px,1.4vw,16px);height:100%;width:max-content;will-change:transform;}
+.gtile{position:relative;height:100%;aspect-ratio:4/5;flex:0 0 auto;overflow:hidden;background:var(--forest-dd);}
+.gtile.wide{aspect-ratio:3/2;} .gtile.tall{aspect-ratio:2/3;}
+.gtile::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.18);pointer-events:none;z-index:3;}
+.gtile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease);}
+.grow:not(.dragging) .gtile:hover img{transform:scale(1.06);}
+.gtile figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:14px 13px 11px;
+  background:linear-gradient(0deg,rgba(16,23,18,.85),transparent);opacity:0;transform:translateY(8px);transition:.5s var(--ease);}
+.grow:not(.dragging) .gtile:hover figcaption{opacity:1;transform:none;}
+.gtile figcaption .t{font-family:'Didot',Georgia,serif;font-size:15px;color:var(--cream);line-height:1.15;}
+.gtile figcaption .s{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:3px;}
+@media (prefers-reduced-motion: reduce){.grow{overflow-x:auto;} .grow .lane{animation:none;}}
+
+/* --- SECTION 5 · THE SHOP (side rooms) --- */
+.sec-head .rooms-intro{max-width:52ch;margin:14px auto 0;font-size:15.5px;line-height:1.75;color:var(--body);padding:0 24px;}
+.rooms-wrap{max-width:1120px;margin:0 auto;padding:0 clamp(24px,4vw,40px);display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.room{position:relative;display:block;overflow:hidden;height:clamp(300px,42vh,430px);background:var(--forest-dd);box-shadow:0 20px 50px rgba(0,0,0,.4);}
+.room::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.2);pointer-events:none;z-index:3;}
+.room img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease);}
+.room:hover img{transform:scale(1.06);}
+.room .r-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(16,23,18,.9) 0%,rgba(16,23,18,.15) 55%,rgba(16,23,18,.35) 100%);transition:background .5s var(--ease);}
+.room:hover .r-scrim{background:linear-gradient(0deg,rgba(16,23,18,.85) 0%,rgba(16,23,18,.05) 60%,rgba(16,23,18,.22) 100%);}
+.room .r-lbl{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:24px;text-align:center;display:flex;flex-direction:column;gap:6px;}
+.room .r-eye{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sand);opacity:.8;}
+.room .r-name{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(22px,2vw,27px);color:var(--cream);transition:color .4s var(--ease);}
+.room:hover .r-name{color:var(--gold);}
+.room .r-cta{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateY(6px);transition:.45s var(--ease);}
+.room:hover .r-cta{opacity:.95;transform:none;}
+@media(max-width:820px){.rooms-wrap{grid-template-columns:1fr;max-width:420px;}.room{height:52vw;min-height:280px;}}
+
+/* --- SECTION 6 · YOU / ABOUT (small figure, text on side, green wash, flipped) --- */
+.you{position:relative;padding:clamp(72px,13vh,136px) clamp(24px,6vw,72px);overflow:hidden;
+  background:radial-gradient(640px 520px at 90% 10%,rgba(184,127,81,.13),transparent 70%),
+    radial-gradient(560px 460px at 4% 96%,rgba(147,162,131,.12),transparent 72%),var(--forest-d);}
+.you-head{max-width:760px;margin:0 auto clamp(40px,6vh,60px);text-align:center;}
+.you-head .chap{display:inline-block;margin-bottom:10px;}
+.you-head h2{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,3.6vw,50px);line-height:1.12;letter-spacing:-.015em;color:var(--cream);text-wrap:balance;}
+.you-head h2 em{color:var(--gold);font-style:italic;}
+.you-head .rule{width:54px;height:1px;background:var(--gold);margin:18px auto 0;}
+.you-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:clamp(36px,6vw,74px);align-items:center;}
+.you-body{max-width:520px;}
+.you-body p{margin-top:20px;font-size:15.5px;line-height:1.9;color:var(--body);max-width:46ch;}
+.you-body p:first-child{margin-top:0;}
+.you-body .pull{font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-size:clamp(19px,2vw,25px);color:var(--gold);line-height:1.4;margin:26px 0 4px;max-width:26ch;}
+.you-body .pull::before{content:"";display:block;width:46px;height:1px;background:var(--clay-l);opacity:.7;margin-bottom:18px;}
+.you-more-wrap{text-align:center;margin-top:clamp(38px,6vh,58px);}
+.you .more{display:inline-block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:5px;transition:.3s var(--ease);}
+.you .more:hover{color:var(--cream);border-color:var(--cream);}
+.you-figure{position:relative;width:clamp(250px,30vw,360px);aspect-ratio:3/4;overflow:hidden;flex:0 0 auto;
+  isolation:isolate;background:var(--forest-dd);box-shadow:0 34px 74px rgba(0,0,0,.52);}
+.you-figure img{width:100%;height:100%;object-fit:cover;transform:rotate(180deg) scale(1.02);}
+.you-figure .wash{position:absolute;inset:0;background:#2F4034;mix-blend-mode:color;opacity:.7;}
+.you-figure .wash-b{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,28,22,.22),rgba(28,39,31,.42));}
+.you-figure::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.26);pointer-events:none;z-index:4;}
+@media(max-width:820px){
+  .you-inner{grid-template-columns:1fr;justify-items:start;gap:30px;}
+  .you-figure{width:min(72vw,320px);}
+}
+</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HEP68D5V13"></script>
 <script>
@@ -306,58 +354,177 @@ body.anim .reveal.in{opacity:1;transform:none;}
 </header>
 
 <!-- ================= HERO ================= -->
-<section class="hero" id="top">
-  <div class="bg"><img src="img/hero-sea-sunset.jpg" alt="Golden-hour sun low over the sea and distant hills, seen from the water"></div>
-  <a class="sun-link" href="/manifesto/" target="_blank" rel="noopener" aria-label="Enter the 1% Manifesto (opens in a new tab)">
-    <span class="sun-label">the 1% manifesto</span>
-  </a>
-  <canvas id="sparkle"></canvas>
-  <div class="inner">
-    <h1 class="serif">ELEANORA</h1>
-    <div class="accent">an archive of her stories</div>
-    <div class="sub">the art of women &amp; the wild</div>
-  </div>
-  <a class="cue" href="#statement"><span></span>Scroll</a>
-</section>
-
-<!-- ================= STATEMENT (full-bleed) ================= -->
-<section class="film" id="statement">
-  <div class="bg"><img src="img/gate-sintra.jpg" alt="A weathered stone gateway half-swallowed by green, opening onto a shaded garden path in Sintra"></div>
-  <div class="scrim scrim-c"></div>
-  <div class="wrap">
-    <div class="plate">
-      <h2 class="serif reveal">Some places keep secrets. I photograph the ones that <em>let me look</em>.</h2>
-      <div class="pull reveal">leave the door open, and the light on</div>
+<section class="hero hero-split" id="top">
+  <!-- LEFT: the calm text panel -->
+  <div class="hs-panel">
+    <div class="hs-inner">
+      <!-- live dispatch: newest journal entry, pulled from journal.json -->
+      <a class="dispatch" id="dispatch" href="journal.html" aria-label="Read the latest journal entry">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="dl">Latest</span>
+        <span class="dt" id="dispatch-title">From the journal</span>
+        <span class="darr" aria-hidden="true">&rarr;</span>
+      </a>
+      <!-- PROVISIONAL COPY — final words run through /eleanora-voice before go-live -->
+      <h1 class="hs-head">Leave the door open,<br>and the light <em>on</em>.</h1>
+      <p class="hs-sub">A running record of the life as I actually live it &mdash; the travels, the work, the beautiful and the unapologetic. You already found me. Come all the way in.</p>
+      <div class="hero-cta">
+        <a class="hbtn primary" href="#invitation">Come inside</a>
+        <a class="hbtn ghost" href="journal.html">Wander the journal</a>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- ================= JOURNAL TEASER ================= -->
-<section class="jteaser glow-a" id="journal">
-  <span class="chap reveal">words &amp; light</span>
-  <h3 class="serif reveal">From the Journal</h3>
-  <div class="rule reveal"></div>
-  <div class="jt-grid" id="jt-grid"></div>
-  <a class="btn reveal" href="journal.html">Read the Journal</a>
+  <!-- RIGHT: the photo in its own frame -->
+  <div class="hs-photo">
+    <canvas id="sparkle"></canvas>
+    <img src="img/her-gold-buddha-wall.jpg" alt="Eleanora in a sheer dark dress, in profile before a wall of hundreds of gilded golden Buddha heads lit warm">
+    <!-- hidden entrance: the one head her gaze lands on → the 1% manifesto -->
+    <a class="head-link" href="/manifesto/" target="_blank" rel="noopener" aria-label="Enter the 1% Manifesto (opens in a new tab)">
+      <span class="head-label">the 1% manifesto</span>
+    </a>
+  </div>
 </section>
 <script>
-/* homepage Journal teaser — renders the latest 3 from journal.json (single source of truth) */
+/* hero dispatch — newest journal entry title (single source of truth) */
+fetch('journal.json').then(function(r){return r.json();}).then(function(d){
+  var e=(d.entries||[])[0]; if(!e)return;
+  var t=document.getElementById('dispatch-title'); var a=document.getElementById('dispatch');
+  if(t)t.textContent=e.title||'From the journal';
+  if(a&&e.slug)a.href=e.slug+'.html';
+}).catch(function(){});
+</script>
+
+<!-- ================= THE INVITATION (the list — primary conversion) ================= -->
+<!-- PROVISIONAL COPY — reuses Elena's own list voice from journal-entry.js; finalize via /eleanora-voice -->
+<section class="invite" id="invitation">
+  <div class="invite-inner">
+    <span class="invite-eye">Leave the door open</span>
+    <h2 class="invite-head">There&rsquo;s always another story.</h2>
+    <p class="invite-sub">This one found you. Leave your email and I&rsquo;ll make sure the next one does too &mdash; the journal, the travels, and the things I only ever say to the list.</p>
+    <form class="invite-form" id="inviteForm" novalidate>
+      <input type="text" class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="email" name="email" placeholder="your email" required autocomplete="email" aria-label="Your email">
+      <button type="submit" class="go">Come inside</button>
+    </form>
+    <p class="invite-note" id="inviteNote" aria-live="polite">One email when there&rsquo;s a new story. Nothing else.</p>
+  </div>
+</section>
+<script>
+/* Invitation signup — reuses the site's live MailerLite endpoint (public form action, no key). */
 (function(){
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var form=document.getElementById('inviteForm'); if(!form)return;
+  var section=document.getElementById('invitation');
+  var emailEl=form.querySelector('input[type=email]');
+  var honeyEl=form.querySelector('.hp');
+  var noteEl=document.getElementById('inviteNote');
+  var goBtn=form.querySelector('.go');
+  var ENDPOINT='https://assets.mailerlite.com/jsonp/2518337/forms/193587317692172210/subscribe';
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=(emailEl.value||'').trim();
+    if(!email||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){noteEl.textContent='That email looks off. Try again?';emailEl.focus();return;}
+    if(honeyEl.value){done();return;}
+    goBtn.setAttribute('disabled','disabled');noteEl.textContent='One second…';
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:'fields[email]='+encodeURIComponent(email)+'&ml-submit=1&anticsrf=true',mode:'no-cors'})
+      .then(function(){done();})
+      .catch(function(){goBtn.removeAttribute('disabled');noteEl.textContent='Hmm, that didn’t go through. One more try?';});
+  });
+  function done(){section.classList.add('done');
+    noteEl.innerHTML='You’re in. The next one finds you first. <span style="color:var(--gold)">x</span>';
+    noteEl.style.fontSize='15px';noteEl.style.opacity='1';}
+})();
+</script>
+
+<!-- ================= SECTION 3 · THE WORLD (journal) ================= -->
+<!-- PROVISIONAL COPY — framing lines finalize via /eleanora-voice -->
+<section class="jteaser glow-a" id="journal">
+  <span class="chap">still unfolding</span>
+  <h3 class="serif">The world you&rsquo;re stepping into</h3>
+  <p class="world-sub">Not a highlight reel. The actual record: where I am, what I&rsquo;m making, what I&rsquo;m working out. Newest first.</p>
+  <div class="rule"></div>
+  <div class="jt-grid" id="jt-grid"></div>
+  <a class="btn" href="journal.html">Read the Journal</a>
+</section>
+<script>
+/* Section 3 — latest 3 journal entries from journal.json (single source of truth). Visible by default. */
+(function(){
   fetch('journal.json').then(function(r){return r.json();}).then(function(data){
     var grid=document.getElementById('jt-grid'); if(!grid)return;
     (data.entries||[]).slice(0,3).forEach(function(e){
       var t=e.talisman||{};
       var a=document.createElement('a');
-      a.className='jt-card reveal';
+      a.className='jt-card';
       a.href=e.slug+'.html';
       a.innerHTML='<div class="ph"><img src="'+(t.img||'')+'" alt="'+(t.alt||'')+'"></div>'+
         '<div class="b"><div class="place">'+(e.kicker||'')+'</div><h4>'+(e.title||'')+'</h4></div>';
       grid.appendChild(a);
-      if(reduce){a.classList.add('in');}
-      else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.14,rootMargin:'0px 0px -8% 0px'});io.observe(a);}
     });
   }).catch(function(){});
+})();
+</script>
+
+<!-- ================= SECTION 4 · THE GALLERY (mixed drift rows) ================= -->
+<div class="sec-head" id="gallery">
+  <span class="chap">the whole world, drifting by</span>
+  <h3 class="serif">The Gallery</h3>
+  <div class="rule"></div>
+</div>
+<section class="grows" id="grows" aria-label="A drifting gallery of prints, postcards, portraits and places">
+  <div class="grow" data-dir="-1" data-speed="0.32"><div class="lane"></div></div>
+  <div class="grow" data-dir="1" data-speed="0.30"><div class="lane"></div></div>
+</section>
+<div class="gallery-cta"><a class="btn" href="gallery.html">Enter the full Gallery</a></div>
+<script>
+/* Section 4 — two mixed drift rows (posters · postcards · portfolio · places). All real files. */
+(function(){
+  var A=[
+    {i:'gal-poster-the-coronation.jpg',t:'The Coronation',s:'Poster',r:'tall'},
+    {i:'her-fur-hood.jpg',t:'The Fur Hood',s:'Portfolio · Editorial',r:'tall'},
+    {i:'world-italy-yellow-door.jpg',t:'Piano, Piano',s:'Postcard · Bari',r:''},
+    {i:'wild-corfu-sea.jpg',t:'The Ionian',s:'Corfu',r:'wide'},
+    {i:'lace-crown-headshot.jpg',t:'The Crown',s:'Portfolio · Beauty',r:'tall'},
+    {i:'gal-cherub-mural.jpg',t:'Cherubs',s:'Portugal',r:''},
+    {i:'croatia-blue-door.jpg',t:'The Blue Door',s:'Postcard · Dubrovnik',r:'tall'},
+    {i:'gal-poster-let-go-at-the-top.jpg',t:'Let Go at the Top',s:'Poster',r:'tall'},
+    {i:'bw-smoke-editorial.jpg',t:'After Dark',s:'Portfolio · Editorial',r:'wide'},
+    {i:'gal-two-saints.jpg',t:'Two Saints',s:'Athens',r:''}
+  ];
+  var B=[
+    {i:'gal-poster-same-girl-different-garden.jpg',t:'Same Girl, Different Garden',s:'Poster',r:'tall'},
+    {i:'pool-bralette.jpg',t:'The Garden Pool',s:'Portfolio · Lifestyle',r:'wide'},
+    {i:'lisbon-green-door.jpg',t:'The Green Door',s:'Postcard · Lisbon',r:'tall'},
+    {i:'gal-moorish-castle.jpg',t:'The Moorish Castle',s:'Sintra',r:'wide'},
+    {i:'her-green-mirror.jpg',t:'The Green Mirror',s:'Portfolio · Glam',r:'tall'},
+    {i:'gal-azulejo-flowers.jpg',t:'Blue Flowers',s:'Portugal',r:''},
+    {i:'puglia-polignano-mark-twain-door.jpg',t:'Mark Twain’s Door',s:'Postcard · Polignano',r:'tall'},
+    {i:'gal-poster-the-only-one-looking-back.jpg',t:'The Only One Looking Back',s:'Poster',r:'tall'},
+    {i:'wild-brazil-cliff.jpg',t:'Above Brazil',s:'The Wild',r:'wide'},
+    {i:'gal-looking-up.jpg',t:'Looking Up',s:'Puglia',r:''}
+  ];
+  function tile(o){return '<figure class="gtile '+o.r+'"><img src="img/'+o.i+'" alt="'+o.t+'" loading="lazy" draggable="false"><figcaption><span class="t">'+o.t+'</span><span class="s">'+o.s+'</span></figcaption></figure>';}
+  var rows=document.querySelectorAll('#grows .grow');
+  [A,B].forEach(function(data,idx){ if(!rows[idx])return; var lane=rows[idx].querySelector('.lane'); var html=data.map(tile).join(''); lane.innerHTML=html+html; });
+  var reduce=false; try{reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  if(reduce) return;
+  rows.forEach(function(row){
+    var lane=row.querySelector('.lane');
+    var dir=parseFloat(row.dataset.dir)||-1, speed=parseFloat(row.dataset.speed)||0.3;
+    var x=0, half=0, paused=false, dragging=false, lastX=0;
+    function measure(){half=lane.scrollWidth/2;}
+    function wrap(){ if(half){ if(x<=-half)x+=half; if(x>0)x-=half; } lane.style.transform='translateX('+x.toFixed(2)+'px)'; }
+    function tick(){ if(!paused&&!dragging)x+=dir*speed; wrap(); requestAnimationFrame(tick); }
+    measure(); addEventListener('resize',measure);
+    row.addEventListener('pointerenter',function(){paused=true;});
+    row.addEventListener('pointerleave',function(){if(!dragging)paused=false;});
+    row.addEventListener('pointerdown',function(e){dragging=true;paused=true;lastX=e.clientX;row.classList.add('dragging');try{row.setPointerCapture(e.pointerId);}catch(_){}});
+    row.addEventListener('pointermove',function(e){if(!dragging)return;x+=(e.clientX-lastX);lastX=e.clientX;wrap();});
+    function rel(){if(!dragging)return;dragging=false;paused=false;row.classList.remove('dragging');}
+    row.addEventListener('pointerup',rel); row.addEventListener('pointercancel',rel);
+    row.addEventListener('wheel',function(e){if(Math.abs(e.deltaX)>Math.abs(e.deltaY)){x-=e.deltaX;wrap();e.preventDefault();}},{passive:false});
+    requestAnimationFrame(tick);
+  });
 })();
 </script>
 
@@ -365,49 +532,56 @@ body.anim .reveal.in{opacity:1;transform:none;}
 
 <!-- ================= PRINTS (tokens from the stories) ================= -->
 <!-- Order set by Elena 2026-07-19: stories first, then the tokens that ride with them. -->
+<!-- ================= SECTION 5 · THE SHOP (side rooms) ================= -->
+<!-- PROVISIONAL COPY — finalize via /eleanora-voice -->
 <div class="sec-head" id="prints">
-  <span class="chap reveal">take one home</span>
-  <h3 class="serif reveal">The Prints</h3>
-  <div class="rule reveal"></div>
+  <span class="chap">rooms off the hall</span>
+  <h3 class="serif">Take a piece home</h3>
+  <p class="rooms-intro">When a story stays with you, there&rsquo;s a way to keep it. No pressure &mdash; the doors are just open when you want them.</p>
+  <div class="rule"></div>
 </div>
-<!-- PLACEHOLDER COPY — must run through /eleanora-voice (Card B) before launch. -->
-<p class="prints-intro reveal">Every print is a token from a story. Read it first, then decide if you want to live with it.</p>
-<div class="prints-grid home" id="homePrints"></div>
-<div class="gallery-cta reveal"><a class="btn" href="prints.html">See all the prints</a></div>
-
-
-<!-- ================= GALLERY (editorial mosaic) ================= -->
-<div class="sec-head" id="gallery">
-  <span class="chap reveal">selected work</span>
-  <h3 class="serif reveal">The Gallery</h3>
-  <div class="rule reveal"></div>
+<div class="rooms-wrap">
+  <a class="room" href="limited-edition.html">
+    <img src="img/studio-fur-silver.jpg" alt="A signed, numbered fine-art print" loading="lazy">
+    <div class="r-scrim"></div>
+    <div class="r-lbl"><span class="r-eye">Signed &middot; numbered</span><span class="r-name">The Limited Edition</span><span class="r-cta">Step in &rarr;</span></div>
+  </a>
+  <a class="room" href="posters-laws.html">
+    <img src="img/gal-poster-the-coronation.jpg" alt="A poster token from the stories" loading="lazy">
+    <div class="r-scrim"></div>
+    <div class="r-lbl"><span class="r-eye">Big &middot; on your wall</span><span class="r-name">The Tokens</span><span class="r-cta">Step in &rarr;</span></div>
+  </a>
+  <a class="room" href="postcards.html">
+    <img src="img/world-italy-yellow-door.jpg" alt="A hand-mailed postcard from the European Portals series" loading="lazy">
+    <div class="r-scrim"></div>
+    <div class="r-lbl"><span class="r-eye">Hand-mailed</span><span class="r-name">Postcards</span><span class="r-cta">Step in &rarr;</span></div>
+  </a>
 </div>
-<section class="mosaic">
-  <figure class="feature reveal">
-    <img src="img/bw-smoke-editorial.jpg" alt="Black-and-white editorial portrait, a feather at her shoulder and soft smoke curling past her face">
-    <figcaption><div class="t">After Dark</div><div class="s">Editorial · Studio</div></figcaption>
-  </figure>
-  <figure class="side reveal">
-    <img src="img/lace-crown-headshot.jpg" alt="Editorial portrait in a black lace crown, eyes steady to the lens">
-    <figcaption><div class="t">The Crown</div><div class="s">Editorial</div></figcaption>
-  </figure>
-  <figure class="band reveal">
-    <img src="img/hero-sunset-silhouette.jpg" alt="A lone silhouette walking the shoreline as the sun drops into the sea">
-    <figcaption><div class="t">Last Light</div><div class="s">The Gulf</div></figcaption>
-  </figure>
-</section>
-<div class="gallery-cta reveal"><a class="btn" href="gallery.html">Enter the Gallery</a></div>
+<div class="gallery-cta"><a class="btn" href="prints.html">Enter the shop</a></div>
 
-<section class="split glow-b">
-  <div class="ph"><img src="img/pool-bralette.jpg" alt="Eleanora in a garden pool surrounded by palms and greenery"></div>
-  <div class="body">
-    <span class="chap reveal">the girl behind the camera</span>
-    <h2 class="serif reveal">I've lived so many lives <em>already</em>.</h2>
-    <p class="reveal">I started modeling at sixteen because I always wanted to. Somewhere along the way I fell for the whole ritual of it — the light, the transformation, the way a good photographer waits for the one moment the eyes go honest.</p>
-    <p class="pull reveal">This is where I finally collect it all.</p>
-    <p class="reveal">The travels, the escapades, the beautiful and the unapologetic.</p>
-    <a class="more reveal" href="about.html">Read my story</a>
+
+
+<!-- ================= SECTION 6 · YOU / ABOUT (inverted dancer) ================= -->
+<!-- Copy is Elena's own (kept verbatim); chap label provisional pending /eleanora-voice -->
+<section class="you" id="about">
+  <div class="you-head">
+    <span class="chap">the one living it</span>
+    <h2 class="serif">I&rsquo;ve lived so many lives <em>already</em>.</h2>
+    <div class="rule"></div>
   </div>
+  <div class="you-inner">
+    <div class="you-body">
+      <p>I started modeling at sixteen because I always wanted to. Somewhere along the way I fell for the whole ritual of it — the light, the transformation, the way a good photographer waits for the one moment the eyes go honest.</p>
+      <p class="pull">This is where I finally collect it all.</p>
+      <p>The travels, the escapades, the beautiful and the unapologetic.</p>
+    </div>
+    <figure class="you-figure">
+      <img src="img/studio-dance-arch.jpg" alt="Eleanora in a black leotard and heels, arched in a dance pose, the frame turned upside down under a green wash" loading="lazy">
+      <span class="wash"></span>
+      <span class="wash-b"></span>
+    </figure>
+  </div>
+  <div class="you-more-wrap"><a class="btn" href="about.html">Read my story</a></div>
 </section>
 
 <!-- ================= FOOTER ================= -->
@@ -492,26 +666,5 @@ if(!reduce){
 }
 </script>
 <script src="mobile-nav.js" defer></script>
-
-<script>
-/* homepage Prints teaser — renders 3 open-tier prints from prints.json (single source of truth) */
-(function(){
-  fetch('prints.json').then(function(r){return r.json();}).then(function(d){
-    var grid=document.getElementById('homePrints'); if(!grid) return;
-    var open=d.prints.filter(function(p){return p.tier==='open'&&!p.hidden;}).slice(0,3);
-    var from=Math.min.apply(null,d.ladder.sizes.map(function(s){return s.price;}));
-    if(!open.length){ grid.innerHTML=''; return; }
-    grid.innerHTML=open.map(function(p){
-      return '<article class="pcard reveal">'
-        +'<a class="ph" href="'+p.article+'"><img src="'+p.img+'" alt="'+p.alt+'"></a>'
-        +'<h3 class="serif">'+p.name+'</h3>'
-        +'<div class="meta">'+(p.articleTitle||'')+'</div>'
-        +'<a class="cta" href="'+p.article+'">Read the story</a>'
-        +'<span class="cta soon">From $'+from+'</span>'
-        +'</article>';
-    }).join('');
-  }).catch(function(){});
-})();
-</script>
 </body>
 </html>
