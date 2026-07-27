@@ -313,6 +313,10 @@ header.solid{background:var(--forest-dd);}
   .you-inner{grid-template-columns:1fr;justify-items:start;gap:30px;}
   .you-figure{width:min(72vw,320px);}
 }
+
+/* --- TWO-TONE RHYTHM: alternate sections between Shade A (--forest #2F4034) and B (--forest-d #1C271F). Everything defaults to B; lift The World + The Shop to A. --- */
+#journal{background:var(--forest);}
+.shop-band{background:var(--forest);padding-bottom:clamp(44px,7vh,84px);}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HEP68D5V13"></script>
@@ -534,6 +538,7 @@ fetch('journal.json').then(function(r){return r.json();}).then(function(d){
 <!-- Order set by Elena 2026-07-19: stories first, then the tokens that ride with them. -->
 <!-- ================= SECTION 5 · THE SHOP (side rooms) ================= -->
 <!-- PROVISIONAL COPY — finalize via /eleanora-voice -->
+<section class="shop-band">
 <div class="sec-head" id="prints">
   <span class="chap">rooms off the hall</span>
   <h3 class="serif">Take a piece home</h3>
@@ -553,6 +558,7 @@ fetch('journal.json').then(function(r){return r.json();}).then(function(d){
   </a>
 </div>
 <div class="gallery-cta"><a class="btn" href="prints.html">Enter the shop</a></div>
+</section>
 
 
 
