@@ -72,27 +72,28 @@
     if (!mount) return;
 
     var html = '';
+    var talHtml = '';
 
     // ---------- 1. TALISMAN CLOSE ----------
     var t = me.talisman || {};
-    html += '<section class="tal-close reveal">';
-    html += '<div class="eye">' + (me.soft ? 'Something to remember them by' : 'Take it home') + '</div>';
-    html += '<figure class="tal-fig"><img src="' + t.img + '" alt="' + (t.alt || '') + '"></figure>';
-    if (t.name) { html += '<div class="tal-name serif">' + t.name + '</div>'; }
-    if (t.line) { html += '<p class="tal-line">' + t.line + '</p>'; }
+    talHtml += '<section class="tal-close reveal">';
+    talHtml += '<div class="eye">' + (me.soft ? 'Something to remember them by' : 'Take it home') + '</div>';
+    talHtml += '<figure class="tal-fig"><img src="' + t.img + '" alt="' + (t.alt || '') + '"></figure>';
+    if (t.name) { talHtml += '<div class="tal-name serif">' + t.name + '</div>'; }
+    if (t.line) { talHtml += '<p class="tal-line">' + t.line + '</p>'; }
     if (me.soft) {
       // People lane: gentle, no hard sell
       if (t.buyUrl) {
-        html += '<a class="tal-soon" href="' + t.buyUrl + '">Keep it close &rarr;</a>';
+        talHtml += '<a class="tal-soon" href="' + t.buyUrl + '">Keep it close &rarr;</a>';
       }
     } else if (t.buyUrl) {
-      html += '<a class="tal-buy" href="' + t.buyUrl + '">Make it yours &rarr;</a>';
-      if (t.price) { html += '<div class="tal-price">the print · ' + t.price + '</div>'; }
+      talHtml += '<a class="tal-buy" href="' + t.buyUrl + '">Make it yours &rarr;</a>';
+      if (t.price) { talHtml += '<div class="tal-price">the print · ' + t.price + '</div>'; }
     } else {
-      html += '<span class="tal-soon">Prints coming soon</span>';
-      if (t.price) { html += '<div class="tal-price">the print · ' + t.price + '</div>'; }
+      talHtml += '<span class="tal-soon">Prints coming soon</span>';
+      if (t.price) { talHtml += '<div class="tal-price">the print · ' + t.price + '</div>'; }
     }
-    html += '</section>';
+    talHtml += '</section>';
 
     // ---------- 2. SECOND EXIT ----------
     var ex = me.exits || {};
@@ -136,14 +137,19 @@
       html += '</div></section>';
     }
 
-    mount.innerHTML = html;
+    // A page can host the token mid-story by dropping in <div id="token-slot"></div>.
+    // Without one, it closes the page exactly as before.
+    var slot = document.getElementById('token-slot');
+    if (slot) { slot.innerHTML = talHtml; mount.innerHTML = html; }
+    else { mount.innerHTML = talHtml + html; }
 
     // let the injected .reveal blocks animate in like the rest of the page
     if (document.body.classList.contains('anim')) {
       var io = new IntersectionObserver(function (es) {
         es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-      }, { threshold: .14, rootMargin: '0px 0px -8% 0px' });
+      }, { threshold: 0, rootMargin: '0px 0px -2% 0px' });
       mount.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+      if (slot) { slot.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); }); }
     }
   }).catch(function () { /* leave the page as-is if the manifest can't load */ });
 })();
@@ -161,24 +167,27 @@
    it, it never nags them again (remembered in localStorage,
    same as the read-history the engine above uses).
 
-   ---- WIRING IT TO SMARTSUITE (the swap) --------------------
-   Right now it posts to FormSubmit (no backend; emails Elena),
-   matching the Work With Me form. To send signups straight into
-   SmartSuite instead:
-     1. In SmartSuite, make a table for the email list (one field:
-        Email), then add an Automation with the "Incoming Webhook"
-        trigger. Copy the unique webhook URL it gives you.
-     2. Set SUBSCRIBE_ENDPOINT below to that URL.
-     3. Set SUBSCRIBE_MODE to 'smartsuite'.
-   That's the whole change. Nothing else in here moves.
+   ---- WIRING IT TO MAILERLITE (the chosen sender) -----------
+   MailerLite is the list + sender; its RSS auto-send drives the
+   drip. To point signups straight into MailerLite:
+     1. In MailerLite: create a Group (e.g. "Eleanora — Journal"),
+        then Forms → Embedded form for that group → HTML code.
+     2. In that HTML, copy the <form action="..."> URL. It looks like
+        https://assets.mailerlite.com/jsonp/<ACCT>/forms/<FORM_ID>/subscribe
+        It is PUBLIC by design — no API key, nothing secret — so it
+        is safe to sit in this frontend file.
+     3. Paste that URL into SUBSCRIBE_ENDPOINT below and set
+        SUBSCRIBE_MODE to 'mailerlite'. That's the whole change.
+   (FormSubmit + SmartSuite branches are kept as fallbacks.)
    ============================================================ */
 (function () {
   if (!document.body.getAttribute('data-slug')) return;      // story pages only
 
-  // ---- the one email inbox / endpoint. INTERIM = FormSubmit. --
-  var SUBSCRIBE_MODE = 'formsubmit';                          // 'formsubmit' | 'smartsuite'
-  var SUBSCRIBE_ENDPOINT = 'https://formsubmit.co/ajax/corraoconsulting@gmail.com';
-  // When you switch to SmartSuite, paste its incoming-webhook URL above and set MODE to 'smartsuite'.
+  // ---- the one email endpoint. CHOSEN SENDER = MailerLite. -----
+  var SUBSCRIBE_MODE = 'mailerlite';                          // 'mailerlite' | 'formsubmit' | 'smartsuite'
+  var SUBSCRIBE_ENDPOINT = 'https://assets.mailerlite.com/jsonp/2518337/forms/193587317692172210/subscribe';
+  // ↑ MailerLite embedded-form action (public, no key). Group: "Eleanora — Journal".
+  //   FormSubmit fallback: 'https://formsubmit.co/ajax/corraoconsulting@gmail.com'
 
   var DONE_KEY = 'eleanora_sub';                             // 'done' | 'dismissed' -> never show again
   var state;
@@ -270,6 +279,25 @@
 
     goBtn.setAttribute('disabled', 'disabled');
     noteEl.textContent = 'One second…';
+
+    // --- MailerLite embedded-form endpoint (form-encoded, public, no key) ---
+    // The jsonp/.../subscribe endpoint is cross-origin and doesn't return
+    // readable CORS headers, so we fire with no-cors and optimistically confirm.
+    // The subscribe still registers in MailerLite. (Verify once live with a real
+    // signup landing in the MailerLite group.)
+    if (SUBSCRIBE_MODE === 'mailerlite') {
+      fetch(SUBSCRIBE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'fields[email]=' + encodeURIComponent(email) + '&ml-submit=1&anticsrf=true',
+        mode: 'no-cors'
+      }).then(function () { succeed(); })
+        .catch(function () {
+          goBtn.removeAttribute('disabled');
+          noteEl.textContent = 'Hmm, that didn’t go through. One more try?';
+        });
+      return;
+    }
 
     var payload, headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
     if (SUBSCRIBE_MODE === 'smartsuite') {

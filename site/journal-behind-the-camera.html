@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <script>if(sessionStorage.getItem("eleanora_pass")!=="1")location.replace("/");</script>
-<script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('veil-on');}catch(e){}</script>
+<script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('veil-on');setTimeout(function(){document.documentElement.classList.remove('veil-on');},2500);}}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Girl Behind the Camera (but also in front) · Eleanora</title>
@@ -16,7 +16,7 @@
 @font-face{font-family:'Allura';src:url('../brand-hub/assets/fonts/Allura-Regular.ttf');font-display:swap;}
 :root{
   --forest:#2F4034; --forest-d:#1C271F; --forest-dd:#141C16; --sage:#93A283;
-  --clay:#B87F51; --clay-l:#CE9A6B; --gold:#E7C489; --sand:#E4D7BE;
+  --clay:#B87F51; --clay-l:#CE9A6B; --clay-lt:#E8B489; --gold:#E7C489; --sand:#E4D7BE;
   --parch:#EFE6D3; --cream:#F6F1E7; --ink:#2B2019; --body:#d3dacb; --read:#e6e1d2;
   --z-nav:50; --z-grain:80; --ease:cubic-bezier(.16,1,.3,1);
 }
@@ -41,7 +41,7 @@ em{font-style:italic;}
   transition:opacity .55s var(--ease),visibility 0s linear .55s;}
 html.veil-on #veil{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .5s var(--ease);}
 #stars{position:fixed;inset:0;z-index:0;pointer-events:none;}
-.post-hero,.read,.bleed,.duo,footer{position:relative;z-index:1;}
+.post-hero,.read,.aside,footer{position:relative;z-index:1;}
 
 /* ---------- NAV ---------- */
 header{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);display:flex;align-items:center;justify-content:space-between;
@@ -84,50 +84,55 @@ nav a:hover::after,nav a.on::after{width:100%;}
 .read{position:relative;padding:clamp(74px,11vh,120px) 24px clamp(40px,6vh,60px);
   background:radial-gradient(900px 520px at 18% 4%,rgba(147,162,131,.10),transparent 70%),
             radial-gradient(820px 560px at 92% 96%,rgba(184,127,81,.11),transparent 72%),rgba(20,28,22,.80);}
-.prose{max-width:62ch;margin:0 auto;}
-.prose p{font-size:17.5px;line-height:2.02;color:var(--read);margin:0 auto 28px;}
+.prose{max-width:68ch;margin:0 auto;}
+.prose p{font-family:'Iowan Old Style','Charter','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+  font-size:18px;line-height:1.75;color:var(--read);margin:0 auto 34px;text-wrap:pretty;}
 .prose p.lede{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(21px,2.4vw,28px);line-height:1.55;
   color:var(--cream);letter-spacing:-.005em;}
+/* the line that finishes the opening: bigger than body, still prose, given its own air */
+.prose p.opening{font-size:clamp(19px,2.1vw,22px);line-height:1.72;color:var(--cream);
+  margin:0 auto clamp(38px,5vh,52px);}
 .prose em{font-style:italic;color:var(--sand);}
 .prose .pull{font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-size:clamp(22px,2.6vw,30px);
-  color:var(--gold);line-height:1.4;text-align:center;max-width:26ch;margin:clamp(40px,6vh,60px) auto;}
+  color:var(--gold);line-height:1.4;text-align:center;max-width:26ch;margin:clamp(52px,8vh,84px) auto;}
 .prose .pull::before{content:"";display:block;width:50px;height:1px;background:var(--clay-l);opacity:.7;margin:0 auto 24px;}
 .prose .ask{text-align:center;font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;color:var(--sand);
-  font-size:clamp(19px,2.1vw,23px);line-height:2.1;margin:clamp(38px,5vh,54px) auto;}
+  font-size:clamp(16px,1.8vw,19px);line-height:2.1;margin:clamp(38px,5vh,54px) auto;}
 .prose .sign{font-family:'Allura',cursive;font-size:clamp(40px,5vw,58px);color:var(--sand);margin-top:20px;text-align:center;line-height:1;}
 
-/* figures — inset + full-bleed cinematic */
-.fig{position:relative;margin:clamp(56px,8vh,96px) auto;max-width:860px;overflow:hidden;
-  box-shadow:0 26px 64px rgba(0,0,0,.42);}
-.fig::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.2);pointer-events:none;}
-.fig img{width:100%;height:auto;}
-.fig.portrait{max-width:600px;}
-.fig-cap{margin-top:12px;text-align:center;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);opacity:.8;}
-.bleed{position:relative;width:100vw;margin-left:calc(50% - 50vw);height:min(88vh,780px);overflow:hidden;
-  margin-top:clamp(70px,10vh,110px);margin-bottom:clamp(70px,10vh,110px);}
-.bleed .bg{position:absolute;inset:0;z-index:0;will-change:transform;}
-.bleed .bg img{height:100%;transform:scale(1.12);}
-.bleed::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 120px 20px rgba(20,28,22,.5);
-  background:linear-gradient(0deg,rgba(20,28,22,.45),transparent 40%);}
+/* ---------- THE TOKEN, MID-STORY ----------
+   The hero is washed and cropped on purpose, so the title can sit on it. Here the
+   same photograph is shown whole: no crop, no dimming, at feature size. It is the
+   print, so this is also where the buying happens. */
+#token-slot{margin:clamp(72px,12vh,140px) auto;}
+#token-slot .tal-close{padding-top:0;padding-bottom:0;}
+#token-slot .tal-fig{max-width:min(720px,92vw);margin:26px auto 30px;}
+#token-slot .tal-fig img{filter:saturate(1.05) contrast(1.03) sepia(.055);}
+#token-slot .tal-line{font-family:'Iowan Old Style','Charter','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+  font-size:17px;line-height:1.8;}
 
-/* half-page duo: sticky portrait image left, text scrolls on the right */
-.duo{max-width:1120px;margin:clamp(60px,9vh,110px) auto;padding:0 24px;
-  display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(28px,4.5vw,60px);align-items:start;}
-.duo .duo-img{position:sticky;top:14vh;max-height:50vh;overflow:hidden;box-shadow:0 26px 64px rgba(0,0,0,.42);}
-.duo .duo-img::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.2);pointer-events:none;z-index:2;}
-.duo .duo-img img{width:100%;height:100%;max-height:50vh;object-fit:cover;}
-.duo .duo-text{padding-top:1vh;}
-.duo .duo-text p{font-size:16.5px;line-height:1.95;color:var(--read);margin:0 0 20px;}
-.duo .duo-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:32px 18px 15px;
-  font-size:11px;letter-spacing:2.8px;text-transform:uppercase;color:var(--gold);
-  background:linear-gradient(0deg,rgba(9,14,10,.74),transparent);pointer-events:none;}
-.duo .duo-text .say{font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-size:clamp(19px,2vw,24px);
-  line-height:1.5;color:var(--gold);margin-top:16px;}
-.duo .duo-text .say::before{content:"";display:block;width:44px;height:1px;background:var(--clay-l);opacity:.75;margin:0 0 18px;}
-@media(max-width:820px){
-  .duo{grid-template-columns:1fr;gap:22px;}
-  .duo .duo-img{position:relative;top:0;max-height:64vh;}
-}
+/* ---------- THE ASIDE ----------
+   This used to be a caption riding on a photograph. Promoted: it now
+   stands alone and holds the beat a full-bleed image used to hold, so
+   it is deliberately the largest thing in the article body.
+   It must NOT read as a second pull-quote, so it differs on three axes:
+   upright (pull is italic) · clay (pull is gold) · framed by parens
+   instead of a hairline rule. Clay is already the rule colour under
+   every pull, so promoting it to a text colour stays inside the system. */
+.aside{position:relative;max-width:860px;margin:clamp(84px,14vh,168px) auto;padding:0 22px;text-align:center;}
+.aside::before{content:"";position:absolute;left:50%;top:50%;width:min(720px,90vw);height:min(400px,46vh);
+  transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(184,127,81,.22),transparent 70%);}
+/* the frame shrink-wraps the words, so the parens hug the line at any
+   length instead of drifting to the edges of an empty box */
+.aside .frame{position:relative;display:inline-flex;align-items:center;justify-content:center;
+  gap:clamp(12px,2.2vw,32px);max-width:100%;}
+.aside .q{min-width:0;max-width:20ch;font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,5.2vw,52px);
+  line-height:1.24;letter-spacing:-.012em;color:var(--clay-lt);text-wrap:balance;}
+.aside .frame::before,.aside .frame::after{flex:0 0 auto;font-family:'Didot','Bodoni 72',Georgia,serif;
+  font-size:clamp(44px,8.5vw,120px);line-height:1;color:var(--clay-lt);opacity:.45;
+  pointer-events:none;user-select:none;}
+.aside .frame::before{content:"(";} .aside .frame::after{content:")";}
 
 .back{display:block;text-align:center;margin:clamp(30px,5vh,50px) auto 0;font-size:12px;letter-spacing:3px;
   text-transform:uppercase;color:var(--gold);}
@@ -147,12 +152,17 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
 footer .cr .script{font-size:18px;color:var(--gold);}
 
 /* ---------- REVEAL ---------- */
-body.anim .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease);}
+body.anim .reveal{opacity:0;transform:translateY(12px);transition:opacity .45s var(--ease),transform .45s var(--ease);}
 body.anim .reveal.in{opacity:1;transform:none;}
+/* the parens open outward once the aside lands. Base CSS already has them
+   at rest, so with JS off or reduced motion the aside just sits there, whole. */
+body.anim .aside .frame::before,body.anim .aside .frame::after{opacity:0;transition:opacity 1.15s var(--ease) .22s,transform 1.15s var(--ease) .22s;}
+body.anim .aside .frame::before{transform:translateX(18px);}
+body.anim .aside .frame::after{transform:translateX(-18px);}
+body.anim .aside.in .frame::before,body.anim .aside.in .frame::after{opacity:.45;transform:none;}
 
 @media(max-width:900px){
   header{padding:16px 22px;} header.solid{padding:12px 22px;} nav ul{display:none;}
-  .bleed{height:64vh;min-height:360px;}
 }
 @media(max-width:520px){ .post-hero h1{font-size:clamp(34px,9vw,52px);} .prose p{font-size:17px;} }
 @media (prefers-reduced-motion: reduce){
@@ -206,7 +216,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
 
 <!-- ================= TITLE ================= -->
 <section class="post-hero">
-  <div class="bg"><img src="img/about-smoke.jpg" alt="Eleanora in black and white, a feather at her shoulder and soft smoke curling at the edge of the frame"></div>
+  <div class="bg"><img src="img/about-smoke.jpg" fetchpriority="high" alt="Eleanora in black and white, a feather at her shoulder and soft smoke curling at the edge of the frame"></div>
   <div class="inner">
     <div class="ey lab">The Archive</div>
     <h1 class="serif" style="font-size:clamp(36px,6vw,84px);max-width:15ch;line-height:1.05">The Girl Behind the Camera<br><span style="font-size:.5em;font-style:italic;opacity:.92">(but also in front)</span></h1>
@@ -218,28 +228,22 @@ body.anim .reveal.in{opacity:1;transform:none;}
 <!-- ================= READING ================= -->
 <article class="read" id="read">
   <div class="prose">
-    <p class="lede reveal">I'll start with a confession. You've seen me somewhere before. You just can't place it.</p>
+    <p class="lede reveal">I've always had that face.</p>
+    <p class="opening reveal">The one you've seen somewhere before. Passing in a crowd, walking by you on the street. So familiar you can't place it.</p>
+
     <p class="reveal">I was sixteen when I asked my mother to enroll me in modeling school. Neither of us had the faintest idea what I was really asking for.</p>
-    <p class="reveal">I only knew I wanted to be someone. The girl on the shirt. The face on the poster. The one whose name never reaches you, but whose face you'd swear you'd met somewhere before.</p>
-    <p class="pull reveal">A moment that lingers.</p>
-  </div>
+    <p class="reveal">I only knew I wanted to be someone. The girl on the shirt. The face on the poster. The one whose name never reaches you, but whose face you'd swear you knew. A moment that lingers.</p>
 
-  <div class="bleed reveal">
-    <div class="bg"><img src="img/about-lace-hat.jpg" alt="Eleanora in a delicate lace bralette and a wide-brimmed vintage hat"></div>
-  </div>
-
-  <div class="prose">
     <p class="reveal">Now for the part I don't hand to just anyone.</p>
-    <p class="reveal">I had cancer. Young. Too young to have the words for it.</p>
+    <p class="pull reveal">I had cancer. Young. Too young to have the words for it.</p>
     <p class="reveal">It left something in me. A permanent tilt to the way I see. Because when you brush up against the end that early, you cannot un-know it. How much beauty is everywhere, all the time. How carelessly the rest of the world lets it slip past.</p>
     <p class="reveal">Do not mistake me for someone who always knew. It took years to learn how to look, and I got it wrong plenty. I lost the thread, wandered off, forgot the whole lesson and had to learn it twice. The seeing was never a gift. It was a practice. And I am still, happily, imperfect at it.</p>
     <p class="reveal">They spend their lives looking the other way. Chasing the shiny, forgettable things. Numbing the parts that ache instead of feeling them for what they're worth.</p>
     <p class="reveal">But some things you don't get to skip. Some suffering can't be outrun, only walked through. And the gift buried inside it, the one nobody warns you about, is this. Once you stop running, you finally start to see. The light. The body. The ordinary, aching beauty of being alive at all.</p>
   </div>
 
-  <div class="fig reveal">
-    <img src="img/about-waterfall.jpg" alt="Eleanora in a bikini reclining on a mossy rock with a waterfall flowing behind her">
-  </div>
+  <!-- the hero photograph again, but whole this time: uncropped, undimmed, and for sale -->
+  <div id="token-slot"></div>
 
   <div class="prose">
     <p class="reveal">So that is why I go. Why I keep leaving.</p>
@@ -248,37 +252,26 @@ body.anim .reveal.in{opacity:1;transform:none;}
     <p class="reveal">They keep selling us a life free of pain, like that's the whole point. But what does that actually look like? Nothing that aches. Nothing to walk through. Nothing to feel at all. A flat line, and they told you to call it calm.</p>
     <p class="reveal">I'm after the third thing. Simpler. Slower. A single ripe fig. Sun scattered across the water on a warm afternoon. A stranger who waves you into their doorway like they've known you for years.</p>
     <p class="pull reveal">The meaning of it, this whole strange gift of being here, hides in the small quiet places. Never the loud ones.</p>
+
+    <p class="reveal">And beneath all of it, I am searching.</p>
+    <p class="reveal">For the place that feels familiar the moment I arrive. The one I've somehow lived a thousand times before. The one my body knows before my mind does, and calls home.</p>
+    <p class="reveal">I haven't found it yet.</p>
+    <p class="reveal">I think I'll know it by the way it makes my heart go quiet and glad. By the way I finally stop looking.</p>
   </div>
 
-  <section class="duo reveal">
-    <div class="duo-img"><img src="img/about-sea.jpg" alt="Eleanora in a small blue bikini on a sunlit beach"><span class="duo-cap">Still Looking</span></div>
-    <div class="duo-text">
-      <p class="reveal">And beneath all of it, I am searching.</p>
-      <p class="reveal">For the place that feels familiar the moment I arrive. The one I've somehow lived a thousand times before. The one my body knows before my mind does, and calls home.</p>
-      <p class="reveal">I haven't found it yet.</p>
-      <p class="reveal">I think I'll know it by the way it makes my heart go quiet and glad. By the way I finally stop looking.</p>
-      <p class="say reveal">Until then, I travel.</p>
-    </div>
-  </section>
-
-  <div class="bleed reveal">
-    <div class="bg"><img src="img/about-chair.jpg" alt="Eleanora in a red dress and sweater seated sideways on a strawberry-shaped chair, glancing over her shoulder"></div>
+  <div class="aside reveal">
+    <span class="frame"><span class="q">Still Looking</span></span>
   </div>
 
   <div class="prose">
+    <p class="ask reveal">Until then, I travel.</p>
+
     <p class="reveal">So. Here's my invitation.</p>
     <p class="reveal">Come with me. Behind the photographs, past the pretty light, into the rooms I don't open for everyone. Who I really am. Unfiltered. Unbothered. Unapologetic.</p>
     <p class="reveal">I know exactly what I am. Confident. Bold. Too much for some, and perfectly at peace with that. I walk my own path, and I keep the ones who care to walk it beside me.</p>
     <p class="reveal">And here is what drives me, the whole truth of it. Somewhere along the way, we forgot that a story is a kind of spell. So I'm gathering mine back up. The places, the moments, the beautiful strange magic of it all, and giving them somewhere to live. A whole little world, told one picture at a time.</p>
     <p class="pull reveal">Why don't you tag along?</p>
     <p class="reveal">If you'd rather not, that's quite alright. No one forced you through the door.</p>
-  </div>
-
-  <div class="fig portrait reveal">
-    <img src="img/about-lingerie.jpg" alt="Eleanora reclining in a soft, magazine-style editorial portrait">
-  </div>
-
-  <div class="prose">
     <p class="reveal">But if you've stayed with me this long, I suspect we're the same kind of trouble.</p>
     <p class="reveal">So come find me. I'll be here, chasing the light.</p>
     <p class="ask reveal">You know you want to.</p>
@@ -307,22 +300,21 @@ addEventListener('scroll',onScroll,{passive:true});onScroll();
 
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!reduce){
-  document.body.classList.add('anim');
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},
-    {threshold:.14,rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-  const bgs=[...document.querySelectorAll('.bleed .bg')];
-  let ticking=false;
-  const parallax=()=>{bgs.forEach(bg=>{const r=bg.parentElement.getBoundingClientRect();
-    if(r.bottom<0||r.top>innerHeight)return;const p=(r.top+r.height/2-innerHeight/2)/innerHeight;
-    bg.style.transform='translateY('+(p*-42).toFixed(1)+'px)';});ticking=false;};
-  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(parallax);}},{passive:true});parallax();
-
+  /* Lift the veil FIRST. It used to run after the observer, so any throw in the
+     animation block left an opaque overlay sitting on a body already set to
+     opacity 0 — a dark unclickable page with no way out. */
   const root=document.documentElement, veil=document.getElementById('veil');
   const lift=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.remove('veil-on')));
   if(document.readyState==='complete')lift(); else addEventListener('load',lift);
   setTimeout(()=>root.classList.remove('veil-on'),1600);
+
+  /* Only hide the prose for the reveal if we can actually bring it back. */
+  if('IntersectionObserver' in window){
+    document.body.classList.add('anim');
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},
+      {threshold:0,rootMargin:'0px 0px -2% 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  }
   addEventListener('click',(e)=>{
     if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
     const a=e.target.closest('a'); if(!a)return;
