@@ -66,6 +66,292 @@
     "manual": false
    },
    "soft": false
+  },
+  {
+   "slug": "journal-taurus-the-apple",
+   "publishAt": "2026-07-29",
+   "bucket": "the-archive",
+   "kicker": "Door Two · Taurus",
+   "title": "The Apple Isn't Red",
+   "accent": "the machine that paints",
+   "excerpt": "You've never once seen the world. Not the real one. And the thing standing between you and it is the same thing you keep calling a problem.",
+   "tags": [
+    "the-body",
+    "perception",
+    "becoming"
+   ],
+   "talisman": {
+    "img": "img/wheel-taurus-the-body.jpg",
+    "alt": "Eleanora under an outdoor shower against a rock wall, tropical leaves around her",
+    "line": "What if this picture reminded you, every day, that the body you keep fighting is the one painting you every sunset you love? If you believed it could, would it?",
+    "price": null,
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
+  },
+  {
+   "slug": "journal-gemini-no-plan",
+   "publishAt": "2026-07-30",
+   "bucket": "the-archive",
+   "kicker": "Door Three · Gemini",
+   "title": "I Quit With No Plan",
+   "accent": "four roots",
+   "excerpt": "\"I have a plan. Don't worry.\" I said it calm as still water, standing in front of my manager with my availability already set to zero. She believed me. That was the point.",
+   "tags": [
+    "agency",
+    "the-leap",
+    "skills"
+   ],
+   "talisman": {
+    "img": "img/wheel-gemini-the-kombi.jpg",
+    "alt": "A mint green Kombi van parked alone on red earth above the sea",
+    "line": "What if this picture reminded you, every day, that you already carry everything you need to start over anywhere? If you believed it could, would it?",
+    "price": null,
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
+  },
+  {
+   "slug": "journal-cancer-enough",
+   "publishAt": "2026-07-31",
+   "bucket": "the-archive",
+   "kicker": "Door Four · Cancer",
+   "title": "Enough",
+   "accent": "the homecoming",
+   "excerpt": "There's a race almost everyone is running, and no one remembers signing up for it. More. Better. The next number. A finish line that keeps sliding back the second you get close, painted by s",
+   "tags": [
+    "enough",
+    "mortality",
+    "family"
+   ],
+   "talisman": {
+    "img": "img/wheel-cancer-enough-sunset.jpg",
+    "alt": "A still orange sunset over glassy water with two small boats at anchor",
+    "line": "What if this picture reminded you, every day, that the life you keep saving for later is the one you are meant to be living now? If you believed it could, would it?",
+    "price": null,
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
+  },
+  {
+   "slug": "journal-leo-what-you-run-from",
+   "publishAt": "2026-08-01",
+   "bucket": "the-archive",
+   "kicker": "Door Five · Leo",
+   "title": "What You Run From Runs You",
+   "accent": "the throne",
+   "excerpt": "The thing you keep running from isn't behind you. It's driving.",
+   "tags": [
+    "shadow",
+    "inner-game",
+    "becoming"
+   ],
+   "talisman": {
+    "img": "img/wheel-leo-spotlight.jpg",
+    "alt": "A lone figure lit by a single shaft of light on a dark stage",
+    "line": "What if this picture reminded you, every day, to turn and face the one thing you've been running from? If you believed it could, would it?",
+    "price": null,
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
+  },
+  {
+   "slug": "journal-virgo-plan-b",
+   "publishAt": "2026-08-02",
+   "bucket": "the-archive",
+   "kicker": "Door Six · Virgo",
+   "title": "Plan B Is Plan A",
+   "accent": "the backup you keep feeding",
+   "excerpt": "If you've got a Plan B, I've got bad news. You already decided Plan A isn't happening.",
+   "tags": [
+    "attention",
+    "agency",
+    "the-leap"
+   ],
+   "talisman": {
+    "img": "img/wheel-virgo-bridge-fog.jpg",
+    "alt": "The Williamsburg Bridge disappearing into fog over the water at dusk",
+    "line": "What if this were the picture you looked at every day, until the life inside it became the one you were living? If you believed it could, would it?",
+    "price": null,
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
+  },
+  {
+   "slug": "journal-libra-the-company",
+   "publishAt": "2026-08-03",
+   "bucket": "the-archive",
+   "kicker": "Door Seven · Libra",
+   "title": "The Company You Keep",
+   "accent": "the people you become",
+   "excerpt": "You become the room you stand in. Slowly, quietly, without ever agreeing to it.",
+   "tags": [
+    "people",
+    "truth",
+    "becoming"
+   ],
+   "talisman": {
+    "img": "img/wheel-libra-the-company.jpg",
+    "alt": "People standing in silhouette along the shore against a wide sunset",
+    "line": "What if this picture reminded you, every day, to keep only the people who build you, and to be one? If you believed it could, would it?",
+    "price": null,
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
+  },
+  {
+   "slug": "journal-scorpio-the-liar",
+   "publishAt": "2026-08-04",
+   "bucket": "the-archive",
+   "kicker": "Door Eight · Scorpio",
+   "title": "The Biggest Liar You Know Is You",
+   "accent": "seeing reality",
+   "excerpt": "The biggest liar you know is you.",
+   "tags": [
+    "shadow",
+    "truth",
+    "inner-game"
+   ],
+   "talisman": {
+    "img": "img/wheel-scorpio-the-liar.jpg",
+    "alt": "A street mural of a long nosed figure pointing at a painted spiral, set in an old stone arch",
+    "line": "What if this picture reminded you, every day, that the wall was never real, and you're the only one still guarding it? If you believed it could, would it?",
+    "price": null,
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
+  },
+  {
+   "slug": "journal-sagittarius-pick-your-suffering",
+   "publishAt": "2026-08-05",
+   "bucket": "the-archive",
+   "kicker": "Door Nine · Sagittarius",
+   "title": "Pick Your Suffering",
+   "accent": "the calling",
+   "excerpt": "There's no version of your life with zero suffering in it. Not the rich one, not the fixed one, not the one you're grinding toward right now. None of them.",
+   "tags": [
+    "suffering",
+    "agency",
+    "the-climb"
+   ],
+   "talisman": {
+    "img": "img/wheel-sagittarius-the-well.jpg",
+    "alt": "The spiral stone stair of the initiation well at Sintra, climbing toward the light above",
+    "line": "What if this picture reminded you, every day, that you get to choose what your hard is for? If you believed it could, would it?",
+    "price": null,
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
+  },
+  {
+   "slug": "journal-capricorn-nothing-was-wasted",
+   "publishAt": "2026-08-06",
+   "bucket": "the-archive",
+   "kicker": "Door Ten · Capricorn",
+   "title": "Nothing Was Wasted",
+   "accent": "plant daily, harvest late",
+   "excerpt": "For years my life looked like a mess to anyone watching. Managing, then modeling, then commercial sets, then running an Airbnb, then something else entirely. Every year a different direction",
+   "tags": [
+    "patience",
+    "becoming",
+    "work"
+   ],
+   "talisman": {
+    "img": "img/wheel-capricorn-autumn-park.jpg",
+    "alt": "A park of orange and yellow autumn trees with long light across the grass",
+    "line": "What if this picture reminded you, every day, that nothing you're doing is wasted, only early? If you believed it could, would it?",
+    "price": null,
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
+  },
+  {
+   "slug": "journal-aquarius-one-yes-away",
+   "publishAt": "2026-08-07",
+   "bucket": "the-archive",
+   "kicker": "Door Eleven · Aquarius",
+   "title": "You're One Yes Away",
+   "accent": "the leap",
+   "excerpt": "Nothing good is ever going to happen to you.",
+   "tags": [
+    "luck",
+    "the-leap",
+    "agency"
+   ],
+   "talisman": {
+    "img": "img/wheel-aquarius-spoonbill.jpg",
+    "alt": "A roseate spoonbill, vivid pink, perched on a rail in a green jungle enclosure",
+    "line": "What if this picture reminded you, every day, that your whole next chapter is one small yes away? If you believed it could, would it?",
+    "price": null,
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
+  },
+  {
+   "slug": "journal-pisces-here-i-go",
+   "publishAt": "2026-08-08",
+   "bucket": "the-archive",
+   "kicker": "Door Twelve · Pisces",
+   "title": "Here I Go",
+   "accent": "the ripple",
+   "excerpt": "You already know the night. A girl I barely knew, a ride I almost didn't give, a stage a stranger pulled me up onto in front of three thousand people. I already told you that story. What I l",
+   "tags": [
+    "mortality",
+    "becoming",
+    "home"
+   ],
+   "talisman": {
+    "img": "img/studio-fur-silver.jpg",
+    "alt": "Eleanora in an open fur coat and lace, black and white",
+    "line": "What if this picture reminded you, every day, that the only thing left to do is walk through the door? If you believed it could, would it?",
+    "price": null,
+    "buyUrl": null
+   },
+   "exits": {
+    "collection": null,
+    "manual": false
+   },
+   "soft": false
   }
  ]
 }
