@@ -41,7 +41,7 @@ em{font-style:italic;}
   transition:opacity .55s var(--ease),visibility 0s linear .55s;}
 html.veil-on #veil{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .5s var(--ease);}
 #stars{position:fixed;inset:0;z-index:0;pointer-events:none;}
-.post-hero,.read,.aside,footer{position:relative;z-index:1;}
+.post-hero,.read,footer{position:relative;z-index:1;}
 
 /* ---------- NAV ---------- */
 header{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);display:flex;align-items:center;justify-content:space-between;
@@ -100,46 +100,18 @@ nav a:hover::after,nav a.on::after{width:100%;}
   font-size:clamp(16px,1.8vw,19px);line-height:2.1;margin:clamp(38px,5vh,54px) auto;}
 .prose .sign{font-family:'Allura',cursive;font-size:clamp(40px,5vw,58px);color:var(--sand);margin-top:20px;text-align:center;line-height:1;}
 
-/* ---------- THE TOKEN, MID-STORY ----------
-   The hero is washed and cropped on purpose, so the title can sit on it. Here the
-   same photograph is shown whole: no crop, no dimming, at feature size. It is the
-   print, so this is also where the buying happens. */
-#token-slot{margin:clamp(72px,12vh,140px) auto;}
-#token-slot .tal-close{padding-top:0;padding-bottom:0;}
-/* the library is 146 portrait / 61 landscape, so the frame has to hug either.
-   width:fit-content keeps the gold inset ring on the image, not on empty box. */
-#token-slot .tal-fig{width:fit-content;max-width:min(720px,92vw);margin:26px auto 30px;}
-#token-slot .tal-fig img{width:auto;max-width:100%;max-height:76vh;margin:0 auto;}
-#token-slot .tal-fig img{filter:saturate(1.05) contrast(1.03) sepia(.055);}
-#token-slot .tal-line{font-family:'Iowan Old Style','Charter','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
-  font-size:17px;line-height:1.8;}
-
-/* ---------- THE ASIDE ----------
-   This used to be a caption riding on a photograph. Promoted: it now
-   stands alone and holds the beat a full-bleed image used to hold, so
-   it is deliberately the largest thing in the article body.
-   It must NOT read as a second pull-quote, so it differs on three axes:
-   upright (pull is italic) · clay (pull is gold) · framed by parens
-   instead of a hairline rule. Clay is already the rule colour under
-   every pull, so promoting it to a text colour stays inside the system. */
-.aside{position:relative;max-width:860px;margin:clamp(84px,14vh,168px) auto;padding:0 22px;text-align:center;}
-.aside::before{content:"";position:absolute;left:50%;top:50%;width:min(720px,90vw);height:min(400px,46vh);
-  transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(184,127,81,.22),transparent 70%);}
-/* the frame shrink-wraps the words, so the parens hug the line at any
-   length instead of drifting to the edges of an empty box */
-.aside .frame{position:relative;display:inline-flex;align-items:center;justify-content:center;
-  gap:clamp(12px,2.2vw,32px);max-width:100%;}
-.aside .q{min-width:0;max-width:20ch;font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,5.2vw,52px);
-  line-height:1.24;letter-spacing:-.012em;color:var(--clay-lt);text-wrap:balance;}
-.aside .frame::before,.aside .frame::after{flex:0 0 auto;font-family:'Didot','Bodoni 72',Georgia,serif;
-  font-size:clamp(44px,8.5vw,120px);line-height:1;color:var(--clay-lt);opacity:.45;
-  pointer-events:none;user-select:none;}
-.aside .frame::before{content:"(";} .aside .frame::after{content:")";}
 
 .back{display:block;text-align:center;margin:clamp(30px,5vh,50px) auto 0;font-size:12px;letter-spacing:3px;
   text-transform:uppercase;color:var(--gold);}
 .back:hover{color:var(--cream);}
+
+/* the print CTA at the close. Most of the library is portrait, so cap by
+   height and let the frame hug the image instead of boxing it. */
+/* no width:fit-content here: paired with max-width:100% on the image it is a
+   circular constraint and the figure collapses to zero. Fixed width, auto height. */
+#entry-foot .tal-fig{max-width:min(480px,90vw);margin:22px auto 26px;}
+#entry-foot .tal-fig img{display:block;width:100%;height:auto;}
+#entry-foot .tal-line{font-family:'Iowan Old Style','Charter','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;font-size:17px;line-height:1.8;}
 
 /* ---------- FOOTER ---------- */
 footer{background:var(--forest-dd);color:var(--sand);padding:72px 40px 36px;text-align:center;position:relative;margin-top:40px;}
@@ -157,12 +129,6 @@ footer .cr .script{font-size:18px;color:var(--gold);}
 /* ---------- REVEAL ---------- */
 body.anim .reveal{opacity:0;transform:translateY(12px);transition:opacity .45s var(--ease),transform .45s var(--ease);}
 body.anim .reveal.in{opacity:1;transform:none;}
-/* the parens open outward once the aside lands. Base CSS already has them
-   at rest, so with JS off or reduced motion the aside just sits there, whole. */
-body.anim .aside .frame::before,body.anim .aside .frame::after{opacity:0;transition:opacity 1.15s var(--ease) .22s,transform 1.15s var(--ease) .22s;}
-body.anim .aside .frame::before{transform:translateX(18px);}
-body.anim .aside .frame::after{transform:translateX(-18px);}
-body.anim .aside.in .frame::before,body.anim .aside.in .frame::after{opacity:.45;transform:none;}
 
 @media(max-width:900px){
   header{padding:16px 22px;} header.solid{padding:12px 22px;} nav ul{display:none;}
@@ -240,20 +206,7 @@ body.anim .aside.in .frame::before,body.anim .aside.in .frame::after{opacity:.45
     <p class="reveal">Everyone around me walked it like it was the only road. Head down, eyes forward, very devout.</p>
     <p class="reveal">I walked it too. I just never believed it. And I don't think you do either.</p>
     <p class="reveal">Then a door opened. The kind you have to be a little reckless to walk through. Halfway through my second year of college, I just stopped showing up. No dramatic exit, no announcement. I didn't drop out so much as quietly stop pretending the map was mine.</p>
-  </div>
-
-  <!-- the hero photograph again, whole this time: uncropped, undimmed, and for sale -->
-  <div id="token-slot"></div>
-
-  <div class="prose">
     <p class="reveal">There's another map they hand you, if you're a woman. The one that decides what your body is allowed to be, and what it's allowed to mean. I never followed that one either.</p>
-  </div>
-
-  <div class="aside reveal">
-    <span class="frame"><span class="q">Not a Confession</span></span>
-  </div>
-
-  <div class="prose">
     <p class="reveal">When I started modeling, everyone suddenly had a thesis about a girl who liked being looked at. Who made art out of her own skin and wouldn't apologize for it. I never understood the shame. I'd look at those photos and feel beautiful. Powerful. The most myself I had ever been.</p>
     <p class="reveal">Somewhere we decided a woman's body could only mean one thing. That there's no line left between art and sex, between beauty and something you're supposed to be ashamed of. I never agreed to that. You don't have to either.</p>
     <p class="pull reveal">My body was never a confession. It's a canvas. I just stopped asking permission to hang it on the wall.</p>
@@ -265,11 +218,11 @@ body.anim .aside.in .frame::before,body.anim .aside.in .frame::after{opacity:.45
     <div class="sign reveal">xo, Eleanora</div>
   </div>
 
-  <a class="back" href="journal.html">&larr; Back to the Journal</a>
 </article>
 
 <!-- ================= FOOTER ================= -->
 <div id="entry-foot"></div>
+<a class="back" href="journal.html">&larr; Back to the Journal</a>
 
 <footer id="footer">
   <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/logo/xo-eleanora-badge-seal-cream-gold.png" alt="Eleanora seal" style="width:100%;height:100%;object-fit:contain"></a></div>
