@@ -24,6 +24,18 @@
   // ---- one-time styles for the injected blocks ----
   var css = document.createElement('style');
   css.textContent =
+    '.wheel-nav{max-width:760px;margin:0 auto;padding:clamp(26px,4vh,40px) 24px clamp(4px,1vh,10px);' +
+      'display:flex;gap:16px;align-items:stretch;justify-content:center;' +
+      'border-top:1px solid rgba(231,196,137,.16);}' +
+    '.wheel-nav a{flex:1 1 0;min-width:0;display:block;padding:14px 16px;border:1px solid rgba(231,196,137,.22);' +
+      'transition:border-color .3s,background .3s;}' +
+    '.wheel-nav a:hover{border-color:var(--gold,#e7c489);background:rgba(231,196,137,.05);}' +
+    '.wheel-nav .dir{font-size:10px;letter-spacing:2.8px;text-transform:uppercase;color:var(--gold,#e7c489);opacity:.85;}' +
+    '.wheel-nav .k{font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--sand,#e4d7be);opacity:.7;margin-top:9px;}' +
+    '.wheel-nav .t{font-family:\'Didot\',\'Bodoni 72\',Georgia,serif;font-size:17px;line-height:1.3;color:var(--cream,#f6f1e7);' +
+      'margin-top:3px;text-transform:none;letter-spacing:normal;text-wrap:balance;}' +
+    '.wheel-nav .next{text-align:right;}' +
+    '@media(max-width:560px){.wheel-nav{flex-direction:column;} .wheel-nav .next{text-align:left;}}' +
     '.tal-close{max-width:760px;margin:0 auto;padding:clamp(20px,4vh,44px) 24px clamp(40px,6vh,60px);text-align:center;}' +
     '.tal-close .eye{font-size:11px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);opacity:.9;}' +
     '.tal-fig{position:relative;max-width:520px;margin:22px auto 26px;overflow:hidden;box-shadow:0 26px 64px rgba(0,0,0,.42);}' +
@@ -73,6 +85,33 @@
 
     var html = '';
     var talHtml = '';
+
+    // ---------- 0. THE WHEEL PAGER ----------
+    // journal.json's entry order IS the wheel order, so the neighbours either
+    // side of this story are the previous and next door. Sits under the
+    // signature, above "Take it home", so the way onward is obvious.
+    var navHtml = '';
+    var myIndex = entries.map(function (e) { return e.slug; }).indexOf(SLUG);
+    if (myIndex !== -1) {
+      var prev = myIndex > 0 ? entries[myIndex - 1] : null;
+      var next = myIndex < entries.length - 1 ? entries[myIndex + 1] : null;
+      if (prev || next) {
+        navHtml += '<nav class="wheel-nav reveal" aria-label="The wheel, in order">';
+        if (prev) {
+          navHtml += '<a class="prev" href="' + prev.slug + '.html">' +
+            '<div class="dir">&larr; The one before</div>' +
+            '<div class="k">' + (prev.kicker || '') + '</div>' +
+            '<div class="t">' + prev.title + '</div></a>';
+        }
+        if (next) {
+          navHtml += '<a class="next" href="' + next.slug + '.html">' +
+            '<div class="dir">Read the next one &rarr;</div>' +
+            '<div class="k">' + (next.kicker || '') + '</div>' +
+            '<div class="t">' + next.title + '</div></a>';
+        }
+        navHtml += '</nav>';
+      }
+    }
 
     // ---------- 1. TALISMAN CLOSE ----------
     var t = me.talisman || {};
@@ -140,8 +179,8 @@
     // A page can host the token mid-story by dropping in <div id="token-slot"></div>.
     // Without one, it closes the page exactly as before.
     var slot = document.getElementById('token-slot');
-    if (slot) { slot.innerHTML = talHtml; mount.innerHTML = html; }
-    else { mount.innerHTML = talHtml + html; }
+    if (slot) { slot.innerHTML = talHtml; mount.innerHTML = navHtml + html; }
+    else { mount.innerHTML = navHtml + talHtml + html; }
 
     // let the injected .reveal blocks animate in like the rest of the page
     if (document.body.classList.contains('anim')) {
@@ -185,8 +224,12 @@
 
   // ---- the one email endpoint. CHOSEN SENDER = MailerLite. -----
   var SUBSCRIBE_MODE = 'mailerlite';                          // 'mailerlite' | 'formsubmit' | 'smartsuite'
+  // TARGET LIST = the Threshold (the deeper series people opt into from a wheel
+  // story). Paste the Threshold group's embedded-form action below to point
+  // signups at it. Until then this posts to the "Eleanora — Journal" group, so
+  // emails are still captured and nothing is lost, just tagged to the wrong list.
   var SUBSCRIBE_ENDPOINT = 'https://assets.mailerlite.com/jsonp/2518337/forms/193587317692172210/subscribe';
-  // ↑ MailerLite embedded-form action (public, no key). Group: "Eleanora — Journal".
+  // ↑ CURRENTLY: "Eleanora — Journal". REPLACE with the Threshold group's form URL.
   //   FormSubmit fallback: 'https://formsubmit.co/ajax/corraoconsulting@gmail.com'
 
   var DONE_KEY = 'eleanora_sub';                             // 'done' | 'dismissed' -> never show again
@@ -236,12 +279,12 @@
   pop.innerHTML =
     '<button class="x" aria-label="Close">&times;</button>' +
     '<div class="eye">Leave the door open</div>' +
-    '<h5>There’s always another story.</h5>' +
-    '<p>This one found you. Leave your email and I’ll make sure the next one does too.</p>' +
+    '<h5>Some stories don’t make the website.</h5>' +
+    '<p>The deeper ones stay off here. Leave your email and I’ll send those to you instead.</p>' +
     '<form novalidate>' +
       '<input type="text" class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">' +
       '<input type="email" name="email" placeholder="your email" required autocomplete="email">' +
-      '<button type="submit" class="go">Send me the next one</button>' +
+      '<button type="submit" class="go">Send me those</button>' +
       '<p class="note" aria-live="polite"></p>' +
     '</form>';
   document.body.appendChild(pop);
@@ -259,16 +302,48 @@
     shown = true;
     cleanup();
     if (reduce) { pop.classList.add('in'); }
-    else { requestAnimationFrame(function () { requestAnimationFrame(function () { pop.classList.add('in'); }); }); }
+    else {
+      // rAF is starved while a tab is backgrounded, and gating the reveal only on
+      // it means the popup can queue forever and never show. Same trap the veil
+      // had. Timer fallback: adding the class twice is harmless.
+      requestAnimationFrame(function () { requestAnimationFrame(function () { pop.classList.add('in'); }); });
+      setTimeout(function () { pop.classList.add('in'); }, 300);
+    }
   }
   function remember(v) { try { localStorage.setItem(DONE_KEY, v); } catch (e) {} }
   function dismiss() { remember('dismissed'); pop.classList.remove('in'); setTimeout(function () { pop.remove(); }, 500); }
 
   closeBtn.addEventListener('click', dismiss);
 
-  // ---- trigger: after ~20s on the page ----
-  function cleanup() { clearTimeout(timer); }
-  var timer = setTimeout(show, 20000);
+  // ---- trigger: the middle of the story, not a stopwatch ----
+  // A marker is dropped late in the article (~85%) and watched with an
+  // IntersectionObserver, so the ask lands once the reader is genuinely into the
+  // piece rather than interrupting someone who just arrived. IO rather than a
+  // scroll listener: no scroll thrash, it still fires if the page loads already
+  // scrolled, and it is the same mechanism the .reveal system uses here.
+  var article = document.querySelector('article.read') || document.body;
+  var fired = false;
+  var midWatcher = null;
+  function fire() { if (fired) return; fired = true; cleanup(); show(); }
+  function cleanup() {
+    clearTimeout(timer);
+    if (midWatcher) { midWatcher.disconnect(); midWatcher = null; }
+  }
+  var timer = setTimeout(fire, 90000);                 // backstop for very short entries
+
+  var mark = document.createElement('div');
+  mark.setAttribute('aria-hidden', 'true');
+  mark.style.cssText = 'height:1px;pointer-events:none;';
+  var ps = article.querySelectorAll('.prose > p, .prose > div');
+  if (ps.length) { var a = ps[Math.min(ps.length - 1, Math.floor(ps.length * 0.85))]; a.parentNode.insertBefore(mark, a); }
+  else { article.appendChild(mark); }
+
+  if ('IntersectionObserver' in window) {
+    midWatcher = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) fire(); });
+    }, { rootMargin: '0px 0px -25% 0px' });
+    midWatcher.observe(mark);
+  }
 
   // ---- submit ----
   form.addEventListener('submit', function (e) {
@@ -323,4 +398,104 @@
       '<p class="thanks">You’re on the list. The next one finds you first. <span class="sig">x</span></p>';
     pop.querySelector('.x').addEventListener('click', function () { pop.classList.remove('in'); setTimeout(function () { pop.remove(); }, 500); });
   }
+})();
+
+
+/* ============================================================
+   THE MIDDLE BAR — the inline ask, at the midpoint of the story.
+   The popup is the last catch on the way out; this is the one that
+   actually explains the offer. Both write the same DONE_KEY, so
+   subscribing to either retires the other.
+   ============================================================ */
+(function () {
+  if (!document.body.getAttribute('data-slug')) return;          // story pages only
+
+  var DONE_KEY = 'eleanora_sub';
+  try { if (localStorage.getItem(DONE_KEY)) return; } catch (e) {}
+
+  var ENDPOINT = 'https://assets.mailerlite.com/jsonp/2518337/forms/193587317692172210/subscribe';
+  // ↑ same list as the popup. Replace with the Threshold group's form URL.
+
+  var article = document.querySelector('article.read');
+  if (!article) return;
+
+  var css = document.createElement('style');
+  css.textContent =
+    '.sub-bar{position:relative;max-width:660px;margin:clamp(64px,10vh,120px) auto;padding:clamp(28px,4vw,40px) clamp(24px,4vw,42px);' +
+      'text-align:center;border:1px solid rgba(231,196,137,.28);' +
+      'background:radial-gradient(120% 140% at 50% 0%,rgba(184,127,81,.14),transparent 70%),rgba(20,28,22,.5);}' +
+    '.sub-bar .eye{font-size:10.5px;letter-spacing:3.2px;text-transform:uppercase;color:var(--gold,#e7c489);opacity:.9;margin-bottom:14px;}' +
+    '.sub-bar h4{font-family:\'Didot\',\'Bodoni 72\',Georgia,serif;font-weight:400;font-size:clamp(24px,3.2vw,34px);' +
+      'line-height:1.2;color:var(--cream,#f6f1e7);margin:0 0 14px;}' +
+    '.sub-bar p{font-family:\'Iowan Old Style\',\'Charter\',\'Palatino Linotype\',Palatino,Georgia,serif;' +
+      'font-size:16.5px;line-height:1.75;color:var(--read,#e6e1d2);max-width:46ch;margin:0 auto 22px;}' +
+    '.sub-bar form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}' +
+    '.sub-bar input[type=email]{flex:1 1 240px;max-width:300px;background:rgba(10,15,11,.5);border:1px solid rgba(231,196,137,.3);' +
+      'color:var(--cream,#f6f1e7);font-family:inherit;font-size:14px;padding:13px 15px;outline:none;}' +
+    '.sub-bar input[type=email]:focus{border-color:var(--gold,#e7c489);}' +
+    '.sub-bar input::placeholder{color:#9aa392;}' +
+    '.sub-bar button{flex:0 0 auto;cursor:pointer;background:none;border:1px solid var(--gold,#e7c489);color:var(--gold,#e7c489);' +
+      'font-family:inherit;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;padding:13px 22px;transition:.3s;}' +
+    '.sub-bar button:hover{background:var(--gold,#e7c489);color:#1c271f;}' +
+    '.sub-bar .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}' +
+    '.sub-bar .note{font-size:12px;line-height:1.6;color:var(--sand,#e4d7be);opacity:.75;margin:14px 0 0;min-height:1px;}' +
+    '.sub-bar .thanks{font-family:\'Iowan Old Style\',Georgia,serif;font-size:16.5px;line-height:1.8;color:var(--cream,#f6f1e7);margin:0;}' +
+    '@media(max-width:520px){.sub-bar form{flex-direction:column;} .sub-bar input[type=email]{max-width:none;}}';
+  document.head.appendChild(css);
+
+  var bar = document.createElement('aside');
+  bar.className = 'sub-bar reveal';
+  bar.innerHTML =
+    '<div class="eye">Leave the door open</div>' +
+    '<h4>This is the edited version.</h4>' +
+    '<p>What I’m reading. What I’m learning the hard way. Where I am, and what I’m building next. The thoughts that run too long for a page like this.</p>' +
+    '<form novalidate>' +
+      '<input type="text" class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+      '<input type="email" name="email" placeholder="your email" required autocomplete="email" aria-label="Your email">' +
+      '<button type="submit">Send me the long version</button>' +
+    '</form>' +
+    '<p class="note" aria-live="polite">Leave whenever you like.</p>';
+
+  function paraAt(root, frac) {
+    // the article's only child is usually the .prose block, so counting
+    // article.children lands everything at the top. Count real paragraphs.
+    var ps = root.querySelectorAll('.prose > p, .prose > div');
+    if (!ps.length) return null;
+    return ps[Math.min(ps.length - 1, Math.floor(ps.length * frac))];
+  }
+  var anchorP = paraAt(article, 0.5);
+  if (anchorP && anchorP.parentNode) { anchorP.parentNode.insertBefore(bar, anchorP); }
+  else { article.appendChild(bar); }
+
+  var form = bar.querySelector('form');
+  var emailEl = bar.querySelector('input[type=email]');
+  var honeyEl = bar.querySelector('.hp');
+  var noteEl = bar.querySelector('.note');
+  var goBtn = bar.querySelector('button');
+
+  function done() {
+    try { localStorage.setItem(DONE_KEY, 'done'); } catch (e) {}
+    bar.innerHTML = '<div class="eye">You’re in</div>' +
+      '<p class="thanks">You’re on the list. The long version finds you first. <span style="color:var(--gold,#e7c489)">x</span></p>';
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = (emailEl.value || '').trim();
+    if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      noteEl.textContent = 'That email looks off. Try again?'; emailEl.focus(); return;
+    }
+    if (honeyEl.value) { done(); return; }
+    goBtn.setAttribute('disabled', 'disabled');
+    noteEl.textContent = 'One second…';
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'fields[email]=' + encodeURIComponent(email) + '&ml-submit=1&anticsrf=true',
+      mode: 'no-cors'
+    }).then(done).catch(function () {
+      goBtn.removeAttribute('disabled');
+      noteEl.textContent = 'Hmm, that didn’t go through. One more try?';
+    });
+  });
 })();
