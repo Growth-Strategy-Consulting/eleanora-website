@@ -69,7 +69,7 @@
   },
   {
    "slug": "journal-taurus-the-apple",
-   "publishAt": "2026-07-29",
+   "publishAt": "2026-07-28",
    "bucket": "the-archive",
    "kicker": "Door Two · Taurus",
    "title": "The Apple Isn't Red",
@@ -91,11 +91,12 @@
     "collection": null,
     "manual": false
    },
-   "soft": false
+   "soft": false,
+   "feed": false
   },
   {
    "slug": "journal-gemini-no-plan",
-   "publishAt": "2026-07-30",
+   "publishAt": "2026-07-28",
    "bucket": "the-archive",
    "kicker": "Door Three · Gemini",
    "title": "I Quit With No Plan",
@@ -117,11 +118,12 @@
     "collection": null,
     "manual": false
    },
-   "soft": false
+   "soft": false,
+   "feed": false
   },
   {
    "slug": "journal-cancer-enough",
-   "publishAt": "2026-07-31",
+   "publishAt": "2026-07-28",
    "bucket": "the-archive",
    "kicker": "Door Four · Cancer",
    "title": "Enough",
@@ -143,11 +145,12 @@
     "collection": null,
     "manual": false
    },
-   "soft": false
+   "soft": false,
+   "feed": false
   },
   {
    "slug": "journal-leo-what-you-run-from",
-   "publishAt": "2026-08-01",
+   "publishAt": "2026-07-28",
    "bucket": "the-archive",
    "kicker": "Door Five · Leo",
    "title": "What You Run From Runs You",
@@ -169,11 +172,12 @@
     "collection": null,
     "manual": false
    },
-   "soft": false
+   "soft": false,
+   "feed": false
   },
   {
    "slug": "journal-virgo-plan-b",
-   "publishAt": "2026-08-02",
+   "publishAt": "2026-07-28",
    "bucket": "the-archive",
    "kicker": "Door Six · Virgo",
    "title": "Plan B Is Plan A",
@@ -195,11 +199,12 @@
     "collection": null,
     "manual": false
    },
-   "soft": false
+   "soft": false,
+   "feed": false
   },
   {
    "slug": "journal-libra-the-company",
-   "publishAt": "2026-08-03",
+   "publishAt": "2026-07-28",
    "bucket": "the-archive",
    "kicker": "Door Seven · Libra",
    "title": "The Company You Keep",
@@ -221,11 +226,12 @@
     "collection": null,
     "manual": false
    },
-   "soft": false
+   "soft": false,
+   "feed": false
   },
   {
    "slug": "journal-scorpio-the-liar",
-   "publishAt": "2026-08-04",
+   "publishAt": "2026-07-28",
    "bucket": "the-archive",
    "kicker": "Door Eight · Scorpio",
    "title": "The Biggest Liar You Know Is You",
@@ -247,11 +253,12 @@
     "collection": null,
     "manual": false
    },
-   "soft": false
+   "soft": false,
+   "feed": false
   },
   {
    "slug": "journal-sagittarius-pick-your-suffering",
-   "publishAt": "2026-08-05",
+   "publishAt": "2026-07-28",
    "bucket": "the-archive",
    "kicker": "Door Nine · Sagittarius",
    "title": "Pick Your Suffering",
@@ -273,11 +280,12 @@
     "collection": null,
     "manual": false
    },
-   "soft": false
+   "soft": false,
+   "feed": false
   },
   {
    "slug": "journal-capricorn-nothing-was-wasted",
-   "publishAt": "2026-08-06",
+   "publishAt": "2026-07-28",
    "bucket": "the-archive",
    "kicker": "Door Ten · Capricorn",
    "title": "Nothing Was Wasted",
@@ -299,11 +307,12 @@
     "collection": null,
     "manual": false
    },
-   "soft": false
+   "soft": false,
+   "feed": false
   },
   {
    "slug": "journal-aquarius-one-yes-away",
-   "publishAt": "2026-08-07",
+   "publishAt": "2026-07-28",
    "bucket": "the-archive",
    "kicker": "Door Eleven · Aquarius",
    "title": "You're One Yes Away",
@@ -325,11 +334,12 @@
     "collection": null,
     "manual": false
    },
-   "soft": false
+   "soft": false,
+   "feed": false
   },
   {
    "slug": "journal-pisces-here-i-go",
-   "publishAt": "2026-08-08",
+   "publishAt": "2026-07-28",
    "bucket": "the-archive",
    "kicker": "Door Twelve · Pisces",
    "title": "Here I Go",
@@ -351,7 +361,8 @@
     "collection": null,
     "manual": false
    },
-   "soft": false
+   "soft": false,
+   "feed": false
   }
  ]
 }

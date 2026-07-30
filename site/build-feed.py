@@ -18,6 +18,12 @@ TODAY = datetime.date.today()
 
 
 def is_published(entry):
+    # `feed: false` holds a story OUT of the RSS feed even though it is live on
+    # the site. The feed is MailerLite's RSS auto-send trigger, so this is the
+    # switch that lets stories publish on the wall without emailing the list.
+    # Flip it to true (or drop the key) to release that story's email.
+    if entry.get("feed") is False:
+        return False
     d = entry.get("publishAt")
     if not d:
         return True
