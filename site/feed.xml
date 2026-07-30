@@ -3,6 +3,21 @@
     <title>Eleanora — the Journal</title>
     <link>https://corraoelena.com/site/journal.html</link>
     <description>An archive of her stories. New ones, as they land.</description>
-    <lastBuildDate>Wed, 29 Jul 2026 00:00:00 +0000</lastBuildDate>
-
+    <lastBuildDate>Thu, 30 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>The Girl Behind the Camera (but also in front)</title>
+      <link>https://corraoelena.com/site/journal-behind-the-camera.html</link>
+      <guid isPermaLink="true">https://corraoelena.com/site/journal-behind-the-camera.html</guid>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 +0000</pubDate>
+      <description>I&#x27;ve always had that face. The one you&#x27;ve seen somewhere before, so familiar you can&#x27;t place it. The front door of the whole wheel, and the invitation to come with me.</description>
+      <enclosure url="https://corraoelena.com/site/img/wheel-lawzero-lisbon-rooftops.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>The Good Girl (who was already gone)</title>
+      <link>https://corraoelena.com/site/journal-aries-the-good-girl.html</link>
+      <guid isPermaLink="true">https://corraoelena.com/site/journal-aries-the-good-girl.html</guid>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 +0000</pubDate>
+      <description>I jumped ship for the first time right after my Confirmation. The story of the good girl who was already gone, and the map she built out of her own life.</description>
+      <enclosure url="https://corraoelena.com/site/img/about-smoke.jpg" type="image/jpeg" />
+    </item>
 </channel></rss>
