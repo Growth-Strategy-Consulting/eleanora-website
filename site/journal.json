@@ -2,7 +2,7 @@
  "_readme": {
   "naming-note": "Brand term for this object is 'token' (the postcard/print sold with the story; user-facing copy says 'token'). The JSON field is still named `talisman` in code — left unchanged on purpose.",
   "what": "Single source of truth for the Eleanora Journal. journal.html (the wall), the homepage teaser, and every entry's token-close + read-next all render from this file. Add a story by appending one object to `entries` — never hand-edit the wall or the teaser.",
-  "buckets": "Every entry has one `bucket`, mapped straight off the Content Wheel tracker's `purpose` field: 'the-long-way' (lessons — the hard-won takeaways) · 'the-archive' (stories — personal narrative + travel memoir; a trip still pairs to a Collection via exits) · 'a-place-to-park' (thought-provokers — food for thought, 'park that thought') · 'curio' (The Curio Cabinet — the odd, personal, off-the-wheel wonderings). Umbrella / soul line for the whole Journal is 'the way I see it'. The wall filter buttons are built from these; a filter auto-hides until its bucket has at least one entry, so an empty bucket never shows an empty wall.",
+  "buckets": "Every entry has one `bucket`, mapped straight off the Content Wheel tracker's `purpose` field: 'the-long-way' (lessons — the hard-won takeaways) · 'the-archive' (stories — personal narrative + travel memoir; a trip still pairs to a Collection via exits) · 'a-place-to-park' (thought-provokers — food for thought, 'park that thought') · 'the-manifesto' (The 1% Manifesto — the 13-door wheel, Law Zero plus the twelve signs, meant to be read in order) · 'curio' (The Curio Cabinet — the odd, personal, off-the-wheel wonderings). Umbrella / soul line for the whole Journal is 'the way I see it'. The wall filter buttons are built from these; a filter auto-hides until its bucket has at least one entry, so an empty bucket never shows an empty wall.",
   "the-token-rule": "The feature image IS the token — the print sold at the close of the entry. The code field is `talisman` (unchanged): `talisman.img` is what shows on the wall card AND the buy block. `talisman.buyUrl` stays null until GoDaddy Payments (pay.corraoelena.com) is live; until then the buy button shows 'Prints coming soon' (same mock as collections.json). Never fake a live price/checkout.",
   "the-exits": "`exits.collection` = a slug in collections.json (Travels entries → 'see the whole trip'). `exits.manual` true = Way-I-See-It entries end on the hook toward the paid manual. `soft` true (People) = a gentle 'a token to remember them by', no hard sell.",
   "read-next": "Bottom of each entry shows 3 related, not-yet-visited entries (relatedness = shared `tags`, then same bucket). Visited slugs are tracked in the browser (localStorage).",
@@ -13,7 +13,7 @@
   {
    "slug": "journal-behind-the-camera",
    "publishAt": "2026-07-28",
-   "bucket": "the-archive",
+   "bucket": "the-manifesto",
    "kicker": "Start Here",
    "title": "The Girl Behind the Camera (but also in front)",
    "accent": "chasing the light",
@@ -42,7 +42,7 @@
   {
    "slug": "journal-aries-the-good-girl",
    "publishAt": "2026-07-28",
-   "bucket": "the-archive",
+   "bucket": "the-manifesto",
    "kicker": "Door One · Aries",
    "title": "The Good Girl (who was already gone)",
    "accent": "jumped ship",
@@ -70,7 +70,7 @@
   {
    "slug": "journal-taurus-the-apple",
    "publishAt": "2026-07-28",
-   "bucket": "the-archive",
+   "bucket": "the-manifesto",
    "kicker": "Door Two · Taurus",
    "title": "The Apple Isn't Red",
    "accent": "the machine that paints",
@@ -97,7 +97,7 @@
   {
    "slug": "journal-gemini-no-plan",
    "publishAt": "2026-07-28",
-   "bucket": "the-archive",
+   "bucket": "the-manifesto",
    "kicker": "Door Three · Gemini",
    "title": "I Quit With No Plan",
    "accent": "four roots",
@@ -124,7 +124,7 @@
   {
    "slug": "journal-cancer-enough",
    "publishAt": "2026-07-28",
-   "bucket": "the-archive",
+   "bucket": "the-manifesto",
    "kicker": "Door Four · Cancer",
    "title": "Enough",
    "accent": "the homecoming",
@@ -151,7 +151,7 @@
   {
    "slug": "journal-leo-what-you-run-from",
    "publishAt": "2026-07-28",
-   "bucket": "the-archive",
+   "bucket": "the-manifesto",
    "kicker": "Door Five · Leo",
    "title": "What You Run From Runs You",
    "accent": "the throne",
@@ -178,7 +178,7 @@
   {
    "slug": "journal-virgo-plan-b",
    "publishAt": "2026-07-28",
-   "bucket": "the-archive",
+   "bucket": "the-manifesto",
    "kicker": "Door Six · Virgo",
    "title": "Plan B Is Plan A",
    "accent": "the backup you keep feeding",
@@ -205,7 +205,7 @@
   {
    "slug": "journal-libra-the-company",
    "publishAt": "2026-07-28",
-   "bucket": "the-archive",
+   "bucket": "the-manifesto",
    "kicker": "Door Seven · Libra",
    "title": "The Company You Keep",
    "accent": "the people you become",
@@ -232,7 +232,7 @@
   {
    "slug": "journal-scorpio-the-liar",
    "publishAt": "2026-07-28",
-   "bucket": "the-archive",
+   "bucket": "the-manifesto",
    "kicker": "Door Eight · Scorpio",
    "title": "The Biggest Liar You Know Is You",
    "accent": "seeing reality",
@@ -259,7 +259,7 @@
   {
    "slug": "journal-sagittarius-pick-your-suffering",
    "publishAt": "2026-07-28",
-   "bucket": "the-archive",
+   "bucket": "the-manifesto",
    "kicker": "Door Nine · Sagittarius",
    "title": "Pick Your Suffering",
    "accent": "the calling",
@@ -286,7 +286,7 @@
   {
    "slug": "journal-capricorn-nothing-was-wasted",
    "publishAt": "2026-07-28",
-   "bucket": "the-archive",
+   "bucket": "the-manifesto",
    "kicker": "Door Ten · Capricorn",
    "title": "Nothing Was Wasted",
    "accent": "plant daily, harvest late",
@@ -313,7 +313,7 @@
   {
    "slug": "journal-aquarius-one-yes-away",
    "publishAt": "2026-07-28",
-   "bucket": "the-archive",
+   "bucket": "the-manifesto",
    "kicker": "Door Eleven · Aquarius",
    "title": "You're One Yes Away",
    "accent": "the leap",
@@ -340,7 +340,7 @@
   {
    "slug": "journal-pisces-here-i-go",
    "publishAt": "2026-07-28",
-   "bucket": "the-archive",
+   "bucket": "the-manifesto",
    "kicker": "Door Twelve · Pisces",
    "title": "Here I Go",
    "accent": "the ripple",

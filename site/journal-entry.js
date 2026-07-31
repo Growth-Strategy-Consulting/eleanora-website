@@ -70,7 +70,15 @@
     '@media(max-width:820px){.rn-grid{grid-template-columns:1fr;max-width:420px;}}';
   document.head.appendChild(css);
 
-  var BUCKET_LABEL = { 'way-i-see-it': 'The Way I See It', 'travels': 'Travels', 'people': 'The People' };
+  // keys must match journal.json's `bucket` values. The old map used retired keys
+  // ('way-i-see-it','travels','people'), so every read-next card rendered a blank label.
+  var BUCKET_LABEL = {
+    'the-manifesto': 'The 1% Manifesto',
+    'the-long-way': 'The Long Way',
+    'the-archive': 'The Archive',
+    'a-place-to-park': 'A Place to Park',
+    'curio': 'The Curio Cabinet'
+  };
 
   Promise.all([
     fetch('journal.json').then(function (r) { return r.json(); }),
