@@ -1,4 +1,14 @@
 /* ============================================================
+   SIGNUP KILL SWITCH
+   The MailerLite form ("Threshold — the deeper letters") is currently
+   active:false, so submissions do NOT reach the list, yet the UI was
+   telling people "You're in". Rather than lie to readers, both the
+   mid-story bar and the exit popup stay hidden until the form is
+   published in MailerLite. Flip this to true the moment it is live.
+   ============================================================ */
+window.ELEANORA_SIGNUP_LIVE = false;
+
+/* ============================================================
    journal-entry.js — the reusable Journal entry engine.
    Each entry page carries <body data-slug="journal-xxx"> and a
    <div id="entry-foot"></div> just before <footer>, plus this script.
@@ -232,6 +242,7 @@
    (FormSubmit + SmartSuite branches are kept as fallbacks.)
    ============================================================ */
 (function () {
+  if (!window.ELEANORA_SIGNUP_LIVE) return;                   // form not live yet
   if (!document.body.getAttribute('data-slug')) return;      // story pages only
 
   // ---- the one email endpoint. CHOSEN SENDER = MailerLite. -----
@@ -420,6 +431,7 @@
    subscribing to either retires the other.
    ============================================================ */
 (function () {
+  if (!window.ELEANORA_SIGNUP_LIVE) return;                       // form not live yet
   if (!document.body.getAttribute('data-slug')) return;          // story pages only
 
   var DONE_KEY = 'eleanora_sub';
