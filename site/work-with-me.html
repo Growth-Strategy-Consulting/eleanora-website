@@ -23,16 +23,22 @@
     • COPY IS PROVISIONAL scaffolding drawn from Elena's locked spine.
       Every headline/line is a placeholder for a CAPTION-skill pass + Elena's
       authorship. Do not treat as final voice.
-    • PROOF: three real testimonials (Josie · Sadie · Gianni), used with
-      permission, true to their real transformations. Each person signs off on
-      their own wording before this page goes public. Never invent or overstate.
-    • NO PRICES on the page (Elena, 2026-07-13 pivot). Programs described without
-      numbers; investment revealed privately after a paid 30-min consult. Internal
-      menu (ledger is source of truth: offers-and-pricing.md): 1-mo $2,200 · 3-mo $5,500 ·
-      consult $250 ($150 with code MANIFESTO100) · power hour $450 ($350 with code
-      MANIFESTO100) · 12-mo retainer private. The MANIFESTO100 code = $100 off either
-      paid session, for readers who finish the 1% Manifesto (applied at Shopify checkout).
-      Full model in 1-Clients/Eleanora/offers/1-to-1-container-spec.md.
+    • PROOF (updated 2026-08-01): TWO testimonials, both real, both signed off by
+      the client (Elena confirmed). NAMES CHANGED at Elena's instruction — the
+      quotes are verbatim, the names are not. Nadia = formerly Sadie, Marco =
+      formerly Gianni. A third (Josie) is HELD OFF the page: the quote reads as a
+      finished arc and Elena says that client is still a work in progress. Restore
+      only if Elena confirms the transformation actually completed. Never invent
+      or overstate.
+    • PRICES ARE NOW ON THE PAGE (Elena, 2026-08-01 pivot from duration to SESSION
+      PACKS, modeled on happinesscoachangela.com). Ladder: Power Hour 1 = $222 ·
+      The Reset 4 = $800 · The Turn 8 = $1,600 · The Whole Wheel 16 = $3,200
+      ($200/hr on any set). FIT CALL IS FREE, 20 min (replaces the $250 paid
+      consult, which no longer made sense priced above a session).
+      ⚠️ MANIFESTO100 ($100 off) NEEDS RESETTING — at $222 it's 45% off a single
+      hour. Intended fix: packs only. Not yet changed in Shopify.
+      ⚠️ SUPERSEDED: 1-mo $2,200 · 3-mo $5,500 · consult $250 · power hour $450.
+      Ledger + 1-to-1-container-spec.md still need syncing to the new ladder.
     • UNLINKED from site nav on purpose. Entry = TWO links only, wired once
       copy is locked: bottom of the manifesto + the About page. Single-goal
       page: the only action is APPLY.
@@ -170,6 +176,7 @@ p.body{font-size:15.5px;line-height:1.9;color:var(--body);max-width:64ch;text-wr
 
 /* ---------- TWO WAYS IN (pricing) ---------- */
 .ways .pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,34px);margin-top:44px;}
+.ways .quad{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:clamp(16px,2vw,24px);margin-top:44px;}
 .plan{background:linear-gradient(180deg,rgba(47,64,52,.5),rgba(20,28,22,.4));border:1px solid rgba(231,196,137,.2);
   padding:clamp(28px,3vw,42px);display:flex;flex-direction:column;position:relative;}
 .plan.feature{border-color:rgba(231,196,137,.55);box-shadow:0 30px 70px rgba(0,0,0,.4);}
@@ -353,12 +360,12 @@ body.anim .reveal.in{opacity:1;transform:none;}
 <section class="sec what">
   <div class="wrap">
     <div class="kick reveal">What this actually is</div>
-    <h2 class="big reveal">The whole wheel, walked with me.</h2>
-    <p class="lead reveal" style="margin-top:22px">This isn't a course you watch alone, or a group you disappear into. It's you and me, in real time, through the work, at the depth you choose. Each chapter lands while you're living it, and I'm on the other end of every call.</p>
+    <h2 class="big reveal">You and me. An hour at a time.</h2>
+    <p class="lead reveal" style="margin-top:22px">Not a course you watch alone. Not a group you disappear into. One to one, in real time, doing the actual work. Start with a single hour. Go as deep as you want after that, or don't.</p>
     <div class="row">
       <div class="panel reveal">
-        <div class="h">Finite, on purpose</div>
-        <p>This has a beginning and a graduation. I'm not building a client who needs me forever. I'm building an icon who walks out the other side and doesn't.</p>
+        <div class="h">Start small, on purpose</div>
+        <p>One hour is a real hour, not a sales call in disguise. You leave with something you can actually do. Whether you come back is up to you, and I'd rather you came back because it worked.</p>
       </div>
       <div class="panel reveal">
         <div class="h">Held, not hovered</div>
@@ -408,32 +415,56 @@ body.anim .reveal.in{opacity:1;transform:none;}
 <section class="sec ways">
   <div class="wrap">
     <div class="kick reveal">The work itself</div>
-    <h2 class="big reveal">Two ways to do this with me.</h2>
-    <p class="body reveal" style="margin-top:20px">Both are one to one. Both are by application, and I only take <strong>four people a month</strong>. There is no price on this page on purpose. What it costs depends on you, and I build that around you and tell you on our call.</p>
-    <div class="pair">
+    <h2 class="big reveal">Four ways in. All of them one to one.</h2>
+    <p class="body reveal" style="margin-top:20px">Every session is a full hour, just us, on a call. Buy one and see. Buy a set and the hour comes down to two hundred. The fit call before any of it is free, and I keep the calendar deliberately small.</p>
+    <div class="quad">
       <div class="plan reveal">
-        <div class="len serif">One month</div>
-        <div class="sub">Start with Aries</div>
+        <div class="len serif">Power Hour</div>
+        <div class="sub">One session</div>
+        <div class="price">$222 <small>/ hour</small></div>
         <ul>
-          <li>I take you through Aries, the first move, one to one</li>
-          <li>I teach you how to actually do the work, not just hear it</li>
-          <li>At the end, you decide whether we go deeper</li>
+          <li>One full hour, one to one</li>
+          <li>You bring the thing you're stuck on</li>
+          <li>You leave with the next move</li>
         </ul>
         <div class="foot"><a class="btn ghost" href="#apply">Apply</a></div>
       </div>
       <div class="plan feature reveal">
-        <div class="tag">The real work</div>
-        <div class="len serif">Three-month intensive</div>
-        <div class="sub">The deep one</div>
+        <div class="tag">Where most people start</div>
+        <div class="len serif">The Reset</div>
+        <div class="sub">Four sessions</div>
+        <div class="price">$800 <small>/ $200 an hour</small></div>
         <ul>
-          <li>Two calls a month, just us</li>
-          <li>Personalized check-ins built around your life</li>
-          <li>Message me freely, nine to five</li>
+          <li>Long enough to break one real pattern</li>
+          <li>We set the rhythm that fits your life</li>
+          <li>Message me between calls</li>
         </ul>
         <div class="foot"><a class="btn" href="#apply">Apply</a></div>
       </div>
+      <div class="plan reveal">
+        <div class="len serif">The Turn</div>
+        <div class="sub">Eight sessions</div>
+        <div class="price">$1,600 <small>/ $200 an hour</small></div>
+        <ul>
+          <li>Where the change stops being a mood</li>
+          <li>Voice, purpose, and the hard decisions</li>
+          <li>Message me between calls</li>
+        </ul>
+        <div class="foot"><a class="btn ghost" href="#apply">Apply</a></div>
+      </div>
+      <div class="plan reveal">
+        <div class="len serif">The Whole Wheel</div>
+        <div class="sub">Sixteen sessions</div>
+        <div class="price">$3,200 <small>/ $200 an hour</small></div>
+        <ul>
+          <li>The whole thing, walked with me</li>
+          <li>For the rebuild, not the tune-up</li>
+          <li>Message me between calls</li>
+        </ul>
+        <div class="foot"><a class="btn ghost" href="#apply">Apply</a></div>
+      </div>
     </div>
-    <p class="provis">Four spots a month. And if the price is the first thing you're worried about, no worries. When you're ready to invest in yourself, I'll be here.</p>
+    <p class="provis">Payment plans exist on the sets. And if the price is the first thing you're worried about, no worries. When you're ready to invest in yourself, I'll be here.</p>
   </div>
 </section>
 
@@ -444,7 +475,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
     <h2 class="big reveal">You don't buy this. You apply for it.</h2>
     <ol>
       <li class="reveal"><div class="h">Apply</div><p>A short, honest application. About you, not your budget. Where you are, what you're most done with, why now.</p></li>
-      <li class="reveal"><div class="h">The consult</div><p>A 30-minute call, just us. I get to know where you really are and start building the plan that fits you. A paid seat, not a free pitch.</p></li>
+      <li class="reveal"><div class="h">The fit call</div><p>Twenty minutes, free, just us. I find out where you really are and which way in makes sense. No pitch, and I'll say so if the answer is none of them.</p></li>
       <li class="reveal"><div class="h">I decide</div><p>I only take you on if it's a yes for both of us and a spot is open. If it's not, I'll tell you straight, and point you somewhere better.</p></li>
       <li class="reveal"><div class="h">We begin</div><p>I send you the plan and what it costs, we set the rhythm, and the work starts.</p></li>
     </ol>
@@ -457,7 +488,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
     <div class="inner">
       <div class="kick reveal">And after</div>
       <h3 class="mid reveal">You graduate. You don't disappear.</h3>
-      <p class="body reveal" style="margin-top:18px">From day one you're in the community, and you stay there long after the calls end. It's where the wins land, where the friendships happen, where you reach out the day something finally clicks. The deep work has an ending. The room doesn't.</p>
+      <p class="body reveal" style="margin-top:18px">When the sessions end, you don't disappear on me. I'm building the room where the people who've done this work stay in each other's lives, and you'll have a seat in it. The work has an ending. The room doesn't.</p>
     </div>
   </div>
 </section>
@@ -469,9 +500,9 @@ body.anim .reveal.in{opacity:1;transform:none;}
     <h2 class="big reveal">The ones who did the work.</h2>
     <div class="quotes">
       <!-- REAL clients, used with permission. Each person signs off on their own wording before this page goes public. Do not invent or overstate. -->
-      <figure class="reveal"><blockquote>I stayed in a relationship I'd outgrown because leaving felt impossible. Eleanora didn't coddle me. She just kept showing me the life I was too scared to reach for, until I reached for it. I left. I packed up and moved to the Dominican Republic. The other day I caught myself thinking <em>I love my life so much.</em> I didn't know it could feel like this.</blockquote><figcaption>Josie, 36 · Dominican Republic</figcaption></figure>
-      <figure class="reveal"><blockquote>I was safe, comfortable, and quietly sure there was more. Eleanora helped me actually believe I could have it, so I grabbed the wheel and jumped. Now I split the year between Alaska and Colorado with the person I always wanted, living a life I used to think was for other people.</blockquote><figcaption>Sadie · Alaska &amp; Colorado</figcaption></figure>
-      <figure class="reveal"><blockquote>I've worked with Eleanora for a year and a half, through some of the hardest stretches of my life. She's who I call when it's all on fire, business and head both. She tells me the truth I'm dodging and then makes me do something about it. Worth every cent.</blockquote><figcaption>Gianni · St. Petersburg, FL</figcaption></figure>
+      <figure class="reveal"><blockquote>I was safe, comfortable, and quietly sure there was more. Eleanora helped me actually believe I could have it, so I grabbed the wheel and jumped. Now I split the year between Alaska and Colorado with the person I always wanted, living a life I used to think was for other people.</blockquote><figcaption>Nadia · Alaska &amp; Colorado</figcaption></figure>
+      <figure class="reveal"><blockquote>I've worked with Eleanora for a year and a half, through some of the hardest stretches of my life. She's who I call when it's all on fire, business and head both. She tells me the truth I'm dodging and then makes me do something about it. Worth every cent.</blockquote><figcaption>Marco · St. Petersburg, FL</figcaption></figure>
+      <p class="provis" style="margin-top:26px">Real clients, real words, shared with their permission. Names changed because their lives are theirs, not marketing.</p>
     </div>
   </div>
 </section>
@@ -484,8 +515,8 @@ body.anim .reveal.in{opacity:1;transform:none;}
     <div style="margin-top:38px">
       <div class="item reveal"><div class="q">What if I'm not sure I'm ready?</div><div class="a">Then the call is exactly for that. Being unsure is human. Wanting to change but being scared of it is not the same as not being ready. We'll figure out which one you are, together, before anything's decided.</div></div>
       <div class="item reveal"><div class="q">Is this therapy?</div><div class="a">No. But some days it'll feel like it. The difference is I'm not here to collect a paycheck and nod along. I'm here to tell you the hard truths, the ones you've been paying someone else not to. If you don't want to hear them, keep paying your therapist to hold your hand. And if what you're carrying genuinely needs a clinician, I'll tell you that straight and point you to one. That's the one thing I won't bully you out of.</div></div>
-      <div class="item reveal"><div class="q">How long is this?</div><div class="a">Depends which door you take. One month to start, learn the method, and get through Aries. Three months for the real, intensive work. And a longer path if you earn it. Quick doesn't hold, so I don't do weekend fixes, but you don't have to sign your life away to begin either.</div></div>
-      <div class="item reveal"><div class="q">What does it cost?</div><div class="a">I don't put it on this page, because what you actually need isn't one-size. I build a plan around your life and tell you the number on our call. Payment plans exist. And if the price is the first thing you're worried about, no worries. When you're ready to invest in yourself, I'll be here.</div></div>
+      <div class="item reveal"><div class="q">How long is this?</div><div class="a">As long as you want it to be. One hour if you're testing the water. Four if you want to break an actual pattern. Sixteen if you're rebuilding. You set the rhythm with me, weekly or fortnightly, whatever your life can hold. Quick doesn't stick, so I won't pretend one hour rewrites you, but one hour is a real place to start.</div></div>
+      <div class="item reveal"><div class="q">What does it cost?</div><div class="a">$222 for a single hour. $800 for four, $1,600 for eight, $3,200 for sixteen, which works out to $200 an hour on any of the sets. The fit call is free. Payment plans exist on the sets. No hidden number revealed after I've softened you up, it's all right there on this page.</div></div>
       <div class="item reveal"><div class="q">What if you don't take me?</div><div class="a">Then I'll be honest about why, and point you toward what would actually serve you, whether that's the self-guided work, the community, or something outside my world entirely. A no from me is still meant to help.</div></div>
     </div>
   </div>
@@ -529,7 +560,7 @@ body.anim .reveal.in{opacity:1;transform:none;}
         <div class="field"><label for="f-self">When did you last feel like yourself?</label><textarea id="f-self" name="Last felt like yourself" placeholder="When it was, and what happened to it." required></textarea></div>
         <div class="field"><label for="f-why">Why now?</label><textarea id="f-why" name="Why now" placeholder="What made today the day, and not six months ago." required></textarea></div>
         <div class="field"><label for="f-len">Which are you drawn to?</label>
-          <select id="f-len" name="Program" required><option value="" disabled selected>Choose one</option><option>One month, to start</option><option>Three-month intensive</option><option>Not sure yet</option></select></div>
+          <select id="f-len" name="Program" required><option value="" disabled selected>Choose one</option><option>Power Hour — one session</option><option>The Reset — four sessions</option><option>The Turn — eight sessions</option><option>The Whole Wheel — sixteen sessions</option><option>Not sure yet</option></select></div>
 
         <button type="submit" class="btn">Send my application</button>
         <p class="formnote">An application, not a checkout. No card, no commitment. If it's a fit, I reach out. If it's not, I'll tell you straight.</p>
