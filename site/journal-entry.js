@@ -1,12 +1,14 @@
 /* ============================================================
-   SIGNUP KILL SWITCH
-   The MailerLite form ("Threshold — the deeper letters") is currently
-   active:false, so submissions do NOT reach the list, yet the UI was
-   telling people "You're in". Rather than lie to readers, both the
-   mid-story bar and the exit popup stay hidden until the form is
-   published in MailerLite. Flip this to true the moment it is live.
+   SIGNUP SWITCH
+   Verified 2026-08-01: a submit from the live page DOES reach MailerLite
+   and lands in the Threshold group (conversions 6 -> 8, both test
+   addresses appeared and were removed). MailerLite processes the
+   subscribe asynchronously, so it can take a minute to show up; an
+   immediate API read will look like nothing happened.
+   The form being active:false does NOT block signups.
+   Set false to hide both the mid-story bar and the exit popup.
    ============================================================ */
-window.ELEANORA_SIGNUP_LIVE = false;
+window.ELEANORA_SIGNUP_LIVE = true;
 
 /* ============================================================
    journal-entry.js — the reusable Journal entry engine.
