@@ -123,22 +123,26 @@
 
     // ---------- 1. TALISMAN CLOSE ----------
     var t = me.talisman || {};
+    // Until a print is actually buyable, the close is just the photograph and
+    // "Prints coming soon". No name, no price, no invitation to take home
+    // something that cannot ship yet. Set talisman.buyUrl and the full
+    // treatment (eyebrow, name, the token line, price) comes back on its own.
     talHtml += '<section class="tal-close reveal">';
-    talHtml += '<div class="eye">' + (me.soft ? 'Something to remember them by' : 'Take it home') + '</div>';
+    if (t.buyUrl) {
+      talHtml += '<div class="eye">' + (me.soft ? 'Something to remember them by' : 'Take it home') + '</div>';
+    }
     talHtml += '<figure class="tal-fig"><img src="' + t.img + '" alt="' + (t.alt || '') + '"></figure>';
-    if (t.name) { talHtml += '<div class="tal-name serif">' + t.name + '</div>'; }
-    if (t.line) { talHtml += '<p class="tal-line">' + t.line + '</p>'; }
-    if (me.soft) {
-      // People lane: gentle, no hard sell
-      if (t.buyUrl) {
+    if (t.buyUrl) {
+      if (t.name) { talHtml += '<div class="tal-name serif">' + t.name + '</div>'; }
+      if (t.line) { talHtml += '<p class="tal-line">' + t.line + '</p>'; }
+      if (me.soft) {
         talHtml += '<a class="tal-soon" href="' + t.buyUrl + '">Keep it close &rarr;</a>';
+      } else {
+        talHtml += '<a class="tal-buy" href="' + t.buyUrl + '">Make it yours &rarr;</a>';
+        if (t.price) { talHtml += '<div class="tal-price">the print &middot; ' + t.price + '</div>'; }
       }
-    } else if (t.buyUrl) {
-      talHtml += '<a class="tal-buy" href="' + t.buyUrl + '">Make it yours &rarr;</a>';
-      if (t.price) { talHtml += '<div class="tal-price">the print · ' + t.price + '</div>'; }
     } else {
       talHtml += '<span class="tal-soon">Prints coming soon</span>';
-      if (t.price) { talHtml += '<div class="tal-price">the print · ' + t.price + '</div>'; }
     }
     talHtml += '</section>';
 

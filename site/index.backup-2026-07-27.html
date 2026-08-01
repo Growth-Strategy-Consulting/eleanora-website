@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>if(sessionStorage.getItem("eleanora_pass")!=="1")location.replace("/");</script>
+<script>/* cover first paint so the veil can lift cinematically (skipped for reduced-motion / no-JS) */
+try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('veil-on');}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eleanora — an archive of her stories</title>
+<link rel="icon" type="image/png" sizes="32x32" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="512x512" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="512x512" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="img/logo/xo-eleanora-heart-favicon.png">
+<style>
+@font-face{font-family:'Pinyon Script';src:url('../brand-hub/assets/fonts/PinyonScript-Regular.ttf');font-display:swap;}
+@font-face{font-family:'Allura';src:url('../brand-hub/assets/fonts/Allura-Regular.ttf');font-display:swap;}
+:root{
+  --forest:#2F4034; --forest-d:#1C271F; --forest-dd:#141C16; --sage:#93A283;
+  --clay:#B87F51; --clay-l:#CE9A6B; --gold:#E7C489; --sand:#E4D7BE;
+  --parch:#EFE6D3; --cream:#F6F1E7; --ink:#2B2019; --body:#d3dacb;
+  --z-nav:50; --z-grain:80; --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--forest-d);color:var(--cream);font-family:'Helvetica Neue',Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{display:block;width:100%;height:100%;object-fit:cover;image-orientation:from-image;
+    filter:saturate(1.05) contrast(1.03) brightness(1.0) sepia(.055);}
+.serif{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;}
+.script{font-family:'Allura',cursive;}
+.lab{font-size:12px;letter-spacing:3.5px;text-transform:uppercase;}
+.chap{font-family:'Allura',cursive;font-size:32px;color:var(--gold);line-height:1;
+  display:inline-block;text-shadow:0 2px 20px rgba(0,0,0,.45);}
+a{color:inherit;text-decoration:none;}
+em{font-style:italic;}
+::selection{background:rgba(231,196,137,.28);color:var(--cream);}
+
+/* ---------- FILM GRAIN ---------- */
+.grain{position:fixed;inset:0;z-index:var(--z-grain);pointer-events:none;opacity:.5;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* ---------- PAGE VEIL (cinematic transition) ---------- */
+#veil{position:fixed;inset:0;z-index:79;pointer-events:none;opacity:0;visibility:hidden;
+  background:radial-gradient(130% 112% at 50% 42%,#24322a 0%,var(--forest-d) 70%,var(--forest-dd) 100%);
+  transition:opacity .55s var(--ease),visibility 0s linear .55s;}
+html.veil-on #veil{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .5s var(--ease);}
+
+/* ---------- NAV ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);display:flex;align-items:center;justify-content:space-between;
+  padding:24px 46px;transition:padding .4s var(--ease),background .4s ease,box-shadow .4s ease;}
+header.solid{background:rgba(20,28,22,.86);backdrop-filter:blur(9px);padding:14px 46px;box-shadow:0 1px 0 rgba(0,0,0,.3);}
+.brand{display:flex;align-items:center;gap:12px;color:var(--cream);}
+.brand .wm{font-family:'Pinyon Script',cursive;font-size:34px;line-height:1;padding-left:2px;}
+nav ul{display:flex;gap:34px;list-style:none;}
+nav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream);opacity:.88;position:relative;transition:.4s;}
+nav a.on{color:var(--gold);opacity:1;}
+nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:.3s var(--ease);}
+nav a:hover::after,nav a.on::after{width:100%;}
+
+/* ---------- HERO (centered, monumental) ---------- */
+.hero{position:relative;height:100vh;min-height:640px;overflow:hidden;}
+.hero .bg{position:absolute;inset:0;}
+.hero .bg img{transform:scale(1.05);transform-origin:51% 27.5%;animation:kb 22s var(--ease) forwards;}
+@keyframes kb{to{transform:scale(1.14);}}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 120% at 50% 42%,transparent 34%,rgba(20,28,22,.5) 100%),
+             linear-gradient(180deg,rgba(20,28,22,.5) 0%,rgba(20,28,22,.06) 30%,rgba(20,28,22,.12) 58%,rgba(20,28,22,.88) 100%);}
+#sparkle{position:absolute;inset:0;z-index:2;pointer-events:none;}
+.hero .inner{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;color:var(--cream);padding:0 24px;}
+.hero h1{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(52px,9vw,124px);letter-spacing:clamp(8px,1.5vw,20px);
+  line-height:.98;padding-left:.14em;text-shadow:0 8px 48px rgba(0,0,0,.4);}
+.hero .accent{font-family:'Allura',cursive;font-size:clamp(34px,5vw,60px);color:var(--gold);margin-top:8px;
+  text-shadow:0 2px 26px rgba(231,196,137,.3);}
+.hero .sub{margin-top:26px;font-size:13px;letter-spacing:4px;text-transform:uppercase;opacity:.9;}
+.hero .cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;color:var(--cream);
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:.85;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.hero .cue span{width:1px;height:36px;background:var(--gold);opacity:.6;animation:pulse 2.4s ease-in-out infinite;transform-origin:top;}
+@keyframes pulse{0%,100%{opacity:.15;transform:scaleY(.55);}50%{opacity:.7;transform:scaleY(1);}}
+/* ---------- HIDDEN SUN → the 1% manifesto ---------- */
+.sun-link{position:absolute;left:51%;top:27.5%;z-index:6;
+  width:clamp(62px,7vw,104px);height:clamp(62px,7vw,104px);
+  transform:translate(-50%,-50%);border-radius:50%;cursor:pointer;
+  display:flex;align-items:flex-end;justify-content:center;
+  -webkit-tap-highlight-color:transparent;}
+.sun-link::before{content:"";position:absolute;inset:-26%;border-radius:50%;
+  background:radial-gradient(circle,rgba(246,225,168,.62) 0%,rgba(231,196,137,.28) 40%,rgba(231,196,137,0) 72%);
+  opacity:0;transform:scale(.55);
+  transition:opacity .6s var(--ease),transform .7s var(--ease);}
+.sun-link:hover::before,.sun-link:focus-visible::before{opacity:1;transform:scale(1);}
+.sun-link:focus-visible{outline:none;}
+.sun-label{position:absolute;bottom:calc(100% + 14px);left:50%;transform:translateX(-50%);
+  font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);
+  white-space:nowrap;text-shadow:0 1px 14px rgba(0,0,0,.7);
+  opacity:0;transition:opacity .5s var(--ease) .08s;pointer-events:none;}
+.sun-link:hover .sun-label,.sun-link:focus-visible .sun-label{opacity:.9;}
+/* hero load-in */
+.hero h1,.hero .accent,.hero .sub{opacity:0;transform:translateY(26px);animation:rise 1s var(--ease) forwards;}
+.hero h1{animation-delay:.3s;} .hero .accent{animation-delay:.56s;} .hero .sub{animation-delay:.78s;}
+@keyframes rise{to{opacity:1;transform:none;}}
+
+/* ---------- FIELD GLOWS ---------- */
+.glow-a{background:
+  radial-gradient(760px 420px at 12% 8%,rgba(147,162,131,.14),transparent 70%),
+  radial-gradient(680px 460px at 96% 96%,rgba(184,127,81,.16),transparent 72%),
+  var(--forest-d);}
+.glow-b{background:
+  radial-gradient(720px 440px at 90% 6%,rgba(206,154,107,.15),transparent 70%),
+  radial-gradient(640px 460px at 4% 92%,rgba(147,162,131,.13),transparent 72%),
+  var(--forest-d);}
+
+/* ---------- FILM (full-bleed cinematic moment) ---------- */
+.film{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;
+  padding:clamp(90px,12vh,150px) clamp(24px,6vw,86px);}
+.film .bg{position:absolute;inset:0;z-index:0;will-change:transform;}
+.film .bg img{transform:scale(1.12);}
+.film .scrim{position:absolute;inset:0;z-index:1;}
+.film .wrap{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;display:flex;}
+.film .plate{max-width:640px;padding:clamp(30px,4vw,54px);margin:0 auto;text-align:center;
+  background:radial-gradient(130% 130% at 50% 50%,rgba(16,23,18,.86) 0%,rgba(16,23,18,.5) 46%,rgba(16,23,18,0) 82%);}
+.film h2{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,4vw,56px);line-height:1.12;color:var(--cream);
+  letter-spacing:-.015em;text-shadow:0 6px 40px rgba(0,0,0,.5);text-wrap:balance;}
+.film h2 em{color:var(--gold);font-style:italic;}
+.film .pull{font-family:'Allura',cursive;font-size:clamp(30px,4vw,50px);color:var(--gold);margin-top:18px;line-height:1;}
+.scrim-c{background:radial-gradient(ellipse 90% 80% at 50% 50%,rgba(20,28,22,.34),rgba(20,28,22,.72)),
+  linear-gradient(0deg,rgba(20,28,22,.55),transparent 62%);}
+
+/* ---------- SECTION HEAD ---------- */
+.sec-head{text-align:center;padding:clamp(78px,11vh,110px) 24px 42px;}
+.sec-head .chap{margin-bottom:8px;}
+.sec-head h3{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,4vw,48px);color:var(--cream);
+  letter-spacing:-.01em;text-wrap:balance;}
+.sec-head .rule{width:54px;height:1px;background:var(--gold);margin:20px auto 0;}
+
+/* ---------- GALLERY (bold editorial mosaic) ---------- */
+.mosaic{max-width:1240px;margin:0 auto;padding:0 clamp(24px,4vw,40px);
+  display:grid;grid-template-columns:1.5fr 1fr;gap:22px;}
+.mosaic figure{position:relative;overflow:hidden;background:var(--forest-dd);box-shadow:0 26px 64px rgba(0,0,0,.42);}
+.mosaic figure::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.22);pointer-events:none;z-index:3;}
+.mosaic figure img{transition:transform 1.3s var(--ease);}
+.mosaic figure:hover img{transform:scale(1.06);}
+.mosaic .feature,.mosaic .side{height:clamp(400px,56vh,600px);}
+.mosaic .band{grid-column:1/-1;height:clamp(280px,42vh,460px);}
+.mosaic figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px;color:var(--cream);z-index:2;
+  background:linear-gradient(0deg,rgba(16,23,18,.82),transparent);
+  opacity:0;transform:translateY(12px);transition:.55s var(--ease);}
+.mosaic figure:hover figcaption{opacity:1;transform:none;}
+.mosaic figcaption .t{font-family:'Didot',Georgia,serif;font-size:clamp(22px,2vw,28px);letter-spacing:.5px;}
+.mosaic figcaption .s{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-top:4px;}
+.gallery-cta{text-align:center;padding:44px 24px 0;}
+
+/* ---------- COLLECTIONS (cinematic photo tiles per place) ---------- */
+.collections{position:relative;padding-bottom:clamp(90px,12vh,120px);}
+.coll-grid{max-width:1240px;margin:0 auto;padding:0 clamp(24px,4vw,40px);
+  display:grid;grid-template-columns:repeat(6,1fr);gap:18px;}
+.coll-tile{position:relative;display:block;overflow:hidden;height:clamp(280px,34vh,380px);
+  background:var(--forest-dd);box-shadow:0 22px 54px rgba(0,0,0,.42);}
+.coll-tile::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.2);pointer-events:none;z-index:3;}
+.coll-tile img{transition:transform 1.3s var(--ease);}
+.coll-tile:hover img{transform:scale(1.07);}
+.coll-tile .t-scrim{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(0deg,rgba(16,23,18,.86) 0%,rgba(16,23,18,.12) 52%,rgba(16,23,18,.28) 100%);
+  transition:background .5s var(--ease);}
+.coll-tile:hover .t-scrim{background:linear-gradient(0deg,rgba(16,23,18,.8) 0%,rgba(16,23,18,.05) 58%,rgba(16,23,18,.2) 100%);}
+.coll-tile .t-label{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:26px;text-align:center;}
+.coll-tile .t-eye{font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--sand);opacity:.75;}
+.coll-tile .t-place{display:block;font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(24px,2.2vw,32px);
+  color:var(--cream);letter-spacing:.5px;margin-top:6px;transition:color .4s var(--ease);}
+.coll-tile:hover .t-place{color:var(--gold);}
+.coll-tile.trio{grid-column:span 2;}
+.coll-tile.full{grid-column:1/-1;height:clamp(240px,30vh,340px);}
+.coll-cap{text-align:center;margin-top:40px;font-size:12px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--sand);opacity:.7;}
+
+/* ---------- JOURNAL TEASER ---------- */
+.jteaser{position:relative;color:var(--cream);text-align:center;padding:clamp(84px,11vh,104px) 24px;}
+.jteaser .chap{margin-bottom:6px;}
+.jteaser h3{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,4vw,46px);color:var(--cream);letter-spacing:-.01em;}
+.jteaser .rule{width:54px;height:1px;background:var(--gold);margin:20px auto 42px;}
+.jteaser .jt-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.jteaser .jt-card{display:block;text-align:left;background:var(--forest-dd);overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.38);transition:transform .6s var(--ease);}
+.jteaser .jt-card:hover{transform:translateY(-5px);}
+.jteaser .jt-card .ph{aspect-ratio:4/5;overflow:hidden;}
+.jteaser .jt-card .ph img{transition:transform 1.1s var(--ease);}
+.jteaser .jt-card:hover .ph img{transform:scale(1.06);}
+.jteaser .jt-card .b{padding:22px 22px 26px;}
+.jteaser .jt-card .place{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);}
+.jteaser .jt-card h4{font-family:'Didot',Georgia,serif;font-size:21px;color:var(--cream);margin-top:10px;line-height:1.2;}
+.btn{display:inline-block;margin-top:40px;border:1px solid var(--gold);color:var(--cream);
+  padding:17px 46px;font-size:12px;letter-spacing:3px;text-transform:uppercase;transition:.4s var(--ease);}
+.btn:hover{background:var(--gold);color:var(--forest-dd);}
+
+/* ---------- ABOUT (split, matches About page) ---------- */
+.split{position:relative;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
+.split .ph{position:relative;min-height:min(84vh,700px);overflow:hidden;}
+.split .ph::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 90px 10px rgba(20,28,22,.5);}
+.split .ph img{transform:scale(1.04);}
+.split .body{display:flex;flex-direction:column;justify-content:center;padding:clamp(56px,7vw,100px) clamp(30px,6vw,84px);}
+.split .chap{margin-bottom:18px;}
+.split h2{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(28px,3.4vw,46px);line-height:1.16;
+  color:var(--cream);letter-spacing:-.01em;text-wrap:balance;}
+.split h2 em{color:var(--gold);}
+.split p{margin-top:22px;font-size:16px;line-height:2;color:var(--body);max-width:46ch;}
+.split .pull{font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-size:clamp(20px,2.1vw,26px);
+  color:var(--gold);line-height:1.4;margin:30px 0 4px;max-width:26ch;}
+.split .pull::before{content:"";display:block;width:46px;height:1px;background:var(--clay-l);opacity:.7;margin-bottom:22px;}
+.split .more{margin-top:28px;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);
+  border-bottom:1px solid var(--gold);padding-bottom:5px;width:fit-content;transition:.3s var(--ease);}
+.split .more:hover{color:var(--cream);border-color:var(--cream);}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--forest-dd);color:var(--sand);padding:72px 40px 36px;text-align:center;position:relative;}
+footer::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(90%,420px);height:1px;
+  background:linear-gradient(90deg,transparent,rgba(231,196,137,.4),transparent);}
+footer .seal{width:80px;height:80px;margin:0 auto 26px;opacity:.9;}
+footer .seal img{filter:none;}
+footer .fnav{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:24px;}
+footer .fnav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;opacity:.85;transition:.3s;}
+footer .fnav a:hover{color:var(--gold);opacity:1;}
+footer .tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--cream);opacity:.9;}
+footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
+footer .cr .script{font-size:18px;color:var(--gold);}
+
+/* ---------- REVEAL (no-JS safe: visible by default) ---------- */
+body.anim .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease);}
+body.anim .reveal.in{opacity:1;transform:none;}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  header{padding:16px 22px;} header.solid{padding:12px 22px;} nav ul{display:none;}
+  .film{min-height:auto;padding:96px 24px;}
+  .mosaic{grid-template-columns:1fr;}
+  .mosaic .feature,.mosaic .side{height:66vh;max-height:560px;}
+  .coll-grid{grid-template-columns:repeat(2,1fr);}
+  .coll-tile.trio{grid-column:span 1;}
+  .coll-tile.full{grid-column:1/-1;}
+  .coll-tile{height:44vw;min-height:230px;}
+  .jteaser .jt-grid{grid-template-columns:1fr;max-width:420px;}
+  .split{grid-template-columns:1fr;} .split .ph{min-height:70vh;max-height:600px;}
+}
+@media(max-width:520px){
+  .hero h1{font-size:clamp(44px,13vw,66px);}
+  .coll-grid{grid-template-columns:1fr;} .coll-tile{height:64vw;}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
+  .hero .bg img{animation:none;transform:scale(1.06);transform-origin:51% 27.5%;}
+  .hero h1,.hero .accent,.hero .sub{opacity:1;transform:none;}
+  #veil{display:none;}
+}
+
+/* homepage prints teaser */
+.prints-intro{max-width:640px;margin:0 auto 42px;text-align:center;color:var(--body);
+  font-size:16px;line-height:1.75;padding:0 24px;}
+.prints-grid.home{display:flex;flex-wrap:wrap;justify-content:center;gap:34px;
+  max-width:1120px;margin:0 auto;padding:0 24px;}
+.prints-grid.home .pcard{flex:0 1 300px;text-align:center;}
+.prints-grid.home .pcard .ph{display:block;aspect-ratio:3/4;overflow:hidden;border-radius:2px;margin-bottom:16px;}
+.prints-grid.home .pcard h3{font-size:23px;margin-bottom:6px;color:var(--cream);}
+.prints-grid.home .pcard .meta{font-size:12px;letter-spacing:1.6px;color:var(--sand);opacity:.7;margin-bottom:10px;}
+.prints-grid.home .pcard .cta{display:block;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold);}
+.prints-grid.home .pcard .cta.soon{color:var(--sand);opacity:.6;margin-top:4px;}
+@media(max-width:760px){.prints-grid.home .pcard{flex:0 1 46%;}}
+</style>
+<link rel="stylesheet" href="nav.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HEP68D5V13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HEP68D5V13');
+</script>
+</head>
+<body>
+
+<div class="grain"></div>
+<div id="veil" aria-hidden="true"></div>
+
+<header id="hdr">
+  <a class="brand" href="#top">
+    <img src="img/logo/xo-eleanora-heart-seal-cream-gold.png" alt="Eleanora" width="43" height="60" style="height:60px;width:auto;display:block;flex:0 0 auto;filter:none">
+    <span class="wm">Eleanora</span>
+  </a>
+  <nav><ul>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li class="has-menu"><a href="prints.html">Prints</a>
+      <ul class="submenu">
+        <li><a href="limited-edition.html">The Limited Edition</a></li>
+        <li><a href="posters-laws.html">The Tokens</a></li>
+        <li><a href="postcards.html">Postcards</a></li>
+      </ul>
+    </li>
+    <li class="has-menu"><a href="journal.html">Journal</a>
+      <ul class="submenu">
+        <li><a href="journal.html">Feed</a></li>
+        <li><span class="soon">The Curio Cabinet</span></li>
+      </ul>
+    </li>
+    <li><a href="/portfolio/">Portfolio</a></li>
+    <li><a href="about.html">About Me</a></li>
+  </ul></nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="bg"><img src="img/hero-sea-sunset.jpg" alt="Golden-hour sun low over the sea and distant hills, seen from the water"></div>
+  <a class="sun-link" href="/manifesto/" target="_blank" rel="noopener" aria-label="Enter the 1% Manifesto (opens in a new tab)">
+    <span class="sun-label">the 1% manifesto</span>
+  </a>
+  <canvas id="sparkle"></canvas>
+  <div class="inner">
+    <h1 class="serif">ELEANORA</h1>
+    <div class="accent">an archive of her stories</div>
+    <div class="sub">the art of women &amp; the wild</div>
+  </div>
+  <a class="cue" href="#statement"><span></span>Scroll</a>
+</section>
+
+<!-- ================= STATEMENT (full-bleed) ================= -->
+<section class="film" id="statement">
+  <div class="bg"><img src="img/gate-sintra.jpg" alt="A weathered stone gateway half-swallowed by green, opening onto a shaded garden path in Sintra"></div>
+  <div class="scrim scrim-c"></div>
+  <div class="wrap">
+    <div class="plate">
+      <h2 class="serif reveal">Some places keep secrets. I photograph the ones that <em>let me look</em>.</h2>
+      <div class="pull reveal">leave the door open, and the light on</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOURNAL TEASER ================= -->
+<section class="jteaser glow-a" id="journal">
+  <span class="chap reveal">words &amp; light</span>
+  <h3 class="serif reveal">From the Journal</h3>
+  <div class="rule reveal"></div>
+  <div class="jt-grid" id="jt-grid"></div>
+  <a class="btn reveal" href="journal.html">Read the Journal</a>
+</section>
+<script>
+/* homepage Journal teaser — renders the latest 3 from journal.json (single source of truth) */
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  fetch('journal.json').then(function(r){return r.json();}).then(function(data){
+    var grid=document.getElementById('jt-grid'); if(!grid)return;
+    (data.entries||[]).slice(0,3).forEach(function(e){
+      var t=e.talisman||{};
+      var a=document.createElement('a');
+      a.className='jt-card reveal';
+      a.href=e.slug+'.html';
+      a.innerHTML='<div class="ph"><img src="'+(t.img||'')+'" alt="'+(t.alt||'')+'"></div>'+
+        '<div class="b"><div class="place">'+(e.kicker||'')+'</div><h4>'+(e.title||'')+'</h4></div>';
+      grid.appendChild(a);
+      if(reduce){a.classList.add('in');}
+      else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.14,rootMargin:'0px 0px -8% 0px'});io.observe(a);}
+    });
+  }).catch(function(){});
+})();
+</script>
+
+<!-- ================= ABOUT (split) ================= -->
+
+<!-- ================= PRINTS (tokens from the stories) ================= -->
+<!-- Order set by Elena 2026-07-19: stories first, then the tokens that ride with them. -->
+<div class="sec-head" id="prints">
+  <span class="chap reveal">take one home</span>
+  <h3 class="serif reveal">The Prints</h3>
+  <div class="rule reveal"></div>
+</div>
+<!-- PLACEHOLDER COPY — must run through /eleanora-voice (Card B) before launch. -->
+<p class="prints-intro reveal">Every print is a token from a story. Read it first, then decide if you want to live with it.</p>
+<div class="prints-grid home" id="homePrints"></div>
+<div class="gallery-cta reveal"><a class="btn" href="prints.html">See all the prints</a></div>
+
+
+<!-- ================= GALLERY (editorial mosaic) ================= -->
+<div class="sec-head" id="gallery">
+  <span class="chap reveal">selected work</span>
+  <h3 class="serif reveal">The Gallery</h3>
+  <div class="rule reveal"></div>
+</div>
+<section class="mosaic">
+  <figure class="feature reveal">
+    <img src="img/bw-smoke-editorial.jpg" alt="Black-and-white editorial portrait, a feather at her shoulder and soft smoke curling past her face">
+    <figcaption><div class="t">After Dark</div><div class="s">Editorial · Studio</div></figcaption>
+  </figure>
+  <figure class="side reveal">
+    <img src="img/lace-crown-headshot.jpg" alt="Editorial portrait in a black lace crown, eyes steady to the lens">
+    <figcaption><div class="t">The Crown</div><div class="s">Editorial</div></figcaption>
+  </figure>
+  <figure class="band reveal">
+    <img src="img/hero-sunset-silhouette.jpg" alt="A lone silhouette walking the shoreline as the sun drops into the sea">
+    <figcaption><div class="t">Last Light</div><div class="s">The Gulf</div></figcaption>
+  </figure>
+</section>
+<div class="gallery-cta reveal"><a class="btn" href="gallery.html">Enter the Gallery</a></div>
+
+<section class="split glow-b">
+  <div class="ph"><img src="img/pool-bralette.jpg" alt="Eleanora in a garden pool surrounded by palms and greenery"></div>
+  <div class="body">
+    <span class="chap reveal">the girl behind the camera</span>
+    <h2 class="serif reveal">I've lived so many lives <em>already</em>.</h2>
+    <p class="reveal">I started modeling at sixteen because I always wanted to. Somewhere along the way I fell for the whole ritual of it — the light, the transformation, the way a good photographer waits for the one moment the eyes go honest.</p>
+    <p class="pull reveal">This is where I finally collect it all.</p>
+    <p class="reveal">The travels, the escapades, the beautiful and the unapologetic.</p>
+    <a class="more reveal" href="about.html">Read my story</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="footer">
+  <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/logo/xo-eleanora-badge-seal-cream-gold.png" alt="Eleanora seal" style="width:100%;height:100%;object-fit:contain"></a></div>
+  <div class="fnav">
+    <a href="gallery.html">Gallery</a><a href="prints.html">Prints</a><a href="journal.html">Journal</a><a href="/portfolio/">Portfolio</a><a href="about.html">About Me</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
+  </div>
+  <div class="tag">Real plants · Real light · The art of women &amp; the wild</div>
+  <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on <span class="script">xo</span></div>
+</footer>
+
+<script>
+// nav solidify
+const hdr=document.getElementById('hdr');
+const onScroll=()=>hdr.classList.toggle('solid',scrollY>60);
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if(!reduce){
+  document.body.classList.add('anim');
+  // scroll reveals
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay=(Math.min(i%6,5)*0.08)+'s';
+    io.observe(el);
+  });
+
+  // parallax on full-bleed film backgrounds
+  const bgs=[...document.querySelectorAll('.film .bg')];
+  let ticking=false;
+  const parallax=()=>{
+    bgs.forEach(bg=>{
+      const r=bg.parentElement.getBoundingClientRect();
+      if(r.bottom<0||r.top>innerHeight)return;
+      const p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+      bg.style.transform='translateY('+(p*-40).toFixed(1)+'px)';
+    });
+    ticking=false;
+  };
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(parallax);}},{passive:true});
+  parallax();
+
+  // ---- CINEMATIC PAGE VEIL ----
+  const root=document.documentElement, veil=document.getElementById('veil');
+  const lift=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.remove('veil-on')));
+  if(document.readyState==='complete')lift(); else addEventListener('load',lift);
+  setTimeout(()=>root.classList.remove('veil-on'),1600);
+  addEventListener('click',(e)=>{
+    if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+    const a=e.target.closest('a');
+    if(!a)return;
+    const href=a.getAttribute('href');
+    if(!href||href.startsWith('#')||a.target==='_blank'||a.hasAttribute('download'))return;
+    let url; try{url=new URL(href,location.href);}catch(_){return;}
+    if(url.origin!==location.origin)return;
+    if(url.pathname===location.pathname && (url.hash||href.startsWith('?')))return;
+    e.preventDefault();
+    root.classList.add('veil-on');
+    let gone=false; const go=()=>{if(!gone){gone=true;location.href=url.href;}};
+    veil.addEventListener('transitionend',go,{once:true});
+    setTimeout(go,620);
+  });
+
+  // ---- HERO SPARKLE ----
+  const cv=document.getElementById('sparkle'),cx=cv.getContext('2d');
+  let W,H,stars;
+  function resize(){const r=cv.parentElement.getBoundingClientRect();W=cv.width=r.width;H=cv.height=r.height;
+    stars=Array.from({length:Math.round(W*H/26000)},()=>mk());}
+  function mk(){return{x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.3,
+    a:Math.random(),tw:Math.random()*.02+.005,vy:-(Math.random()*.14+.03),
+    c:Math.random()>.5?'246,241,231':'243,196,107'};}
+  function tick(){cx.clearRect(0,0,W,H);
+    for(const s of stars){s.a+=s.tw;let al=(Math.sin(s.a)*.5+.5)*.7;
+      s.y+=s.vy;if(s.y<-4){s.y=H+4;s.x=Math.random()*W;}
+      cx.beginPath();cx.arc(s.x,s.y,s.r,0,7);cx.fillStyle='rgba('+s.c+','+al.toFixed(2)+')';cx.fill();}
+    requestAnimationFrame(tick);}
+  addEventListener('resize',resize);resize();tick();
+}
+</script>
+<script src="mobile-nav.js" defer></script>
+
+<script>
+/* homepage Prints teaser — renders 3 open-tier prints from prints.json (single source of truth) */
+(function(){
+  fetch('prints.json').then(function(r){return r.json();}).then(function(d){
+    var grid=document.getElementById('homePrints'); if(!grid) return;
+    var open=d.prints.filter(function(p){return p.tier==='open'&&!p.hidden;}).slice(0,3);
+    var from=Math.min.apply(null,d.ladder.sizes.map(function(s){return s.price;}));
+    if(!open.length){ grid.innerHTML=''; return; }
+    grid.innerHTML=open.map(function(p){
+      return '<article class="pcard reveal">'
+        +'<a class="ph" href="'+p.article+'"><img src="'+p.img+'" alt="'+p.alt+'"></a>'
+        +'<h3 class="serif">'+p.name+'</h3>'
+        +'<div class="meta">'+(p.articleTitle||'')+'</div>'
+        +'<a class="cta" href="'+p.article+'">Read the story</a>'
+        +'<span class="cta soon">From $'+from+'</span>'
+        +'</article>';
+    }).join('');
+  }).catch(function(){});
+})();
+</script>
+</body>
+</html>
