@@ -14,31 +14,29 @@
     "hidden": "`hidden: true` removes a print from the rendered grid without deleting it. Elena, 2026-07-20: the 3 travel prints are hidden so the Posters page shows only the self-portrait poster series while she previews it. Their journal entries and data are intact. Delete the flag to restore."
   },
   "ladder": {
-    "_note": "Prices LOCKED by Elena 2026-07-19. Landed cost = Printify product + US shipping, Archival Matte. Shipping is built into the price (free shipping at checkout).",
+    "_note": "The POSTER SERIES ladder — RE-LOCKED by Elena 2026-08-02 at $28/$48/$72, shipping-absorbed (baked into price, so the buyer sees one clean number; free shipping must stay live on Shopify or the buyer pays twice). The 24x36 is RETIRED: it ships $17.89 vs $12.29 at 20x30, a hard cliff, and Elena prefers the 20x30 in hand. 12x18 and 20x30 are true 2:3 full-bleed from the 7248x10848 masters; the 8x10 is 4:5 and center-crops. These are bp1309 / Today's Graphics US. Single source of truth: 1-Clients/Eleanora/brand/prints-and-token-ladder.md §5. Landed costs live in ../offers/prints/print-costs-PRIVATE.json (this repo is public). Dead ladders, do not resurrect: $42/72/82, $52/78/92, $16/30/40.",
     "sizes": [
       {
         "tier": "S",
-        "label": "5 x 7",
-        "px": "1547 x 2147",
-        "price": 20
+        "label": "8 x 10",
+        "px": "2400 x 3000",
+        "price": 28
       },
       {
         "tier": "M",
-        "label": "11 x 14",
-        "px": "3347 x 4247",
-        "price": 42
+        "label": "12 x 18",
+        "px": "3624 x 5424",
+        "price": 48
       },
       {
         "tier": "L",
-        "label": "24 x 36",
-        "px": "7247 x 10847",
-        "price": 68
+        "label": "20 x 30",
+        "px": "6040 x 9060",
+        "price": 72
       }
     ],
-    "OPEN-QUESTION-L": "24x36 at true 300dpi needs 7247x10847px. Elena's best camera files are 5712x4284. L cannot clear her own 300dpi rule. Awaiting her call: drop L to 12x18, accept ~150dpi at 24x36 (standard for large wall art), or AI upscale. NOTHING SHIPS AT L UNTIL SHE DECIDES.",
-    "multi-buy": "Additional items ship at $1.99 vs $6.99 first. A 2nd 5x7 in the same order lands at $5.94. Set/bundle pricing flagged to Elena, not built.",
-    "RESOLVED-2026-07-20": "The 18x24 masters yield 1028 dpi at 5x7 and 491 dpi at 11x14, so S and M clear the 300dpi rule with room to spare. L 24x36 lands at 200 dpi from an 18x24 file and FAILS for 9 of 10 designs; only design 10 has a native 24x36, and even that is 7200x10800 against the required 7247x10847, 0.65% short. Printify's targets are print size + 0.16in of bleed, so a Canva canvas set to 24.16 x 36.16 in exported at max would clear L exactly. Elena's call: redesign each poster on a 2:3 canvas for L, or ship S and M only. Note 3:4 art does not fit any ladder size without a crop.",
-    "L-24x36-MEASURED-2026-07-20": "Design 10's 24x36 master (11.png, 7200x10800) was made by resizing the Canva canvas, not by re-rendering. Measured: stipple texture period grew 1.43x while the file grew 1.33x, so the art was enlarged. True detail behind it is ~225 dpi, not 300. ACCEPTABLE at 24x36 (wall art is normally 150-200 dpi; viewing distance scales with size) but it does not literally meet the 300dpi rule. Resizing the canvas will never recover detail; only higher-res source art will. Also 7200x10800 is 0.65% under Printify's 7247x10847 because they want 0.16in of bleed: set the Canva canvas to 24.16 x 36.16 in to clear it exactly."
+    "multi-buy": "Additional items ship at $1.99 each vs the baked first-item rate, so multi-poster orders run higher margin. Set/bundle pricing flagged to Elena, not built.",
+    "SEPARATE-PRINT-LINE": "The photographic Vanishing Prints (ledger §4) are a DIFFERENT product on a different blueprint (5x7/11x14 etc.) and will get their own ladder when that line is built. Do not conflate with this poster ladder."
   },
   "places": [
     {
