@@ -338,7 +338,9 @@
       "line": null,
       "tier": "open",
       "buyUrl": null,
-      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null."
+      "_todo": "Elena names/stories before it can list. Web from 03_PRINT_READY (sole source). Story/buyUrl still null.",
+      "hidden": true,
+      "pulled-note": "PULLED 2026-08-02 at Elena's request ('for now'). Shopify product set to DRAFT and Printify visible=false. Nothing is deleted: clear this flag and re-activate the Shopify product to restore."
     }
   ]
 }
