@@ -398,10 +398,15 @@ function renderToken(obj,piece){
   const img=$('tkImg'); img.src=piece.img||''; img.alt=piece.alt||obj.name||''; img.style.objectPosition=piece.pos||'50% 50%';
   const landscape = piece.orientation==='landscape';
   $('tkFrame').classList.toggle('wide', landscape);
-  const sizes=(data.ladder&&data.ladder.sizes)||[];
+  // only offer rungs this piece actually has a Shopify variant for
+  // (e.g. Stupid Games sits on its own premium ladder and has no XS)
+  const all=(data.ladder&&data.ladder.sizes)||[];
+  const sizes = piece.variants ? all.filter(s=>piece.variants[s.tier]) : all;
   const lbl=s=> landscape ? s.label.split(/\s*x\s*/).reverse().join(' x ') : s.label;
+  // default to S (8x10), not the cheapest rung — XS exists as the way in, not the anchor
+  const di = Math.max(0, sizes.findIndex(s=>s.tier==='S'));
   $('tkSizes').innerHTML = sizes.map((s,i)=>
-    `<button class="tk-size${i===0?' on':''}" type="button" role="radio" aria-checked="${i===0}" tabindex="${i===0?0:-1}"><span class="sz">${esc(lbl(s))}</span><span class="pr">$${esc(s.price)}</span></button>`
+    `<button class="tk-size${i===di?' on':''}" type="button" role="radio" aria-checked="${i===di}" tabindex="${i===di?0:-1}" data-tier="${esc(s.tier)}"><span class="sz">${esc(lbl(s))}</span><span class="pr">$${esc(s.price)}</span></button>`
   ).join('');
   tkPiece = piece;
   const cart=$('tkCart'), note=$('tkNote');
@@ -527,10 +532,10 @@ function setQty(vid,q){
   it.qty=q; if(it.qty<1) c=c.filter(x=>x.variantId!==vid); setCart(c);
 }
 function selectedTier(){
-  const btns=[...$('tkSizes').querySelectorAll('.tk-size')];
-  const i=Math.max(0, btns.findIndex(b=>b.classList.contains('on')));
-  const sizes=(data.ladder&&data.ladder.sizes)||[];
-  return (sizes[i]&&sizes[i].tier)||'M';
+  // read the tier off the button itself — the rendered list is filtered per piece,
+  // so a positional lookup into ladder.sizes would pick the wrong rung
+  const on=$('tkSizes').querySelector('.tk-size.on') || $('tkSizes').querySelector('.tk-size');
+  return (on && on.dataset.tier) || 'S';
 }
 function addSelectedToCart(){
   if(!tkPiece||!tkPiece.variants) return;
