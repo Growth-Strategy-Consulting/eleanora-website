@@ -5,7 +5,7 @@
 try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('veil-on');}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Elena Corrao — leave the door open, and the light on</title>
+<title>Elena — the travels, the doors, and the writing</title>
 <link rel="icon" type="image/png" sizes="32x32" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/png" sizes="32x32" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" sizes="512x512" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: light)">
@@ -129,6 +129,74 @@ body.anim .reveal.in{opacity:1;transform:none;}
   #veil{display:none;}
 }
 
+
+/* ================= THE TRAVELS · main column + rail (2026-08-24) =================
+   Elena's call: the travel writing is the site. Prints, journal and about move to a
+   quiet rail beside it instead of owning their own full-width folds. */
+.tvwrap{max-width:1280px;margin:0 auto;padding:clamp(48px,7vw,104px) clamp(20px,5vw,56px) clamp(40px,6vw,88px);
+  scroll-margin-top:96px;  /* the header is fixed; without this the nav anchor lands under it */
+  display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:clamp(40px,5vw,72px);align-items:start;}
+@media(max-width:960px){.tvwrap{grid-template-columns:minmax(0,1fr);gap:56px;}}
+
+.tv-head{margin-bottom:clamp(28px,4vw,48px);}
+.tv-head h2{font-size:clamp(38px,5.4vw,68px);line-height:1.02;letter-spacing:-.015em;color:var(--cream);
+  text-wrap:balance;margin-top:6px;}
+.tv-head p{color:var(--sage);font-size:15px;line-height:1.7;max-width:52ch;margin-top:14px;}
+
+/* --- one entry --- */
+.tv{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(20px,2.6vw,34px);align-items:start;
+  padding:clamp(26px,3vw,38px) 0;border-top:1px solid rgba(231,196,137,.16);}
+.tv:first-child{border-top:0;padding-top:0;}
+.tv-ph{display:block;overflow:hidden;border-radius:3px;aspect-ratio:4/5;background:var(--forest);}
+.tv-ph img{transition:transform 1.1s var(--ease),filter .6s ease;}
+.tv-ph:hover img{transform:scale(1.045);}
+.tv-reg{font-size:11px;letter-spacing:2.6px;text-transform:uppercase;color:var(--clay-l);margin-bottom:9px;}
+.tv-t{font-size:clamp(26px,3vw,38px);line-height:1.1;color:var(--cream);letter-spacing:-.01em;text-wrap:balance;}
+.tv-t a:hover{color:var(--gold);}
+.tv-x{color:var(--body);font-size:16px;line-height:1.75;margin-top:12px;max-width:62ch;text-wrap:pretty;}
+.tv-meta{color:var(--sage);font-size:13px;margin-top:12px;letter-spacing:.02em;}
+.tv-more{display:inline-block;margin-top:16px;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;
+  color:var(--gold);border-bottom:1px solid rgba(231,196,137,.42);padding-bottom:3px;transition:.35s var(--ease);}
+.tv-more:hover{border-bottom-color:var(--gold);letter-spacing:3.1px;}
+
+/* the first entry, the one with real writing, gets the room */
+.tv.lead{grid-template-columns:minmax(0,1fr);gap:clamp(18px,2.4vw,28px);}
+.tv.lead .tv-ph{aspect-ratio:16/9;}
+.tv.lead .tv-t{font-size:clamp(34px,4.6vw,58px);}
+.tv.lead .tv-x{font-size:17px;max-width:66ch;}
+@media(max-width:640px){
+  .tv{grid-template-columns:minmax(0,1fr);gap:18px;}
+  .tv-ph{aspect-ratio:16/10;}
+}
+
+/* --- the rail --- */
+.rail{position:sticky;top:96px;display:flex;flex-direction:column;gap:34px;}
+@media(max-width:960px){.rail{position:static;}}
+.rblock{padding-top:22px;border-top:1px solid rgba(231,196,137,.16);}
+.rblock:first-child{border-top:0;padding-top:0;}
+.rt{font-size:21px;color:var(--cream);letter-spacing:-.005em;}
+.rp{color:var(--sage);font-size:14px;line-height:1.72;margin-top:9px;text-wrap:pretty;}
+.rlink{display:inline-block;margin-top:14px;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;
+  color:var(--gold);border-bottom:1px solid rgba(231,196,137,.38);padding-bottom:3px;transition:.35s var(--ease);}
+.rlink:hover{border-bottom-color:var(--gold);letter-spacing:3px;}
+.rjlist{margin-top:16px;display:flex;flex-direction:column;gap:13px;}
+.rj{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px;align-items:center;}
+.rj .ph{width:52px;height:52px;overflow:hidden;border-radius:2px;background:var(--forest);}
+.rj .t{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:14.5px;line-height:1.35;color:var(--body);
+  transition:color .3s ease;}
+.rj:hover .t{color:var(--gold);}
+.rabout .ph{aspect-ratio:3/2;overflow:hidden;border-radius:3px;margin-bottom:15px;background:var(--forest);}
+.rmail{display:flex;gap:8px;margin-top:13px;}
+.rmail input{flex:1;min-width:0;background:rgba(246,241,231,.05);border:1px solid rgba(231,196,137,.22);
+  color:var(--cream);padding:10px 12px;font-size:14px;border-radius:2px;font-family:inherit;}
+.rmail input::placeholder{color:#a9b4a0;}
+.rmail input:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent;}
+.rmail button{background:transparent;border:1px solid rgba(231,196,137,.42);color:var(--gold);
+  padding:10px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;
+  transition:.35s var(--ease);font-family:inherit;}
+.rmail button:hover{background:rgba(231,196,137,.1);border-color:var(--gold);}
+.rnote{color:var(--sage);font-size:12.5px;margin-top:10px;line-height:1.6;}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
 </style>
 <link rel="stylesheet" href="nav.css">
 <style id="redesign">
@@ -333,14 +401,14 @@ header.solid{background:var(--forest-dd);}
 
 <header id="hdr">
   <a class="brand" href="#top">
-    <img src="img/logo/xo-eleanora-heart-seal-cream-gold.png" alt="Elena Corrao" width="43" height="60" style="height:60px;width:auto;display:block;flex:0 0 auto;filter:none">
-    <span class="wm">Elena Corrao</span>
+    <img src="img/logo/xo-eleanora-heart-seal-cream-gold.png" alt="Elena" width="43" height="60" style="height:60px;width:auto;display:block;flex:0 0 auto;filter:none">
+    <span class="wm">Elena</span>
   </a>
   <nav><ul>
+    <li><a href="#travels">Travels</a></li>
     <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="posters-laws.html">Shop</a></li>
     <li><a href="journal.html">Journal</a></li>
-    <li><a href="about.html">About Me</a></li>
+    <li><a href="about.html">About</a></li>
   </ul></nav>
 </header>
 
@@ -358,9 +426,9 @@ header.solid{background:var(--forest-dd);}
       </a>
       <!-- Copy locked 2026-07-27 via /eleanora-voice (Card B) + Corey Haines copywriting structure. -->
       <h1 class="hs-head">Leave the door open,<br>and the light <em>on</em>.</h1>
-      <p class="hs-sub">You found me. Good. This is my whole little world, and it&rsquo;s stranger and lovelier than the grid lets on. Stories, art, and a few things I&rsquo;ve hidden for whoever actually wanders. Come play.</p>
+      <p class="hs-sub">I go places and I write about them. Doors mostly, and the towns they belong to, and what I worked out while I was standing there. It&rsquo;s all here, newest first.</p>
       <div class="hero-cta">
-        <a class="hbtn primary" href="journal.html">Wander the journal</a>
+        <a class="hbtn primary" href="#travels">Start with the travels</a>
       </div>
     </div>
   </div>
@@ -385,87 +453,125 @@ fetch('journal.json').then(function(r){return r.json();}).then(function(d){
 }).catch(function(){});
 </script>
 
-<!-- ================= PRINTS (tokens from the stories) ================= -->
-<!-- Order set by Elena 2026-07-19: stories first, then the tokens that ride with them. -->
-<!-- ================= SECTION 5 · THE SHOP (side rooms) ================= -->
-<!-- PROVISIONAL COPY — finalize via /caption. Restored 2026-08-23: posters are print-on-demand
-     and buyable today, so the homepage now has one buying door. Postcards stay out until
-     fulfilment is solved. -->
-<div class="sec-head" id="shop">
-  <span class="chap">the ones you can take home</span>
-  <h3 class="serif">The Shop</h3>
-  <div class="rule"></div>
+<!-- ================= THE TRAVELS · main column + rail =================
+     Restructured 2026-08-24 (Elena): the travel writing is the site. The shop, the
+     journal and the about page moved out of their own full-width folds and into the
+     rail beside it. Feed renders from collections.json, the same single source the
+     collection pages read. -->
+<div class="tvwrap" id="travels">
+
+  <main class="tvfeed">
+    <div class="tv-head">
+      <span class="chap">where I&rsquo;ve been</span>
+      <h2 class="serif">The Travels</h2>
+      <p>Places I went and what happened there. Every photograph on this site came out of one of these, so this is the part that comes first.</p>
+    </div>
+    <div id="tv-list"></div>
+  </main>
+
+  <aside class="rail" aria-label="Prints, the journal, and about">
+
+    <section class="rblock">
+      <h3 class="rt serif">Prints</h3>
+      <p class="rp">The pictures, on paper, on your wall. The small ones are $16.</p>
+      <a class="rlink" href="posters-laws.html">See the prints &rarr;</a>
+    </section>
+
+    <section class="rblock">
+      <h3 class="rt serif">The Journal</h3>
+      <p class="rp">Thirteen things I learned the hard way. Not travel. The other thing.</p>
+      <div class="rjlist" id="rail-journal"></div>
+      <a class="rlink" href="journal.html">Read the Journal &rarr;</a>
+    </section>
+
+    <section class="rblock">
+      <div class="ph rabout"><img src="img/her-gold-buddha-wall.jpg" alt="Elena in a sheer dark dress, in profile before a wall of hundreds of gilded golden Buddha heads lit warm"></div>
+      <h3 class="rt serif">About me</h3>
+      <p class="rp">I left, I kept going, and I started writing it down. That&rsquo;s most of it.</p>
+      <a class="rlink" href="about.html">The longer version &rarr;</a>
+    </section>
+
+    <section class="rblock">
+      <h3 class="rt serif">The list</h3>
+      <p class="rp">One email when there&rsquo;s a new story. Nothing else, ever.</p>
+      <form class="rmail" id="inviteForm" novalidate>
+        <input type="text" class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="email" name="email" placeholder="your email" required autocomplete="email" aria-label="Your email">
+        <button type="submit">Join</button>
+      </form>
+      <p class="rnote" id="inviteNote" aria-live="polite"></p>
+    </section>
+
+  </aside>
 </div>
-<div class="gallery-cta"><a class="btn" href="posters-laws.html">See the prints</a></div>
 
-
-<!-- ================= SECTION 3 · THE WORLD (journal) ================= -->
-<!-- PROVISIONAL COPY — framing lines finalize via /eleanora-voice -->
-<section class="jteaser glow-a" id="journal">
-  <span class="chap">still unfolding</span>
-  <h3 class="serif">The world you&rsquo;re stepping into</h3>
-  <p class="world-sub">Not a highlight reel. The actual record: where I am, what I&rsquo;m making, what I&rsquo;m working out. Newest first.</p>
-  <div class="rule"></div>
-  <div class="jt-grid" id="jt-grid"></div>
-  <a class="btn" href="journal.html">Read the Journal</a>
-</section>
 <script>
-/* Section 3 — latest 3 journal entries from journal.json (single source of truth). Visible by default. */
+/* The travels feed — rendered from collections.json, the same file the collection
+   pages read, so the two can never drift. The first entry gets the lead treatment. */
 (function(){
-  fetch('journal.json').then(function(r){return r.json();}).then(function(data){
-    var grid=document.getElementById('jt-grid'); if(!grid)return;
-    (data.entries||[]).slice(0,3).forEach(function(e){
+  var list=document.getElementById('tv-list'); if(!list)return;
+  var esc=function(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+  fetch('collections.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){
+    var cs=(d.collections||[]);
+    if(!cs.length){list.innerHTML='<p class="tv-x">The travels are loading. If they do not, the file moved.</p>';return;}
+    list.innerHTML=cs.map(function(c,i){
+      var href='collection.html?place='+encodeURIComponent(c.slug);
+      var n=(c.photos||[]).length;
+      var cover=(c.cover)||((c.photos||[])[0]||{}).src||'';
+      var alt=((c.photos||[])[0]||{}).alt||(c.place||'')+' — a photograph';
+      return '<article class="tv'+(i===0?' lead':'')+'">'+
+        '<a class="tv-ph" href="'+href+'" tabindex="-1" aria-hidden="true"><img src="'+esc(cover)+'" alt="'+esc(alt)+'" loading="'+(i<2?'eager':'lazy')+'"></a>'+
+        '<div class="tv-b">'+
+          (c.eyebrow?'<p class="tv-reg">'+esc(c.eyebrow)+'</p>':'')+
+          '<h3 class="tv-t serif"><a href="'+href+'">'+esc(c.place||c.slug)+'</a></h3>'+
+          (c.blurb?'<p class="tv-x">'+esc(c.blurb)+'</p>':'')+
+          (n?'<p class="tv-meta">'+n+' photograph'+(n===1?'':'s')+'</p>':'')+
+          '<a class="tv-more" href="'+href+'">Read on &rarr;</a>'+
+        '</div>'+
+      '</article>';
+    }).join('');
+  }).catch(function(){
+    list.innerHTML='<p class="tv-x">The travels could not load just now. Try a refresh.</p>';
+  });
+})();
+
+/* Rail — the three newest journal entries. */
+(function(){
+  var box=document.getElementById('rail-journal'); if(!box)return;
+  var esc=function(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+  fetch('journal.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){
+    box.innerHTML=(d.entries||[]).slice(0,3).map(function(e){
       var t=e.talisman||{};
-      var a=document.createElement('a');
-      a.className='jt-card';
-      a.href=e.slug+'.html';
-      a.innerHTML='<div class="ph"><img src="'+(t.img||'')+'" alt="'+(t.alt||'')+'"></div>'+
-        '<div class="b"><div class="place">'+(e.kicker||'')+'</div><h4>'+(e.title||'')+'</h4></div>';
-      grid.appendChild(a);
-    });
+      return '<a class="rj" href="'+esc(e.slug)+'.html">'+
+        '<span class="ph"><img src="'+esc(t.img||'')+'" alt="" loading="lazy"></span>'+
+        '<span class="t">'+esc(e.title||'')+'</span></a>';
+    }).join('');
   }).catch(function(){});
 })();
-</script>
 
-<!-- ================= THE INVITATION (the list — primary conversion) ================= -->
-<!-- PROVISIONAL COPY — reuses Elena's own list voice from journal-entry.js; finalize via /eleanora-voice -->
-<section class="invite" id="invitation">
-  <div class="invite-inner">
-    <span class="invite-eye">Leave the door open</span>
-    <h2 class="invite-head">There&rsquo;s always another story.</h2>
-    <p class="invite-sub">The best ones never make it to the grid. Those I save for the list. The journal, the travels, and the things I only tell the people who leave an email. Come see what you&rsquo;re missing, babe.</p>
-    <form class="invite-form" id="inviteForm" novalidate>
-      <input type="text" class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <input type="email" name="email" placeholder="your email" required autocomplete="email" aria-label="Your email">
-      <button type="submit" class="go">Send me the next story</button>
-    </form>
-    <p class="invite-note" id="inviteNote" aria-live="polite">One email when there&rsquo;s a new story. Nothing else.</p>
-  </div>
-</section>
-<script>
-/* Invitation signup — reuses the site's live MailerLite endpoint (public form action, no key). */
+/* The list — same live MailerLite endpoint the rest of the site uses (public form action, no key). */
 (function(){
   var form=document.getElementById('inviteForm'); if(!form)return;
-  var section=document.getElementById('invitation');
   var emailEl=form.querySelector('input[type=email]');
   var honeyEl=form.querySelector('.hp');
   var noteEl=document.getElementById('inviteNote');
-  var goBtn=form.querySelector('.go');
+  var goBtn=form.querySelector('button');
   var ENDPOINT='https://assets.mailerlite.com/jsonp/2518337/forms/193587317692172210/subscribe';
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var email=(emailEl.value||'').trim();
     if(!email||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){noteEl.textContent='That email looks off. Try again?';emailEl.focus();return;}
     if(honeyEl.value){done();return;}
-    goBtn.setAttribute('disabled','disabled');noteEl.textContent='One second…';
+    goBtn.setAttribute('disabled','disabled');noteEl.textContent='One second\u2026';
     fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
       body:'fields[email]='+encodeURIComponent(email)+'&ml-submit=1&anticsrf=true',mode:'no-cors'})
       .then(function(){done();})
-      .catch(function(){goBtn.removeAttribute('disabled');noteEl.textContent='Hmm, that didn’t go through. One more try?';});
+      .catch(function(){goBtn.removeAttribute('disabled');noteEl.textContent='Hmm, that did not go through. One more try?';});
   });
-  function done(){section.classList.add('done');
-    noteEl.innerHTML='You’re in. The next one finds you first. <span style="color:var(--gold)">x</span>';
-    noteEl.style.fontSize='15px';noteEl.style.opacity='1';}
+  function done(){form.style.display='none';
+    noteEl.innerHTML='You\u2019re in. The next one finds you first. <span style="color:var(--gold)">x</span>';}
 })();
 </script>
 
@@ -536,12 +642,12 @@ fetch('journal.json').then(function(r){return r.json();}).then(function(d){
 
 <!-- ================= FOOTER ================= -->
 <footer id="footer">
-  <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/logo/xo-eleanora-badge-seal-cream-gold.png" alt="Elena Corrao seal" style="width:100%;height:100%;object-fit:contain"></a></div>
+  <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/logo/xo-eleanora-badge-seal-cream-gold.png" alt="Elena seal" style="width:100%;height:100%;object-fit:contain"></a></div>
   <div class="fnav">
-    <a href="posters-laws.html">Shop</a><a href="gallery.html">Gallery</a><a href="journal.html">Journal</a><a href="about.html">About Me</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
+    <a href="index.html#travels">Travels</a><a href="gallery.html">Gallery</a><a href="journal.html">Journal</a><a href="posters-laws.html">Prints</a><a href="about.html">About</a><a href="index.html#footer">Contact</a>
   </div>
   <div class="tag">Real plants · Real light · The art of women &amp; the wild</div>
-  <div class="cr">© 2026 Elena Corrao &nbsp;·&nbsp; leave the door open, and the light on <span class="script">xo</span></div>
+  <div class="cr">© 2026 Elena &nbsp;·&nbsp; leave the door open, and the light on <span class="script">xo</span></div>
 </footer>
 
 <script>
