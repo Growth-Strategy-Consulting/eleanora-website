@@ -385,6 +385,48 @@ fetch('journal.json').then(function(r){return r.json();}).then(function(d){
 }).catch(function(){});
 </script>
 
+<!-- ================= PRINTS (tokens from the stories) ================= -->
+<!-- Order set by Elena 2026-07-19: stories first, then the tokens that ride with them. -->
+<!-- ================= SECTION 5 · THE SHOP (side rooms) ================= -->
+<!-- PROVISIONAL COPY — finalize via /caption. Restored 2026-08-23: posters are print-on-demand
+     and buyable today, so the homepage now has one buying door. Postcards stay out until
+     fulfilment is solved. -->
+<div class="sec-head" id="shop">
+  <span class="chap">the ones you can take home</span>
+  <h3 class="serif">The Shop</h3>
+  <div class="rule"></div>
+</div>
+<div class="gallery-cta"><a class="btn" href="posters-laws.html">See the prints</a></div>
+
+
+<!-- ================= SECTION 3 · THE WORLD (journal) ================= -->
+<!-- PROVISIONAL COPY — framing lines finalize via /eleanora-voice -->
+<section class="jteaser glow-a" id="journal">
+  <span class="chap">still unfolding</span>
+  <h3 class="serif">The world you&rsquo;re stepping into</h3>
+  <p class="world-sub">Not a highlight reel. The actual record: where I am, what I&rsquo;m making, what I&rsquo;m working out. Newest first.</p>
+  <div class="rule"></div>
+  <div class="jt-grid" id="jt-grid"></div>
+  <a class="btn" href="journal.html">Read the Journal</a>
+</section>
+<script>
+/* Section 3 — latest 3 journal entries from journal.json (single source of truth). Visible by default. */
+(function(){
+  fetch('journal.json').then(function(r){return r.json();}).then(function(data){
+    var grid=document.getElementById('jt-grid'); if(!grid)return;
+    (data.entries||[]).slice(0,3).forEach(function(e){
+      var t=e.talisman||{};
+      var a=document.createElement('a');
+      a.className='jt-card';
+      a.href=e.slug+'.html';
+      a.innerHTML='<div class="ph"><img src="'+(t.img||'')+'" alt="'+(t.alt||'')+'"></div>'+
+        '<div class="b"><div class="place">'+(e.kicker||'')+'</div><h4>'+(e.title||'')+'</h4></div>';
+      grid.appendChild(a);
+    });
+  }).catch(function(){});
+})();
+</script>
+
 <!-- ================= THE INVITATION (the list — primary conversion) ================= -->
 <!-- PROVISIONAL COPY — reuses Elena's own list voice from journal-entry.js; finalize via /eleanora-voice -->
 <section class="invite" id="invitation">
@@ -424,34 +466,6 @@ fetch('journal.json').then(function(r){return r.json();}).then(function(d){
   function done(){section.classList.add('done');
     noteEl.innerHTML='You’re in. The next one finds you first. <span style="color:var(--gold)">x</span>';
     noteEl.style.fontSize='15px';noteEl.style.opacity='1';}
-})();
-</script>
-
-<!-- ================= SECTION 3 · THE WORLD (journal) ================= -->
-<!-- PROVISIONAL COPY — framing lines finalize via /eleanora-voice -->
-<section class="jteaser glow-a" id="journal">
-  <span class="chap">still unfolding</span>
-  <h3 class="serif">The world you&rsquo;re stepping into</h3>
-  <p class="world-sub">Not a highlight reel. The actual record: where I am, what I&rsquo;m making, what I&rsquo;m working out. Newest first.</p>
-  <div class="rule"></div>
-  <div class="jt-grid" id="jt-grid"></div>
-  <a class="btn" href="journal.html">Read the Journal</a>
-</section>
-<script>
-/* Section 3 — latest 3 journal entries from journal.json (single source of truth). Visible by default. */
-(function(){
-  fetch('journal.json').then(function(r){return r.json();}).then(function(data){
-    var grid=document.getElementById('jt-grid'); if(!grid)return;
-    (data.entries||[]).slice(0,3).forEach(function(e){
-      var t=e.talisman||{};
-      var a=document.createElement('a');
-      a.className='jt-card';
-      a.href=e.slug+'.html';
-      a.innerHTML='<div class="ph"><img src="'+(t.img||'')+'" alt="'+(t.alt||'')+'"></div>'+
-        '<div class="b"><div class="place">'+(e.kicker||'')+'</div><h4>'+(e.title||'')+'</h4></div>';
-      grid.appendChild(a);
-    });
-  }).catch(function(){});
 })();
 </script>
 
@@ -519,20 +533,6 @@ fetch('journal.json').then(function(r){return r.json();}).then(function(d){
 </script>
 
 <!-- ================= ABOUT (split) ================= -->
-
-<!-- ================= PRINTS (tokens from the stories) ================= -->
-<!-- Order set by Elena 2026-07-19: stories first, then the tokens that ride with them. -->
-<!-- ================= SECTION 5 · THE SHOP (side rooms) ================= -->
-<!-- PROVISIONAL COPY — finalize via /caption. Restored 2026-08-23: posters are print-on-demand
-     and buyable today, so the homepage now has one buying door. Postcards stay out until
-     fulfilment is solved. -->
-<div class="sec-head" id="shop">
-  <span class="chap">the ones you can take home</span>
-  <h3 class="serif">The Shop</h3>
-  <div class="rule"></div>
-</div>
-<div class="gallery-cta"><a class="btn" href="posters-laws.html">See the prints</a></div>
-
 
 <!-- ================= FOOTER ================= -->
 <footer id="footer">
