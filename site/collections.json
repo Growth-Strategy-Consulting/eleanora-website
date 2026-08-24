@@ -1,157 +1,803 @@
 {
-  "_readme": {
-    "what": "Single source of truth for Eleanora Collections. collections.html (the index) and collection.html (each place-story) render from this file. Add/remove a photo by editing one line here — never touch the HTML.",
-    "how-to-add-a-collection": "Append an object to `collections` with slug (url-safe), place, region, eyebrow, cover (img path), blurb (short, factual), and a photos[] array.",
-    "how-to-make-a-photo-a-talisman": "Set its `talisman` from null to { \"article\": \"journal-xxx.html\", \"buyUrl\": null }. article = the free story it links back to (real page). buyUrl stays null until GoDaddy Payments is live, then paste the GoDaddy Pay Link and it becomes a live buy button automatically. No redesign needed.",
-    "titles": "Titles in [brackets] are Penny working titles awaiting Elena's rename pass. story fields are intentionally empty — Elena authors, then they get filled via the caption pass.",
-    "price": "Optional per-photo `price` (number). Absent = standard $7 postcard, bundle/stacking eligible (Any 3 $18 · 5 $28 · 10 $50). >7 (e.g. 20) = a 'signature piece' held at that flat price, EXCLUDED from the mix & match; it renders with a gold frame + a 'not included / not eligible for discount' hover note, and a per-card price + exclusion note in its detail. The frame decides, not the collection (see prints-and-token-ladder.md).",
-    "accent": "Optional per-collection `accent` (the script line under the title). Absent = the default travel line 'where i went, and what i kept back'; set a string to override, or \"\" to hide it (e.g. The Self-Portraits, which isn't a place).",
-    "checkout": "GoDaddy Payments (pay.corraoelena.com). Buy state is mocked until then: photos with a talisman but no buyUrl show 'Prints coming soon'."
-  },
-  "collections": [
+ "_readme": {
+  "what": "Single source of truth for Eleanora Collections. collections.html (the index) and collection.html (each place-story) render from this file. Add/remove a photo by editing one line here — never touch the HTML.",
+  "how-to-add-a-collection": "Append an object to `collections` with slug (url-safe), place, region, eyebrow, cover (img path), blurb (short, factual), and a photos[] array.",
+  "how-to-make-a-photo-a-talisman": "Set its `talisman` from null to { \"article\": \"journal-xxx.html\", \"buyUrl\": null }. article = the free story it links back to (real page). buyUrl stays null until GoDaddy Payments is live, then paste the GoDaddy Pay Link and it becomes a live buy button automatically. No redesign needed.",
+  "titles": "Titles in [brackets] are Penny working titles awaiting Elena's rename pass. story fields are intentionally empty — Elena authors, then they get filled via the caption pass.",
+  "price": "Optional per-photo `price` (number). Absent = standard $7 postcard, bundle/stacking eligible (Any 3 $18 · 5 $28 · 10 $50). >7 (e.g. 20) = a 'signature piece' held at that flat price, EXCLUDED from the mix & match; it renders with a gold frame + a 'not included / not eligible for discount' hover note, and a per-card price + exclusion note in its detail. The frame decides, not the collection (see prints-and-token-ladder.md).",
+  "accent": "Optional per-collection `accent` (the script line under the title). Absent = the default travel line 'where i went, and what i kept back'; set a string to override, or \"\" to hide it (e.g. The Self-Portraits, which isn't a place).",
+  "checkout": "GoDaddy Payments (pay.corraoelena.com). Buy state is mocked until then: photos with a talisman but no buyUrl show 'Prints coming soon'."
+ },
+ "collections": [
+  {
+   "slug": "european-portals",
+   "place": "European Portals",
+   "region": "Europe",
+   "eyebrow": "Croatia · Italy · Greece · Portugal",
+   "cover": "img/ep-02-grew-anyway.jpg",
+   "blurb": "I became the girl who stops for every old door. I always told myself it was a photography thing, until the night I started wondering whether doorways are really doorways, or little portals in time. Twelve of them here, from Dubrovnik to Lisbon, each one still keeping whatever's behind it. And imagine, just for the fun of it, that one of them actually worked, that you could choose a door, knock, and step clean through into another century, another city, another life entirely. Where do you go?",
+   "photos": [
     {
-      "slug": "brazil",
-      "place": "Brazil",
-      "region": "South America",
-      "eyebrow": "Pipa · Rio Grande do Norte",
-      "cover": "img/cover-brazil.jpg",
-      "blurb": "Red cliffs falling to the sea, and the wild between.",
-      "photos": [
-        { "src": "img/brazil-kombi.jpg", "title": "[working title]", "alt": "A vintage kombi parked on a red cliff over the sea", "story": "", "talisman": { "article": "journal.html", "buyUrl": null } },
-        { "src": "img/brazil-exotica.jpg", "title": "[working title]", "alt": "The colorful Moorish facade of the Exotica hotel", "story": "", "talisman": null },
-        { "src": "img/brazil-pink-cliff.jpg", "title": "[working title]", "alt": "A pink cliff with a wooden staircase down to the beach", "story": "", "talisman": null },
-        { "src": "img/brazil-cove-surf.jpg", "title": "[working title]", "alt": "A wild beach cove with surf breaking below the cliffs", "story": "", "talisman": null },
-        { "src": "img/brazil-shower.jpg", "title": "[working title]", "alt": "An outdoor shower framed by tropical greenery", "story": "", "talisman": null },
-        { "src": "img/brazil-bikini-standing.jpg", "title": "[working title]", "alt": "Standing on the beach in the sun", "story": "", "talisman": null },
-        { "src": "img/brazil-palm-bw.jpg", "title": "[working title]", "alt": "A black and white portrait against a palm trunk", "story": "", "talisman": null },
-        { "src": "img/brazil-beach-bar.jpg", "title": "[working title]", "alt": "A beach bar with a red umbrella under the palms", "story": "", "talisman": null },
-        { "src": "img/brazil-surf-school.jpg", "title": "[working title]", "alt": "A surf school with the Brazilian flag and a row of boards", "story": "", "talisman": null }
-      ]
+     "src": "img/ep-01-behind-the-blue.jpg",
+     "col": 1,
+     "title": "Behind the Blue",
+     "alt": "A weathered navy plank door set in an old stone wall on a quiet Dubrovnik street.",
+     "whisper": "A blue door in a stone wall, and no way to know who's still behind it.",
+     "story": "",
+     "talisman": {
+      "article": "journal-portals.html",
+      "buyUrl": null
+     }
     },
     {
-      "slug": "puglia",
-      "place": "Puglia",
-      "region": "Europe",
-      "eyebrow": "Puglia · Bari, Brindisi & Polignano",
-      "cover": "img/puglia-polignano-cove-boats.jpg",
-      "blurb": "Old stone, sea light, and doorways worth stopping for.",
-      "photos": [
-        { "src": "img/puglia-polignano-cove-boats.jpg", "title": "The Cove", "alt": "Boats on the turquoise cove at Polignano a Mare", "whisper": "Turquoise enough to make you forget you had somewhere to be.", "story": "", "talisman": null },
-        { "src": "img/blog-italy-flowerdoor.jpg", "title": "The Flower Door", "alt": "A yellow doorway with climbing flowers and a small red mailbox in Bari, Italy", "whisper": "Every door this pretty is hiding a yes behind it.", "story": "", "talisman": { "article": "journal-italy.html", "buyUrl": null } },
-        { "src": "img/puglia-brindisi-fresco.jpg", "title": "The Two Saints", "alt": "A faded medieval fresco of two haloed saints on a Brindisi church wall", "whisper": "Eight hundred years on a wall, and they still haven't looked away.", "story": "", "talisman": null },
-        { "src": "img/puglia-bari-ape-truck.jpg", "title": "The Blue Ape", "alt": "A blue Piaggio Ape three-wheeler parked on a Bari street", "whisper": "Small, blue, and in no particular hurry to be anywhere.", "story": "", "talisman": null },
-        { "src": "img/puglia-bari-coral-balconies.jpg", "title": "Coral & Iron", "alt": "A coral-red facade with wrought-iron balconies in Bari", "whisper": "Coral walls, iron balconies, and a whole life behind the shutters.", "story": "", "talisman": null },
-        { "src": "img/puglia-polignano-clifftop.jpg", "title": "Town on the Cliff", "alt": "The whitewashed old town perched on the cliffs at Polignano a Mare", "whisper": "A whole town that looked at the edge of the cliff and said, close enough.", "story": "", "talisman": null },
-        { "src": "img/puglia-brindisi-black-car.jpg", "title": "In the Shade", "alt": "A black vintage car parked by a doorway on a Brindisi street", "whisper": "A black car in the shade, and the good kind of nowhere to be.", "story": "", "talisman": null },
-        { "src": "img/puglia-brindisi-alley-up.jpg", "title": "Looking Up", "alt": "Looking straight up a narrow alley to a slot of sky in Brindisi", "whisper": "In the old alleys, the sky comes to you in slivers.", "story": "", "talisman": null }
-      ]
+     "src": "img/ep-02-grew-anyway.jpg",
+     "col": 1,
+     "title": "Grew Anyway",
+     "alt": "A weathered door in an ochre wall with citrus leaves hanging overhead in Athens.",
+     "whisper": "The door stayed shut, and something green grew anyway.",
+     "story": "",
+     "talisman": {
+      "article": "journal-portals.html",
+      "buyUrl": null
+     }
     },
     {
-      "slug": "croatia",
-      "place": "Dubrovnik",
-      "region": "Europe",
-      "eyebrow": "Croatia · the Adriatic",
-      "cover": "img/croatia-church-hill.jpg",
-      "blurb": "Stone walls, still water, and one island in the blue.",
-      "photos": [
-        { "src": "img/croatia-thirteen-main.jpg", "col": 1, "title": "Thirteen Main Street", "alt": "A pale stone facade with coral shutters and an iron balcony", "whisper": "Behind those coral shutters, somebody's been happy for years.", "story": "", "talisman": null },
-        { "src": "img/croatia-mermaids-cove.jpg", "col": 1, "title": "Mermaid's Cove", "alt": "Waves breaking over rocks below a green Adriatic headland", "whisper": "The sea keeps throwing itself at the rocks like it forgot how this ends.", "story": "", "talisman": null },
-        { "src": "img/croatia-church-interior.jpg", "col": 1, "title": "Church Interior", "alt": "A baroque altar with marble columns and painted frescoes", "whisper": "Marble and gold, and a hush that was here long before you.", "story": "", "talisman": null },
-        { "src": "img/croatia-island.jpg", "col": 2, "title": "Island at Sea", "alt": "A small green island floating in the calm blue sea off Dubrovnik", "whisper": "One green island, and all that open water daring you toward it.", "story": "", "talisman": { "article": "journal-dubrovnik.html", "buyUrl": null } },
-        { "src": "img/croatia-blue-door.jpg", "col": 2, "title": "Blue Door", "alt": "A weathered navy plank door set in an old stone wall on Sustjepanska", "whisper": "A blue door in a stone wall, and no way to know who's still behind it.", "story": "", "talisman": null },
-        { "src": "img/croatia-loggia.jpg", "col": 2, "title": "Stone Loggia House", "alt": "An old arched stone loggia house with oleander in bloom", "whisper": "Old stone arches and oleander in bloom, taking their sweet time.", "story": "", "talisman": null },
-        { "src": "img/croatia-sunset-dock.jpg", "col": 2, "title": "Sunset Dock", "alt": "A weathered wooden dock leading to a small boat, the city glowing at dusk", "whisper": "A wooden dock, a small boat, and the city going gold behind it.", "story": "", "talisman": null },
-        { "src": "img/croatia-church-hill.jpg", "col": 1, "title": "Church on the Hill", "alt": "A stone church and clock tower rising behind a high old-town wall", "whisper": "A clock tower that's kept the town's time longer than anyone alive.", "story": "", "talisman": null }
-      ]
+     "src": "img/ep-03-behind-the-grille.jpg",
+     "col": 2,
+     "title": "Behind the Grille",
+     "alt": "An arched doorway behind a decorative iron grille on a stone facade in Bari.",
+     "whisper": "An iron grille over the glass, and whoever's home likes it that way.",
+     "story": "",
+     "talisman": {
+      "article": "journal-portals.html",
+      "buyUrl": null
+     }
     },
     {
-      "slug": "portugal",
-      "place": "Lisbon",
-      "region": "Europe",
-      "eyebrow": "Portugal · the tiled city",
-      "cover": "img/lisbon-praca-comercio.jpg",
-      "blurb": "Tiled walls, painted murals, and rooftops in the haze.",
-      "photos": [
-        { "src": "img/lisbon-her-azulejo.jpg", "title": "Pink & Azulejo", "alt": "Elena in a pink tank top seated against a geometric teal-and-yellow azulejo tile wall in Lisbon", "story": "", "talisman": null },
-        { "src": "img/lisbon-praca-comercio.jpg", "title": "Praça do Comércio", "alt": "The King José equestrian statue in Praça do Comércio at sunset", "story": "", "talisman": null },
-        { "src": "img/lisbon-green-door.jpg", "title": "Costa do Castelo", "alt": "A weathered green door with an 1886 transom on Costa do Castelo", "story": "", "talisman": null },
-        { "src": "img/lisbon-rooftops-castle.jpg", "title": "Rooftops & Bridge", "alt": "Lisbon rooftops and the 25 de Abril bridge seen from São Jorge castle", "story": "", "talisman": null },
-        { "src": "img/lisbon-owl-mural.jpg", "title": "Have No Enemies", "alt": "A street-art owl on patterned azulejo holding a 'Have No Enemies' banner", "story": "", "talisman": null },
-        { "src": "img/lisbon-rainbow-umbrellas.jpg", "title": "Rainbow Umbrellas", "alt": "A canopy of rainbow umbrellas strung over a Lisbon street", "story": "", "talisman": null },
-        { "src": "img/lisbon-fado-mural.jpg", "title": "Fado Vadio", "alt": "A painted Fado Vadio mural of a singer and woman in Alfama", "story": "", "talisman": null },
-        { "src": "img/lisbon-azulejo-facade.jpg", "title": "Azulejo Wall", "alt": "A teal azulejo-tiled facade with yellow shutters", "story": "", "talisman": null },
-        { "src": "img/lisbon-ripple-mural.jpg", "title": "The Ripple", "alt": "A conceptual street-art mural of a figure touching its head, set in a stone arch", "story": "", "talisman": null },
-        { "src": "img/lisbon-church-organ.jpg", "title": "Gilded Organ", "alt": "A gilded baroque pipe organ and carved ceiling inside a Lisbon church", "story": "", "talisman": null },
-        { "src": "img/lisbon-cobble-street.jpg", "title": "The Cobbled Hill", "alt": "A steep cobbled Lisbon street lined with pastel buildings", "story": "", "talisman": null },
-        { "src": "img/lisbon-ginja-mural.jpg", "title": "Ginja do Bairro", "alt": "A painted Ginja do Bairro mural of a red-haired woman with a cherry liqueur", "story": "", "talisman": null }
-      ]
+     "src": "img/ep-04-two-ways-in.jpg",
+     "col": 2,
+     "title": "Two Ways In",
+     "alt": "A bright red door and a weathered brown door side by side on an old Bari wall.",
+     "whisper": "Two doors, side by side. You only get to pick one.",
+     "story": "",
+     "talisman": {
+      "article": "journal-portals.html",
+      "buyUrl": null
+     }
     },
     {
-      "slug": "greece",
-      "place": "Greece",
-      "region": "Europe",
-      "eyebrow": "Corfu · Meteora · Athens",
-      "cover": "img/athens-record-wall.jpg",
-      "blurb": "Old gods in marble, monasteries in the clouds, and the sea between.",
-      "photos": [
-        { "src": "img/greece-meteora-valley.jpg", "title": "The Green Valley", "alt": "A lush green Pindus valley below Meteora under dramatic clouds", "whisper": "Down there, the world forgets to ask anything of you.", "story": "", "talisman": null },
-        { "src": "img/greece-corfu-sunset.jpg", "title": "Sun on the Ionian", "alt": "The sun low over the hills and sea at Corfu", "whisper": "The hour the sea turns gold, and nobody's in a hurry.", "story": "", "talisman": null },
-        { "src": "img/athens-record-wall.jpg", "title": "Every Record Ever", "alt": "A woman in a black dress before a wall covered in vintage vinyl record sleeves", "whisper": "Every record on that wall was somebody's whole summer once.", "story": "", "talisman": null },
-        { "src": "img/athens-marble-column.jpg", "title": "Leaning", "alt": "A marble woman leaning on a small column, a museum piece", "whisper": "Two thousand years standing, and still she leans like she's tired.", "story": "", "talisman": null },
-        { "src": "img/greece-meteora-folk-museum.jpg", "title": "The Old Kitchen", "alt": "A folk-museum interior with dried red corn and an old corn-sheller", "whisper": "A kitchen that fed everyone who came through, and remembered them all.", "story": "", "talisman": null },
-        { "src": "img/athens-marble-magenta.jpg", "title": "Goddess in Magenta", "alt": "A headless draped marble goddess against a magenta museum wall", "whisper": "No head, no name, and she still owns the whole room.", "story": "", "talisman": null },
-        { "src": "img/athens-doorway.jpg", "title": "The Yellow Door", "alt": "A weathered old door in an ochre plaster wall with citrus leaves overhead", "whisper": "The door stayed shut, and something green grew anyway.", "story": "", "talisman": null },
-        { "src": "img/greece-corfu-bay.jpg", "title": "Swimming Weather", "alt": "A turquoise Corfu bay ringed by green mountains, swimmers in the shallows", "whisper": "The kind of blue that talks you into staying another week.", "story": "", "talisman": null },
-        { "src": "img/greece-corfu-waterfront.jpg", "title": "The Old Town from the Water", "alt": "The pastel Venetian waterfront of Corfu Old Town seen from the sea", "whisper": "Those walls have watched every boat, and every goodbye.", "story": "", "talisman": null },
-        { "src": "img/athens-fresco.jpg", "title": "Two Saints", "alt": "A faded Byzantine fresco of two haloed bishop-saints", "whisper": "Cracked and faded, and still keeping their watch.", "story": "", "talisman": null },
-        { "src": "img/athens-philopappos.jpg", "title": "Philopappos Hill", "alt": "Philopappos Hill in Athens, pines and olives below the marble monument", "whisper": "Climb high enough and even Athens learns to be quiet.", "story": "", "talisman": null },
-        { "src": "img/athens-caryatids.jpg", "title": "The Six Maidens", "alt": "The Porch of the Caryatids on the Erechtheion, Acropolis, golden marble against blue sky", "whisper": "Six of them holding up a temple, and still making it look easy.", "story": "", "talisman": null }
-      ]
+     "src": "img/ep-05-still-standing.jpg",
+     "col": 2,
+     "title": "Still Standing",
+     "alt": "A pale, weathered double door in a cracked plaster wall in Bari.",
+     "whisper": "The paint gave up years ago. The door never did.",
+     "story": "",
+     "talisman": {
+      "article": "journal-portals.html",
+      "buyUrl": null
+     }
     },
     {
-      "slug": "cape-cod",
-      "place": "Cape Cod",
-      "region": "North America",
-      "eyebrow": "Massachusetts · the Cape",
-      "cover": "img/cape-moorings.jpg",
-      "blurb": "Harbor light, a fox in the pines, and the fog that keeps the rest.",
-      "photos": [
-        { "src": "img/cape-fox.jpg", "title": "The Local", "alt": "A fox standing among the pines", "story": "", "talisman": null },
-        { "src": "img/cape-moorings.jpg", "title": "Home by Dark", "alt": "An orange sunset over the harbor moorings", "story": "", "talisman": null },
-        { "src": "img/cape-rhododendron.jpg", "title": "Two Weeks", "alt": "Pink rhododendron in full bloom", "story": "", "talisman": null },
-        { "src": "img/cape-fanlight.jpg", "title": "Two Hundred", "alt": "An arched fanlight window over the black door of a white brick storefront", "story": "", "talisman": null },
-        { "src": "img/cape-beach-sweater.jpg", "title": "Off Season", "alt": "A woman walking the empty beach in a sweater, soft light", "story": "", "talisman": null },
-        { "src": "img/cape-dahlia.jpg", "title": "Show-Off", "alt": "A magenta dahlia in bloom", "story": "", "talisman": null },
-        { "src": "img/cape-lantern-shop.jpg", "title": "Lamplight", "alt": "A lantern shop glowing at dusk", "story": "", "talisman": null },
-        { "src": "img/cape-bay-sunset.jpg", "title": "Fire on the Bay", "alt": "Silhouettes reflected on the bay at sunset", "story": "", "talisman": null },
-        { "src": "img/cape-zinnia.jpg", "title": "Pick Your Own", "alt": "A hand holding a zinnia bouquet in a field", "story": "", "talisman": null },
-        { "src": "img/cape-cosmos.jpg", "title": "Volunteer", "alt": "A single yellow cosmos flower in bloom", "story": "", "talisman": null },
-        { "src": "img/cape-peonies.jpg", "title": "Heavy Heads", "alt": "Pink peonies against dark leaves", "story": "", "talisman": null },
-        { "src": "img/cape-oleander.jpg", "title": "Pretty Poison", "alt": "An oleander blossom with a honeybee", "story": "", "talisman": null }
-      ]
+     "src": "img/ep-06-hiding-a-yes.jpg",
+     "col": 1,
+     "title": "Hiding a Yes",
+     "alt": "A sunny yellow doorway with climbing flowers and a little red mailbox in Bari.",
+     "whisper": "Every door this pretty is hiding a yes behind it.",
+     "story": "",
+     "talisman": {
+      "article": "journal-portals.html",
+      "buyUrl": null
+     }
     },
     {
-      "slug": "self-portraits",
-      "place": "The Self-Portraits",
-      "region": "",
-      "eyebrow": "The Archive",
-      "accent": "",
-      "cover": "img/about-lace-hat.jpg",
-      "blurb": "",
-      "photos": [
-        { "src": "img/her-brazil-beach-black-bikini.jpg", "title": "Low Tide", "alt": "Eleanora kneeling on a Brazilian beach in a black bikini under a bright blue sky", "story": "", "price": 20, "talisman": null },
-        { "src": "img/about-lace-hat.jpg", "title": "Sunday Best", "alt": "Eleanora in a wide-brim lace hat", "story": "", "talisman": null },
-        { "src": "img/her-shower-black-bikini.jpg", "title": "Wild Water", "alt": "Eleanora in a black bikini among tropical greenery at an outdoor shower", "story": "", "price": 20, "talisman": null },
-        { "src": "img/her-blue-buddha-wall.jpg", "title": "Among the Gods", "alt": "Eleanora before a wall of blue Buddha tiles", "story": "", "talisman": null },
-        { "src": "img/studio-fur-silver.jpg", "title": "The Canvas", "alt": "Eleanora in an open fur coat and lace shorts, black and white", "story": "", "price": 20, "talisman": { "article": "journal-quiet-one.html", "buyUrl": null } },
-        { "src": "img/her-beach-sandbar-sun-hat.jpg", "title": "Sandbar", "alt": "Eleanora walking a pale sandbar in a sun hat", "story": "", "talisman": null },
-        { "src": "img/bw-smoke-editorial.jpg", "title": "Slow Burn", "alt": "Eleanora in a black-and-white editorial portrait with smoke", "story": "", "talisman": null },
-        { "src": "img/her-flower-crown-nude.jpg", "title": "The Coronation", "alt": "Eleanora in a flower crown, nude side profile", "story": "", "price": 20, "talisman": null },
-        { "src": "img/salt-flat-bikini-headscarf.jpg", "title": "Salt", "alt": "Eleanora in a bikini and headscarf on a salt flat", "story": "", "talisman": null },
-        { "src": "img/floridarama-mirror-candle-arms-open.jpg", "title": "Wide Open", "alt": "Eleanora with arms open in a candlelit mirrored room", "story": "", "price": 20, "talisman": null },
-        { "src": "img/beach-floral-bikini-sun-hat.jpg", "title": "Facing the Sea", "alt": "Eleanora in a floral bikini and sun hat on the beach", "story": "", "price": 20, "talisman": null },
-        { "src": "img/sunset-silhouette-mammatus.jpg", "title": "Last Light", "alt": "A silhouette against a sunset sky with mammatus clouds", "story": "", "talisman": null }
-      ]
+     "src": "img/ep-07-the-green-arch.jpg",
+     "col": 2,
+     "title": "The Green Arch",
+     "alt": "A green door under a pale stone arch beside a shuttered window in Polignano.",
+     "whisper": "A green door under a stone arch, shut against the afternoon.",
+     "story": "",
+     "talisman": {
+      "article": "journal-portals.html",
+      "buyUrl": null
+     }
+    },
+    {
+     "src": "img/ep-08-before-paradise.jpg",
+     "col": 1,
+     "title": "Before Paradise",
+     "alt": "A weathered Polignano wall painted with the line that this place was made before Paradise.",
+     "whisper": "Somebody painted 'made before Paradise' above the door, and meant it.",
+     "story": "",
+     "talisman": {
+      "article": "journal-portals.html",
+      "buyUrl": null
+     }
+    },
+    {
+     "src": "img/ep-09-since-1886.jpg",
+     "col": 1,
+     "title": "Since 1886",
+     "alt": "A weathered green door on Costa do Castelo in Lisbon, 1886 carved above it.",
+     "whisper": "A door that's been opening onto that hill for well over a century.",
+     "story": "",
+     "talisman": {
+      "article": "journal-portals.html",
+      "buyUrl": null
+     }
+    },
+    {
+     "src": "img/ep-10-someone-lives-here.jpg",
+     "col": 1,
+     "title": "Someone Lives Here",
+     "alt": "A dark green Lisbon door framed by potted plants spilling from the window boxes.",
+     "whisper": "Somebody waters the flowers here every morning. You can tell.",
+     "story": "",
+     "talisman": {
+      "article": "journal-portals.html",
+      "buyUrl": null
+     }
+    },
+    {
+     "src": "img/ep-11-local-legend.jpg",
+     "col": 1,
+     "title": "Local Legend",
+     "alt": "A painted Ginja do Bairro mural in Lisbon, a red-haired woman and the cherry the city drinks.",
+     "whisper": "A little local legend, up on a wall.",
+     "story": "",
+     "talisman": {
+      "article": "journal-portals.html",
+      "buyUrl": null
+     }
+    },
+    {
+     "src": "img/ep-12-dressed-to-go.jpg",
+     "col": 1,
+     "title": "Dressed to Go",
+     "alt": "A teal azulejo-tiled facade with butter-yellow shutters, tiled top to bottom, in Lisbon.",
+     "whisper": "A whole building dressed like it's going somewhere.",
+     "story": "",
+     "talisman": {
+      "article": "journal-portals.html",
+      "buyUrl": null
+     }
     }
-  ]
+   ]
+  },
+  {
+   "slug": "brazil",
+   "place": "Brazil",
+   "region": "South America",
+   "eyebrow": "Pipa · Rio Grande do Norte",
+   "cover": "img/cover-brazil.jpg",
+   "blurb": "Red cliffs falling to the sea, and the wild between.",
+   "photos": [
+    {
+     "src": "img/brazil-kombi.jpg",
+     "title": "[working title]",
+     "alt": "A vintage kombi parked on a red cliff over the sea",
+     "story": "",
+     "talisman": {
+      "article": "journal.html",
+      "buyUrl": null
+     }
+    },
+    {
+     "src": "img/brazil-exotica.jpg",
+     "title": "[working title]",
+     "alt": "The colorful Moorish facade of the Exotica hotel",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/brazil-pink-cliff.jpg",
+     "title": "[working title]",
+     "alt": "A pink cliff with a wooden staircase down to the beach",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/brazil-cove-surf.jpg",
+     "title": "[working title]",
+     "alt": "A wild beach cove with surf breaking below the cliffs",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/brazil-shower.jpg",
+     "title": "[working title]",
+     "alt": "An outdoor shower framed by tropical greenery",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/brazil-bikini-standing.jpg",
+     "title": "[working title]",
+     "alt": "Standing on the beach in the sun",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/brazil-palm-bw.jpg",
+     "title": "[working title]",
+     "alt": "A black and white portrait against a palm trunk",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/brazil-beach-bar.jpg",
+     "title": "[working title]",
+     "alt": "A beach bar with a red umbrella under the palms",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/brazil-surf-school.jpg",
+     "title": "[working title]",
+     "alt": "A surf school with the Brazilian flag and a row of boards",
+     "story": "",
+     "talisman": null
+    }
+   ]
+  },
+  {
+   "slug": "puglia",
+   "place": "Puglia",
+   "region": "Europe",
+   "eyebrow": "Puglia · Bari, Brindisi & Polignano",
+   "cover": "img/puglia-polignano-cove-boats.jpg",
+   "blurb": "Old stone, sea light, and doorways worth stopping for.",
+   "photos": [
+    {
+     "src": "img/puglia-polignano-cove-boats.jpg",
+     "title": "The Cove",
+     "alt": "Boats on the turquoise cove at Polignano a Mare",
+     "whisper": "Turquoise enough to make you forget you had somewhere to be.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/blog-italy-flowerdoor.jpg",
+     "title": "The Flower Door",
+     "alt": "A yellow doorway with climbing flowers and a small red mailbox in Bari, Italy",
+     "whisper": "Every door this pretty is hiding a yes behind it.",
+     "story": "",
+     "talisman": {
+      "article": "journal-italy.html",
+      "buyUrl": null
+     }
+    },
+    {
+     "src": "img/puglia-brindisi-fresco.jpg",
+     "title": "The Two Saints",
+     "alt": "A faded medieval fresco of two haloed saints on a Brindisi church wall",
+     "whisper": "Eight hundred years on a wall, and they still haven't looked away.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/puglia-bari-ape-truck.jpg",
+     "title": "The Blue Ape",
+     "alt": "A blue Piaggio Ape three-wheeler parked on a Bari street",
+     "whisper": "Small, blue, and in no particular hurry to be anywhere.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/puglia-bari-coral-balconies.jpg",
+     "title": "Coral & Iron",
+     "alt": "A coral-red facade with wrought-iron balconies in Bari",
+     "whisper": "Coral walls, iron balconies, and a whole life behind the shutters.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/puglia-polignano-clifftop.jpg",
+     "title": "Town on the Cliff",
+     "alt": "The whitewashed old town perched on the cliffs at Polignano a Mare",
+     "whisper": "A whole town that looked at the edge of the cliff and said, close enough.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/puglia-brindisi-black-car.jpg",
+     "title": "In the Shade",
+     "alt": "A black vintage car parked by a doorway on a Brindisi street",
+     "whisper": "A black car in the shade, and the good kind of nowhere to be.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/puglia-brindisi-alley-up.jpg",
+     "title": "Looking Up",
+     "alt": "Looking straight up a narrow alley to a slot of sky in Brindisi",
+     "whisper": "In the old alleys, the sky comes to you in slivers.",
+     "story": "",
+     "talisman": null
+    }
+   ]
+  },
+  {
+   "slug": "croatia",
+   "place": "Dubrovnik",
+   "region": "Europe",
+   "eyebrow": "Croatia · the Adriatic",
+   "cover": "img/croatia-church-hill.jpg",
+   "blurb": "Stone walls, still water, and one island in the blue.",
+   "photos": [
+    {
+     "src": "img/croatia-thirteen-main.jpg",
+     "col": 1,
+     "title": "Thirteen Main Street",
+     "alt": "A pale stone facade with coral shutters and an iron balcony",
+     "whisper": "Behind those coral shutters, somebody's been happy for years.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/croatia-mermaids-cove.jpg",
+     "col": 1,
+     "title": "Mermaid's Cove",
+     "alt": "Waves breaking over rocks below a green Adriatic headland",
+     "whisper": "The sea keeps throwing itself at the rocks like it forgot how this ends.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/croatia-church-interior.jpg",
+     "col": 1,
+     "title": "Church Interior",
+     "alt": "A baroque altar with marble columns and painted frescoes",
+     "whisper": "Marble and gold, and a hush that was here long before you.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/croatia-island.jpg",
+     "col": 2,
+     "title": "Island at Sea",
+     "alt": "A small green island floating in the calm blue sea off Dubrovnik",
+     "whisper": "One green island, and all that open water daring you toward it.",
+     "story": "",
+     "talisman": {
+      "article": "journal-dubrovnik.html",
+      "buyUrl": null
+     }
+    },
+    {
+     "src": "img/croatia-blue-door.jpg",
+     "col": 2,
+     "title": "Blue Door",
+     "alt": "A weathered navy plank door set in an old stone wall on Sustjepanska",
+     "whisper": "A blue door in a stone wall, and no way to know who's still behind it.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/croatia-loggia.jpg",
+     "col": 2,
+     "title": "Stone Loggia House",
+     "alt": "An old arched stone loggia house with oleander in bloom",
+     "whisper": "Old stone arches and oleander in bloom, taking their sweet time.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/croatia-sunset-dock.jpg",
+     "col": 2,
+     "title": "Sunset Dock",
+     "alt": "A weathered wooden dock leading to a small boat, the city glowing at dusk",
+     "whisper": "A wooden dock, a small boat, and the city going gold behind it.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/croatia-church-hill.jpg",
+     "col": 1,
+     "title": "Church on the Hill",
+     "alt": "A stone church and clock tower rising behind a high old-town wall",
+     "whisper": "A clock tower that's kept the town's time longer than anyone alive.",
+     "story": "",
+     "talisman": null
+    }
+   ]
+  },
+  {
+   "slug": "portugal",
+   "place": "Lisbon",
+   "region": "Europe",
+   "eyebrow": "Portugal · the tiled city",
+   "cover": "img/lisbon-praca-comercio.jpg",
+   "blurb": "Tiled walls, painted murals, and rooftops in the haze.",
+   "photos": [
+    {
+     "src": "img/lisbon-her-azulejo.jpg",
+     "title": "Pink & Azulejo",
+     "alt": "Elena in a pink tank top seated against a geometric teal-and-yellow azulejo tile wall in Lisbon",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/lisbon-praca-comercio.jpg",
+     "title": "Praça do Comércio",
+     "alt": "The King José equestrian statue in Praça do Comércio at sunset",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/lisbon-green-door.jpg",
+     "title": "Costa do Castelo",
+     "alt": "A weathered green door with an 1886 transom on Costa do Castelo",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/lisbon-rooftops-castle.jpg",
+     "title": "Rooftops & Bridge",
+     "alt": "Lisbon rooftops and the 25 de Abril bridge seen from São Jorge castle",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/lisbon-owl-mural.jpg",
+     "title": "Have No Enemies",
+     "alt": "A street-art owl on patterned azulejo holding a 'Have No Enemies' banner",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/lisbon-rainbow-umbrellas.jpg",
+     "title": "Rainbow Umbrellas",
+     "alt": "A canopy of rainbow umbrellas strung over a Lisbon street",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/lisbon-fado-mural.jpg",
+     "title": "Fado Vadio",
+     "alt": "A painted Fado Vadio mural of a singer and woman in Alfama",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/lisbon-azulejo-facade.jpg",
+     "title": "Azulejo Wall",
+     "alt": "A teal azulejo-tiled facade with yellow shutters",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/lisbon-ripple-mural.jpg",
+     "title": "The Ripple",
+     "alt": "A conceptual street-art mural of a figure touching its head, set in a stone arch",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/lisbon-church-organ.jpg",
+     "title": "Gilded Organ",
+     "alt": "A gilded baroque pipe organ and carved ceiling inside a Lisbon church",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/lisbon-cobble-street.jpg",
+     "title": "The Cobbled Hill",
+     "alt": "A steep cobbled Lisbon street lined with pastel buildings",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/lisbon-ginja-mural.jpg",
+     "title": "Ginja do Bairro",
+     "alt": "A painted Ginja do Bairro mural of a red-haired woman with a cherry liqueur",
+     "story": "",
+     "talisman": null
+    }
+   ]
+  },
+  {
+   "slug": "greece",
+   "place": "Greece",
+   "region": "Europe",
+   "eyebrow": "Corfu · Meteora · Athens",
+   "cover": "img/athens-record-wall.jpg",
+   "blurb": "Old gods in marble, monasteries in the clouds, and the sea between.",
+   "photos": [
+    {
+     "src": "img/greece-meteora-valley.jpg",
+     "title": "The Green Valley",
+     "alt": "A lush green Pindus valley below Meteora under dramatic clouds",
+     "whisper": "Down there, the world forgets to ask anything of you.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/greece-corfu-sunset.jpg",
+     "title": "Sun on the Ionian",
+     "alt": "The sun low over the hills and sea at Corfu",
+     "whisper": "The hour the sea turns gold, and nobody's in a hurry.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/athens-record-wall.jpg",
+     "title": "Every Record Ever",
+     "alt": "A woman in a black dress before a wall covered in vintage vinyl record sleeves",
+     "whisper": "Every record on that wall was somebody's whole summer once.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/athens-marble-column.jpg",
+     "title": "Leaning",
+     "alt": "A marble woman leaning on a small column, a museum piece",
+     "whisper": "Two thousand years standing, and still she leans like she's tired.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/greece-meteora-folk-museum.jpg",
+     "title": "The Old Kitchen",
+     "alt": "A folk-museum interior with dried red corn and an old corn-sheller",
+     "whisper": "A kitchen that fed everyone who came through, and remembered them all.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/athens-marble-magenta.jpg",
+     "title": "Goddess in Magenta",
+     "alt": "A headless draped marble goddess against a magenta museum wall",
+     "whisper": "No head, no name, and she still owns the whole room.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/athens-doorway.jpg",
+     "title": "The Yellow Door",
+     "alt": "A weathered old door in an ochre plaster wall with citrus leaves overhead",
+     "whisper": "The door stayed shut, and something green grew anyway.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/greece-corfu-bay.jpg",
+     "title": "Swimming Weather",
+     "alt": "A turquoise Corfu bay ringed by green mountains, swimmers in the shallows",
+     "whisper": "The kind of blue that talks you into staying another week.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/greece-corfu-waterfront.jpg",
+     "title": "The Old Town from the Water",
+     "alt": "The pastel Venetian waterfront of Corfu Old Town seen from the sea",
+     "whisper": "Those walls have watched every boat, and every goodbye.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/athens-fresco.jpg",
+     "title": "Two Saints",
+     "alt": "A faded Byzantine fresco of two haloed bishop-saints",
+     "whisper": "Cracked and faded, and still keeping their watch.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/athens-philopappos.jpg",
+     "title": "Philopappos Hill",
+     "alt": "Philopappos Hill in Athens, pines and olives below the marble monument",
+     "whisper": "Climb high enough and even Athens learns to be quiet.",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/athens-caryatids.jpg",
+     "title": "The Six Maidens",
+     "alt": "The Porch of the Caryatids on the Erechtheion, Acropolis, golden marble against blue sky",
+     "whisper": "Six of them holding up a temple, and still making it look easy.",
+     "story": "",
+     "talisman": null
+    }
+   ]
+  },
+  {
+   "slug": "cape-cod",
+   "place": "Cape Cod",
+   "region": "North America",
+   "eyebrow": "Massachusetts · the Cape",
+   "cover": "img/cape-moorings.jpg",
+   "blurb": "Harbor light, a fox in the pines, and the fog that keeps the rest.",
+   "photos": [
+    {
+     "src": "img/cape-fox.jpg",
+     "title": "The Local",
+     "alt": "A fox standing among the pines",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/cape-moorings.jpg",
+     "title": "Home by Dark",
+     "alt": "An orange sunset over the harbor moorings",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/cape-rhododendron.jpg",
+     "title": "Two Weeks",
+     "alt": "Pink rhododendron in full bloom",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/cape-fanlight.jpg",
+     "title": "Two Hundred",
+     "alt": "An arched fanlight window over the black door of a white brick storefront",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/cape-beach-sweater.jpg",
+     "title": "Off Season",
+     "alt": "A woman walking the empty beach in a sweater, soft light",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/cape-dahlia.jpg",
+     "title": "Show-Off",
+     "alt": "A magenta dahlia in bloom",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/cape-lantern-shop.jpg",
+     "title": "Lamplight",
+     "alt": "A lantern shop glowing at dusk",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/cape-bay-sunset.jpg",
+     "title": "Fire on the Bay",
+     "alt": "Silhouettes reflected on the bay at sunset",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/cape-zinnia.jpg",
+     "title": "Pick Your Own",
+     "alt": "A hand holding a zinnia bouquet in a field",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/cape-cosmos.jpg",
+     "title": "Volunteer",
+     "alt": "A single yellow cosmos flower in bloom",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/cape-peonies.jpg",
+     "title": "Heavy Heads",
+     "alt": "Pink peonies against dark leaves",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/cape-oleander.jpg",
+     "title": "Pretty Poison",
+     "alt": "An oleander blossom with a honeybee",
+     "story": "",
+     "talisman": null
+    }
+   ]
+  },
+  {
+   "slug": "self-portraits",
+   "place": "The Self-Portraits",
+   "region": "",
+   "eyebrow": "The Archive",
+   "accent": "",
+   "cover": "img/about-lace-hat.jpg",
+   "blurb": "",
+   "photos": [
+    {
+     "src": "img/her-brazil-beach-black-bikini.jpg",
+     "title": "Low Tide",
+     "alt": "Eleanora kneeling on a Brazilian beach in a black bikini under a bright blue sky",
+     "story": "",
+     "price": 20,
+     "talisman": null
+    },
+    {
+     "src": "img/about-lace-hat.jpg",
+     "title": "Sunday Best",
+     "alt": "Eleanora in a wide-brim lace hat",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/her-shower-black-bikini.jpg",
+     "title": "Wild Water",
+     "alt": "Eleanora in a black bikini among tropical greenery at an outdoor shower",
+     "story": "",
+     "price": 20,
+     "talisman": null
+    },
+    {
+     "src": "img/her-blue-buddha-wall.jpg",
+     "title": "Among the Gods",
+     "alt": "Eleanora before a wall of blue Buddha tiles",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/studio-fur-silver.jpg",
+     "title": "The Canvas",
+     "alt": "Eleanora in an open fur coat and lace shorts, black and white",
+     "story": "",
+     "price": 20,
+     "talisman": {
+      "article": "journal-quiet-one.html",
+      "buyUrl": null
+     }
+    },
+    {
+     "src": "img/her-beach-sandbar-sun-hat.jpg",
+     "title": "Sandbar",
+     "alt": "Eleanora walking a pale sandbar in a sun hat",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/bw-smoke-editorial.jpg",
+     "title": "Slow Burn",
+     "alt": "Eleanora in a black-and-white editorial portrait with smoke",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/her-flower-crown-nude.jpg",
+     "title": "The Coronation",
+     "alt": "Eleanora in a flower crown, nude side profile",
+     "story": "",
+     "price": 20,
+     "talisman": null
+    },
+    {
+     "src": "img/salt-flat-bikini-headscarf.jpg",
+     "title": "Salt",
+     "alt": "Eleanora in a bikini and headscarf on a salt flat",
+     "story": "",
+     "talisman": null
+    },
+    {
+     "src": "img/floridarama-mirror-candle-arms-open.jpg",
+     "title": "Wide Open",
+     "alt": "Eleanora with arms open in a candlelit mirrored room",
+     "story": "",
+     "price": 20,
+     "talisman": null
+    },
+    {
+     "src": "img/beach-floral-bikini-sun-hat.jpg",
+     "title": "Facing the Sea",
+     "alt": "Eleanora in a floral bikini and sun hat on the beach",
+     "story": "",
+     "price": 20,
+     "talisman": null
+    },
+    {
+     "src": "img/sunset-silhouette-mammatus.jpg",
+     "title": "Last Light",
+     "alt": "A silhouette against a sunset sky with mammatus clouds",
+     "story": "",
+     "talisman": null
+    }
+   ]
+  }
+ ]
 }

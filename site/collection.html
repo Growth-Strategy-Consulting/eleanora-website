@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Collection — Eleanora</title>
+<title>Collection — Elena Corrao</title>
 <link rel="icon" type="image/png" sizes="32x32" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/png" sizes="32x32" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" sizes="512x512" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: light)">
@@ -185,13 +185,13 @@ footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
 </div>
 
 <footer id="footer">
-  <div class="fseal"><img src="img/logo/xo-eleanora-badge-seal-cream-gold.png" alt="Eleanora seal" style="width:100%;height:100%;object-fit:contain"></div>
-  <div class="fwm">Eleanora</div>
+  <div class="fseal"><img src="img/logo/xo-eleanora-badge-seal-cream-gold.png" alt="Elena Corrao seal" style="width:100%;height:100%;object-fit:contain"></div>
+  <div class="fwm">Elena Corrao</div>
   <div class="fnav">
     <a href="posters-laws.html">Shop</a><a href="gallery.html">Gallery</a><a href="journal.html">Journal</a><a href="about.html">About Me</a><a href="#">Instagram</a><a href="index.html#footer">Contact</a>
   </div>
   <div class="tag">where I've been · where I'm going · the people along the way</div>
-  <div class="cr">© 2026 Eleanora &nbsp;·&nbsp; leave the door open, and the light on <span class="script">xo</span></div>
+  <div class="cr">© 2026 Elena Corrao &nbsp;·&nbsp; leave the door open, and the light on <span class="script">xo</span></div>
 </footer>
 
 <script>
@@ -206,7 +206,7 @@ fetch('collections.json?v='+Date.now()).then(r=>r.json()).then(data=>{
   const c=data.collections.find(x=>x.slug===slug) || data.collections[0];
   if(!c){document.getElementById('flow').innerHTML='<p style="opacity:.7;padding:40px">That collection is not here yet.</p>';return;}
   PLACE=c.place; PHOTOS=c.photos;
-  document.title=c.place+' — Eleanora';
+  document.title=c.place+' — Elena Corrao';
   document.getElementById('heroImg').src=c.cover;
   document.getElementById('heroImg').alt=c.place;
   document.getElementById('heroEye').textContent=c.eyebrow||'The Collection';
