@@ -1,3 +1,9 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="UGC creator for travel, hotels, properties and hospitality. Concept, script, filming, editing and photography. Based in St. Pete, Florida.">
 <title>Elena Corrao Creative</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,18 +75,13 @@
     color:var(--ink-strong);
     text-decoration:none;
   }
-  .nav .menu{display:flex;justify-content:center;flex-wrap:wrap;gap:18px 46px;margin-top:clamp(26px,3.4vw,38px);}
-  .nav a.link{
-    font-family:var(--display);
-    font-size:18px;
-    color:var(--ink);
-    text-decoration:none;
-    padding-bottom:6px;
-    border-bottom:1px solid transparent;
-    transition:border-color .25s var(--ease);
+  .nav .menu{display:flex;justify-content:center;margin-top:clamp(18px,2.4vw,26px);}
+  .nav .tagline{
+    font-size:11px;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--muted);
   }
-  .nav a.link:hover{border-bottom-color:var(--rule);}
-  .nav a.link[aria-current]{border-bottom-color:var(--ink-strong);}
 
   /* ---------- hero ---------- */
   .hero{padding:clamp(56px,8vw,96px) 0 clamp(48px,7vw,80px);}
@@ -250,23 +251,18 @@
 
   @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
 </style>
-
+</head>
+<body>
 <nav class="nav">
   <div class="wrap">
-    <a class="mark" href="index.html">Corrao Elena</a>
-    <div class="menu">
-      <a class="link" href="index.html">Portfolio</a>
-      <a class="link" href="about.html">About</a>
-      <a class="link" href="ugc.html" aria-current="page">UGC</a>
-      <a class="link" href="contact.html">Contact</a>
-    </div>
+    <span class="mark">Corrao Elena</span>
+    <div class="menu"><span class="tagline">UGC &middot; Travel, Property &amp; Hospitality</span></div>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">UGC Creator</p>
       <h1>Meet <em>Elena</em></h1>
       <ul class="facts">
         <li><span class="k">Based in</span><span class="v">St. Pete, Florida. On location most of the year.</span></li>
@@ -357,59 +353,7 @@
   </div>
 </section>
 
-<section class="band">
-  <div class="wrap">
-    <p class="eyebrow">Services and packages</p>
-    <h2>What you can book.</h2>
-
-    <div class="svc-grid">
-      <div class="svc">
-        <h3>Every project includes</h3>
-        <ul>
-          <li>Concept and script, written before we shoot</li>
-          <li>Filming on location</li>
-          <li>Edited vertical video, ready to post</li>
-          <li>Hook and CTA variations so you can test</li>
-        </ul>
-      </div>
-      <div class="svc">
-        <h3>Add on</h3>
-        <ul>
-          <li>Paid ad usage rights</li>
-          <li>Property and product photography</li>
-          <li>Raw footage</li>
-          <li>Posting on my own channels</li>
-        </ul>
-        <p class="note">Contact for rates and collaboration enquiries.</p>
-      </div>
-    </div>
-
-    <div class="bundles">
-      <div class="bundle">
-        <div class="name">Ad tester 01</div>
-        <dl>
-          <dt>Concepts</dt><dd>1</dd>
-          <dt>Hooks</dt><dd>3</dd>
-          <dt>CTAs</dt><dd>2</dd>
-          <dt>Total deliverables</dt><dd>3</dd>
-        </dl>
-        <p class="incl">30 days paid ad usage rights included</p>
-      </div>
-      <div class="bundle">
-        <div class="name">Ad tester 02</div>
-        <dl>
-          <dt>Concepts</dt><dd>2</dd>
-          <dt>Hooks</dt><dd>6</dd>
-          <dt>CTAs</dt><dd>4</dd>
-          <dt>Total deliverables</dt><dd>8</dd>
-        </dl>
-        <p class="incl">30 days paid ad usage rights included</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="wrap">
+<section class="wrap divider">
   <p class="eyebrow">Photography</p>
   <h2>Stills from the same shoot.</h2>
   <p class="note" style="font-style:normal;font-size:16px;color:var(--ink);max-width:56ch;margin-top:18px">Lifestyle, property and product photography. I am a working photographer, not a creator who happens to own a camera, so stills and video come out of the same day on location.</p>
@@ -435,3 +379,5 @@
 </section>
 
 <footer>leave the door open, and the light on xo</footer>
+</body>
+</html>
