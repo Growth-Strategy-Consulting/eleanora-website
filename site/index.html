@@ -1,389 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>/* cover first paint so the veil can lift cinematically (skipped for reduced-motion / no-JS) */
-try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('veil-on');}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Elena — the travels, the doors, and the writing</title>
-<link rel="icon" type="image/png" sizes="32x32" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/png" sizes="32x32" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" sizes="512x512" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/png" sizes="512x512" href="img/logo/xo-eleanora-heart-favicon.png" media="(prefers-color-scheme: dark)">
-<link rel="apple-touch-icon" href="img/logo/xo-eleanora-heart-favicon.png">
+<title>Elena Outside · honest travel guides &amp; prints</title>
+<meta name="description" content="Honest travel guides from someone who's actually been. Where I stayed, what I'd do again, and what I learned the hard way.">
+<link rel="canonical" href="https://corraoelena.com/site/index.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=Jost:wght@300;400;500&amp;family=Sacramento&amp;display=swap" rel="stylesheet">
 <style>
-@font-face{font-family:'Pinyon Script';src:url('../brand-hub/assets/fonts/PinyonScript-Regular.ttf');font-display:swap;}
-@font-face{font-family:'Allura';src:url('../brand-hub/assets/fonts/Allura-Regular.ttf');font-display:swap;}
-:root{
-  --forest:#2F4034; --forest-d:#1C271F; --forest-dd:#141C16; --sage:#93A283;
-  --clay:#B87F51; --clay-l:#CE9A6B; --gold:#E7C489; --sand:#E4D7BE;
-  --parch:#EFE6D3; --cream:#F6F1E7; --ink:#2B2019; --body:#d3dacb;
-  --z-nav:50; --z-grain:80; --ease:cubic-bezier(.16,1,.3,1);
+html{scroll-behavior:smooth}
+body{margin:0;background:#ffffff;overflow-x:hidden}
+body{margin:0;background:#ffffff}
+a{color:#1f2a33}a:hover{color:#0b5257}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.label{font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.24em;text-transform:uppercase}
+.serif{font-family:'Cormorant Garamond',serif;font-weight:300;letter-spacing:-0.01em}
+.script{font-family:'Sacramento',cursive;font-weight:400}
+.ph{display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;box-sizing:border-box;background:#e4eeed;color:#5f6b73;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.6}
+.nav a{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#1f2a33;text-decoration:none;padding:10px 0}
+.nav a:hover{color:#0b5257}
+.btn{display:inline-block;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;text-decoration:none;padding:17px 30px}
+.card{text-decoration:none;color:#1f2a33;display:flex;flex-direction:column;gap:14px}
+.card:hover{color:#1f2a33}
+.circle{text-decoration:none;color:#1f2a33;display:flex;flex-direction:column;align-items:center;gap:14px}
+.circle:hover{color:#0b5257}
+
+/* ---------- PHONE ---------- */
+@media (max-width: 700px){
+  header.wrap{flex-direction:column;align-items:flex-start;gap:14px;padding-top:20px!important;padding-bottom:20px!important}
+  header .script{font-size:48px!important}
+  header .label{padding-left:52px!important}
+  .nav{gap:0 22px!important}
+  .hero-stamp{width:104px;height:104px;right:2%!important;top:4%!important}
+  section[style*="padding-top: 110px"]{padding-top:72px!important}
+  section[style*="padding-bottom: 110px"]{padding-bottom:72px!important}
+  section[style*="padding: 110px 0"],section[style*="padding: 96px 0"]{padding:72px 0!important}
+  #freebie form input{border-right:1px solid #1f2a33!important;flex-basis:100%!important}
+  #freebie form button{width:100%;margin-top:10px}
+  .btn{text-align:center}
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--forest-d);color:var(--cream);font-family:'Helvetica Neue',Arial,sans-serif;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;}
-img{display:block;width:100%;height:100%;object-fit:cover;image-orientation:from-image;
-    filter:saturate(1.05) contrast(1.03) brightness(1.0) sepia(.055);}
-.serif{font-family:'Didot','Bodoni 72',Georgia,serif;font-weight:400;}
-.script{font-family:'Allura',cursive;}
-.lab{font-size:12px;letter-spacing:3.5px;text-transform:uppercase;}
-.chap{font-family:'Allura',cursive;font-size:32px;color:var(--gold);line-height:1;
-  display:inline-block;text-shadow:0 2px 20px rgba(0,0,0,.45);}
-a{color:inherit;text-decoration:none;}
-em{font-style:italic;}
-::selection{background:rgba(231,196,137,.28);color:var(--cream);}
-
-/* ---------- FILM GRAIN ---------- */
-.grain{position:fixed;inset:0;z-index:var(--z-grain);pointer-events:none;opacity:.5;mix-blend-mode:soft-light;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-
-/* ---------- PAGE VEIL (cinematic transition) ---------- */
-#veil{position:fixed;inset:0;z-index:79;pointer-events:none;opacity:0;visibility:hidden;
-  background:radial-gradient(130% 112% at 50% 42%,#24322a 0%,var(--forest-d) 70%,var(--forest-dd) 100%);
-  transition:opacity .55s var(--ease),visibility 0s linear .55s;}
-html.veil-on #veil{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .5s var(--ease);}
-
-/* ---------- NAV ---------- */
-header{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);display:flex;align-items:center;justify-content:space-between;
-  padding:24px 46px;transition:padding .4s var(--ease),background .4s ease,box-shadow .4s ease;}
-header.solid{background:rgba(20,28,22,.86);backdrop-filter:blur(9px);padding:14px 46px;box-shadow:0 1px 0 rgba(0,0,0,.3);}
-.brand{display:flex;align-items:center;gap:12px;color:var(--cream);}
-.brand .wm{font-family:'Pinyon Script',cursive;font-size:34px;line-height:1;padding-left:2px;}
-nav ul{display:flex;gap:34px;list-style:none;}
-nav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream);opacity:.88;position:relative;transition:.4s;}
-nav a.on{color:var(--gold);opacity:1;}
-nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:.3s var(--ease);}
-nav a:hover::after,nav a.on::after{width:100%;}
-
-/* ---------- HERO (centered, monumental) ---------- */
-.hero{position:relative;height:100vh;min-height:640px;overflow:hidden;}
-@keyframes kb{to{transform:scale(1.14);}}
-.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(120% 120% at 50% 42%,transparent 34%,rgba(20,28,22,.5) 100%),
-             linear-gradient(180deg,rgba(20,28,22,.5) 0%,rgba(20,28,22,.06) 30%,rgba(20,28,22,.12) 58%,rgba(20,28,22,.88) 100%);}
-#sparkle{position:absolute;inset:0;z-index:2;pointer-events:none;}
-@keyframes rise{to{opacity:1;transform:none;}}
-
-/* ---------- FIELD GLOWS ---------- */
-.glow-a{background:
-  radial-gradient(760px 420px at 12% 8%,rgba(147,162,131,.14),transparent 70%),
-  radial-gradient(680px 460px at 96% 96%,rgba(184,127,81,.16),transparent 72%),
-  var(--forest-d);}
-
-/* ---------- SECTION HEAD ---------- */
-.sec-head{text-align:center;padding:clamp(78px,11vh,110px) 24px 42px;}
-.sec-head .chap{margin-bottom:8px;}
-.sec-head h3{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,4vw,48px);color:var(--cream);
-  letter-spacing:-.01em;text-wrap:balance;}
-.sec-head .rule{width:54px;height:1px;background:var(--gold);margin:20px auto 0;}
-
-/* ---------- BUTTON / CTA ---------- */
-.gallery-cta{text-align:center;padding:44px 24px 0;}
-
-/* ---------- JOURNAL TEASER ---------- */
-.jteaser{position:relative;color:var(--cream);text-align:center;padding:clamp(84px,11vh,104px) 24px;}
-.jteaser .chap{margin-bottom:6px;}
-.jteaser h3{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,4vw,46px);color:var(--cream);letter-spacing:-.01em;}
-.jteaser .rule{width:54px;height:1px;background:var(--gold);margin:20px auto 42px;}
-.jteaser .jt-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-.jteaser .jt-card{display:block;text-align:left;background:var(--forest-dd);overflow:hidden;
-  box-shadow:0 20px 50px rgba(0,0,0,.38);transition:transform .6s var(--ease);}
-.jteaser .jt-card:hover{transform:translateY(-5px);}
-.jteaser .jt-card .ph{aspect-ratio:4/5;overflow:hidden;}
-.jteaser .jt-card .ph img{transition:transform 1.1s var(--ease);}
-.jteaser .jt-card:hover .ph img{transform:scale(1.06);}
-.jteaser .jt-card .b{padding:22px 22px 26px;}
-.jteaser .jt-card .place{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);}
-.jteaser .jt-card h4{font-family:'Didot',Georgia,serif;font-size:21px;color:var(--cream);margin-top:10px;line-height:1.2;}
-.btn{display:inline-block;margin-top:40px;border:1px solid var(--gold);color:var(--cream);
-  padding:17px 46px;font-size:12px;letter-spacing:3px;text-transform:uppercase;transition:.4s var(--ease);}
-.btn:hover{background:var(--gold);color:var(--forest-dd);}
-
-/* ---------- FOOTER ---------- */
-footer{background:var(--forest-dd);color:var(--sand);padding:72px 40px 36px;text-align:center;position:relative;}
-footer::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(90%,420px);height:1px;
-  background:linear-gradient(90deg,transparent,rgba(231,196,137,.4),transparent);}
-footer .seal{width:80px;height:80px;margin:0 auto 26px;opacity:.9;}
-footer .seal img{filter:none;}
-footer .fnav{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:24px;}
-footer .fnav a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;opacity:.85;transition:.3s;}
-footer .fnav a:hover{color:var(--gold);opacity:1;}
-footer .tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--cream);opacity:.9;}
-footer .cr{margin-top:22px;font-size:11px;letter-spacing:1.5px;color:#7c8479;}
-footer .cr .script{font-size:18px;color:var(--gold);}
-
-/* ---------- REVEAL (no-JS safe: visible by default) ---------- */
-body.anim .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease);}
-body.anim .reveal.in{opacity:1;transform:none;}
-
-/* ---------- RESPONSIVE ---------- */
-@media(max-width:900px){
-  header{padding:16px 22px;} header.solid{padding:12px 22px;} nav ul{display:none;}
-  .jteaser .jt-grid{grid-template-columns:1fr;}
-}
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
-  #veil{display:none;}
-}
-
-
-/* ================= THE TRAVELS · main column + rail (2026-08-24) =================
-   Elena's call: the travel writing is the site. Prints, journal and about move to a
-   quiet rail beside it instead of owning their own full-width folds. */
-.tvwrap{max-width:1280px;margin:0 auto;padding:clamp(48px,7vw,104px) clamp(20px,5vw,56px) clamp(40px,6vw,88px);
-  scroll-margin-top:96px;  /* the header is fixed; without this the nav anchor lands under it */
-  display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:clamp(40px,5vw,72px);align-items:start;}
-@media(max-width:960px){.tvwrap{grid-template-columns:minmax(0,1fr);gap:56px;}}
-
-.tv-head{margin-bottom:clamp(28px,4vw,48px);}
-.tv-head h2{font-size:clamp(38px,5.4vw,68px);line-height:1.02;letter-spacing:-.015em;color:var(--cream);
-  text-wrap:balance;margin-top:6px;}
-.tv-head p{color:var(--sage);font-size:15px;line-height:1.7;max-width:52ch;margin-top:14px;}
-
-/* --- one entry --- */
-.tv{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(20px,2.6vw,34px);align-items:start;
-  padding:clamp(26px,3vw,38px) 0;border-top:1px solid rgba(231,196,137,.16);}
-.tv:first-child{border-top:0;padding-top:0;}
-.tv-ph{display:block;overflow:hidden;border-radius:3px;aspect-ratio:4/5;background:var(--forest);}
-.tv-ph img{transition:transform 1.1s var(--ease),filter .6s ease;}
-.tv-ph:hover img{transform:scale(1.045);}
-.tv-reg{font-size:11px;letter-spacing:2.6px;text-transform:uppercase;color:var(--clay-l);margin-bottom:9px;}
-.tv-t{font-size:clamp(26px,3vw,38px);line-height:1.1;color:var(--cream);letter-spacing:-.01em;text-wrap:balance;}
-.tv-t a:hover{color:var(--gold);}
-.tv-x{color:var(--body);font-size:16px;line-height:1.75;margin-top:12px;max-width:62ch;text-wrap:pretty;}
-.tv-meta{color:var(--sage);font-size:13px;margin-top:12px;letter-spacing:.02em;}
-.tv-more{display:inline-block;margin-top:16px;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;
-  color:var(--gold);border-bottom:1px solid rgba(231,196,137,.42);padding-bottom:3px;transition:.35s var(--ease);}
-.tv-more:hover{border-bottom-color:var(--gold);letter-spacing:3.1px;}
-
-/* the first entry, the one with real writing, gets the room */
-.tv.lead{grid-template-columns:minmax(0,1fr);gap:clamp(18px,2.4vw,28px);}
-.tv.lead .tv-ph{aspect-ratio:16/9;}
-.tv.lead .tv-t{font-size:clamp(34px,4.6vw,58px);}
-.tv.lead .tv-x{font-size:17px;max-width:66ch;}
-@media(max-width:640px){
-  .tv{grid-template-columns:minmax(0,1fr);gap:18px;}
-  .tv-ph{aspect-ratio:16/10;}
-}
-
-/* --- the rail --- */
-.rail{position:sticky;top:96px;display:flex;flex-direction:column;gap:34px;}
-@media(max-width:960px){.rail{position:static;}}
-.rblock{padding-top:22px;border-top:1px solid rgba(231,196,137,.16);}
-.rblock:first-child{border-top:0;padding-top:0;}
-.rt{font-size:21px;color:var(--cream);letter-spacing:-.005em;}
-.rp{color:var(--sage);font-size:14px;line-height:1.72;margin-top:9px;text-wrap:pretty;}
-.rlink{display:inline-block;margin-top:14px;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;
-  color:var(--gold);border-bottom:1px solid rgba(231,196,137,.38);padding-bottom:3px;transition:.35s var(--ease);}
-.rlink:hover{border-bottom-color:var(--gold);letter-spacing:3px;}
-.rjlist{margin-top:16px;display:flex;flex-direction:column;gap:13px;}
-.rj{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px;align-items:center;}
-.rj .ph{width:52px;height:52px;overflow:hidden;border-radius:2px;background:var(--forest);}
-.rj .t{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:14.5px;line-height:1.35;color:var(--body);
-  transition:color .3s ease;}
-.rj:hover .t{color:var(--gold);}
-.rabout .ph{aspect-ratio:3/2;overflow:hidden;border-radius:3px;margin-bottom:15px;background:var(--forest);}
-.rmail{display:flex;gap:8px;margin-top:13px;}
-.rmail input{flex:1;min-width:0;background:rgba(246,241,231,.05);border:1px solid rgba(231,196,137,.22);
-  color:var(--cream);padding:10px 12px;font-size:14px;border-radius:2px;font-family:inherit;}
-.rmail input::placeholder{color:#a9b4a0;}
-.rmail input:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent;}
-.rmail button{background:transparent;border:1px solid rgba(231,196,137,.42);color:var(--gold);
-  padding:10px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;
-  transition:.35s var(--ease);font-family:inherit;}
-.rmail button:hover{background:rgba(231,196,137,.1);border-color:var(--gold);}
-.rnote{color:var(--sage);font-size:12.5px;margin-top:10px;line-height:1.6;}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
-</style>
-<link rel="stylesheet" href="nav.css">
-<style id="redesign">
-/* ===== REDESIGN ADDITIONS (front-door / follower-first) ===== */
-
-/* --- HERO: editorial split. Text on a calm panel, photo in its own frame. --- */
-.hero.hero-split{display:grid;grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);
-  height:100vh;min-height:660px;overflow:hidden;}
-.hero.hero-split::after{display:none;}            /* kill the full-bleed vignette; not needed on a split */
-
-/* solid banner — nav links were illegible over the photo */
-header{background:var(--forest-dd);box-shadow:0 1px 0 rgba(0,0,0,.35);}
-header.solid{background:var(--forest-dd);}
-
-/* HIDDEN MANIFESTO ENTRANCE — a single buddha head her gaze lands on */
-.head-link{position:absolute;z-index:4;right:18%;top:46%;transform:translate(50%,-50%);
-  width:clamp(44px,4.6vw,70px);height:clamp(54px,5.6vw,86px);border-radius:46% 46% 44% 44%;cursor:pointer;
-  display:flex;align-items:flex-end;justify-content:center;-webkit-tap-highlight-color:transparent;}
-.head-link::before{content:"";position:absolute;inset:-26%;border-radius:50%;
-  background:radial-gradient(circle,rgba(246,225,168,.62),rgba(231,196,137,.26) 42%,transparent 72%);
-  opacity:0;transform:scale(.6);transition:opacity .6s var(--ease),transform .7s var(--ease);}
-.head-link:hover::before,.head-link:focus-visible::before{opacity:1;transform:scale(1);}
-.head-link:focus-visible{outline:none;}
-.head-label{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);
-  font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);white-space:nowrap;
-  text-shadow:0 1px 14px rgba(0,0,0,.85);opacity:0;transition:opacity .5s var(--ease) .08s;pointer-events:none;}
-.head-link:hover .head-label,.head-link:focus-visible .head-label{opacity:.95;}
-@media(max-width:860px){.head-link{top:32%;right:23%;}}
-
-/* left: the calm text panel */
-.hs-panel{position:relative;display:flex;align-items:center;
-  background:
-    radial-gradient(680px 520px at 18% 8%,rgba(147,162,131,.12),transparent 70%),
-    radial-gradient(560px 480px at 96% 100%,rgba(184,127,81,.14),transparent 72%),
-    linear-gradient(160deg,var(--forest-d) 0%,var(--forest-dd) 100%);}
-.hs-inner{width:100%;max-width:520px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(30px,5vw,68px);}
-.hero-split .hs-head{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,3.3vw,46px);line-height:1.1;
-  letter-spacing:-.015em;color:var(--cream);text-wrap:balance;margin:0 0 24px;padding:0;
-  opacity:0;transform:translateY(24px);animation:rise 1s var(--ease) .5s forwards;}
-.hero-split .hs-head em{font-style:italic;color:var(--gold);}
-.hs-sub{font-size:16px;line-height:1.85;color:var(--body);max-width:40ch;margin-bottom:38px;
-  opacity:0;transform:translateY(22px);animation:rise 1s var(--ease) .68s forwards;}
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap;
-  opacity:0;transform:translateY(22px);animation:rise 1s var(--ease) .84s forwards;}
-.hbtn{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
-  padding:16px 32px;transition:.4s var(--ease);border:1px solid var(--gold);}
-.hbtn.primary{background:var(--gold);color:var(--forest-dd);box-shadow:0 14px 40px rgba(231,196,137,.22);}
-.hbtn.primary:hover{background:var(--cream);border-color:var(--cream);transform:translateY(-2px);}
-.hbtn.ghost{color:var(--cream);border-color:rgba(246,241,231,.4);}
-.hbtn.ghost:hover{border-color:var(--gold);color:var(--gold);}
-
-/* live dispatch chip — inline in the panel, static */
-.dispatch{display:inline-flex;align-items:center;gap:11px;padding:8px 16px 8px 14px;border-radius:100px;
-  background:rgba(246,241,231,.04);border:1px solid rgba(231,196,137,.26);margin-bottom:30px;
-  max-width:100%;opacity:0;animation:rise 1s var(--ease) .2s forwards;
-  transition:border-color .4s var(--ease),background .4s var(--ease);}
-.dispatch:hover{border-color:rgba(231,196,137,.6);background:rgba(246,241,231,.07);}
-.dispatch .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:0 0 auto;
-  animation:live 2.6s ease-in-out infinite;}
-@keyframes live{0%{box-shadow:0 0 0 0 rgba(231,196,137,.55);}70%{box-shadow:0 0 0 7px rgba(231,196,137,0);}100%{box-shadow:0 0 0 0 rgba(231,196,137,0);}}
-.dispatch .dl{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sand);opacity:.8;flex:0 0 auto;}
-.dispatch .dt{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:14px;color:var(--cream);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1 1 auto;}
-.dispatch .darr{color:var(--gold);flex:0 0 auto;transition:transform .4s var(--ease);}
-.dispatch:hover .darr{transform:translateX(4px);}
-
-/* right: the photo in its own frame */
-.hs-photo{position:relative;overflow:hidden;background:var(--forest-dd);}
-.hs-photo img{width:100%;height:100%;object-fit:cover;object-position:48% 38%;
-  transform:scale(1.04);animation:kb 24s var(--ease) forwards;}
-.hs-photo::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(90deg,rgba(20,28,22,.5) 0%,transparent 22%),
-             linear-gradient(0deg,rgba(20,28,22,.28),transparent 40%);}
-
-@media(max-width:860px){
-  .hero.hero-split{grid-template-columns:minmax(0,1fr);grid-template-rows:44vh 1fr;height:auto;min-height:100vh;}
-  .hs-photo{order:-1;}
-  .hs-photo img{object-position:50% 34%;}
-  .hs-photo::after{background:linear-gradient(0deg,var(--forest-d) 0%,transparent 34%);}
-  .hs-inner{padding:clamp(34px,8vw,56px) 30px 56px;text-align:left;max-width:560px;}
-}
-@media (prefers-reduced-motion: reduce){
-  .hs-wordmark,.hs-head,.hs-sub,.hero-cta,.dispatch{opacity:1;transform:none;animation:none;}
-  .dispatch .dot,.hs-photo img{animation:none;}
-}
-
-/* --- THE INVITATION (email list — primary conversion). Light "email" palette + gold border. --- */
-.invite{position:relative;padding:clamp(66px,11vh,104px) 24px;overflow:hidden;
-  background:linear-gradient(180deg,var(--forest-dd) 0%,var(--forest-d) 50%,var(--forest-dd) 100%);}
-.invite-inner{max-width:660px;margin:0 auto;text-align:center;position:relative;
-  background:#EFE3C9;border:2px solid #D9A441;box-shadow:0 30px 70px rgba(0,0,0,.45);
-  padding:clamp(40px,6vw,64px) clamp(26px,5vw,58px);}
-.invite-eye{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#B87F51;}
-.invite-head{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,4.4vw,52px);line-height:1.08;
-  letter-spacing:-.02em;color:#2F4034;margin:14px 0 16px;text-wrap:balance;}
-.invite-sub{font-size:15.5px;line-height:1.78;color:#5b5044;max-width:50ch;margin:0 auto 32px;}
-.invite-form{display:flex;gap:12px;max-width:520px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
-.invite-form input[type=email]{flex:1 1 240px;min-width:0;background:#FBF5E6;
-  border:1px solid rgba(185,127,81,.55);color:#2B2019;padding:16px 16px;font-size:15px;font-family:inherit;transition:border-color .3s;}
-.invite-form input[type=email]:focus{outline:none;border-color:#D9A441;}
-.invite-form input[type=email]::placeholder{color:#a59c8c;}
-.invite-form .go{flex:0 0 auto;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#22331F;
-  background:#D9A441;border:0;padding:16px 30px;cursor:pointer;transition:background .3s var(--ease),transform .3s var(--ease);}
-.invite-form .go:hover{background:#c8912f;transform:translateY(-2px);}
-.invite-form .go[disabled]{opacity:.6;cursor:default;transform:none;}
-.invite-form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
-.invite-note{margin-top:15px;font-size:12.5px;letter-spacing:.3px;color:#6f665a;}
-.invite.done .invite-form{display:none;}
-@media(max-width:520px){.invite-form .go{flex:1 1 100%;}}
-
-/* --- SECTION 3 · THE WORLD (journal) --- */
-.jteaser .world-sub{max-width:56ch;margin:14px auto 0;font-size:16px;line-height:1.8;color:var(--body);padding:0 24px;}
-/* smaller journal thumbnails */
-.jteaser .jt-grid{max-width:620px;gap:16px;}
-.jteaser .jt-card .ph{aspect-ratio:4/3;}
-.jteaser .jt-card .b{padding:12px 13px 15px;}
-.jteaser .jt-card h4{font-size:15.5px;margin-top:6px;}
-.jteaser .jt-card .place{font-size:9.5px;}
-@media(max-width:900px){.jteaser .jt-grid{max-width:300px;}}
-
-/* --- SECTION 4 · THE GALLERY (mixed drift rows) --- */
-.grows{--gh:clamp(150px,21vh,220px);padding:4px 0 8px;overflow:hidden;}
-.grow{position:relative;height:var(--gh);overflow:hidden;cursor:grab;touch-action:pan-y;margin-bottom:clamp(10px,1.4vw,16px);}
-.grow:last-child{margin-bottom:0;}
-.grow:active{cursor:grabbing;}
-.grow .lane{display:flex;gap:clamp(10px,1.4vw,16px);height:100%;width:max-content;will-change:transform;}
-.gtile{position:relative;height:100%;aspect-ratio:4/5;flex:0 0 auto;overflow:hidden;background:var(--forest-dd);}
-.gtile.wide{aspect-ratio:3/2;} .gtile.tall{aspect-ratio:2/3;}
-.gtile::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.18);pointer-events:none;z-index:3;}
-.gtile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease);}
-.grow:not(.dragging) .gtile:hover img{transform:scale(1.06);}
-.gtile figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:14px 13px 11px;
-  background:linear-gradient(0deg,rgba(16,23,18,.85),transparent);opacity:0;transform:translateY(8px);transition:.5s var(--ease);}
-.grow:not(.dragging) .gtile:hover figcaption{opacity:1;transform:none;}
-.gtile figcaption .t{font-family:'Didot',Georgia,serif;font-size:15px;color:var(--cream);line-height:1.15;}
-.gtile figcaption .s{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:3px;}
-@media (prefers-reduced-motion: reduce){.grow{overflow-x:auto;} .grow .lane{animation:none;}}
-
-/* --- SECTION 5 · THE SHOP (side rooms) --- */
-.sec-head .rooms-intro{max-width:52ch;margin:14px auto 0;font-size:15.5px;line-height:1.75;color:var(--body);padding:0 24px;}
-.rooms-wrap{max-width:1120px;margin:0 auto;padding:0 clamp(24px,4vw,40px);display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.room{position:relative;display:block;overflow:hidden;height:clamp(300px,42vh,430px);background:var(--forest-dd);box-shadow:0 20px 50px rgba(0,0,0,.4);}
-.room::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.2);pointer-events:none;z-index:3;}
-.room img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease);}
-.room:hover img{transform:scale(1.06);}
-.room .r-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(16,23,18,.9) 0%,rgba(16,23,18,.15) 55%,rgba(16,23,18,.35) 100%);transition:background .5s var(--ease);}
-.room:hover .r-scrim{background:linear-gradient(0deg,rgba(16,23,18,.85) 0%,rgba(16,23,18,.05) 60%,rgba(16,23,18,.22) 100%);}
-.room .r-lbl{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:24px;text-align:center;display:flex;flex-direction:column;gap:6px;}
-.room .r-eye{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sand);opacity:.8;}
-.room .r-name{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(22px,2vw,27px);color:var(--cream);transition:color .4s var(--ease);}
-.room:hover .r-name{color:var(--gold);}
-.room .r-cta{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateY(6px);transition:.45s var(--ease);}
-.room:hover .r-cta{opacity:.95;transform:none;}
-@media(max-width:820px){.rooms-wrap{grid-template-columns:1fr;max-width:420px;}.room{height:52vw;min-height:280px;}}
-
-/* --- SECTION 6 · YOU / ABOUT (small figure, text on side, green wash, flipped) --- */
-.you{position:relative;padding:clamp(72px,13vh,136px) clamp(24px,6vw,72px);overflow:hidden;
-  background:radial-gradient(640px 520px at 90% 10%,rgba(184,127,81,.13),transparent 70%),
-    radial-gradient(560px 460px at 4% 96%,rgba(147,162,131,.12),transparent 72%),var(--forest-d);}
-.you-head{max-width:760px;margin:0 auto clamp(40px,6vh,60px);text-align:center;}
-.you-head .chap{display:inline-block;margin-bottom:10px;}
-.you-head h2{font-family:'Didot','Bodoni 72',Georgia,serif;font-size:clamp(30px,3.6vw,50px);line-height:1.12;letter-spacing:-.015em;color:var(--cream);text-wrap:balance;}
-.you-head h2 em{color:var(--gold);font-style:italic;}
-.you-head .rule{width:54px;height:1px;background:var(--gold);margin:18px auto 0;}
-.you-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:clamp(36px,6vw,74px);align-items:center;}
-.you-body{max-width:520px;}
-.you-body p{margin-top:20px;font-size:15.5px;line-height:1.9;color:var(--body);max-width:46ch;}
-.you-body p:first-child{margin-top:0;}
-.you-body .pull{font-family:'Didot','Bodoni 72',Georgia,serif;font-style:italic;font-size:clamp(19px,2vw,25px);color:var(--gold);line-height:1.4;margin:26px 0 4px;max-width:26ch;}
-.you-body .pull::before{content:"";display:block;width:46px;height:1px;background:var(--clay-l);opacity:.7;margin-bottom:18px;}
-.you-more-wrap{text-align:center;margin-top:clamp(38px,6vh,58px);}
-.you .more{display:inline-block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:5px;transition:.3s var(--ease);}
-.you .more:hover{color:var(--cream);border-color:var(--cream);}
-.you-figure{position:relative;width:clamp(250px,30vw,360px);aspect-ratio:3/4;overflow:hidden;flex:0 0 auto;
-  isolation:isolate;background:var(--forest-dd);box-shadow:0 34px 74px rgba(0,0,0,.52);}
-.you-figure img{width:100%;height:100%;object-fit:cover;transform:rotate(180deg) scale(1.02);}
-.you-figure .wash{position:absolute;inset:0;background:#2F4034;mix-blend-mode:color;opacity:.7;}
-.you-figure .wash-b{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,28,22,.22),rgba(28,39,31,.42));}
-.you-figure::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(231,196,137,.26);pointer-events:none;z-index:4;}
-@media(max-width:820px){
-  .you-inner{grid-template-columns:1fr;justify-items:start;gap:30px;}
-  .you-figure{width:min(72vw,320px);}
-}
-
-/* --- TWO-TONE RHYTHM: alternate sections between Shade A (--forest #2F4034) and B (--forest-d #1C271F). Everything defaults to B; lift The World + The Shop to A. --- */
-#journal{background:var(--forest);}
-.shop-band{background:var(--forest);padding-bottom:clamp(44px,7vh,84px);}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HEP68D5V13"></script>
@@ -395,333 +53,267 @@ header.solid{background:var(--forest-dd);}
 </script>
 </head>
 <body>
+<div style="min-height: 100vh; background: #ffffff; color: #1f2a33; font-family: 'Jost', sans-serif; font-weight: 300; font-size: 17px; line-height: 1.7">
 
-<div class="grain"></div>
-<div id="veil" aria-hidden="true"></div>
+  <div style="background: #0F6E74; color: #ffffff; text-align: center; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px">
+    <span style="font-size: 14px; font-weight: 400">Free: The Solo Girl Packing List</span>
+    <a href="#freebie" class="btn" style="background: #ffffff; color: #0F6E74; padding: 8px 16px; font-size: 11px">Download</a>
+  </div>
 
-<header id="hdr">
-  <a class="brand" href="#top">
-    <img src="img/logo/xo-eleanora-heart-seal-cream-gold.png" alt="xo Eleanora" width="43" height="60" style="height:60px;width:auto;display:block;flex:0 0 auto;filter:none">
-    <span class="wm">xo Eleanora</span>
-  </a>
-  <nav><ul>
-    <li><a href="#travels">Travels</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="postcards.html">Postcards</a></li>
-    <li><a href="journal.html">Journal</a></li>
-    <li><a href="about.html">About</a></li>
-  </ul></nav>
-</header>
+  <header class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding-top: 26px; padding-bottom: 26px">
+    <a href="#" style="text-decoration: none; color: #1f2a33; display: flex; flex-direction: column; line-height: 1">
+      <span class="script" style="font-size: 58px; line-height: 0.9">elena outside</span>
+      <span class="label" style="font-size: 10px; letter-spacing: 0.3em; margin-top: 6px; padding-left: 64px">honest travel guides &amp; prints</span>
+    </a>
+    <nav class="nav" aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 34px">
+      <a href="#about">About</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#guides">Guides</a>
+      <a href="#shop">Shop</a>
+      <a href="#work">Work with me</a>
+    </nav>
+  </header>
 
-<!-- ================= HERO ================= -->
-<section class="hero hero-split" id="top">
-  <!-- LEFT: the calm text panel -->
-  <div class="hs-panel">
-    <div class="hs-inner">
-      <!-- live dispatch: newest journal entry, pulled from journal.json -->
-      <a class="dispatch" id="dispatch" href="journal.html" aria-label="Read the latest journal entry">
-        <span class="dot" aria-hidden="true"></span>
-        <span class="dl">Latest</span>
-        <span class="dt" id="dispatch-title">From the journal</span>
-        <span class="darr" aria-hidden="true">&rarr;</span>
-      </a>
-      <!-- Copy locked 2026-07-27 via /eleanora-voice (Card B) + Corey Haines copywriting structure. -->
-      <h1 class="hs-head">Leave the door open,<br>and the light <em>on</em>.</h1>
-      <p class="hs-sub">I go places and I write about them. Doors mostly, and the towns they belong to, and what I worked out while I was standing there. It&rsquo;s all here, newest first.</p>
-      <div class="hero-cta">
-        <a class="hbtn primary" href="#travels">Start with the travels</a>
+  <section class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; gap: 56px; padding-top: 24px; padding-bottom: 110px">
+    <div style="flex: 1 1 520px; min-width: 0; position: relative; padding-bottom: 90px">
+      <div class="ph" style="width: 78%; aspect-ratio: 4 / 5">[Hero photo: you on the beach or the boat in the DR]</div>
+      <div class="ph" style="position: absolute; right: 0; bottom: 0; width: 48%; aspect-ratio: 4 / 3; border: 10px solid #ffffff">[Second photo: a detail, food or a street]</div>
+      <svg class="hero-stamp" role="img" aria-label="Elena Outside stamp" viewBox="0 0 200 200" width="150" height="150" style="position: absolute; right: 6%; top: 8%; color: #E2674F">
+        <defs><path id="ring" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"></path></defs>
+        <circle cx="100" cy="100" r="96" fill="#ffffff" stroke="currentColor" stroke-width="1.5"></circle>
+        <circle cx="100" cy="100" r="58" fill="none" stroke="currentColor" stroke-width="1"></circle>
+        <text font-family="Jost, sans-serif" font-size="13" letter-spacing="5" fill="currentColor"><textPath href="#ring">ELENA OUTSIDE · HONEST TRAVEL GUIDES ·</textPath></text>
+        <text x="100" y="108" text-anchor="middle" font-family="Sacramento, cursive" font-size="30" fill="currentColor">go live</text>
+      </svg>
+    </div>
+    <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+      <div class="label" style="color: #0F6E74">Welcome, traveler</div>
+      <h1 class="serif" style="margin: 0; font-size: clamp(44px, 5vw, 66px); line-height: 1.04; text-wrap: balance">Honest travel guides, <em style="font-style: italic">from someone who's actually been.</em></h1>
+      <p style="margin: 0; color: #44515a; max-width: 440px">Where I stayed, what I'd do again, and what I learned the hard way (sometimes with a burn scar to prove it). Little guides for big trips, made for girls who go.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px">
+        <a href="#freebie" class="btn" style="background: #1f2a33; color: #ffffff">Free packing list</a>
+        <a href="#destinations" class="btn" style="border: 1px solid #1f2a33; color: #1f2a33; padding: 16px 29px">Explore destinations</a>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- RIGHT: the photo in its own frame -->
-  <div class="hs-photo">
-    <canvas id="sparkle"></canvas>
-    <img src="img/her-gold-buddha-wall.jpg" alt="Elena in a sheer dark dress, in profile before a wall of hundreds of gilded golden Buddha heads lit warm">
-    <!-- hidden entrance: the one head her gaze lands on → the 1% manifesto -->
-    <a class="head-link" href="/manifesto/" target="_blank" rel="noopener" aria-label="Enter the 1% Manifesto (opens in a new tab)">
-      <span class="head-label">the 1% manifesto</span>
-    </a>
-  </div>
-</section>
-<script>
-/* hero dispatch — newest journal entry title (single source of truth) */
-fetch('journal.json').then(function(r){return r.json();}).then(function(d){
-  var e=(d.entries||[])[0]; if(!e)return;
-  var t=document.getElementById('dispatch-title'); var a=document.getElementById('dispatch');
-  if(t)t.textContent=e.title||'From the journal';
-  if(a&&e.slug)a.href=e.slug+'.html';
-}).catch(function(){});
-</script>
-
-<!-- ================= THE TRAVELS · main column + rail =================
-     Restructured 2026-08-24 (Elena): the travel writing is the site. The shop, the
-     journal and the about page moved out of their own full-width folds and into the
-     rail beside it. Feed renders from collections.json, the same single source the
-     collection pages read. -->
-<div class="tvwrap" id="travels">
-
-  <main class="tvfeed">
-    <div class="tv-head">
-      <span class="chap">where I&rsquo;ve been</span>
-      <h2 class="serif">The Travels</h2>
-      <p>Places I went and what happened there. Every photograph on this site came out of one of these, so this is the part that comes first.</p>
+  <section id="destinations" style="background: #e8f4f2; padding: 96px 0">
+    <div class="wrap" style="display: flex; flex-direction: column; align-items: center; gap: 48px">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center">
+        <span class="script" style="font-size: 44px; line-height: 1; color: #E2674F">where to?</span>
+        <h2 class="serif" style="margin: 0; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.1">Explore by destination</h2>
+      </div>
+      <div style="width: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 32px 20px">
+        <a class="circle" href="#"><div class="ph" style="width: 130px; height: 130px; border-radius: 50%; font-size: 10px">[Photo]</div><span class="label">Dominican Rep.</span></a>
+        <a class="circle" href="#"><div class="ph" style="width: 130px; height: 130px; border-radius: 50%; font-size: 10px">[Photo]</div><span class="label">Brazil</span></a>
+        <a class="circle" href="#"><div class="ph" style="width: 130px; height: 130px; border-radius: 50%; font-size: 10px">[Photo]</div><span class="label">Portugal</span></a>
+        <a class="circle" href="#"><div class="ph" style="width: 130px; height: 130px; border-radius: 50%; font-size: 10px">[Photo]</div><span class="label">Mexico</span></a>
+        <a class="circle" href="#"><div class="ph" style="width: 130px; height: 130px; border-radius: 50%; font-size: 10px">[Photo]</div><span class="label">Italy</span></a>
+        <a class="circle" href="#"><div class="ph" style="width: 130px; height: 130px; border-radius: 50%; font-size: 10px">[Photo]</div><span class="label">Greece</span></a>
+        <a class="circle" href="#"><div class="ph" style="width: 130px; height: 130px; border-radius: 50%; font-size: 10px">[Photo]</div><span class="label">Croatia</span></a>
+        <a class="circle" href="#"><div class="ph" style="width: 130px; height: 130px; border-radius: 50%; font-size: 10px">[Photo]</div><span class="label">New York</span></a>
+      </div>
     </div>
-    <div id="tv-list"></div>
-  </main>
+  </section>
 
-  <aside class="rail" aria-label="The journal, about, and the list">
+  <section id="guides" class="wrap" style="padding-top: 110px; padding-bottom: 110px; display: flex; flex-direction: column; gap: 48px">
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <span class="label" style="color: #0F6E74">On the blog</span>
+        <h2 class="serif" style="margin: 0; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.1">Fresh from the road</h2>
+      </div>
+      <a href="#" class="label" style="text-decoration: none; border-bottom: 1px solid #1f2a33; padding-bottom: 4px">All guides</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px 32px">
+      <a class="card" href="#">
+        <div class="ph" style="aspect-ratio: 4 / 5">[Photo: DR]</div>
+        <span class="label" style="color: #0F6E74">Dominican Republic</span>
+        <span class="serif" style="font-size: 27px; line-height: 1.2; font-weight: 400">Solo in the Dominican Republic: what five weeks taught me</span>
+      </a>
+      <a class="card" href="#">
+        <div class="ph" style="aspect-ratio: 4 / 5">[Photo: Croatian coast]</div>
+        <span class="label" style="color: #0F6E74">Europe</span>
+        <span class="serif" style="font-size: 27px; line-height: 1.2; font-weight: 400">Croatia, Italy &amp; Greece in one trip: what I'd do again</span>
+      </a>
+      <a class="card" href="#">
+        <div class="ph" style="aspect-ratio: 4 / 5">[Photo: Portugal]</div>
+        <span class="label" style="color: #0F6E74">Portugal</span>
+        <span class="serif" style="font-size: 27px; line-height: 1.2; font-weight: 400">Where we stayed in Portugal, and would I go back?</span>
+      </a>
+    </div>
+  </section>
 
-    <section class="rblock">
-      <h3 class="rt serif">Postcards</h3>
-      <p class="rp">The doors, on paper, actually posted to you. $7 each, or any ten for $50.</p>
-      <a class="rlink" href="postcards.html">Pick your ten &rarr;</a>
-    </section>
+  <section id="lessons" style="background: #e8f4f2; padding: 110px 0">
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 52px">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center">
+        <span class="script" style="font-size: 48px; line-height: 1; color: #E2674F">oof.</span>
+        <h2 class="serif" style="margin: 0; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.1">Lessons learned <em>the hard way</em></h2>
+        <p style="margin: 6px 0 0; color: #44515a; max-width: 520px">Way too honest, so you don't have to find out yourself.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 28px">
+        <article style="background: #ffffff; padding: 30px 28px; box-shadow: 0 12px 30px rgba(31,42,51,0.08); transform: rotate(-1.5deg); display: flex; flex-direction: column; gap: 12px">
+          <span class="label" style="color: #0F6E74">Dominican Republic</span>
+          <h3 class="serif" style="margin: 0; font-size: 28px; font-weight: 400; line-height: 1.15">The "Dominican tattoo"</h3>
+          <p style="margin: 0; color: #44515a; font-size: 16px">AKA burning your leg on a moto muffler. It hurts. A lot. Beyoncé had it right the whole time: get off on the left.</p>
+          <span class="script" style="font-size: 28px; line-height: 1.1; color: #E2674F">left side only</span>
+        </article>
+        <article style="background: #ffffff; padding: 30px 28px; box-shadow: 0 12px 30px rgba(31,42,51,0.08); transform: rotate(1deg); display: flex; flex-direction: column; gap: 12px">
+          <span class="label" style="color: #0F6E74">Las Terrenas &amp; Samaná</span>
+          <h3 class="serif" style="margin: 0; font-size: 28px; font-weight: 400; line-height: 1.15">Paradise, minus a car</h3>
+          <p style="margin: 0; color: #44515a; font-size: 16px">Gorgeous. Also way less fun than it should have been without wheels. Eventually I found people with a car, and it changed everything.</p>
+          <span class="script" style="font-size: 28px; line-height: 1.1; color: #E2674F">rent the car</span>
+        </article>
+        <article style="background: #ffffff; padding: 30px 28px; box-shadow: 0 12px 30px rgba(31,42,51,0.08); transform: rotate(-0.8deg); display: flex; flex-direction: column; gap: 12px">
+          <span class="label" style="color: #0F6E74">Portugal</span>
+          <h3 class="serif" style="margin: 0; font-size: 28px; font-weight: 400; line-height: 1.15">The family trip escape plan</h3>
+          <p style="margin: 0; color: #44515a; font-size: 16px">Love them. Should have added a few extra days on my own to actually explore after everyone flew home.</p>
+          <span class="script" style="font-size: 28px; line-height: 1.1; color: #E2674F">add solo days</span>
+        </article>
+        <article style="background: #ffffff; padding: 30px 28px; box-shadow: 0 12px 30px rgba(31,42,51,0.08); transform: rotate(1.4deg); display: flex; flex-direction: column; gap: 12px">
+          <span class="label" style="color: #0F6E74">Lisbon nights</span>
+          <h3 class="serif" style="margin: 0; font-size: 28px; font-weight: 400; line-height: 1.15">Fado is not a walk-in</h3>
+          <p style="margin: 0; color: #44515a; font-size: 16px">You have to book ahead. Also, sitting alone through two hours of heartbreak songs? Bring a Bumble date.</p>
+          <span class="script" style="font-size: 28px; line-height: 1.1; color: #E2674F">reserve + bring a date</span>
+        </article>
+      </div>
+      <div style="display: flex; justify-content: center">
+        <a href="#" class="label" style="text-decoration: none; border-bottom: 1px solid #1f2a33; padding-bottom: 4px">Read all my mistakes</a>
+      </div>
+    </div>
+  </section>
 
-    <section class="rblock">
-      <h3 class="rt serif">The Journal</h3>
-      <p class="rp">Thirteen things I learned the hard way. Not travel. The other thing.</p>
-      <div class="rjlist" id="rail-journal"></div>
-      <a class="rlink" href="journal.html">Read the Journal &rarr;</a>
-    </section>
+  <section id="freebie" style="background: #fce6dc; padding: 96px 0">
+    <div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; gap: 64px">
+      <div style="flex: 1 1 320px; display: flex; justify-content: center">
+        <div aria-hidden="true" style="width: 280px; background: #ffffff; padding: 34px 30px; box-shadow: 0 18px 44px rgba(31,42,51,0.14); transform: rotate(-3deg); display: flex; flex-direction: column; gap: 12px">
+          <span class="label" style="font-size: 9px">Elena Outside · free guide</span>
+          <span class="serif" style="font-size: 30px; line-height: 1.05; font-weight: 400">The Solo Girl Packing List</span>
+          <span style="height: 1px; background: #1f2a33; margin: 4px 0"></span>
+          <span style="display: flex; gap: 10px; align-items: center; font-size: 13px"><span style="width: 11px; height: 11px; border: 1px solid #1f2a33"></span>Visas + entry forms</span>
+          <span style="display: flex; gap: 10px; align-items: center; font-size: 13px"><span style="width: 11px; height: 11px; border: 1px solid #1f2a33"></span>Every charger, then check again</span>
+          <span style="display: flex; gap: 10px; align-items: center; font-size: 13px"><span style="width: 11px; height: 11px; border: 1px solid #1f2a33"></span>A fanny pack for hands-free nights</span>
+          <span class="script" style="font-size: 26px; color: #E2674F; margin-top: 4px">dancing shoes!</span>
+        </div>
+      </div>
+      <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+        <span class="label" style="color: #0F6E74">Free download</span>
+        <h2 class="serif" style="margin: 0; font-size: clamp(36px, 3.8vw, 52px); line-height: 1.05">Pack like you've <em>done this before.</em></h2>
+        <p style="margin: 0; color: #44515a; max-width: 480px">My two-page Solo Girl Packing List: the prep most lists forget, a safety checklist, and my non-negotiables. Yours free when you join the list.</p>
+        <form style="display: flex; flex-wrap: wrap; gap: 0; margin-top: 6px; max-width: 520px">
+          <label for="email" class="label" style="flex-basis: 100%; margin-bottom: 10px; font-size: 11px">Your email</label>
+          <input id="email" type="email" placeholder="you@example.com" style="flex: 1 1 240px; min-width: 0; font: inherit; font-size: 16px; padding: 15px 18px; border: 1px solid #1f2a33; border-right: none; background: #ffffff; color: #1f2a33; border-radius: 0">
+          <button type="button" class="btn" style="border: 1px solid #1f2a33; background: #1f2a33; color: #ffffff; cursor: pointer">Send it</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-    <section class="rblock">
-      <div class="ph rabout"><img src="img/her-gold-buddha-wall.jpg" alt="Elena in a sheer dark dress, in profile before a wall of hundreds of gilded golden Buddha heads lit warm"></div>
-      <h3 class="rt serif">About me</h3>
-      <p class="rp">I left, I kept going, and I started writing it down. That&rsquo;s most of it.</p>
-      <a class="rlink" href="about.html">The longer version &rarr;</a>
-    </section>
+  <section id="shop" class="wrap" style="padding-top: 110px; padding-bottom: 110px; display: flex; flex-direction: column; gap: 48px">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center">
+      <span class="script" style="font-size: 44px; line-height: 1; color: #E2674F">take it home</span>
+      <h2 class="serif" style="margin: 0; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.1">Prints &amp; postcards from the road</h2>
+      <p style="margin: 6px 0 0; color: #44515a; max-width: 520px">Every photo comes with the story of where it was taken.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 36px 28px">
+      <a class="card" href="#" style="align-items: center; text-align: center">
+        <div style="width: 100%; background: #e8f4f2; padding: 26px; box-sizing: border-box"><div class="ph" style="aspect-ratio: 4 / 5; box-shadow: 0 8px 22px rgba(31,42,51,0.12)">[Portals print]</div></div>
+        <span class="serif" style="font-size: 23px; font-weight: 400">Portals</span>
+        <span class="label" style="font-size: 11px">From [PRICE]</span>
+      </a>
+      <a class="card" href="#" style="align-items: center; text-align: center">
+        <div style="width: 100%; background: #e8f4f2; padding: 26px; box-sizing: border-box"><div class="ph" style="aspect-ratio: 4 / 5; box-shadow: 0 8px 22px rgba(31,42,51,0.12)">[Crystal Clear Waters print]</div></div>
+        <span class="serif" style="font-size: 23px; font-weight: 400">Crystal Clear Waters</span>
+        <span class="label" style="font-size: 11px">From [PRICE]</span>
+      </a>
+      <a class="card" href="#" style="align-items: center; text-align: center">
+        <div style="width: 100%; background: #e8f4f2; padding: 26px; box-sizing: border-box"><div class="ph" style="aspect-ratio: 4 / 5; box-shadow: 0 8px 22px rgba(31,42,51,0.12)">[Postcard set]</div></div>
+        <span class="serif" style="font-size: 23px; font-weight: 400">Postcard sets</span>
+        <span class="label" style="font-size: 11px">From [PRICE]</span>
+      </a>
+      <a class="card" href="#" style="align-items: center; text-align: center">
+        <div style="width: 100%; background: #e8f4f2; padding: 26px; box-sizing: border-box"><div class="ph" style="aspect-ratio: 4 / 5; box-shadow: 0 8px 22px rgba(31,42,51,0.12)">[Framed print]</div></div>
+        <span class="serif" style="font-size: 23px; font-weight: 400">Framed prints</span>
+        <span class="label" style="font-size: 11px">From [PRICE]</span>
+      </a>
+    </div>
+    <div style="display: flex; justify-content: center">
+      <a href="#" class="btn" style="border: 1px solid #1f2a33; color: #1f2a33; padding: 16px 29px">Visit the shop</a>
+    </div>
+  </section>
 
-    <section class="rblock">
-      <h3 class="rt serif">The list</h3>
-      <p class="rp">One email when there&rsquo;s a new story. Nothing else, ever.</p>
-      <form class="rmail" id="inviteForm" novalidate>
-        <input type="text" class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <input type="email" name="email" placeholder="your email" required autocomplete="email" aria-label="Your email">
-        <button type="submit">Join</button>
-      </form>
-      <p class="rnote" id="inviteNote" aria-live="polite"></p>
-    </section>
+  <section id="about" style="background: #e8f4f2; padding: 110px 0">
+    <div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; gap: 64px">
+      <div style="flex: 1 1 340px; min-width: 0; position: relative; max-width: 460px">
+        <div class="ph" style="aspect-ratio: 4 / 5">[Photo: you, cute, mid-trip]</div>
+        <span class="script" style="position: absolute; left: -12px; bottom: -26px; font-size: 54px; color: #E2674F; line-height: 1">hi!</span>
+      </div>
+      <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+        <span class="label" style="color: #0F6E74">Meet Elena</span>
+        <h2 class="serif" style="margin: 0; font-size: clamp(36px, 3.8vw, 52px); line-height: 1.05">I'm the friend who <em>already went.</em></h2>
+        <p style="margin: 0; color: #44515a">AI addict by day, salsa girl by night, and the friend everyone calls when their love life or their life life needs a talking-to. I started with weekend trips to New York at 19. Since then I've spent five weeks in the Dominican Republic, explored Brazil, Portugal, Mexico, Croatia, Italy and Greece, and found a dance floor almost everywhere.</p>
+        <p style="margin: 0; color: #44515a">Here I share the honest version: where to stay, what's worth it and what to pack, so your trip is easier than my first ones were.</p>
+        <a href="#" class="label" style="align-self: flex-start; text-decoration: none; border-bottom: 1px solid #1f2a33; padding-bottom: 4px; margin-top: 6px">More about me</a>
+      </div>
+    </div>
+  </section>
 
-  </aside>
+  <section id="work" class="wrap" style="padding-top: 110px; display: flex; flex-direction: column; gap: 52px">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center">
+      <span class="script" style="font-size: 48px; line-height: 1; color: #E2674F">work with me</span>
+      <h2 class="serif" style="margin: 0; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.1">Advice from someone who's <em>already made the mistakes</em></h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 28px">
+      <article style="border: 1px solid #cfe3e0; padding: 38px 32px; display: flex; flex-direction: column; gap: 14px">
+        <span class="label" style="color: #0F6E74">01 · Life coaching</span>
+        <h3 class="serif" style="margin: 0; font-size: 32px; font-weight: 400; line-height: 1.1">The friend everyone calls</h3>
+        <p style="margin: 0; color: #44515a; font-size: 16px">Healthy relationships, big life decisions, getting unstuck, and finally making the goals (and the trips) happen. It's what my friends get for free, except you'll actually take the advice.</p>
+        <span style="font-size: 15px; margin-top: auto; padding-top: 8px">From [PRICE]</span>
+        <a href="#" class="btn" style="align-self: flex-start; background: #1f2a33; color: #ffffff">Book a free intro call</a>
+      </article>
+      <article style="border: 1px solid #cfe3e0; padding: 38px 32px; display: flex; flex-direction: column; gap: 14px">
+        <span class="label" style="color: #0F6E74">02 · Trip planning</span>
+        <h3 class="serif" style="margin: 0; font-size: 32px; font-weight: 400; line-height: 1.1">I plan it, you go</h3>
+        <p style="margin: 0; color: #44515a; font-size: 16px">A custom day-by-day itinerary: where to stay, what to do, what to skip, and what to pack. I don't book anything or touch your money. I just do the hours of research so you don't have to.</p>
+        <span style="font-size: 15px; margin-top: auto; padding-top: 8px">From [PRICE]</span>
+        <a href="#" class="btn" style="align-self: flex-start; background: #1f2a33; color: #ffffff">Plan my trip</a>
+      </article>
+      <article style="border: 1px solid #cfe3e0; padding: 38px 32px; display: flex; flex-direction: column; gap: 14px">
+        <span class="label" style="color: #0F6E74">03 · AI time-back</span>
+        <h3 class="serif" style="margin: 0; font-size: 32px; font-weight: 400; line-height: 1.1">Let AI do the boring part</h3>
+        <p style="margin: 0; color: #44515a; font-size: 16px">I'll show you how to set up AI to handle the busywork at work and at home, so you get your time back for the fun stuff. Like booking your next trip.</p>
+        <span style="font-size: 15px; margin-top: auto; padding-top: 8px">From [PRICE]</span>
+        <a href="#" class="btn" style="align-self: flex-start; background: #1f2a33; color: #ffffff">Get my time back</a>
+      </article>
+    </div>
+  </section>
+
+  <section style="padding-top: 110px">
+    <div class="wrap" style="display: flex; flex-direction: column; align-items: center; gap: 28px">
+      <a href="#" class="label" style="text-decoration: none">Follow along · @[your handle]</a>
+      <div style="width: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px">
+        <div class="ph" style="aspect-ratio: 1 / 1; font-size: 10px">[IG post]</div>
+        <div class="ph" style="aspect-ratio: 1 / 1; font-size: 10px">[IG post]</div>
+        <div class="ph" style="aspect-ratio: 1 / 1; font-size: 10px">[IG post]</div>
+        <div class="ph" style="aspect-ratio: 1 / 1; font-size: 10px">[IG post]</div>
+        <div class="ph" style="aspect-ratio: 1 / 1; font-size: 10px">[IG post]</div>
+        <div class="ph" style="aspect-ratio: 1 / 1; font-size: 10px">[IG post]</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap" style="padding-top: 72px; padding-bottom: 48px; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center">
+    <span class="script" style="font-size: 48px; line-height: 1">elena outside</span>
+    <nav class="nav" aria-label="Footer" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 28px">
+      <a href="#about">About</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#guides">Guides</a>
+      <a href="#shop">Shop</a>
+      <a href="#work">Work with me</a>
+      <a href="#freebie">Free packing list</a>
+    </nav>
+    <p style="margin: 0; max-width: 640px; font-size: 13px; color: #5f6b73">Some links on this site are affiliate links. If you book or buy through them, I may earn a small commission at no extra cost to you.</p>
+    <p class="label" style="margin: 0; font-size: 10px; color: #5f6b73">© 2026 Elena Outside · corraoelena.com</p>
+  </footer>
 </div>
-
-<script>
-/* The travels feed — rendered from collections.json, the same file the collection
-   pages read, so the two can never drift. The first entry gets the lead treatment. */
-(function(){
-  var list=document.getElementById('tv-list'); if(!list)return;
-  var esc=function(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){
-    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
-  fetch('collections.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){
-    var cs=(d.collections||[]);
-    if(!cs.length){list.innerHTML='<p class="tv-x">The travels are loading. If they do not, the file moved.</p>';return;}
-    list.innerHTML=cs.map(function(c,i){
-      var href='collection.html?place='+encodeURIComponent(c.slug);
-      var n=(c.photos||[]).length;
-      var cover=(c.cover)||((c.photos||[])[0]||{}).src||'';
-      var alt=((c.photos||[])[0]||{}).alt||(c.place||'')+' — a photograph';
-      return '<article class="tv'+(i===0?' lead':'')+'">'+
-        '<a class="tv-ph" href="'+href+'" tabindex="-1" aria-hidden="true"><img src="'+esc(cover)+'" alt="'+esc(alt)+'" loading="'+(i<2?'eager':'lazy')+'"></a>'+
-        '<div class="tv-b">'+
-          (c.eyebrow?'<p class="tv-reg">'+esc(c.eyebrow)+'</p>':'')+
-          '<h3 class="tv-t serif"><a href="'+href+'">'+esc(c.place||c.slug)+'</a></h3>'+
-          (c.blurb?'<p class="tv-x">'+esc(c.blurb)+'</p>':'')+
-          (n?'<p class="tv-meta">'+n+' photograph'+(n===1?'':'s')+'</p>':'')+
-          '<a class="tv-more" href="'+href+'">Read on &rarr;</a>'+
-        '</div>'+
-      '</article>';
-    }).join('');
-  }).catch(function(){
-    list.innerHTML='<p class="tv-x">The travels could not load just now. Try a refresh.</p>';
-  });
-})();
-
-/* Rail — the three newest journal entries. */
-(function(){
-  var box=document.getElementById('rail-journal'); if(!box)return;
-  var esc=function(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){
-    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
-  fetch('journal.json?v='+Date.now()).then(function(r){return r.json();}).then(function(d){
-    box.innerHTML=(d.entries||[]).slice(0,3).map(function(e){
-      var t=e.talisman||{};
-      return '<a class="rj" href="'+esc(e.slug)+'.html">'+
-        '<span class="ph"><img src="'+esc(t.img||'')+'" alt="" loading="lazy"></span>'+
-        '<span class="t">'+esc(e.title||'')+'</span></a>';
-    }).join('');
-  }).catch(function(){});
-})();
-
-/* The list — same live MailerLite endpoint the rest of the site uses (public form action, no key). */
-(function(){
-  var form=document.getElementById('inviteForm'); if(!form)return;
-  var emailEl=form.querySelector('input[type=email]');
-  var honeyEl=form.querySelector('.hp');
-  var noteEl=document.getElementById('inviteNote');
-  var goBtn=form.querySelector('button');
-  var ENDPOINT='https://assets.mailerlite.com/jsonp/2518337/forms/193587317692172210/subscribe';
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var email=(emailEl.value||'').trim();
-    if(!email||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){noteEl.textContent='That email looks off. Try again?';emailEl.focus();return;}
-    if(honeyEl.value){done();return;}
-    goBtn.setAttribute('disabled','disabled');noteEl.textContent='One second\u2026';
-    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
-      body:'fields[email]='+encodeURIComponent(email)+'&ml-submit=1&anticsrf=true',mode:'no-cors'})
-      .then(function(){done();})
-      .catch(function(){goBtn.removeAttribute('disabled');noteEl.textContent='Hmm, that did not go through. One more try?';});
-  });
-  function done(){form.style.display='none';
-    noteEl.innerHTML='You\u2019re in. The next one finds you first. <span style="color:var(--gold)">x</span>';}
-})();
-</script>
-
-<!-- ================= SECTION 4 · THE GALLERY (mixed drift rows) ================= -->
-<div class="sec-head" id="gallery">
-  <span class="chap">the whole world, drifting by</span>
-  <h3 class="serif">The Gallery</h3>
-  <div class="rule"></div>
-</div>
-<section class="grows" id="grows" aria-label="A drifting gallery of prints, postcards, portraits and places">
-  <div class="grow" data-dir="-1" data-speed="0.32"><div class="lane"></div></div>
-  <div class="grow" data-dir="1" data-speed="0.30"><div class="lane"></div></div>
-</section>
-<div class="gallery-cta"><a class="btn" href="gallery.html">Enter the full Gallery</a></div>
-<script>
-/* Section 4 — two mixed drift rows (posters · postcards · portfolio · places). All real files. */
-(function(){
-  var A=[
-    {i:'gal-poster-the-coronation.jpg',t:'The Coronation',s:'Poster',r:'tall'},
-    {i:'her-fur-hood.jpg',t:'The Fur Hood',s:'Portfolio · Editorial',r:'tall'},
-    {i:'world-italy-yellow-door.jpg',t:'Piano, Piano',s:'Postcard · Bari',r:''},
-    {i:'wild-corfu-sea.jpg',t:'The Ionian',s:'Corfu',r:'wide'},
-    {i:'lace-crown-headshot.jpg',t:'The Crown',s:'Portfolio · Beauty',r:'tall'},
-    {i:'gal-cherub-mural.jpg',t:'Cherubs',s:'Portugal',r:''},
-    {i:'croatia-blue-door.jpg',t:'The Blue Door',s:'Postcard · Dubrovnik',r:'tall'},
-    {i:'gal-poster-let-go-at-the-top.jpg',t:'Let Go at the Top',s:'Poster',r:'tall'},
-    {i:'bw-smoke-editorial.jpg',t:'After Dark',s:'Portfolio · Editorial',r:'wide'},
-    {i:'gal-two-saints.jpg',t:'Two Saints',s:'Athens',r:''}
-  ];
-  var B=[
-    {i:'gal-poster-same-girl-different-garden.jpg',t:'Same Girl, Different Garden',s:'Poster',r:'tall'},
-    {i:'pool-bralette.jpg',t:'The Garden Pool',s:'Portfolio · Lifestyle',r:'wide'},
-    {i:'lisbon-green-door.jpg',t:'The Green Door',s:'Postcard · Lisbon',r:'tall'},
-    {i:'gal-moorish-castle.jpg',t:'The Moorish Castle',s:'Sintra',r:'wide'},
-    {i:'her-green-mirror.jpg',t:'The Green Mirror',s:'Portfolio · Glam',r:'tall'},
-    {i:'gal-azulejo-flowers.jpg',t:'Blue Flowers',s:'Portugal',r:''},
-    {i:'puglia-polignano-mark-twain-door.jpg',t:'Mark Twain’s Door',s:'Postcard · Polignano',r:'tall'},
-    {i:'gal-poster-the-only-one-looking-back.jpg',t:'The Only One Looking Back',s:'Poster',r:'tall'},
-    {i:'wild-brazil-cliff.jpg',t:'Above Brazil',s:'The Wild',r:'wide'},
-    {i:'gal-looking-up.jpg',t:'Looking Up',s:'Puglia',r:''}
-  ];
-  function tile(o){return '<figure class="gtile '+o.r+'"><img src="img/'+o.i+'" alt="'+o.t+'" loading="lazy" draggable="false"><figcaption><span class="t">'+o.t+'</span><span class="s">'+o.s+'</span></figcaption></figure>';}
-  var rows=document.querySelectorAll('#grows .grow');
-  [A,B].forEach(function(data,idx){ if(!rows[idx])return; var lane=rows[idx].querySelector('.lane'); var html=data.map(tile).join(''); lane.innerHTML=html+html; });
-  var reduce=false; try{reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
-  if(reduce) return;
-  rows.forEach(function(row){
-    var lane=row.querySelector('.lane');
-    var dir=parseFloat(row.dataset.dir)||-1, speed=parseFloat(row.dataset.speed)||0.3;
-    var x=0, half=0, paused=false, dragging=false, lastX=0;
-    function measure(){half=lane.scrollWidth/2;}
-    function wrap(){ if(half){ if(x<=-half)x+=half; if(x>0)x-=half; } lane.style.transform='translateX('+x.toFixed(2)+'px)'; }
-    function tick(){ if(!paused&&!dragging)x+=dir*speed; wrap(); requestAnimationFrame(tick); }
-    measure(); addEventListener('resize',measure);
-    row.addEventListener('pointerenter',function(){paused=true;});
-    row.addEventListener('pointerleave',function(){if(!dragging)paused=false;});
-    row.addEventListener('pointerdown',function(e){dragging=true;paused=true;lastX=e.clientX;row.classList.add('dragging');try{row.setPointerCapture(e.pointerId);}catch(_){}});
-    row.addEventListener('pointermove',function(e){if(!dragging)return;x+=(e.clientX-lastX);lastX=e.clientX;wrap();});
-    function rel(){if(!dragging)return;dragging=false;paused=false;row.classList.remove('dragging');}
-    row.addEventListener('pointerup',rel); row.addEventListener('pointercancel',rel);
-    row.addEventListener('wheel',function(e){if(Math.abs(e.deltaX)>Math.abs(e.deltaY)){x-=e.deltaX;wrap();e.preventDefault();}},{passive:false});
-    requestAnimationFrame(tick);
-  });
-})();
-</script>
-
-<!-- ================= ABOUT (split) ================= -->
-
-<!-- ================= FOOTER ================= -->
-<footer id="footer">
-  <div class="seal"><a href="/bookclub/" aria-label="The Book Club" title="The Book Club"><img src="img/logo/xo-eleanora-badge-seal-cream-gold.png" alt="Elena seal" style="width:100%;height:100%;object-fit:contain"></a></div>
-  <div class="fnav">
-    <a href="index.html#travels">Travels</a><a href="gallery.html">Gallery</a><a href="journal.html">Journal</a><a href="about.html">About</a><a href="index.html#footer">Contact</a>
-  </div>
-  <div class="tag">Real plants · Real light · The art of women &amp; the wild</div>
-  <div class="cr">© 2026 Elena &nbsp;·&nbsp; leave the door open, and the light on <span class="script">xo</span></div>
-</footer>
-
-<script>
-// nav solidify
-const hdr=document.getElementById('hdr');
-const onScroll=()=>hdr.classList.toggle('solid',scrollY>60);
-addEventListener('scroll',onScroll,{passive:true});onScroll();
-
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-if(!reduce){
-  document.body.classList.add('anim');
-  // scroll reveals
-  const io=new IntersectionObserver((es)=>{
-    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{
-    el.style.transitionDelay=(Math.min(i%6,5)*0.08)+'s';
-    io.observe(el);
-  });
-
-  // parallax on full-bleed film backgrounds
-  const bgs=[...document.querySelectorAll('.film .bg')];
-  let ticking=false;
-  const parallax=()=>{
-    bgs.forEach(bg=>{
-      const r=bg.parentElement.getBoundingClientRect();
-      if(r.bottom<0||r.top>innerHeight)return;
-      const p=(r.top+r.height/2-innerHeight/2)/innerHeight;
-      bg.style.transform='translateY('+(p*-40).toFixed(1)+'px)';
-    });
-    ticking=false;
-  };
-  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(parallax);}},{passive:true});
-  parallax();
-
-  // ---- CINEMATIC PAGE VEIL ----
-  const root=document.documentElement, veil=document.getElementById('veil');
-  const lift=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.remove('veil-on')));
-  if(document.readyState==='complete')lift(); else addEventListener('load',lift);
-  setTimeout(()=>root.classList.remove('veil-on'),1600);
-  addEventListener('click',(e)=>{
-    if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
-    const a=e.target.closest('a');
-    if(!a)return;
-    const href=a.getAttribute('href');
-    if(!href||href.startsWith('#')||a.target==='_blank'||a.hasAttribute('download'))return;
-    let url; try{url=new URL(href,location.href);}catch(_){return;}
-    if(url.origin!==location.origin)return;
-    if(url.pathname===location.pathname && (url.hash||href.startsWith('?')))return;
-    e.preventDefault();
-    root.classList.add('veil-on');
-    let gone=false; const go=()=>{if(!gone){gone=true;location.href=url.href;}};
-    veil.addEventListener('transitionend',go,{once:true});
-    setTimeout(go,620);
-  });
-
-  // ---- HERO SPARKLE ----
-  const cv=document.getElementById('sparkle'),cx=cv.getContext('2d');
-  let W,H,stars;
-  function resize(){const r=cv.parentElement.getBoundingClientRect();W=cv.width=r.width;H=cv.height=r.height;
-    stars=Array.from({length:Math.round(W*H/26000)},()=>mk());}
-  function mk(){return{x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.3,
-    a:Math.random(),tw:Math.random()*.02+.005,vy:-(Math.random()*.14+.03),
-    c:Math.random()>.5?'246,241,231':'243,196,107'};}
-  function tick(){cx.clearRect(0,0,W,H);
-    for(const s of stars){s.a+=s.tw;let al=(Math.sin(s.a)*.5+.5)*.7;
-      s.y+=s.vy;if(s.y<-4){s.y=H+4;s.x=Math.random()*W;}
-      cx.beginPath();cx.arc(s.x,s.y,s.r,0,7);cx.fillStyle='rgba('+s.c+','+al.toFixed(2)+')';cx.fill();}
-    requestAnimationFrame(tick);}
-  addEventListener('resize',resize);resize();tick();
-}
-</script>
-<script src="mobile-nav.js" defer></script>
 </body>
 </html>
