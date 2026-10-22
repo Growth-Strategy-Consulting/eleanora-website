@@ -3,7 +3,7 @@
   "naming-note": "Brand term for this object is 'token' (the postcard/print sold with the story; user-facing copy says 'token'). The JSON field is still named `talisman` in code — left unchanged on purpose.",
   "what": "Single source of truth for the Eleanora Journal. journal.html (the wall), the homepage teaser, and every entry's token-close + read-next all render from this file. Add a story by appending one object to `entries` — never hand-edit the wall or the teaser.",
   "buckets": "Every entry has one `bucket`, mapped straight off the Content Wheel tracker's `purpose` field: 'the-long-way' (lessons — the hard-won takeaways) · 'the-archive' (stories — personal narrative + travel memoir; a trip still pairs to a Collection via exits) · 'a-place-to-park' (thought-provokers — food for thought, 'park that thought') · 'the-manifesto' (The 1% Manifesto — the 13-door wheel, Law Zero plus the twelve signs, meant to be read in order) · 'curio' (The Curio Cabinet — the odd, personal, off-the-wheel wonderings). Umbrella / soul line for the whole Journal is 'the way I see it'. The wall filter buttons are built from these; a filter auto-hides until its bucket has at least one entry, so an empty bucket never shows an empty wall.",
-  "the-token-rule": "The feature image IS the token — the print sold at the close of the entry. The code field is `talisman` (unchanged): `talisman.img` is what shows on the wall card AND the buy block. `talisman.buyUrl` stays null until GoDaddy Payments (pay.corraoelena.com) is live; until then the buy button shows 'Prints coming soon' (same mock as collections.json). Never fake a live price/checkout.",
+  "the-token-rule": "The feature image IS the token — the print sold at the close of the entry. The code field is `talisman` (unchanged): `talisman.img` is what shows on the wall card AND the buy block. `talisman.buyUrl` points at the print's product page in the Eleanora Travels Shopify store (The Curio Cabinet collection, fulfilled by Printify); `talisman.price` is shown under the button. An entry with buyUrl null shows 'Prints coming soon'. Never fake a live price/checkout.",
   "the-exits": "`exits.collection` = a slug in collections.json (Travels entries → 'see the whole trip'). `exits.manual` true = Way-I-See-It entries end on the hook toward the paid manual. `soft` true (People) = a gentle 'a token to remember them by', no hard sell.",
   "read-next": "Bottom of each entry shows 3 related, not-yet-visited entries (relatedness = shared `tags`, then same bucket). Visited slugs are tracked in the browser (localStorage).",
   "proposed-tokens": "Token image/name matches are PROPOSED (from token-photo-article-map.md) until Elena confirms on the live site. Working names are in [brackets]. See handoff notes for reconcile items.",
@@ -30,8 +30,8 @@
     "img": "img/wheel-lawzero-lisbon-rooftops.jpg",
     "alt": "Lisbon rooftops and a monastery on the hill above a plaza of trees and awnings",
     "line": "What if this picture reminded you, every day, that the door was always open, and you were always allowed to walk through? If you believed it could, would it?",
-    "price": null,
-    "buyUrl": null
+    "price": "from $15",
+    "buyUrl": "https://eleanora-travels.myshopify.com/products/the-girl-behind-the-camera-print"
    },
    "exits": {
     "collection": null,
@@ -84,8 +84,8 @@
     "img": "img/wheel-taurus-the-body.jpg",
     "alt": "Eleanora under an outdoor shower against a rock wall, tropical leaves around her",
     "line": "What if this picture reminded you, every day, that the body you keep fighting is the one painting you every sunset you love? If you believed it could, would it?",
-    "price": null,
-    "buyUrl": null
+    "price": "from $15",
+    "buyUrl": "https://eleanora-travels.myshopify.com/products/the-apple-isnt-red-print"
    },
    "exits": {
     "collection": null,
@@ -111,8 +111,8 @@
     "img": "img/wheel-gemini-the-kombi.jpg",
     "alt": "A mint green Kombi van parked alone on red earth above the sea",
     "line": "What if this picture reminded you, every day, that you already carry everything you need to start over anywhere? If you believed it could, would it?",
-    "price": null,
-    "buyUrl": null
+    "price": "from $15",
+    "buyUrl": "https://eleanora-travels.myshopify.com/products/i-quit-with-no-plan-print"
    },
    "exits": {
     "collection": null,
@@ -138,8 +138,8 @@
     "img": "img/wheel-cancer-enough-sunset.jpg",
     "alt": "A still orange sunset over glassy water with two small boats at anchor",
     "line": "What if this picture reminded you, every day, that the life you keep saving for later is the one you are meant to be living now? If you believed it could, would it?",
-    "price": null,
-    "buyUrl": null
+    "price": "from $15",
+    "buyUrl": "https://eleanora-travels.myshopify.com/products/enough-print"
    },
    "exits": {
     "collection": null,
@@ -165,8 +165,8 @@
     "img": "img/wheel-leo-spotlight.jpg",
     "alt": "A lone figure lit by a single shaft of light on a dark stage",
     "line": "What if this picture reminded you, every day, to turn and face the one thing you've been running from? If you believed it could, would it?",
-    "price": null,
-    "buyUrl": null
+    "price": "from $15",
+    "buyUrl": "https://eleanora-travels.myshopify.com/products/what-you-run-from-runs-you-print"
    },
    "exits": {
     "collection": null,
@@ -192,8 +192,8 @@
     "img": "img/wheel-virgo-bridge-fog.jpg",
     "alt": "The Williamsburg Bridge disappearing into fog over the water at dusk",
     "line": "What if this were the picture you looked at every day, until the life inside it became the one you were living? If you believed it could, would it?",
-    "price": null,
-    "buyUrl": null
+    "price": "from $15",
+    "buyUrl": "https://eleanora-travels.myshopify.com/products/plan-b-is-plan-a-williamsburg-bridge-nyc-photo-print"
    },
    "exits": {
     "collection": null,
@@ -219,8 +219,8 @@
     "img": "img/wheel-libra-the-company.jpg",
     "alt": "People standing in silhouette along the shore against a wide sunset",
     "line": "What if this picture reminded you, every day, to keep only the people who build you, and to be one? If you believed it could, would it?",
-    "price": null,
-    "buyUrl": null
+    "price": "from $15",
+    "buyUrl": "https://eleanora-travels.myshopify.com/products/the-company-you-keep-print"
    },
    "exits": {
     "collection": null,
@@ -246,8 +246,8 @@
     "img": "img/wheel-scorpio-the-liar.jpg",
     "alt": "A street mural of a long nosed figure pointing at a painted spiral, set in an old stone arch",
     "line": "What if this picture reminded you, every day, that the wall was never real, and you're the only one still guarding it? If you believed it could, would it?",
-    "price": null,
-    "buyUrl": null
+    "price": "from $15",
+    "buyUrl": "https://eleanora-travels.myshopify.com/products/the-biggest-liar-you-know-is-you-print"
    },
    "exits": {
     "collection": null,
@@ -273,8 +273,8 @@
     "img": "img/wheel-sagittarius-the-well.jpg",
     "alt": "The spiral stone stair of the initiation well at Sintra, climbing toward the light above",
     "line": "What if this picture reminded you, every day, that you get to choose what your hard is for? If you believed it could, would it?",
-    "price": null,
-    "buyUrl": null
+    "price": "from $15",
+    "buyUrl": "https://eleanora-travels.myshopify.com/products/pick-your-suffering-print"
    },
    "exits": {
     "collection": null,
@@ -300,8 +300,8 @@
     "img": "img/wheel-capricorn-autumn-park.jpg",
     "alt": "A park of orange and yellow autumn trees with long light across the grass",
     "line": "What if this picture reminded you, every day, that nothing you're doing is wasted, only early? If you believed it could, would it?",
-    "price": null,
-    "buyUrl": null
+    "price": "from $15",
+    "buyUrl": "https://eleanora-travels.myshopify.com/products/nothing-was-wasted-print"
    },
    "exits": {
     "collection": null,
@@ -327,8 +327,8 @@
     "img": "img/wheel-aquarius-spoonbill.jpg",
     "alt": "A roseate spoonbill, vivid pink, perched on a rail in a green jungle enclosure",
     "line": "What if this picture reminded you, every day, that your whole next chapter is one small yes away? If you believed it could, would it?",
-    "price": null,
-    "buyUrl": null
+    "price": "from $15",
+    "buyUrl": "https://eleanora-travels.myshopify.com/products/youre-one-yes-away-print"
    },
    "exits": {
     "collection": null,
